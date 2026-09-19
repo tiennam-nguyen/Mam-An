@@ -1,0 +1,65 @@
+[
+  {
+    "id": "cucumber",
+    "nameVi": "Dưa chuột",
+    "aliases": [
+      "dưa leo"
+    ],
+    "servingLabel": "1 phần tham chiếu (100 g)",
+    "carbPerServing": 2.8,
+    "kcalPerServing": 16,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "aseanfoods-2014:AAD46 PDF page 39 table page 6"
+    ],
+    "catalogVersion": "v1"
+  },
+  {
+    "id": "egg",
+    "nameVi": "Trứng gà luộc",
+    "aliases": [
+      "trứng luộc"
+    ],
+    "servingLabel": "1 quả tham chiếu (50 g phần ăn được)",
+    "carbPerServing": 0.6,
+    "kcalPerServing": 76,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "aseanfoods-2014:AAH15 PDF page 56 table page 23"
+    ],
+    "catalogVersion": "v1"
+  },
+  {
+    "id": "pho",
+    "nameVi": "Phở bò",
+    "aliases": [
+      "phở"
+    ],
+    "servingLabel": "1 tô tham chiếu",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v1"
+  },
+  {
+    "id": "rice",
+    "nameVi": "Cơm trắng",
+    "aliases": [
+      "cơm",
+      "cơm gạo tẻ"
+    ],
+    "servingLabel": "1 phần tham chiếu (100 g chín)",
+    "carbPerServing": 29.4,
+    "kcalPerServing": 129,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "aseanfoods-2014:AAA63 PDF page 34 table page 1"
+    ],
+    "catalogVersion": "v1"
+  }
+]
