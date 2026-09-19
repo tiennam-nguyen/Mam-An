@@ -11,7 +11,28 @@ import { MockLLM } from '../infrastructure/demo/mockLlm';
 import { AnalysisSessionService } from '../application/services/analysisSessionService';
 import type { AppServices } from '../application/services/appServices';
 import { publicConfig } from './config/publicConfig';
-export function createServices():AppServices{
- const db=new MamAnDb(),catalog=new StaticFoodCatalog(),meals=new DexieMealRepository(db),clock={now:()=>new Date()};
- return {catalog,meals,clock,glucose:new DexieGlucoseRepository(db),settings:new DexieSettingsRepository(db),thumbnails:new DexieThumbnailRepository(db),demo:new DexieDemoRepository(db),session:new AnalysisSessionService(catalog,new HttpAiGateway(),new MockLLM(),new BrowserImageProcessor(),meals,clock,()=>crypto.randomUUID()),...publicConfig};
+export function createServices(): AppServices {
+  const db = new MamAnDb(),
+    catalog = new StaticFoodCatalog(),
+    meals = new DexieMealRepository(db),
+    clock = { now: () => new Date() };
+  return {
+    catalog,
+    meals,
+    clock,
+    glucose: new DexieGlucoseRepository(db),
+    settings: new DexieSettingsRepository(db),
+    thumbnails: new DexieThumbnailRepository(db),
+    demo: new DexieDemoRepository(db),
+    session: new AnalysisSessionService(
+      catalog,
+      new HttpAiGateway(),
+      new MockLLM(),
+      new BrowserImageProcessor(),
+      meals,
+      clock,
+      () => crypto.randomUUID(),
+    ),
+    ...publicConfig,
+  };
 }

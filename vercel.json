@@ -1,1 +1,8 @@
-{"rewrites":[{"source":"/((?!api/|assets/|icons/|demo/|sw.js|workbox-|manifest.webmanifest).*)","destination":"/index.html"}]}
+{
+  "rewrites": [
+    {
+      "source": "/((?!api/|assets/|icons/|demo/|sw.js|workbox-|manifest.webmanifest).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

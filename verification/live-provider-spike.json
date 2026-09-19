@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-09-19T10:57:45.366Z",
+  "command": "node --env-file=.env.local --import tsx scripts/spike-ai.ts",
+  "commit": "0e8a1f79a061e34aacfbf83c2428039bdda0756a",
+  "workingTree": "implementation changes pending commit",
+  "hypothesis": "Selected image models accept the synthetic illustration and return validated candidate-only output.",
+  "falsifier": "HTTP failure, timeout, or invalid response schema.",
+  "fixture": "public/demo/images/meal.svg → JPEG quality 82",
+  "fixtureSha256": "e0ac8a812506bd6ec83ef84abb298428d44346252912cfe8341ca87daf31d6dc",
+  "promptVersion": "meal-candidates-v1",
+  "timeoutMs": 15000,
+  "seed": "No seed parameter sent; one request per model, not a quality benchmark.",
+  "openRouterPrivacy": {
+    "data_collection": "deny",
+    "zdr": true
+  },
+  "results": [
+    {
+      "provider": "groq",
+      "model": "qwen/qwen3.6-27b",
+      "httpStatus": 404,
+      "configured": true,
+      "validResponse": false,
+      "candidateCount": null,
+      "errorCode": "AI_UPSTREAM_ERROR"
+    },
+    {
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "httpStatus": 200,
+      "configured": true,
+      "validResponse": true,
+      "candidateCount": 4,
+      "errorCode": null
+    },
+    {
+      "provider": "openrouter",
+      "model": "qwen/qwen3.8-27b:free",
+      "httpStatus": 429,
+      "configured": true,
+      "validResponse": false,
+      "candidateCount": null,
+      "errorCode": "AI_RATE_LIMITED"
+    },
+    {
+      "provider": "openrouter",
+      "model": "nex-agi/nex-n2.5-mini:free",
+      "httpStatus": 404,
+      "configured": true,
+      "validResponse": false,
+      "candidateCount": null,
+      "errorCode": "AI_UPSTREAM_ERROR"
+    }
+  ]
+}
