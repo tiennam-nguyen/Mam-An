@@ -9,6 +9,6 @@ export const safetyCopy = {
   weekly:
     'Chỉ phản ánh các bữa và số đo đã ghi, không phải toàn bộ lượng ăn. Báo cáo không dùng để chẩn đoán hay quyết định điều trị.',
   privacy:
-    'Khi chọn phân tích trực tiếp, ảnh đã thu nhỏ được gửi qua máy chủ tới Groq/OpenRouter. Nhật ký bữa ăn và đường huyết vẫn ở thiết bị.',
-  demo: 'Dữ liệu mẫu · MockLLM · Không phải kết quả AI trực tiếp',
+    'Khi chọn phân tích trực tiếp, ảnh đã thu nhỏ được gửi tới dịch vụ AI và có thể chuyển sang dịch vụ dự phòng. Việc lưu và sử dụng ảnh phụ thuộc chính sách của dịch vụ. Nhật ký bữa ăn và đường huyết vẫn ở thiết bị.',
+  demo: 'Bữa ăn mẫu để bạn khám phá và chỉnh sửa.',
 };

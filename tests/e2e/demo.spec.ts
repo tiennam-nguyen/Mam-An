@@ -38,6 +38,11 @@ test('offline sample → correction → save/reload → glucose → week → rep
   await expect(page.getByText('18,1 g carb')).toBeVisible();
   await page.getByRole('link', { name: 'Thêm số đo', exact: true }).click();
   await page.getByLabel('Giá trị', { exact: true }).fill('6.7');
+  await page.getByRole('combobox', { name: /^Đơn vị/ }).selectOption('MMOL_L');
+  const timeInput = page.getByLabel('Thời điểm đo', { exact: true });
+  const today = (await timeInput.inputValue()).slice(0, 10);
+  await timeInput.fill(`${today}T08:30`);
+  await page.getByRole('combobox', { name: /^Thời điểm so với bữa/ }).selectOption('AFTER_MEAL');
   await page.getByRole('button', { name: 'Lưu số đo' }).click();
   await expect(page.getByText('6,7 mmol/L')).toBeVisible();
   await page.getByRole('link', { name: 'Tuần của tôi', exact: true }).click();
@@ -63,6 +68,7 @@ test('manual unknown stays unknown, demo reset preserves user records', async ({
   await page.getByLabel('Tên hiển thị').fill('Món riêng');
   await expect(page.getByTestId('carb-total')).toHaveText('Chưa có dữ liệu');
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Bữa ăn đã lưu' })).toBeVisible();
   await page.goto('/demo');
   await page.getByRole('button', { name: 'Tạo dữ liệu mẫu' }).click();
   await expect(page.getByRole('status')).toContainText('Đã chuẩn bị');
@@ -151,6 +157,10 @@ test('laptop layout and populated print report fit viewport', async ({
   await expect(page.getByRole('status')).toContainText('Đã chuẩn bị');
   await page.goto('/report/weekly');
   await expect(page.locator('tbody tr')).toHaveCount(7);
+  await expect(page.locator('.metric-grid .big-number')).toHaveText(['7', '7']);
+  await expect(page.getByText('7 bữa mẫu · 0 bữa tự ghi')).toBeVisible();
+  await expect(page.locator('.daily-row')).toHaveCount(7);
+  for (const row of await page.locator('.daily-row').all()) await expect(row).toContainText('32,8 g');
   await page.emulateMedia({ media: 'print' });
   await page.setViewportSize({ width: 794, height: 1123 });
   await page.screenshot({

@@ -45,27 +45,23 @@ export function SettingsPage() {
         <h2>Dữ liệu nằm tại đây</h2>
         <p>
           Nhật ký lưu trong trình duyệt này. Xóa dữ liệu trình duyệt sẽ làm mất
-          nhật ký; prototype chưa có đồng bộ hoặc sao lưu.
+          nhật ký; hiện chưa có đồng bộ hoặc sao lưu.
         </p>
-        <Link to="/demo">Chuẩn bị dữ liệu demo →</Link>
+        <Link to="/demo">Khám phá dữ liệu mẫu →</Link>
       </div>
       <Link to="/about">Thông tin & nguồn dữ liệu →</Link>
     </section>
   );
 }
 export function AboutPage() {
-  const { catalog, buildId, liveEnabled } = useServices();
+  const { liveEnabled } = useServices();
   return (
     <section className="narrow">
       <h1>Về Mâm An</h1>
       <div className="card">
         <p>
-          Prototype v0.1 · Build {buildId} · Catalog{' '}
-          {catalog.getCatalogVersion()}
-        </p>
-        <p>
-          AI trực tiếp: {liveEnabled ? 'đã bật' : 'chưa bật'}. Luồng mẫu dùng
-          MockLLM trong thiết bị.
+          Phân tích ảnh: {liveEnabled ? 'sẵn sàng' : 'chưa bật'}. Bạn luôn có
+          thể nhập món thủ công hoặc thử bữa ăn mẫu ngay trên thiết bị.
         </p>
         <h2>Nguồn & khẩu phần</h2>
         <p>

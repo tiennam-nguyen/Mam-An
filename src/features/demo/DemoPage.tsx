@@ -22,7 +22,7 @@ export function DemoPage() {
   }
   return (
     <section className="narrow">
-      <p className="eyebrow">DEMO CÓ THỂ LẶP LẠI</p>
+      <p className="eyebrow">KHÁM PHÁ BẰNG DỮ LIỆU MẪU</p>
       <h1>Một tuần để khám phá</h1>
       <div className="card">
         <h2>Dữ liệu mẫu, được ghi rõ</h2>
