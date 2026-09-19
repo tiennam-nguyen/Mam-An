@@ -1,4 +1,4 @@
-import { ChatVisionProvider } from './chatVisionProvider';
+import { ChatVisionProvider } from './chatVisionProvider.js';
 export class OpenRouterVisionProvider extends ChatVisionProvider {
   constructor(
     key: string,

@@ -117,3 +117,25 @@ it('failed save keeps draft and retry uses the same ID', async () => {
   expect(savedIds[0]).toBe(savedIds[1]);
   expect(service.getSnapshot().draft?.analysisState).toBe('SAVED');
 });
+it('live failure preserves selected image, retry succeeds, edits/add/remove recompute', async () => {
+  let calls = 0;
+  const live: AiGateway = { analyzeMealImage: async input => ++calls === 1 ? fail('AI_TIMEOUT', 'AI', true) : new MockLLM().analyzeMealImage(input) };
+  const { service } = setup(live);
+  expect(service.getSnapshot().draft).toBeNull();
+  await service.select(new Blob(['x']), 'FILE');
+  expect(service.getSnapshot().draft?.analysisState).toBe('IMAGE_SELECTED');
+  await service.analyze();
+  expect(service.getSnapshot().draft?.analysisState).toBe('ANALYSIS_ERROR');
+  expect(service.getSnapshot().draft?.imagePreviewUrl).toMatch(/^blob:/);
+  await service.analyze();
+  expect(service.getSnapshot().draft?.analysisState).toBe('REVIEW_READY');
+  const items = service.getSnapshot().draft!.items;
+  service.edit([{ ...items[0]!, portionMultiplier: 0.5, userCorrected: true }]);
+  expect(service.getSnapshot().draft?.totalCarbEstimate).toBe(14.7);
+  service.edit([]);
+  expect(service.getSnapshot().draft?.totalCarbEstimate).toBeNull();
+  service.edit(items);
+  expect(service.getSnapshot().draft?.items.length).toBe(items.length);
+  service.cancel();
+  expect(service.getSnapshot().draft).toBeNull();
+});

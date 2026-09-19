@@ -2,10 +2,10 @@ import type {
   VisionAnalysisProvider,
   ProviderAnalyzeInput,
   ProviderAnalysisResult,
-} from './visionAnalysisProvider';
-import type { Result } from '../../src/domain/common/result';
-import type { AppError } from '../../src/shared/errors/appError';
-import { ok } from '../../src/domain/common/result';
+} from './visionAnalysisProvider.js';
+import type { Result } from '../../src/domain/common/result.js';
+import type { AppError } from '../../src/shared/errors/appError.js';
+import { ok } from '../../src/domain/common/result.js';
 export class MockLLM implements VisionAnalysisProvider {
   readonly id = 'mock' as const;
   calls = 0;

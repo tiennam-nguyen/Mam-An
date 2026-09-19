@@ -1,14 +1,16 @@
 import type {
   VisionAnalysisProvider,
   ProviderAnalyzeInput,
-} from './visionAnalysisProvider';
-import { parseProviderResult } from './providerResponseSchema';
-import { visionPrompt } from './prompt';
-import { ok } from '../../src/domain/common/result';
-import { fail } from '../../src/shared/errors/appError';
+  ProviderId,
+} from './visionAnalysisProvider.js';
+import { parseProviderResult } from './providerResponseSchema.js';
+import { visionPrompt } from './prompt.js';
+import { ok } from '../../src/domain/common/result.js';
+import { fail } from '../../src/shared/errors/appError.js';
+import { httpProviderFailure, providerFailure } from './providerFailure.js';
 export class ChatVisionProvider implements VisionAnalysisProvider {
   constructor(
-    readonly id: 'groq' | 'openrouter',
+    readonly id: Exclude<ProviderId, 'gemini'>,
     private endpoint: string,
     private key: string,
     private model: string,
@@ -49,26 +51,26 @@ export class ChatVisionProvider implements VisionAnalysisProvider {
             },
           ],
           response_format: { type: 'json_object' },
+          max_tokens: 2048,
           stream: false,
           ...(this.privacy ? { provider: this.privacy } : {}),
         }),
       });
       if (!response.ok) {
-        if (response.status === 429) return fail('AI_RATE_LIMITED', 'AI', true);
-        if (response.status === 408 || response.status === 504)
-          return fail('AI_TIMEOUT', 'AI', true);
-        if (response.status >= 500) return fail('AI_UNAVAILABLE', 'AI', true);
-        return fail('AI_UPSTREAM_ERROR', 'AI', false);
+        await response.body?.cancel();
+        return httpProviderFailure(response.status);
       }
       try {
         return ok({ candidates: parseProviderResult(await response.json()) });
       } catch {
-        return fail('AI_INVALID_RESPONSE', 'AI');
+        return signal.aborted
+          ? providerFailure('AI_TIMEOUT', 'TIMEOUT', true)
+          : providerFailure('AI_INVALID_RESPONSE', 'MALFORMED_RESPONSE');
       }
     } catch {
       return signal.aborted
         ? fail('AI_TIMEOUT', 'AI', true)
-        : fail('AI_UNAVAILABLE', 'AI', true);
+        : providerFailure('AI_UNAVAILABLE', 'NETWORK', true);
     }
   }
 }
