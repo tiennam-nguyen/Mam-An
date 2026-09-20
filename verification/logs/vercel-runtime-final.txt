@@ -1,0 +1,6 @@
+Using TypeScript 7.0.2 (local user-provided)
+Using the TypeScript 7.0.2 compiler executable for transpilation.
+{"started":"2026-09-19T16:23:01.980Z","builder":"13.0.1","handler":"api\\v1\\analyze-meal.js","runtime":"nodejs","fileCount":321}
+{"status":405,"body":{"request_id":"16a40f49-8453-4b29-9554-2ac75542aef4","error":{"code":"INVALID_INPUT","retryable":false}}}
+{"event":"ai_provider_attempt","provider":"groq","code":"OK","reason":null,"latencyMs":4}
+{"boundary":"emitted Function → sharp → real adapter → stub HTTP → normalized response","status":200,"candidateCount":1,"noStore":"no-store"}

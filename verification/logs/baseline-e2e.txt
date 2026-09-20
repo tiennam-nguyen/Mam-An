@@ -1,0 +1,17 @@
+
+> mam-an@0.1.0 test:e2e
+> playwright test
+
+[WebServer] (node:2496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:17644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:9968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report (3.2s)
+  ok 2 tests\e2e\demo.spec.ts:55:1 › manual unknown stays unknown, demo reset preserves user records (1.5s)
+  ok 3 tests\e2e\demo.spec.ts:81:1 › uploaded pixels become only a small local thumbnail with no original EXIF (1.3s)
+  ok 4 tests\e2e\demo.spec.ts:140:1 › laptop layout and populated print report fit viewport (1.5s)

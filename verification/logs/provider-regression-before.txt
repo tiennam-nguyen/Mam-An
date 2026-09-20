@@ -1,0 +1,95 @@
+
+> mam-an@0.1.0 test
+> vitest run --run tests/provider-hardening.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+ ❯ tests/provider-hardening.test.ts (48 tests | 7 failed) 39ms
+   ❯ chat provider (16)
+     × distinguishes network throw and timeout while reading body 6ms
+   ❯ chat provider (16)
+     × distinguishes network throw and timeout while reading body 1ms
+   × provider HTTP 400 must not hide a healthy secondary 1ms
+   × provider HTTP 401 must not hide a healthy secondary 0ms
+   × provider HTTP 403 must not hide a healthy secondary 0ms
+   × provider HTTP 404 must not hide a healthy secondary 0ms
+   × malformed provider output can fail over without becoming sample success 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/provider-hardening.test.ts > chat provider > distinguishes network throw and timeout while reading body
+ FAIL  tests/provider-hardening.test.ts > chat provider > distinguishes network throw and timeout while reading body
+AssertionError: expected { ok: false, error: { …(5) } } to match object { ok: false, error: { …(2) } }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": {
+-     "code": "AI_TIMEOUT",
+-     "retryable": true,
++     "code": "AI_INVALID_RESPONSE",
++     "retryable": false,
+    },
+    "ok": false,
+  }
+
+ ❯ tests/provider-hardening.test.ts:44:19
+     42|       return response;
+     43|     }).analyze(input, abort.signal);
+     44|     expect(timed).toMatchObject({ ok: false, error: { code: 'AI_TIMEOU…
+       |                   ^
+     45|   });
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/provider-hardening.test.ts > provider HTTP 400 must not hide a healthy secondary
+ FAIL  tests/provider-hardening.test.ts > provider HTTP 401 must not hide a healthy secondary
+ FAIL  tests/provider-hardening.test.ts > provider HTTP 403 must not hide a healthy secondary
+ FAIL  tests/provider-hardening.test.ts > provider HTTP 404 must not hide a healthy secondary
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/provider-hardening.test.ts:50:115
+     48|   const first = new GroqVisionProvider('test-only', 'stale', async () …
+     49|   const second = new MockLLM();
+     50|   expect((await new FailoverVisionService([first, second], 100).analyz…
+       |                                                                                                                   ^
+     51|   expect(second.calls).toBe(1);
+     52| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/provider-hardening.test.ts > malformed provider output can fail over without becoming sample success
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/provider-hardening.test.ts:56:115
+     54|   const first = new GroqVisionProvider('test-only', 'test', async () =…
+     55|   const second = new GroqVisionProvider('test-only', 'test', async () …
+     56|   expect((await new FailoverVisionService([first, second], 100).analyz…
+       |                                                                                                                   ^
+     57| });
+     58| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 41 passed (48)
+   Start at  23:07:19
+   Duration  373ms (transform 41%, import 38%, tests 18%, worker 3%)
+

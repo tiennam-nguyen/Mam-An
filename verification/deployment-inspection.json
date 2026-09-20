@@ -1,0 +1,138 @@
+{
+  "timestamp": "2026-09-19T13:36:01.653Z",
+  "commit": "4aa32fb6e9c62d18a3bc7d4363a7b501a8303178",
+  "command": "node --import tsx scripts/inspect-deployment.ts https://mam-an.vercel.app",
+  "origin": "https://mam-an.vercel.app",
+  "evidence": [
+    {
+      "boundary": "browser → deployed API",
+      "status": null,
+      "error": "NO_RESPONSE_WITHIN_30_SECONDS",
+      "visibleError": [
+        "Không kết nối được. Thử lại, dùng mẫu hoặc nhập thủ công."
+      ]
+    },
+    {
+      "width": 390,
+      "liveEnabled": true,
+      "labels": [
+        {
+          "text": "Tuần của tôi",
+          "codepoints": [
+            84,
+            117,
+            7847,
+            110,
+            32,
+            99,
+            7911,
+            97,
+            32,
+            116,
+            244,
+            105
+          ],
+          "font": "\"Segoe UI\", Arial, sans-serif",
+          "weight": "400",
+          "spacing": "normal",
+          "lineHeight": "23.04px",
+          "fonts": [
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "text": "Thiết lập",
+          "codepoints": [
+            84,
+            104,
+            105,
+            7871,
+            116,
+            32,
+            108,
+            7853,
+            112
+          ],
+          "font": "\"Segoe UI\", Arial, sans-serif",
+          "weight": "400",
+          "spacing": "normal",
+          "lineHeight": "23.04px",
+          "fonts": [
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "liveEnabled": true,
+      "labels": [
+        {
+          "text": "Tuần của tôi",
+          "codepoints": [
+            84,
+            117,
+            7847,
+            110,
+            32,
+            99,
+            7911,
+            97,
+            32,
+            116,
+            244,
+            105
+          ],
+          "font": "\"Segoe UI\", Arial, sans-serif",
+          "weight": "400",
+          "spacing": "normal",
+          "lineHeight": "23.04px",
+          "fonts": [
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "text": "Thiết lập",
+          "codepoints": [
+            84,
+            104,
+            105,
+            7871,
+            116,
+            32,
+            108,
+            7853,
+            112
+          ],
+          "font": "\"Segoe UI\", Arial, sans-serif",
+          "weight": "400",
+          "spacing": "normal",
+          "lineHeight": "23.04px",
+          "fonts": [
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 9
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+
+> mam-an@0.1.0 test:providers
+> node --env-file-if-exists=.env.local --import tsx scripts/verify-providers.ts --provider vercel
+
+{"provider":"vercel","model":"google/gemma-4-31b-it","imageCapable":true,"officialSource":"https://ai-gateway.vercel.sh/v1/models","configured":true,"timestamp":"2026-09-19T16:21:31.829Z","environment":"local","commit":"4aa32fb6e9c62d18a3bc7d4363a7b501a8303178","command":"npm run test:providers -- --provider vercel","httpStatus":403,"latencyMs":1671,"timeout":false,"timeoutMs":15000,"normalizedSchemaValid":false,"candidateCount":null,"errorCode":"AI_AUTH_FAILED","retryable":false,"fixture":"public/demo/images/meal.svg","fixtureSha256":"439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07","promptVersion":"meal-candidates-v1","notes":"One bounded request, no retries. Synthetic fixture is not a recognition benchmark. Free account/no card per operator; billing state not independently verified.","seed":null}

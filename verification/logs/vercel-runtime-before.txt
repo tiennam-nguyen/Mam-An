@@ -1,0 +1,10 @@
+Using TypeScript 7.0.2 (local user-provided)
+Using the TypeScript 7.0.2 compiler executable for transpilation.
+error TS2688: Cannot find type definition file for 'node'.
+  The file is in the program because:
+    Entry point of type library 'node' specified in compilerOptions
+error TS2688: Cannot find type definition file for 'vite/client'.
+  The file is in the program because:
+    Entry point of type library 'vite/client' specified in compilerOptions
+{"started":"2026-09-19T16:03:23.020Z","builder":"13.0.1","handler":"api\\v1\\analyze-meal.js","runtime":"nodejs","fileCount":313}
+{"code":"ERR_MODULE_NOT_FOUND","message":"Cannot find module 'C:\\Users\\LOQ\\Mam An\\verification\\.runtime\\1789833804456\\server\\config\\serverConfig' imported from C:\\Users\\LOQ\\Mam An\\verification\\.runtime\\1789833804456\\api\\v1\\analyze-meal.js"}

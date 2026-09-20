@@ -1,0 +1,4 @@
+Using TypeScript 7.0.2 (local user-provided)
+Using the TypeScript 7.0.2 compiler executable for transpilation.
+{"started":"2026-09-19T16:04:06.710Z","builder":"13.0.1","handler":"api\\v1\\analyze-meal.js","runtime":"nodejs","fileCount":313}
+{"status":405,"body":{"request_id":"6d5b26ee-05cd-49b7-a2b3-c3e8d53ed77e","error":{"code":"INVALID_INPUT","retryable":false}}}

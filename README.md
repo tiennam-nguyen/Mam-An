@@ -24,22 +24,32 @@ Keys belong in ignored `.env.local`, never `.env.example` or a VITE_ variable. T
 
 To enable live analysis locally, add `VITE_ENABLE_LIVE_AI=true` to `.env.local`, run `npm run dev:api` in a second terminal, and restart `npm run dev`. The app discloses transmission before sending an image. Vite preserves Host for same-origin checking.
 
-Default models:
-- Groq `qwen/qwen3.8-27b`: one synthetic-image smoke returned schema-valid candidates.
-- OpenRouter `qwen/qwen3.8-27b:free`: smoke returned HTTP 429.
-- Also checked Groq `qwen/qwen3.6-27b` and OpenRouter `nex-agi/nex-n2.5-mini:free`; both returned HTTP 404.
+Supported providers and model defaults (discovered and smoke-tested 2026-09-19):
 
-See [live spike ledger](verification/live-provider-spike.json) for exact command, commit, fixture hash, prompt/config and outcomes. These are single-request observations, not recognition benchmarks. Model listings: [Groq vision docs](https://console.groq.com/docs/vision), [OpenRouter catalog](https://openrouter.ai/api/v1/models), checked 2026-09-19.
+| Provider | Model | Configuration |
+| --- | --- | --- |
+| Groq | `qwen/qwen3.8-27b` | `GROQ_API_KEY`, `GROQ_VISION_MODEL` |
+| Mistral | `ministral-14b-2512` | `MISTRAL_API_KEY`, `MISTRAL_VISION_MODEL` |
+| Cohere | `command-a-vision-07-2025` | `COHERE_API_KEY`, `COHERE_VISION_MODEL` |
+| OpenRouter | `qwen/qwen3.8-27b:free` | `OPENROUTER_API_KEY`, `OPENROUTER_VISION_MODEL` |
+| Gemini (opt-in) | `gemini-3.8-flash` | `GEMINI_API_KEY`, `GEMINI_VISION_MODEL` |
 
-OpenRouter retains `data_collection: deny` and `zdr: true`; failures never loosen them. Groq account retention controls and real-photo quality remain operator review items. Sample/MockLLM mode never silently replaces a live result.
+Default `AI_PROVIDER_ORDER=groq,mistral,cohere,openrouter`; missing keys are skipped. Existing explicit orders remain in force. Gemini uses its native API and must be explicitly added to the order; its free tier may use content to improve products. Review service retention terms before sending personal images. OpenRouter keeps `data_collection: deny` and `zdr: true` by default; failures do not loosen these settings.
 
-`npm run verify:ai` validates configuration without a network request. Explicit live smoke command:
+Provider failures, including stale models and malformed output, try the next configured provider once, within a 25-second total budget. No same-provider retry or automatic sample substitution occurs. The client has a 30-second deadline. User/input failures stop immediately. AI supplies candidate names only; nutrition remains a deterministic local catalog calculation.
+
+`npm run verify:ai` checks configuration without network access. Provider discovery and bounded live tests are separate from CI:
+
 ```sh
-node --env-file=.env.local --import tsx scripts/spike-ai.ts
+npm run discover:providers
+npm run test:providers -- --provider mistral --model ministral-14b-2512 --timeout 15000
+# Optional, one request per candidate; no automatic retries:
+npm run test:providers -- --all
 ```
-It sends only a bundled synthetic illustration. Keys and raw provider bodies are not logged.
 
-Vercel uses `api/v1/analyze-meal.ts` with a [Node Web Standard handler](https://vercel.com/docs/functions/runtimes/node-js). Deployment has not been performed. Preview serves only the client; local API requests use the dev server.
+The default fixture is the bundled synthetic illustration; `--fixture PATH` selects another explicitly authorized image. The [provider matrix](verification/provider-matrix.json) records each request's timestamp, command, commit, fixture hash and outcome without raw responses or keys. See [provider strategy](verification/PROVIDER_STRATEGY.md) for access/privacy limitations. These are connectivity observations, not recognition benchmarks.
+
+Vercel uses `api/v1/analyze-meal.ts` with a [Node Web Standard handler](https://vercel.com/docs/functions/runtimes/node-js). Set `VITE_ENABLE_LIVE_AI=true` **before building**, separately for Preview and Production; set server keys and provider order for the same target, then redeploy. Server imports use emitted `.js` extensions and `api/tsconfig.json` isolates Function compiler types. `npm run preview` serves only static client files, not Functions. Deployed results and access blockers are recorded in the [test report](verification/TEST_REPORT.md).
 
 ## Checks
 
@@ -50,10 +60,11 @@ npm test
 npm run test:e2e
 npm run audit:safety
 npm run audit:secrets
+npm run catalog:check
 npm run verify:ai
 ```
 
-Chromium must be installed for Playwright (`npx playwright install chromium` if absent). Screenshots, PDFs and failure traces are ignored under `test-results/`. No lint framework is configured; strict TypeScript and focused tests are the current gates.
+Chromium must be installed for Playwright (`npx playwright install chromium` if absent). `test:e2e` rebuilds with live UI enabled and runs on an isolated strict port; upstream HTTP is deterministic in that suite. Screenshots, PDFs and failure traces are ignored under `test-results/`. No lint framework is configured; strict TypeScript and focused tests are the current gates.
 
 ## Data and limits
 
@@ -61,6 +72,6 @@ Chromium must be installed for Playwright (`npx playwright install chromium` if 
 
 Only a small local thumbnail persists. Original and analysis images are transient. Chromium tests verify thumbnail dimensions, EXIF removal for a synthetic JPEG, reload, offline demo, user-row preservation and print styling.
 
-All health logs remain in this browser. Clearing browser data loses them; no cloud backup exists. Physical camera/install/print behavior, deployment and broader food-source reuse still need target-environment checks. The app makes no diagnosis, treatment recommendation or causal meal/glucose claim.
+All health logs remain in this browser. Clearing browser data loses them; no cloud backup exists. An available app update is offered explicitly and cannot reload an unsaved meal or glucose form. Physical camera/install/print behavior and broader food-source reuse still need target-environment checks. The app makes no diagnosis, treatment recommendation or causal meal/glucose claim.
 
 [MAP.md](MAP.md) explains boundaries and decisions; [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) records evidence. Baseline specifications remain unchanged.

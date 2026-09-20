@@ -1,0 +1,28 @@
+
+> mam-an@0.1.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.1.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 170 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/registerSW.js                0.13 kB
+dist/manifest.webmanifest         0.24 kB
+dist/index.html                   0.59 kB │ gzip:   0.38 kB
+dist/assets/index-DcHTd1A4.css    8.33 kB │ gzip:   2.62 kB
+dist/assets/index-4hkBrCkG.js   493.06 kB │ gzip: 153.51 kB
+
+✓ built in 842ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (492.03 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js

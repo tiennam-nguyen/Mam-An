@@ -1,0 +1,59 @@
+
+> mam-an@0.1.0 test:e2e
+> node scripts/run-e2e.mjs
+
+
+> mam-an@0.1.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.1.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 173 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-DE-Mw0q-.css                     8.43 kB │ gzip:   2.65 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-DlimhctU.js                    495.01 kB │ gzip: 154.16 kB
+
+✓ built in 249ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (499.23 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:23680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 1 worker
+
+(node:24056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report (1.9s)
+  ok  2 tests\e2e\demo.spec.ts:60:1 › manual unknown stays unknown, demo reset preserves user records (943ms)
+  ok  3 tests\e2e\demo.spec.ts:87:1 › uploaded pixels become only a small local thumbnail with no original EXIF (928ms)
+  ok  4 tests\e2e\demo.spec.ts:146:1 › laptop layout and populated print report fit viewport (1.3s)
+  ok  5 tests\e2e\live.spec.ts:12:3 › production client 390px › live request → correction → portion → persist/reload/history (846ms)
+  ok  6 tests\e2e\live.spec.ts:34:3 › production client 390px › Vietnamese labels use a consistent font and UI has no engineering residue (688ms)
+  ok  7 tests\e2e\live.spec.ts:12:3 › production client 1366px › live request → correction → portion → persist/reload/history (843ms)
+  ok  8 tests\e2e\live.spec.ts:34:3 › production client 1366px › Vietnamese labels use a consistent font and UI has no engineering residue (810ms)
+  ok  9 tests\e2e\live.spec.ts:60:3 › degraded live paths › late live result cannot replace a manually corrected draft (789ms)
+  ok 10 tests\e2e\live.spec.ts:84:5 › degraded live paths › HTTP 429 is visible and retry remains live (473ms)
+  ok 11 tests\e2e\live.spec.ts:84:5 › degraded live paths › HTTP 503 is visible and retry remains live (544ms)
+  ok 12 tests\e2e\live.spec.ts:84:5 › degraded live paths › HTTP 504 is visible and retry remains live (559ms)
+  ok 13 tests\e2e\live.spec.ts:84:5 › degraded live paths › HTTP 502 is visible and retry remains live (508ms)
+  ok 14 tests\e2e\live.spec.ts:96:3 › degraded live paths › offline failure allows manual entry without silently showing sample results (499ms)
+  ok 15 tests\e2e\live.spec.ts:106:3 › degraded live paths › malformed success is an error, not a sample meal (409ms)
+  ok 16 tests\e2e\live.spec.ts:113:3 › degraded live paths › invalid and oversized uploads leave manual entry available (2.8s)
+  ok 17 tests\e2e\live.spec.ts:122:3 › degraded live paths › storage failure preserves editable draft and can retry (601ms)
+  ok 18 tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save (2.2s)
+
+  18 passed (20.4s)
