@@ -1,0 +1,21 @@
+Observed through authenticated Vercel dashboard, 2026-09-20.
+
+Preview deployment dpl_fpqAoRqTkwVVKMzLmm3Chs6mzFn2, commit bf471947f5f494103f4fbdab3195aa0f9f7431a9.
+2026-09-20T01:07:14.222Z POST 200
+Host: mam-an-git-codex-test-hardening-live-ai-ronnie-nguyens-projects.vercel.app
+Path: /api/v1/analyze-meal
+{"event":"ai_provider_attempt","provider":"groq","code":"OK","reason":null,"latencyMs":1009}
+Browser: 3 candidates rendered; corrected to rice/egg/cucumber; 0.5 rice portion; 18.1g total; saved/reloaded; linked synthetic 6.7 mmol/L reading; weekly report 1 meal and 1 reading.
+
+Production deployment dpl_4kjxW4T69Sm3eufWK7DyuLkdGZ1T, commit 4aa32fb6e9c62d18a3bc7d4363a7b501a8303178.
+2026-09-20T01:10:20.720Z GET 500
+Host: mam-an.vercel.app
+Path: /api/v1/analyze-meal
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/var/task/server/config/serverConfig' imported from /var/task/api/v1/analyze-meal.js
+code: 'ERR_MODULE_NOT_FOUND'
+url: 'file:///var/task/server/config/serverConfig'
+Node.js process exited with exit status: 1.
+
+Preview build: Ready, 22s, Vercel CLI 59.23.2, iad1.
+Warning: npm allow-scripts esbuild@0.28.2 (postinstall: node install.js) not yet covered by allowScripts.
+No install-script policy changed. No credentials or raw image/provider bodies copied.

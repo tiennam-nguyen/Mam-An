@@ -51,6 +51,8 @@ The default fixture is the bundled synthetic illustration; `--fixture PATH` sele
 
 Vercel uses `api/v1/analyze-meal.ts` with a [Node Web Standard handler](https://vercel.com/docs/functions/runtimes/node-js). Set `VITE_ENABLE_LIVE_AI=true` **before building**, separately for Preview and Production; set server keys and provider order for the same target, then redeploy. Server imports use emitted `.js` extensions and `api/tsconfig.json` isolates Function compiler types. `npm run preview` serves only static client files, not Functions. Deployed results and access blockers are recorded in the [test report](verification/TEST_REPORT.md).
 
+The branch Preview was verified with a real Groq request on 2026-09-20 (HTTP 200, three candidates, corrected meal persisted after reload). The operator subsequently added all provider keys to Vercel **Production**; their presence was checked without revealing values. The explicit Production/Preview order was updated to `groq,mistral,cohere,openrouter` for the next deployment. Local credentials and Vercel credentials are separate; new keys added only to Production are not automatically available in Preview. Release verification is recorded in the test report.
+
 ## Checks
 
 ```sh

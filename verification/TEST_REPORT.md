@@ -28,7 +28,7 @@ Prediction: if member-call receiver binding causes the error, calling the same f
 
 Prediction: if extensionless emitted ESM imports prevent startup, explicit .js specifiers will make the same emitted artifact invocable. [RAN] Official builder artifact before fix failed `ERR_MODULE_NOT_FOUND` for server/config/serverConfig and reported missing node/vite type definitions. After explicit extensions and `api/tsconfig.json`, the same builder emitted an artifact that returned GET 405 and POST 200 through sharp, the real adapter/parser and stub upstream HTTP. See `logs/vercel-runtime-before.txt` and `logs/vercel-runtime-final.txt`.
 
-This confirms the local artifact root cause. [INFERRED] It explains the hosted 500; hosted logs are inaccessible, so it is not yet a confirmed deployed root cause. Builder uses meta.isDev to avoid package installation; emitted compiler/tracer output is exercised on Windows, not hosted Linux.
+This confirms the local artifact root cause. [RAN, follow-up 2026-09-20] Authenticated production logs now confirm the identical ERR_MODULE_NOT_FOUND for `/var/task/server/config/serverConfig`, imported from `/var/task/api/v1/analyze-meal.js`. The fixed branch Preview returned POST 200 through the actual hosted Function and Groq. The deployed root cause is therefore confirmed, not merely inferred. The local builder uses meta.isDev to avoid package installation; the separate hosted result establishes Linux runtime invocation.
 
 Reproduction command (installed builder directory is machine-specific):
 
@@ -119,11 +119,49 @@ Sandbox-only cache EPERM and tsx uv_os_get_passwd ENOMEM were resolved by approv
 
 [RAN] Baseline public client enables live AI but fails before sending the request; direct Function GET returns 500. GitHub deployment reports success, which does not establish Function health. Vercel credential authenticates user API (200), but project/team listings are empty and deployment metadata returns 404. Protected deployment URLs redirect to login.
 
-**BLOCKED pending branch Preview:** hosted build/function logs, server key presence, deployed artifact invocation and real-provider success need access to the owning Vercel project. Local artifact/local real-provider results cannot satisfy hosted checks. Branch deployment outcome will be appended after push/PR.
+[RAN, access resolved 2026-09-20] The operator supplied an authenticated browser session. Preview deployment `dpl_fpqAoRqTkwVVKMzLmm3Chs6mzFn2` / GitHub deployment 6547550553, commit `bf471947f5f494103f4fbdab3195aa0f9f7431a9`, is **Ready**. Its source matches tested source revision abf3cf4; bf47194 adds only documentation/evidence. Immutable URL: https://mam-7ufdwig05-ronnie-nguyens-projects.vercel.app . Branch URL: https://mam-an-git-codex-test-hardening-live-ai-ronnie-nguyens-projects.vercel.app . Authentication remains required for reviewers.
+
+[RAN] Deployed browser upload of the synthetic JPEG, explicit live button, real Function/config/provider/parser and review UI succeeded. Vercel log at `2026-09-20T01:07:14.222Z`: **POST 200**, `ai_provider_attempt`, `provider=groq`, `code=OK`, `latencyMs=1009`. Three schema-valid candidates rendered. Corrected them to catalog rice/egg/cucumber, selected half rice, observed 18.1g total, saved and reloaded, then added a clearly labeled synthetic 6.7 mmol/L reading. Weekly/report views showed one meal, one linked reading and 18.1g. No mocked/intercepted request was used. Exact actions and sanitized output: `deployed-preview.json`, `logs/deployed-runtime.txt`.
+
+[RAN] Hosted build output: Vercel CLI 59.23.2, iad1, 22s, Ready. One npm allow-scripts warning concerned `esbuild@0.28.2` postinstall; it did not prevent building or invoking the Function. No broad install-script policy change was made.
+
+[RAN] Environment list (All Environments/All Variables): GROQ_API_KEY, OPENROUTER_API_KEY, AI_PROVIDER_ORDER and VITE_ENABLE_LIVE_AI are present for Production and Preview. Groq nonempty usable credential is demonstrated by inference. Values were not revealed. Mistral/Cohere/Gemini keys were not listed in the hosted project; they are configured and tested locally. To enable those fallback services on Vercel, add their server-only keys and include them in the existing explicit AI_PROVIDER_ORDER for the desired target, then redeploy. Gemini remains opt-in. No shared environment settings were changed.
+
+[RAN] Production at main still returns GET 500, with authenticated logs confirming the missing-module error. **The fix is verified on Preview, not promoted to Production.** PR https://github.com/tiennam-nguyen/Mam-An/pull/2 is open; no merge/promotion performed.
+
+Direct navigation to the Preview GET API was blocked by the browser client; POST invocation is independently established in Vercel logs/UI. The in-app browser viewport override did not affect the original app tab; measured Preview viewport was 639×574. Exact 390/1366 checks are local production-build E2E evidence, not claimed as hosted screenshots.
 
 ## Remaining UNKNOWNs / definition of done
 
-- BLOCKED: items 7–8, deployed Preview API and deployed real-provider success, until owning-project deployment/access is available. Production is not claimed fixed; main is not merged.
-- UNKNOWN: exact hosted warning/logs/env, hosted Linux behavior, physical camera/install/native print, other-platform font rendering, account quotas/retention controls.
+- Items 7–8 are now satisfied by actual Preview POST 200 and real Groq output. Production release is deliberately left to the operator under the no-merge instruction.
+- UNKNOWN: physical camera/install/native print, other-platform font rendering, account quotas/retention controls, hidden environment values and untested hosted fallback credentials.
 - UNKNOWN: real-photo Vietnamese recognition quality. No representative real-photo dataset exists here; synthetic observations are not accuracy measurements.
 - Other definition items are supported by reproductions, passing local suites, provider ledger, UI review, audits and updated README. No schema/data migration, credential rotation, force-push or operator-data deletion occurred.
+
+## Follow-up: all-provider retest and authorized release (2026-09-20)
+
+The operator added all local provider keys to Vercel and explicitly authorized merging when conflict-free. This supersedes the earlier no-merge instruction. [RAN] GitHub reports MERGEABLE/CLEAN; fetched main is still 4aa32fb, with no new main commits to reconcile.
+
+[RAN] The Vercel UI lists all 12 provider key names plus CLOUDFLARE_ACCOUNT_ID. Newly added keys target **Production only**; existing Groq/OpenRouter and feature flags target Production and Preview. Values were not revealed or copied. AI_PROVIDER_ORDER was set to `groq,mistral,cohere,openrouter` for Production and Preview; UI confirmed successful update requiring a new deployment. Gemini remains opt-in under the documented privacy policy.
+
+[RAN] `npm run test:providers -- --all` was rerun at commit bf471947f5f494103f4fbdab3195aa0f9f7431a9 with documentation/ledger changes, from 2026-09-20T04:42:18Z to 04:43:03Z. One request per candidate, 15-second timeout, no retries, label-free synthetic fixture SHA 439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07, meal-candidates-v1, seed unset. These requests use the local copies of the same operator-supplied keys; they are **not** represented as 12 independent Vercel Function tests. Hosted live-path testing is recorded separately. Output: `logs/provider-retest-all.txt`; complete rows appended to `provider-matrix.json`.
+
+| Provider/model | HTTP | Valid candidates / failure | ms |
+| --- | --- | --- | --- |
+| Groq qwen/qwen3.8-27b | 200 | 4 | 5238 |
+| Mistral ministral-14b-2512 | 200 | 5 | 4762 |
+| Mistral mistral-small-2603 | 429 | rate limit | 1137 |
+| Gemini gemini-3.8-flash | 200 | 3 | 6209 |
+| Gemini gemini-2.5-flash | 404 | model unavailable | 395 |
+| Cohere command-a-vision-07-2025 | 200 | 3 | 4452 |
+| Hugging Face Qwen/Qwen3.8-27B | 200 | 4 | 1947 |
+| OpenRouter qwen/qwen3.8-27b:free | 429 | rate limit | 1157 |
+| OpenRouter google/gemma-4-31b-it:free | 404 | model unavailable | 588 |
+| NVIDIA meta/llama-3.2-90b-vision-instruct | none | timeout | 15128 |
+| SambaNova gemma-4-31B-it | 402 | billing/access | 646 |
+| Pollinations openai/gpt-5.4-nano | 402 | billing/access | 1695 |
+| Cerebras qwen-3.8-27b | 402 | billing/access | 600 |
+| Cloudflare llama-3.2-11b-vision-instruct | 403 | authorization | 999 |
+| Vercel google/gemma-4-31b-it | 403 | authorization | 1968 |
+
+Five providers succeeded in this retest; SambaNova's previous success did not persist. Unsupported/inaccessible services were not forced into the production chain. This is bounded connectivity testing, not a quality benchmark or quota guarantee. Merge/deployment outcome follows below after execution.
