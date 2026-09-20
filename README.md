@@ -53,6 +53,8 @@ Vercel uses `api/v1/analyze-meal.ts` with a [Node Web Standard handler](https://
 
 The branch Preview was verified with a real Groq request on 2026-09-20 (HTTP 200, three candidates, corrected meal persisted after reload). The operator subsequently added all provider keys to Vercel **Production**; their presence was checked without revealing values. The explicit Production/Preview order was updated to `groq,mistral,cohere,openrouter` for the next deployment. Local credentials and Vercel credentials are separate; new keys added only to Production are not automatically available in Preview. Release verification is recorded in the test report.
 
+Production was released from PR #2 and verified at merge commit `807cb39`: real Groq rate-limit → Mistral success, HTTP 200, four candidates, correction/save/reload/glucose/report flow passed. Reproduce the opt-in single-image production check with `node --import tsx scripts/verify-production.ts https://mam-an.vercel.app DEPLOYED_COMMIT`; this consumes one live analysis request and creates only disposable browser-local test data.
+
 ## Checks
 
 ```sh

@@ -776,6 +776,31 @@
       "promptVersion": "meal-candidates-v1",
       "notes": "One bounded request, no retries. Synthetic fixture is not a recognition benchmark. Free account/no card per operator; billing state not independently verified.",
       "seed": null
+    },
+    {
+      "provider": "mistral",
+      "model": null,
+      "imageCapable": true,
+      "configured": true,
+      "officialSource": "https://docs.mistral.ai/studio/conversations/vision",
+      "timestamp": "2026-09-20T04:49:39.929Z",
+      "environment": "production",
+      "commit": "807cb398084d8e30bc1ced8c53670f63931e8510",
+      "command": "node --import tsx scripts/verify-production.ts https://mam-an.vercel.app 807cb398084d8e30bc1ced8c53670f63931e8510",
+      "httpStatus": 200,
+      "httpStatusScope": "public app API; upstream success confirmed by adapter log",
+      "latencyMs": 3470,
+      "latencyScope": "provider attempt",
+      "timeout": false,
+      "normalizedSchemaValid": true,
+      "candidateCount": 4,
+      "errorCode": null,
+      "retryable": false,
+      "fixture": "public/demo/images/meal.svg",
+      "fixtureSha256": "439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07",
+      "promptVersion": "meal-candidates-v1",
+      "seed": null,
+      "notes": "Real deployed failover after Groq rate limit (165ms). Model override not revealed. Production UI correction/save/reload/glucose/history/report passed."
     }
   ]
 }

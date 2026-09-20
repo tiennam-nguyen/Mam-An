@@ -1,0 +1,17 @@
+
+> mam-an@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+
+ Test Files  10 passed (10)
+      Tests  203 passed (203)
+   Start at  11:52:52
+   Duration  2.90s (import 47%, transform 37%, tests 10%, worker 5%)
+
+  Transform  transforming modules took 3.30s · 37% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+

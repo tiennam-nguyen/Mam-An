@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-09-20T04:49:25.040Z",
+  "environment": "production",
+  "origin": "https://mam-an.vercel.app",
+  "deployedCommit": "807cb398084d8e30bc1ced8c53670f63931e8510",
+  "command": "node --import tsx scripts/verify-production.ts https://mam-an.vercel.app 807cb398084d8e30bc1ced8c53670f63931e8510",
+  "fixtureSha256": "439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07",
+  "notes": "One real inference with a synthetic illustration. Fresh isolated browser context; no request interception. Local test records disappear with the context.",
+  "getStatus": 405,
+  "views": [
+    {
+      "width": 390,
+      "fits": true,
+      "fonts": [
+        {
+          "href": "/weekly",
+          "fonts": [
+            {
+              "familyName": "Segoe UI Semibold",
+              "postScriptName": "SegoeUI-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "href": "/settings",
+          "fonts": [
+            {
+              "familyName": "Segoe UI Semibold",
+              "postScriptName": "SegoeUI-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "fits": true,
+      "fonts": [
+        {
+          "href": "/weekly",
+          "fonts": [
+            {
+              "familyName": "Segoe UI Semibold",
+              "postScriptName": "SegoeUI-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "href": "/settings",
+          "fonts": [
+            {
+              "familyName": "Segoe UI Semibold",
+              "postScriptName": "SegoeUI-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "liveEnabled": true,
+  "postStatus": 200,
+  "cacheControl": "no-store",
+  "normalizedSchemaValid": true,
+  "candidateCount": 4,
+  "saveReloadGlucoseHistoryReport": "passed",
+  "result": "passed"
+}

@@ -19,3 +19,10 @@ Node.js process exited with exit status: 1.
 Preview build: Ready, 22s, Vercel CLI 59.23.2, iad1.
 Warning: npm allow-scripts esbuild@0.28.2 (postinstall: node install.js) not yet covered by allowScripts.
 No install-script policy changed. No credentials or raw image/provider bodies copied.
+
+Released Production deployment dpl_4ZQEQ8rDHSRFkUSW6SXpAfF5sAaF, merge commit 807cb398084d8e30bc1ced8c53670f63931e8510.
+2026-09-20T04:49:26.256Z GET 405 /api/v1/analyze-meal
+2026-09-20T04:49:39.929Z POST 200 /api/v1/analyze-meal
+2026-09-20T04:49:40.628Z {"event":"ai_provider_attempt","provider":"groq","code":"AI_RATE_LIMITED","reason":"RATE_LIMIT","latencyMs":165}
+2026-09-20T04:49:44.098Z {"event":"ai_provider_attempt","provider":"mistral","code":"OK","reason":null,"latencyMs":3470}
+Host mam-an.vercel.app, environment production, branch main.

@@ -1,5 +1,7 @@
 # Mâm An hardening verification
 
+**Released and verified:** PR #2 merged without conflicts at 2026-09-20T04:47:22Z, commit `807cb398084d8e30bc1ced8c53670f63931e8510`. Production https://mam-an.vercel.app/ passes real browser/API checks, including Groq rate-limit → Mistral success. Earlier blockers below are historical; see the final release section.
+
 ## Environment and evidence
 
 - Branch: `codex/test-hardening-live-ai`; baseline fetched main `4aa32fb6e9c62d18a3bc7d4363a7b501a8303178`.
@@ -133,7 +135,7 @@ Direct navigation to the Preview GET API was blocked by the browser client; POST
 
 ## Remaining UNKNOWNs / definition of done
 
-- Items 7–8 are now satisfied by actual Preview POST 200 and real Groq output. Production release is deliberately left to the operator under the no-merge instruction.
+- Items 7–8 are satisfied by actual Preview POST 200 and real Groq output; the operator later authorized merge, and Production also passed as recorded below.
 - UNKNOWN: physical camera/install/native print, other-platform font rendering, account quotas/retention controls, hidden environment values and untested hosted fallback credentials.
 - UNKNOWN: real-photo Vietnamese recognition quality. No representative real-photo dataset exists here; synthetic observations are not accuracy measurements.
 - Other definition items are supported by reproductions, passing local suites, provider ledger, UI review, audits and updated README. No schema/data migration, credential rotation, force-push or operator-data deletion occurred.
@@ -165,3 +167,21 @@ The operator added all local provider keys to Vercel and explicitly authorized m
 | Vercel google/gemma-4-31b-it | 403 | authorization | 1968 |
 
 Five providers succeeded in this retest; SambaNova's previous success did not persist. Unsupported/inaccessible services were not forced into the production chain. This is bounded connectivity testing, not a quality benchmark or quota guarantee. Merge/deployment outcome follows below after execution.
+
+## Final production release
+
+[RAN] PR https://github.com/tiennam-nguyen/Mam-An/pull/2 was CLEAN/MERGEABLE with successful Preview checks immediately before merge. It was merged with an exact-head guard (`gh pr merge 2 --merge --match-head-commit 35ba9cd5a79a95071427e74d7372facce6ec5029`). Merge commit: `807cb398084d8e30bc1ced8c53670f63931e8510`, 2026-09-20T04:47:22Z. Git diff confirms its application/API/server/assets/dependencies/tests are identical to tested source abf3cf4.
+
+[RAN] Production deployment `dpl_4ZQEQ8rDHSRFkUSW6SXpAfF5sAaF`, GitHub deployment 6549149851, completed successfully at 04:47:46Z. Immutable origin: https://mam-14e6ft630-ronnie-nguyens-projects.vercel.app ; public origin: https://mam-an.vercel.app/ .
+
+[RAN] `node --import tsx scripts/verify-production.ts https://mam-an.vercel.app 807cb398084d8e30bc1ced8c53670f63931e8510` passed on the public origin. Evidence: `production-release.json`, `logs/production-release.txt`. This opt-in script sends exactly one synthetic image and uses a fresh disposable browser context; it does not write personal/health data or modify a user's existing journal.
+
+- GET API: **405**, no-store; no Function startup error.
+- Live-enabled production browser POST: **200**, no-store, normalized schema valid, **four candidates**.
+- Actual Function logs: Groq `AI_RATE_LIMITED` / `RATE_LIMIT`, 165ms, followed by Mistral `OK`, 3470ms. Request started 2026-09-20T04:49:39.929Z; response succeeded. This verifies real deployed failover, not only a mock policy test.
+- Corrected candidate to catalog rice, half portion → **14.7g**, saved, reloaded; linked synthetic **6.7 mmol/L** reading; history and weekly report both correct (one meal / one reading).
+- Exact **390×900 and 1366×900** production viewports fit without horizontal overflow; both navigation labels use one Segoe UI Semibold face with full glyph coverage. Screenshots inspected; no engineering labels or embedded image text.
+
+[UNKNOWN] Real-photo recognition quality, other-platform font rendering, physical camera/install/native print and future free-tier quotas remain unverified. Individual provider smoke requests were local; production directly verified Groq and Mistral in the observed fallback sequence. These limitations do not negate the completed production live-path fix.
+
+Post-release changes are verification tooling/evidence only. No additional application behavior, dependency, schema or credential changes were introduced after this deployment test.
