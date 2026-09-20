@@ -28,7 +28,7 @@ try {
   /* Local credentials are optional. */
 }
 const secrets = local.split(/\r?\n/).flatMap((line) => {
-  const match = /^(?:GROQ_API_KEY|OPENROUTER_API_KEY)=(.*)$/.exec(line);
+  const match = /^[ \t]*[A-Z_][A-Z0-9_]*(?:API_KEY|TOKEN|SECRET)\s*=(.*)$/.exec(line);
   const value = match?.[1]?.trim().replace(/^(['"])(.*)\1$/, '$2');
   return value && value.length >= 8 ? [value] : [];
 });
@@ -36,7 +36,11 @@ for (const file of [...new Set([...files, ...walk('dist')])]) {
   const contents = readFileSync(file);
   if (secrets.some((secret) => contents.includes(Buffer.from(secret))))
     throw new Error('Credential content found in ' + file);
+  if (/(?:gsk_|sk-or-v1-|nvapi-|hf_|AIza)[A-Za-z0-9_-]{24,}/.test(contents.toString()))
+    throw new Error('Credential-like token found in ' + file);
 }
+if (local.split(/\r?\n/).some(line => /^VITE_.*(?:KEY|TOKEN|SECRET)\s*=\s*\S/.test(line)))
+  throw new Error('Client-exposed credential variable in .env.local');
 if (hasNonemptyProviderKeys(readFileSync('.env.example', 'utf8')))
   throw new Error('Template contains a nonempty key');
 for (const commit of git(['rev-list', '--all', '--', '.env.example'])

@@ -2,6 +2,7 @@ import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from './routes';
 import { ServicesContext } from '../shared/ui/ServicesContext';
 import type { AppServices } from '../application/services/appServices';
+import { PwaUpdateNotice } from '../shared/ui/PwaUpdateNotice';
 export function App({ services }: { services: AppServices }) {
   return (
     <ServicesContext.Provider value={services}>
@@ -27,10 +28,11 @@ export function App({ services }: { services: AppServices }) {
           </Link>
         </header>
         <main id="main">
+          <PwaUpdateNotice />
           <AppRoutes />
         </main>
         <footer className="site-footer no-print">
-          <span>Mâm An · Prototype v0.1</span>
+          <span>Mâm An</span>
           <Link to="/demo">Dữ liệu mẫu</Link>
           <Link to="/about">Nguồn tham chiếu</Link>
           <span>Riêng tư trên thiết bị</span>

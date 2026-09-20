@@ -1,0 +1,45 @@
+[WebServer] (node:13264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:21468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save (5.8s)
+
+
+  1) tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Tải phiên bản mới', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Tải phiên bản mới', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Tải phiên bản mới', exact: true })
+
+
+      34 |     await page.waitForFunction(async () => !!(await navigator.serviceWorker.getRegistration())?.waiting);
+      35 |     const update = page.getByRole('button', { name: 'Tải phiên bản mới', exact: true });
+    > 36 |     await expect(update).toBeVisible();
+         |                          ^
+      37 |     await expect(update).toBeDisabled();
+      38 |     await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
+      39 |     await expect(page.getByRole('heading', { name: 'Bữa ăn đã lưu' })).toBeVisible();
+        at C:\Users\LOQ\Mam An\tests\e2e\pwa-update.spec.ts:36:26
+
+    Error Context: test-results\pwa-update-waiting-update--c9471-al-and-activates-after-save\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\pwa-update-waiting-update--c9471-al-and-activates-after-save\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\pwa-update-waiting-update--c9471-al-and-activates-after-save\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save 

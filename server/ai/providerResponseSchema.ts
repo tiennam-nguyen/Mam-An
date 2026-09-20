@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { RawAnalysisCandidate } from '../../src/domain/meal/analysisCandidate';
+import type { RawAnalysisCandidate } from '../../src/domain/meal/analysisCandidate.js';
 const candidate = z.object({
   raw_name: z.string().trim().min(1).max(120),
   suggested_portion_multiplier: z.number().finite().positive().nullable(),

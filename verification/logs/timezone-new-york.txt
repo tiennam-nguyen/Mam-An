@@ -1,0 +1,13 @@
+
+> mam-an@0.1.0 test
+> vitest run --run tests/domain.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+
+ Test Files  1 passed (1)
+      Tests  26 passed (26)
+   Start at  12:26:32
+   Duration  389ms (transform 53%, import 37%, tests 9%, worker 1%)
+

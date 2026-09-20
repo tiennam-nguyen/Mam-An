@@ -1,0 +1,53 @@
+
+> mam-an@0.1.0 test:e2e
+> playwright test
+
+
+Running 4 tests using 1 worker
+
+(node:12708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report (1.6s)
+  x  2 tests\e2e\demo.spec.ts:55:1 › manual unknown stays unknown, demo reset preserves user records (6.3s)
+(node:16092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 tests\e2e\demo.spec.ts:81:1 › uploaded pixels become only a small local thumbnail with no original EXIF (895ms)
+  ok 4 tests\e2e\demo.spec.ts:140:1 › laptop layout and populated print report fit viewport (1.1s)
+
+
+  1) tests\e2e\demo.spec.ts:55:1 › manual unknown stays unknown, demo reset preserves user records ─
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Món riêng', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Món riêng', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Món riêng', exact: true })
+
+
+      75 |   await expect(
+      76 |     page.getByRole('heading', { name: 'Món riêng', exact: true }),
+    > 77 |   ).toBeVisible();
+         |     ^
+      78 |   await expect(page.locator('.history-row')).toHaveCount(8);
+      79 | });
+      80 |
+        at C:\Users\LOQ\Mam An\tests\e2e\demo.spec.ts:77:5
+
+    Error Context: test-results\demo-manual-unknown-stays--02bee-eset-preserves-user-records\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\demo-manual-unknown-stays--02bee-eset-preserves-user-records\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\demo-manual-unknown-stays--02bee-eset-preserves-user-records\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\demo.spec.ts:55:1 › manual unknown stays unknown, demo reset preserves user records ──
+  3 passed (11.7s)

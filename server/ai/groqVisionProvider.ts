@@ -1,4 +1,4 @@
-import { ChatVisionProvider } from './chatVisionProvider';
+import { ChatVisionProvider } from './chatVisionProvider.js';
 export class GroqVisionProvider extends ChatVisionProvider {
   constructor(key: string, model: string, send?: typeof fetch) {
     super(

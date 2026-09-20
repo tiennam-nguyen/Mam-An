@@ -1,0 +1,312 @@
+
+> mam-an@0.1.0 test:e2e
+> node scripts/run-e2e.mjs
+
+
+> mam-an@0.1.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.1.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 170 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/registerSW.js                0.13 kB
+dist/manifest.webmanifest         0.24 kB
+dist/index.html                   0.59 kB │ gzip:   0.37 kB
+dist/assets/index-DE-Mw0q-.css    8.43 kB │ gzip:   2.65 kB
+dist/assets/index-unsUmh9k.js   492.99 kB │ gzip: 153.49 kB
+
+✓ built in 228ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (491.94 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:3548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 15 tests using 1 worker
+
+(node:17660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report (2.7s)
+  ok  2 tests\e2e\demo.spec.ts:55:1 › manual unknown stays unknown, demo reset preserves user records (1.4s)
+  ok  3 tests\e2e\demo.spec.ts:82:1 › uploaded pixels become only a small local thumbnail with no original EXIF (1.2s)
+  ok  4 tests\e2e\demo.spec.ts:141:1 › laptop layout and populated print report fit viewport (1.3s)
+  x   5 tests\e2e\live.spec.ts:12:3 › production client 390px › live request → correction → portion → persist/reload/history (5.6s)
+(node:3944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 tests\e2e\live.spec.ts:34:3 › production client 390px › Vietnamese labels use a consistent font and UI has no engineering residue (698ms)
+  x   7 tests\e2e\live.spec.ts:12:3 › production client 1366px › live request → correction → portion → persist/reload/history (5.6s)
+(node:22260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  8 tests\e2e\live.spec.ts:34:3 › production client 1366px › Vietnamese labels use a consistent font and UI has no engineering residue (752ms)
+  x   9 tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 429 is visible and retry remains live (5.7s)
+(node:19188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  10 tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 503 is visible and retry remains live (5.6s)
+(node:6396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  11 tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 504 is visible and retry remains live (5.6s)
+(node:22224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  12 tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 502 is visible and retry remains live (5.6s)
+(node:20228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  13 tests\e2e\live.spec.ts:73:3 › degraded live paths › offline failure allows manual entry without silently showing sample results (5.8s)
+(node:2176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 14 tests\e2e\live.spec.ts:83:3 › degraded live paths › malformed success is an error, not a sample meal (501ms)
+  ok 15 tests\e2e\live.spec.ts:90:3 › degraded live paths › invalid and oversized uploads leave manual entry available (2.1s)
+
+
+  1) tests\e2e\live.spec.ts:12:3 › production client 390px › live request → correction → portion → persist/reload/history 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Trứng luộc', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Trứng luộc', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Trứng luộc', exact: true })
+
+
+      20 |     await upload(page);
+      21 |     await page.getByRole('button', { name: 'Phân tích trực tiếp', exact: true }).click();
+    > 22 |     await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toBeVisible();
+         |                                                                                  ^
+      23 |     await page.getByLabel('Món tham chiếu').selectOption('rice');
+      24 |     await page.getByRole('button', { name: '0.5×', exact: true }).click();
+      25 |     await expect(page.getByTestId('carb-total')).toHaveText('14,7');
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:22:82
+
+    Error Context: test-results\live-production-client-390-218da-on-→-persist-reload-history\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-production-client-390-218da-on-→-persist-reload-history\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-production-client-390-218da-on-→-persist-reload-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\live.spec.ts:12:3 › production client 1366px › live request → correction → portion → persist/reload/history 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Trứng luộc', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Trứng luộc', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Trứng luộc', exact: true })
+
+
+      20 |     await upload(page);
+      21 |     await page.getByRole('button', { name: 'Phân tích trực tiếp', exact: true }).click();
+    > 22 |     await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toBeVisible();
+         |                                                                                  ^
+      23 |     await page.getByLabel('Món tham chiếu').selectOption('rice');
+      24 |     await page.getByRole('button', { name: '0.5×', exact: true }).click();
+      25 |     await expect(page.getByTestId('carb-total')).toHaveText('14,7');
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:22:82
+
+    Error Context: test-results\live-production-client-136-6bb13-on-→-persist-reload-history\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-production-client-136-6bb13-on-→-persist-reload-history\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-production-client-136-6bb13-on-→-persist-reload-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 429 is visible and retry remains live 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Trứng luộc', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Trứng luộc', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Trứng luộc', exact: true })
+
+
+      67 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toHaveCount(0);
+      68 |       await page.getByRole('button', { name: 'Phân tích trực tiếp', exact: true }).click();
+    > 69 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toBeVisible();
+         |                                                                                    ^
+      70 |       expect(calls).toBe(2);
+      71 |     });
+      72 |   }
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:69:84
+
+    Error Context: test-results\live-degraded-live-paths-H-6cf0f-ible-and-retry-remains-live\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-degraded-live-paths-H-6cf0f-ible-and-retry-remains-live\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-degraded-live-paths-H-6cf0f-ible-and-retry-remains-live\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 503 is visible and retry remains live 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Trứng luộc', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Trứng luộc', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Trứng luộc', exact: true })
+
+
+      67 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toHaveCount(0);
+      68 |       await page.getByRole('button', { name: 'Phân tích trực tiếp', exact: true }).click();
+    > 69 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toBeVisible();
+         |                                                                                    ^
+      70 |       expect(calls).toBe(2);
+      71 |     });
+      72 |   }
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:69:84
+
+    Error Context: test-results\live-degraded-live-paths-H-f02ee-ible-and-retry-remains-live\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-degraded-live-paths-H-f02ee-ible-and-retry-remains-live\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-degraded-live-paths-H-f02ee-ible-and-retry-remains-live\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 504 is visible and retry remains live 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Trứng luộc', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Trứng luộc', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Trứng luộc', exact: true })
+
+
+      67 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toHaveCount(0);
+      68 |       await page.getByRole('button', { name: 'Phân tích trực tiếp', exact: true }).click();
+    > 69 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toBeVisible();
+         |                                                                                    ^
+      70 |       expect(calls).toBe(2);
+      71 |     });
+      72 |   }
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:69:84
+
+    Error Context: test-results\live-degraded-live-paths-H-6664a-ible-and-retry-remains-live\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-degraded-live-paths-H-6664a-ible-and-retry-remains-live\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-degraded-live-paths-H-6664a-ible-and-retry-remains-live\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 502 is visible and retry remains live 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Trứng luộc', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Trứng luộc', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Trứng luộc', exact: true })
+
+
+      67 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toHaveCount(0);
+      68 |       await page.getByRole('button', { name: 'Phân tích trực tiếp', exact: true }).click();
+    > 69 |       await expect(page.getByRole('heading', { name: 'Trứng luộc', exact: true })).toBeVisible();
+         |                                                                                    ^
+      70 |       expect(calls).toBe(2);
+      71 |     });
+      72 |   }
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:69:84
+
+    Error Context: test-results\live-degraded-live-paths-H-b7d5c-ible-and-retry-remains-live\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-degraded-live-paths-H-b7d5c-ible-and-retry-remains-live\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-degraded-live-paths-H-b7d5c-ible-and-retry-remains-live\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) tests\e2e\live.spec.ts:73:3 › degraded live paths › offline failure allows manual entry without silently showing sample results 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByTestId('carb-total')
+    Expected: "29,4"
+    Received: "29,4 g"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByTestId('carb-total') with timeout 5000ms
+      - waiting for getByTestId('carb-total')
+        14 × locator resolved to <p class="big-number" data-testid="carb-total">…</p>
+           - unexpected value "29,4 g"
+
+
+      79 |     await expect(page.locator('.food-card')).toHaveCount(0);
+      80 |     await page.getByRole('button', { name: '＋ Cơm trắng', exact: true }).click();
+    > 81 |     await expect(page.getByTestId('carb-total')).toHaveText('29,4');
+         |                                                  ^
+      82 |   });
+      83 |   test('malformed success is an error, not a sample meal', async ({ page }) => {
+      84 |     await page.route('**/api/v1/analyze-meal', route => route.fulfill({ json: { candidates: [] } }));
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:81:50
+
+    Error Context: test-results\live-degraded-live-paths-o-9d3b3-ntly-showing-sample-results\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-degraded-live-paths-o-9d3b3-ntly-showing-sample-results\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-degraded-live-paths-o-9d3b3-ntly-showing-sample-results\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7 failed
+    tests\e2e\live.spec.ts:12:3 › production client 390px › live request → correction → portion → persist/reload/history 
+    tests\e2e\live.spec.ts:12:3 › production client 1366px › live request → correction → portion → persist/reload/history 
+    tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 429 is visible and retry remains live ─
+    tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 503 is visible and retry remains live ─
+    tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 504 is visible and retry remains live ─
+    tests\e2e\live.spec.ts:61:5 › degraded live paths › HTTP 502 is visible and retry remains live ─
+    tests\e2e\live.spec.ts:73:3 › degraded live paths › offline failure allows manual entry without silently showing sample results 
+  8 passed (59.7s)

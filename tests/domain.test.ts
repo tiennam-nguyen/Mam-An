@@ -14,7 +14,22 @@ import { correctMealItems } from '../src/application/usecases/correctMealItem';
 import { isValidGlucose } from '../src/domain/glucose/glucoseValidation';
 import { catalog, draft, meal, now } from './fixtures/helpers';
 import { demoData } from '../src/application/usecases/seedDemoData';
+import { formatNumber } from '../src/shared/ui/common';
 describe('nutrition contracts', () => {
+  it.each([1, 0.333333, 1000000])('keeps carb and kcal precision for portion %s', portion => {
+    const food = catalog.listDemoFoods().find(f => f.id === 'rice')!;
+    const result = calculateItemNutrition(food, portion);
+    expect(result.carbEstimate).toBe(food.carbPerServing! * portion);
+    expect(result.kcalEstimate).toBe(food.kcalPerServing! * portion);
+    const before = result.carbEstimate;
+    formatNumber(before);
+    expect(result.carbEstimate).toBe(before);
+  });
+  it('duplicate-like items each contribute once; excluded items contribute nothing', () => {
+    const item = draft().items[0]!;
+    expect(calculateMealNutrition([item, { ...item }]).totalCarbEstimate).toBe(item.carbEstimate! * 2);
+    expect(calculateMealNutrition([{ ...item, includedInTotal: false }]).totalCarbEstimate).toBeNull();
+  });
   it('known calculation preserves full precision', () =>
     expect(
       calculateItemNutrition(
@@ -116,6 +131,22 @@ describe('review state', () => {
   });
 });
 describe('weekly and glucose', () => {
+  it('empty week has seven null totals and no readings', () => {
+    const week = aggregateWeekly([], [], now);
+    expect(week.loggedMealCount).toBe(0);
+    expect(week.glucoseReadings).toEqual([]);
+    expect(week.dailyLoggedCarbEstimates.map(day => day.totalKnownCarb)).toEqual(Array(7).fill(null));
+  });
+  it('includes partial/demo/real meals and linked/unlinked glucose without causal inference', () => {
+    const data = demoData(catalog, now);
+    const meals = [{ ...meal(), isDemo: false, completeness: 'PARTIAL' as const }, { ...meal(), totalCarbEstimate: null, completeness: 'UNKNOWN' as const }];
+    const readings = [{ ...data.readings[0]!, measuredAt: now.toISOString(), mealId: null }, { ...data.readings[0]!, measuredAt: now.toISOString(), mealId: meals[0]!.id }];
+    const week = aggregateWeekly(meals, readings, now);
+    expect(week.loggedMealCount).toBe(2);
+    expect(week.hasPartialMeals).toBe(true);
+    expect(week.glucoseReadings).toHaveLength(2);
+    expect(week.meals.map(m => m.isDemo)).toEqual([false, true]);
+  });
   it('includes start and excludes end; absence is not zero', () => {
     const { start, end } = weeklyWindow(now),
       m = meal();

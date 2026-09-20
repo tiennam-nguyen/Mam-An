@@ -1,7 +1,7 @@
 import sharp from 'sharp';
-import type { FailoverVisionService } from '../ai/failoverVisionService';
-import type { ErrorCode } from '../../src/shared/errors/appError';
-import { NormalizedSchema } from '../ai/providerResponseSchema';
+import type { FailoverVisionService } from '../ai/failoverVisionService.js';
+import type { ErrorCode } from '../../src/shared/errors/appError.js';
+import { NormalizedSchema } from '../ai/providerResponseSchema.js';
 const statuses: Partial<Record<ErrorCode, number>> = {
   INVALID_INPUT: 400,
   INVALID_IMAGE: 400,

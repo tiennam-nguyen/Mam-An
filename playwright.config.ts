@@ -4,15 +4,15 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: process.env.E2E_BASE_URL || 'http://127.0.0.1:4175',
     viewport: { width: 390, height: 844 },
     timezoneId: 'Asia/Ho_Chi_Minh',
     trace: 'retain-on-failure',
   },
-  webServer: {
-    command: 'npm run preview -- --port 4173',
-    url: 'http://127.0.0.1:4173',
-    reuseExistingServer: !process.env.CI,
+  webServer: process.env.E2E_BASE_URL ? undefined : {
+    command: 'npm run preview -- --port 4175 --strictPort',
+    url: 'http://127.0.0.1:4175',
+    reuseExistingServer: false,
   },
   reporter: 'list',
 });

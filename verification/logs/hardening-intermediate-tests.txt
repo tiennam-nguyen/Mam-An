@@ -1,0 +1,13 @@
+
+> mam-an@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+
+ Test Files  9 passed (9)
+      Tests  170 passed (170)
+   Start at  23:12:36
+   Duration  744ms (import 52%, transform 29%, tests 17%, worker 2%)
+

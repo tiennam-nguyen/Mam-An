@@ -3,7 +3,7 @@ import { ok } from '../../domain/common/result';
 import { fail } from '../../shared/errors/appError';
 import { AnalysisApiSchema, ApiErrorSchema } from './analysisApiSchemas';
 export class HttpAiGateway implements AiGateway {
-  constructor(private send: typeof fetch = fetch) {}
+  constructor(private send: typeof fetch = fetch, private timeoutMs = 30000) {}
   async analyzeMealImage(
     input: { image: Blob; locale: 'vi-VN' },
     signal?: AbortSignal,
@@ -11,18 +11,22 @@ export class HttpAiGateway implements AiGateway {
     const form = new FormData();
     form.set('image', input.image, 'meal.jpg');
     form.set('locale', input.locale);
+    const deadline = new AbortController();
+    const timer = setTimeout(() => deadline.abort(), this.timeoutMs);
+    const requestSignal = signal ? AbortSignal.any([signal, deadline.signal]) : deadline.signal;
     try {
-      const response = await this.send('/api/v1/analyze-meal', {
+      // Native browser fetch requires its Window receiver, unlike mocked/Node fetch.
+      const response = await this.send.call(globalThis, '/api/v1/analyze-meal', {
         method: 'POST',
         body: form,
-        signal,
+        signal: requestSignal,
         cache: 'no-store',
       });
       let data: unknown;
       try {
         data = await response.json();
       } catch {
-        return fail('AI_INVALID_RESPONSE', 'AI');
+        return deadline.signal.aborted ? fail('AI_TIMEOUT', 'AI', true) : fail('AI_INVALID_RESPONSE', 'AI');
       }
       if (!response.ok) {
         const parsed = ApiErrorSchema.safeParse(data);
@@ -50,7 +54,9 @@ export class HttpAiGateway implements AiGateway {
         })),
       });
     } catch {
-      return fail('NETWORK_UNAVAILABLE', 'AI', true);
+      return deadline.signal.aborted ? fail('AI_TIMEOUT', 'AI', true) : fail('NETWORK_UNAVAILABLE', 'AI', true);
+    } finally {
+      clearTimeout(timer);
     }
   }
 }

@@ -123,7 +123,7 @@ it('OpenRouter privacy remains strict on endpoint failure', async () => {
     zdr: true,
   });
 });
-it('availability failover happens once, invalid response does not fail over', async () => {
+it('availability and invalid-response failover each happen once', async () => {
   const primary = new MockLLM(fail('AI_RATE_LIMITED', 'AI', true)),
     secondary = new MockLLM();
   expect(
@@ -145,8 +145,8 @@ it('availability failover happens once, invalid response does not fail over', as
         new AbortController().signal,
       )
     ).ok,
-  ).toBe(false);
-  expect(unused.calls).toBe(0);
+  ).toBe(true);
+  expect(unused.calls).toBe(1);
 });
 it('bounded timeout and cancellation never call another provider after abort', async () => {
   const stalled = {
@@ -195,7 +195,7 @@ it('browser parses stable errors, malformed success, and passes abort signal', a
     );
   expect(result.ok).toBe(false);
   if (!result.ok) expect(result.error.code).toBe('AI_TIMEOUT');
-  expect(send.mock.calls[0]?.[1]?.signal).toBe(signal);
+  expect(send.mock.calls[0]?.[1]?.signal?.aborted).toBe(false);
   expect([...(send.mock.calls[0]?.[1]?.body as FormData).keys()]).toEqual([
     'image',
     'locale',

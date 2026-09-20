@@ -1,0 +1,34 @@
+[
+  {
+    "timestamp": "2026-09-19T23:37:39.538Z",
+    "environment": "local-production-build",
+    "commit": "4aa32fb6e9c62d18a3bc7d4363a7b501a8303178",
+    "workingTreeModified": true,
+    "command": "node --env-file=.env.local --import tsx scripts/verify-live-path.ts",
+    "provider": "groq",
+    "fixture": "public/demo/images/meal.svg",
+    "fixtureSha256": "439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07",
+    "httpStatus": 429,
+    "candidateCount": 0,
+    "errorCode": "AI_RATE_LIMITED",
+    "cacheControl": "no-store",
+    "reviewVisible": false,
+    "notes": "Real browser native fetch → local HTTP → exported function → real provider → UI. Synthetic connectivity only; not Vercel evidence."
+  },
+  {
+    "timestamp": "2026-09-19T23:38:10.555Z",
+    "environment": "local-production-build",
+    "commit": "4aa32fb6e9c62d18a3bc7d4363a7b501a8303178",
+    "workingTreeModified": true,
+    "command": "node --env-file=.env.local --import tsx scripts/verify-live-path.ts mistral",
+    "provider": "mistral",
+    "fixture": "public/demo/images/meal.svg",
+    "fixtureSha256": "439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07",
+    "httpStatus": 200,
+    "candidateCount": 5,
+    "errorCode": null,
+    "cacheControl": "no-store",
+    "reviewVisible": true,
+    "notes": "Real browser native fetch → local HTTP → exported function → real provider → UI. Synthetic connectivity only; not Vercel evidence."
+  }
+]

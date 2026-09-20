@@ -30,7 +30,6 @@ export function HomePage() {
             src="/demo/images/meal.svg"
             alt="Minh họa cơm trắng, trứng luộc và dưa chuột"
           />
-          <figcaption>Mâm cơm mẫu · có thể chỉnh từng món</figcaption>
         </figure>
       </section>
       <section className="steps">

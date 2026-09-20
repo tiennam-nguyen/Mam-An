@@ -1,0 +1,30 @@
+
+> mam-an@0.1.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.1.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+node:os:305
+    throw new ERR_SYSTEM_ERROR(ctx);
+          ^
+
+SystemError [ERR_SYSTEM_ERROR]: A system error occurred: uv_os_get_passwd returned ENOMEM (not enough memory)
+    at Object.userInfo (node:os:305:11)
+    at file:///C:/Users/LOQ/Mam%20An/node_modules/tsx/dist/temporary-directory-BDDVQOvU.mjs:1:84
+    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:660:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  code: 'ERR_SYSTEM_ERROR',
+  info: {
+    errno: -4057,
+    code: 'ENOMEM',
+    message: 'not enough memory',
+    syscall: 'uv_os_get_passwd'
+  },
+  errno: [Getter/Setter],
+  syscall: [Getter/Setter]
+}
+
+Node.js v24.13.0

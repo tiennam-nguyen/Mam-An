@@ -1,0 +1,62 @@
+[
+  {
+    "command": "npm run typecheck",
+    "environment": "local",
+    "timestamp": "2026-09-19T23:41:49.2697969Z",
+    "notes": "Documentation/evidence files pending only. E2E builds production client with live flag enabled; provider HTTP deterministic.",
+    "exitCode": 0,
+    "sourceTreeClean": true,
+    "node": "v24.13.0",
+    "commit": "abf3cf43f564e4312bb0c1cce156d2b045a40643"
+  },
+  {
+    "command": "npm run test",
+    "environment": "local",
+    "timestamp": "2026-09-19T23:41:50.6199156Z",
+    "notes": "Documentation/evidence files pending only. E2E builds production client with live flag enabled; provider HTTP deterministic.",
+    "exitCode": 0,
+    "sourceTreeClean": true,
+    "node": "v24.13.0",
+    "commit": "abf3cf43f564e4312bb0c1cce156d2b045a40643"
+  },
+  {
+    "command": "npm run test:e2e",
+    "environment": "local",
+    "timestamp": "2026-09-19T23:41:52.6240539Z",
+    "notes": "Documentation/evidence files pending only. E2E builds production client with live flag enabled; provider HTTP deterministic.",
+    "exitCode": 0,
+    "sourceTreeClean": true,
+    "node": "v24.13.0",
+    "commit": "abf3cf43f564e4312bb0c1cce156d2b045a40643"
+  },
+  {
+    "command": "npm run audit:safety",
+    "environment": "local",
+    "timestamp": "2026-09-19T23:42:18.4884678Z",
+    "notes": "Documentation/evidence files pending only. E2E builds production client with live flag enabled; provider HTTP deterministic.",
+    "exitCode": 0,
+    "sourceTreeClean": true,
+    "node": "v24.13.0",
+    "commit": "abf3cf43f564e4312bb0c1cce156d2b045a40643"
+  },
+  {
+    "command": "npm run audit:secrets",
+    "environment": "local",
+    "timestamp": "2026-09-19T23:42:19.3068850Z",
+    "notes": "Documentation/evidence files pending only. E2E builds production client with live flag enabled; provider HTTP deterministic.",
+    "exitCode": 0,
+    "sourceTreeClean": true,
+    "node": "v24.13.0",
+    "commit": "abf3cf43f564e4312bb0c1cce156d2b045a40643"
+  },
+  {
+    "command": "npm run catalog:check",
+    "environment": "local",
+    "timestamp": "2026-09-19T23:42:20.4212822Z",
+    "notes": "Documentation/evidence files pending only. E2E builds production client with live flag enabled; provider HTTP deterministic.",
+    "exitCode": 0,
+    "sourceTreeClean": true,
+    "node": "v24.13.0",
+    "commit": "abf3cf43f564e4312bb0c1cce156d2b045a40643"
+  }
+]

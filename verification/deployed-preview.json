@@ -1,0 +1,76 @@
+{
+  "environment": "Vercel Preview",
+  "commit": "bf471947f5f494103f4fbdab3195aa0f9f7431a9",
+  "testedSourceCommit": "abf3cf43f564e4312bb0c1cce156d2b045a40643",
+  "deploymentId": "dpl_fpqAoRqTkwVVKMzLmm3Chs6mzFn2",
+  "githubDeploymentId": 6547550553,
+  "immutableOrigin": "https://mam-7ufdwig05-ronnie-nguyens-projects.vercel.app",
+  "browserOrigin": "https://mam-an-git-codex-test-hardening-live-ai-ronnie-nguyens-projects.vercel.app",
+  "dashboard": "https://vercel.com/ronnie-nguyens-projects/mam-an/fpqAoRqTkwVVKMzLmm3Chs6mzFn2",
+  "method": "Authenticated Codex in-app browser; file chooser upload; explicit live-analysis button; Vercel runtime log read through UI. No request interception or stub.",
+  "timestamp": "2026-09-20T01:07:14.222Z",
+  "build": {
+    "status": "Ready",
+    "durationSeconds": 22,
+    "cliVersion": "59.23.2",
+    "region": "iad1",
+    "warning": "npm allow-scripts: esbuild@0.28.2 postinstall is not covered by allowScripts. Build succeeded; policy not changed."
+  },
+  "request": {
+    "method": "POST",
+    "path": "/api/v1/analyze-meal",
+    "status": 200,
+    "liveFeatureEnabled": true,
+    "provider": "groq",
+    "model": null,
+    "modelNote": "Deployed model override was not revealed; provider identity and success are directly confirmed by Function log.",
+    "providerLog": { "event": "ai_provider_attempt", "provider": "groq", "code": "OK", "reason": null, "latencyMs": 1009 },
+    "normalizedSchemaValid": true,
+    "candidateCount": 3,
+    "fixture": "public/demo/images/meal.svg converted by sharp to JPEG quality 82, then normal browser image preparation",
+    "uploadedFixtureSha256": "439ef07defa3d831d3a5315c8a1cef3cea81114d59e87d2f54cf86706fbb7c07",
+    "analysisPayloadHash": null,
+    "qualityClaim": "None. Synthetic illustration connectivity only; all candidates required user correction."
+  },
+  "systemChecks": {
+    "correctedToCatalogFoods": true,
+    "ricePortionMultiplier": 0.5,
+    "displayedCarbGrams": 18.1,
+    "savedAndReloaded": true,
+    "syntheticLinkedGlucose": "6.7 mmol/L, AFTER_MEAL; clearly labeled test reading",
+    "weeklyMealCount": 1,
+    "weeklyGlucoseCount": 1,
+    "weeklyReportRendered": true,
+    "consoleErrorsObserved": 0,
+    "previewViewportMeasured": { "width": 639, "height": 574 },
+    "responsiveNote": "Browser-wide viewport override did not apply to the original app tab; do not claim exact 390/1366 deployed screenshots. Both exact sizes passed in local production-build E2E. Override was reset."
+  },
+  "hostedEnvironmentInspection": {
+    "scope": "Vercel Project environment-variable list, All Environments and All Variables filters; values not revealed",
+    "GROQ_API_KEY": "present for Production and Preview; nonempty/useful confirmed by successful inference",
+    "OPENROUTER_API_KEY": "present for Production and Preview; value/access not inspected",
+    "AI_PROVIDER_ORDER": "present for Production and Preview; value not revealed",
+    "VITE_ENABLE_LIVE_AI": "present for Production and Preview; enabled verified in both rendered clients",
+    "MISTRAL_API_KEY": "not listed in project variables",
+    "COHERE_API_KEY": "not listed in project variables",
+    "GEMINI_API_KEY": "not listed in project variables",
+    "note": "Additional credentials are configured locally, not proven configured in Vercel. No environment mutation performed."
+  },
+  "productionComparison": {
+    "commit": "4aa32fb6e9c62d18a3bc7d4363a7b501a8303178",
+    "deploymentId": "dpl_4kjxW4T69Sm3eufWK7DyuLkdGZ1T",
+    "timestamp": "2026-09-20T01:10:20.720Z",
+    "method": "GET",
+    "origin": "https://mam-an.vercel.app",
+    "path": "/api/v1/analyze-meal",
+    "status": 500,
+    "runtimeLog": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/var/task/server/config/serverConfig' imported from /var/task/api/v1/analyze-meal.js",
+    "nodeExitStatus": 1,
+    "conclusion": "Hosted failure matches the reproduced emitted-artifact failure; fixed source runs successfully in Preview. Production remains on main, not promoted or merged."
+  },
+  "limitations": [
+    "Direct navigation to Preview GET API was blocked by the browser client; successful POST is established independently in Vercel logs and UI.",
+    "Preview authentication remains required for external reviewers.",
+    "Real-photo quality, physical camera/install/native print and other-platform font rendering remain UNKNOWN."
+  ]
+}
