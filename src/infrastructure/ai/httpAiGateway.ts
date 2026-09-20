@@ -51,7 +51,7 @@ export class HttpAiGateway implements AiGateway {
     const timer = setTimeout(() => deadline.abort(), this.timeoutMs);
     const combined = combineSignals(signal, deadline.signal);
     try {
-      const response = await this.send('/api/v1/analyze-meal', {
+      const response = await this.send.call(globalThis, '/api/v1/analyze-meal', {
         method: 'POST',
         body: form,
         signal: combined.signal,
