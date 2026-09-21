@@ -57,6 +57,7 @@ export const MealSchema = z.object({
   isDemo: z.boolean(),
 });
 export const GlucoseSchema = z.object({
+  source: z.enum(['MANUAL','DEVICE','DEMO']).optional(),
   id,
   value: z.number().finite().positive(),
   unit: z.enum(['MG_DL', 'MMOL_L']),
