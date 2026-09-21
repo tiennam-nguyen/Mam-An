@@ -1,3 +1,5 @@
+import v2Catalog from '../infrastructure/catalog/generated/catalog.v2.json';
+import { newId } from '../shared/ids/newId';
 import { StaticFoodCatalog } from '../infrastructure/catalog/staticFoodCatalog';
 import { MamAnDb } from '../infrastructure/persistence/mamAnDb';
 import { DexieMealRepository } from '../infrastructure/persistence/dexieMealRepository';
@@ -18,6 +20,7 @@ export function createServices(): AppServices {
     clock = { now: () => new Date() };
   return {
     catalog,
+    knowledge: v2Catalog.knowledge,
     meals,
     clock,
     glucose: new DexieGlucoseRepository(db),
@@ -31,7 +34,7 @@ export function createServices(): AppServices {
       new BrowserImageProcessor(),
       meals,
       clock,
-      () => crypto.randomUUID(),
+      () => newId(),
     ),
     ...publicConfig,
   };

@@ -1,3 +1,4 @@
+import { buildPatternEvidence } from '../../domain/personal/personalResponse';
 import type { MealRepository } from '../ports/mealRepository';
 import type { GlucoseRepository } from '../ports/glucoseRepository';
 import {
@@ -18,5 +19,5 @@ export async function getWeeklySummary(
   const [m, g] = await Promise.all([meals.list(query), glucose.list(query)]);
   if (!m.ok) return m;
   if (!g.ok) return g;
-  return ok(aggregateWeekly(m.value, g.value, now));
+  return ok({ ...aggregateWeekly(m.value, g.value, now), observedPatternCards: m.value.slice(0, 3).map(meal => ({ mealId: meal.id, isDemo: meal.isDemo, pattern: buildPatternEvidence(meal, m.value, g.value, meal.isDemo ? 'DEMO' : 'USER') })) });
 }

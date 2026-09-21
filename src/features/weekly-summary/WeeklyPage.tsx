@@ -1,3 +1,4 @@
+import { PatternCard } from '../personal-response/MealEvidence';
 import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useServices } from '../../shared/ui/ServicesContext';
@@ -147,7 +148,7 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
               </div>
             )}
           </div>
-          <SafetyNote kind="weekly" />
+          <section><h2>Ghi nhận từ các bữa tương tự</h2>{summary.observedPatternCards.map(p => <div key={p.mealId}>{p.isDemo && <DemoBadge />}<PatternCard pattern={p.pattern} /></div>)}</section><SafetyNote kind="weekly" />
           <p className="muted">
             Danh mục {catalog.getCatalogVersion()} · Nguồn ASEANFOODS 2014 · Lưu
             tại thiết bị
