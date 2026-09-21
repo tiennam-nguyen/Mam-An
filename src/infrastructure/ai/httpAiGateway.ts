@@ -1,3 +1,7 @@
+import type { ExplanationTransportPayload, ExplanationResult } from '../../domain/explanation/explanation';
+import { templateExplanation, validateGeneratedExplanation } from '../../domain/explanation/explanation';
+import { ExplanationOutputSchema } from './explanationSchemas';
+import { newId } from '../../shared/ids/newId';
 import type { AiGateway } from '../../application/ports/aiGateway';
 import { ok } from '../../domain/common/result';
 import { fail } from '../../shared/errors/appError';
@@ -40,18 +44,29 @@ export class HttpAiGateway implements AiGateway {
       });
   }
 
+  async generateExplanation(payload:ExplanationTransportPayload,signal?:AbortSignal):Promise<ExplanationResult> {
+    const fallback=templateExplanation(payload), deadline=new AbortController(), timer=setTimeout(()=>deadline.abort(),this.timeoutMs), combined=combineSignals(signal,deadline.signal);
+    try {
+      const response=await this.send.call(globalThis,'/api/v2/explanations/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({request_id:newId(),evidence:payload}),signal:combined.signal,cache:'no-store'});
+      if(!response.ok)return fallback;
+      const raw=await response.json(), parsed=ExplanationOutputSchema.safeParse(raw.explanation);
+      return parsed.success&&validateGeneratedExplanation(parsed.data,payload)?{...parsed.data,generationMode:'LLM'}:fallback;
+    } catch { return fallback; } finally {clearTimeout(timer);combined.cleanup();}
+  }
+  understandMealImage(input: {image:Blob;locale:'vi-VN'}, signal?:AbortSignal) { return this.analyzeMealImage(input,signal,2); }
   async analyzeMealImage(
     input: { image: Blob; locale: 'vi-VN' },
     signal?: AbortSignal,
+    version: 1 | 2 = 1,
   ) {
     const form = new FormData();
     form.set('image', input.image, 'meal.jpg');
-    form.set('locale', input.locale);
+    if (version === 1) form.set('locale', input.locale); else form.set('request_id', newId());
     const deadline = new AbortController();
     const timer = setTimeout(() => deadline.abort(), this.timeoutMs);
     const combined = combineSignals(signal, deadline.signal);
     try {
-      const response = await this.send.call(globalThis, '/api/v1/analyze-meal', {
+      const response = await this.send.call(globalThis, version === 1 ? '/api/v1/analyze-meal' : '/api/v2/vision/analyze-meal', {
         method: 'POST',
         body: form,
         signal: combined.signal,
@@ -84,6 +99,8 @@ export class HttpAiGateway implements AiGateway {
       return ok({
         requestId: parsed.data.request_id,
         candidates: parsed.data.candidates.map((c) => ({
+          candidateDishTemplateId:c.candidate_dish_template_id,
+          suggestedComponents:c.suggested_components?.map(s=>({rawName:s.raw_name,role:s.role,suggestedPortionMultiplier:s.suggested_portion_multiplier,suggestedPortionLabel:s.suggested_portion_label})),
           rawName: c.raw_name,
           suggestedPortionMultiplier: c.suggested_portion_multiplier,
           suggestedPortionLabel: c.suggested_portion_label,

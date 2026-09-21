@@ -1,6 +1,6 @@
 import type { ProviderAnalyzeInput, VisionAnalysisProvider } from './visionAnalysisProvider.js';
 import { parseProviderResult } from './providerResponseSchema.js';
-import { visionPrompt } from './prompt.js';
+import { visionPrompt, componentPrompt } from './prompt.js';
 import { ok } from '../../src/domain/common/result.js';
 import { httpProviderFailure, providerFailure } from './providerFailure.js';
 export class GeminiVisionProvider implements VisionAnalysisProvider {
@@ -14,7 +14,7 @@ export class GeminiVisionProvider implements VisionAnalysisProvider {
         method: 'POST', signal,
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': this.key },
         body: JSON.stringify({
-          contents: [{ role: 'user', parts: [{ text: visionPrompt }, { inline_data: { mime_type: input.image.mimeType, data: Buffer.from(input.image.bytes).toString('base64') } }] }],
+          contents: [{ role: 'user', parts: [{ text: visionPrompt + componentPrompt }, { inline_data: { mime_type: input.image.mimeType, data: Buffer.from(input.image.bytes).toString('base64') } }] }],
           generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 2048 },
         }),
       });

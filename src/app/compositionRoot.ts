@@ -21,6 +21,7 @@ export function createServices(): AppServices {
   return {
     catalog,
     knowledge: v2Catalog.knowledge,
+    explanations: new HttpAiGateway(),
     meals,
     clock,
     glucose: new DexieGlucoseRepository(db),

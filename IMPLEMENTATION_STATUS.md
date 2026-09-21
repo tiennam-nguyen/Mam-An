@@ -74,3 +74,12 @@ Target-device rehearsal and optional representative-photo evaluation. These do n
 - Migration adaptation: retain wrapper/indexes and thumbnail union, transform each item into one entry/component; preserve includedInTotal as well as all persisted numbers (actual v1 supports exclusion). No catalog lookup during migration. Dexie upgrade transaction must abort on malformed data.
 - Plan: component/save skeleton + migration; portion/templates; simulation; personal evidence; local knowledge/explanation; capability/API v2; review/weekly/report and P1 adapters; focused checks + build + review PR. No deploy/merge.
 - User-provided v0.2 specs and TECTON file pre-existed untracked; preserve them.
+
+### v0.2 checkpoint
+- M0/M1/M2/M3/M4 implemented: component editing, actual-wrapper v2 migration, portion/template provenance, transient simulator. Commits through a643923.
+- M5/M6 implemented: local signatures/matching, explicit glucose timing, four evidence states, minimized bundle, deterministic knowledge/template explanation. Commits through 17f09ce.
+- [RAN] Migration/persistence/domain/session: 42 passed; catalog/scenario: 5 passed; personal/explanation: 5 passed. Initial component milestone production build + PWA generation passed (bundle-size warning only).
+- M7/M8 in progress: shared v1/v2 vision handler, capability router reusing hardened adapters, bounded explanation API/client. [RAN] Existing affected provider/API/gateway/session/domain tests: 159 passed.
+- Adaptations: v1-compatible items projection is derived from v2 entries and validated on persistence; glucose retains its independent v1 wrapper. Historical exclusion flags remain unchanged. Repeated same-meal readings contribute one per-meal median so extra readings do not overweight a meal. Zero-carb pairs are not ratio-comparable and are conservatively unmatched.
+- Catalog: no new nutrition numbers. Household bowl/ladle/glass entries retain unknown nutrition. Knowledge currently contains sourced project behavior rules, not newly asserted medical nutrition claims.
+- Next: verify v2 boundaries, finish P1 report/voice and component history, final focused acceptance/build/diff review; create PR. No live-provider benchmark/deployment.

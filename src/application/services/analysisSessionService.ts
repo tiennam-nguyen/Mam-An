@@ -166,9 +166,8 @@ export class AnalysisSessionService {
         ),
       },
     });
-    const result = await (
-      draft.source === 'DEMO_SAMPLE' ? this.mock : this.live
-    ).analyzeMealImage(
+    const gateway = draft.source === 'DEMO_SAMPLE' ? this.mock : this.live;
+    const result = await (gateway.understandMealImage ?? gateway.analyzeMealImage).call(gateway,
       { image: this.image, locale: 'vi-VN' },
       this.controller.signal,
     );

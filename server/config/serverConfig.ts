@@ -1,6 +1,14 @@
 import { z } from 'zod';
 const bool = z.enum(['true', 'false']).transform((v) => v === 'true');
 const schema = z.object({
+  AI_VISION_ENABLED: bool.default(true),
+  AI_VISION_MAX_ATTEMPTS: z.coerce.number().int().min(0).max(5).default(5),
+  AI_TEXT_ENABLED: bool.default(false),
+  AI_TEXT_PROVIDER_ORDER: z.string().default('groq,mistral').transform(v=>v.split(',').map(s=>s.trim()).filter(Boolean)).refine(v=>new Set(v).size===v.length&&v.every(s=>['groq','mistral'].includes(s))),
+  AI_TEXT_TIMEOUT_MS: z.coerce.number().int().min(100).max(20000).default(10000),
+  AI_TEXT_MAX_ATTEMPTS: z.coerce.number().int().min(0).max(2).default(2),
+  GROQ_TEXT_MODEL: z.string().default(''),
+  MISTRAL_TEXT_MODEL: z.string().default(''),
   AI_PROVIDER_ORDER: z
     .string()
     .default('groq,mistral,cohere,openrouter')
