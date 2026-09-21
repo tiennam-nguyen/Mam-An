@@ -1,4 +1,4 @@
-# Mâm An · Prototype v0.1
+# Mâm An · Prototype v0.2
 
 Vietnamese mobile-first meal journal: React/TypeScript/Vite, Dexie/IndexedDB and an optional stateless AI proxy. No account, backend database or health-history upload.
 
@@ -18,6 +18,18 @@ npm run build
 npm run preview
 ```
 
+## v0.2 decision workflow
+
+Review editable entries/components → **Thử phương án khác** → compare portions/removal/replacement/addition → Apply or Discard → explicitly Save. Simulation never writes history. Personal evidence and explanations remain usable offline; sample history stays separate from user history for matching.
+
+Routes: `/meal/new`, `/meal/review`, `/meal/simulate`, `/history`, `/meal/:mealId`, `/week`, `/report`, `/settings`. Old routes remain usable. Reports select a seven-day local period and print only on user action. Settings enable large text and supported-browser voice; transcripts require confirmation. Saved meals support favourites and reuse as new drafts.
+
+Schema v2 upgrades the actual v1 wrapper transactionally, preserves old estimates and stops on malformed records without clearing data. Do not downgrade a migrated browser profile to the v1 client. See [implementation handoff](IMPLEMENTATION_STATUS.md) for verified bounds and recovery notes.
+
+Optional text explanations use `/api/v2/explanations/generate`. They require `VITE_ENABLE_TEXT_EXPLANATION=true`, server `AI_TEXT_ENABLED=true`, and an explicit `GROQ_TEXT_MODEL` or `MISTRAL_TEXT_MODEL`. Defaults keep text disabled. Only a minimized aggregate payload is sent after the user invokes the control; invalid/unavailable output returns to local templates. No live text provider was certified in this phase.
+
+Food/portion/template/knowledge authoring files are built by `npm run catalog:build` and checked reproducibly during build. Unverified household conversions remain unknown; no new nutrient values were invented. Voice uses the browser adapter; cloud speech and P2 devices are not configured.
+
 ## AI configuration
 
 Keys belong in ignored `.env.local`, never `.env.example` or a VITE_ variable. The example contains empty keys and model defaults. The operator's supplied keys were moved into the ignored file before verification; they are not committed.
@@ -36,7 +48,7 @@ Supported providers and model defaults (discovered and smoke-tested 2026-09-19):
 
 Default `AI_PROVIDER_ORDER=groq,mistral,cohere,openrouter`; missing keys are skipped. Existing explicit orders remain in force. Gemini uses its native API and must be explicitly added to the order; its free tier may use content to improve products. Review service retention terms before sending personal images. OpenRouter keeps `data_collection: deny` and `zdr: true` by default; failures do not loosen these settings.
 
-Provider failures, including stale models and malformed output, try the next configured provider once, within a 25-second total budget. No same-provider retry or automatic sample substitution occurs. The client has a 30-second deadline. User/input failures stop immediately. AI supplies candidate names only; nutrition remains a deterministic local catalog calculation.
+Provider failures, including stale models and malformed output, try the next configured provider once, within a 25-second total budget. No same-provider retry or automatic sample substitution occurs. The client has a 30-second deadline. User/input failures stop immediately. AI supplies candidate names, component roles and portion hints only; nutrition remains a deterministic local catalog calculation.
 
 `npm run verify:ai` checks configuration without network access. Provider discovery and bounded live tests are separate from CI:
 
@@ -49,7 +61,7 @@ npm run test:providers -- --all
 
 The default fixture is the bundled synthetic illustration; `--fixture PATH` selects another explicitly authorized image. The [provider matrix](verification/provider-matrix.json) records each request's timestamp, command, commit, fixture hash and outcome without raw responses or keys. See [provider strategy](verification/PROVIDER_STRATEGY.md) for access/privacy limitations. These are connectivity observations, not recognition benchmarks.
 
-Vercel uses `api/v1/analyze-meal.ts` with a [Node Web Standard handler](https://vercel.com/docs/functions/runtimes/node-js). Set `VITE_ENABLE_LIVE_AI=true` **before building**, separately for Preview and Production; set server keys and provider order for the same target, then redeploy. Server imports use emitted `.js` extensions and `api/tsconfig.json` isolates Function compiler types. `npm run preview` serves only static client files, not Functions. Deployed results and access blockers are recorded in the [test report](verification/TEST_REPORT.md).
+Vercel uses `api/v2/vision/analyze-meal.ts` with `api/v1/analyze-meal.ts` retained as a compatibility shim with a [Node Web Standard handler](https://vercel.com/docs/functions/runtimes/node-js). Set `VITE_ENABLE_LIVE_AI=true` **before building**, separately for Preview and Production; set server keys and provider order for the same target, then redeploy. Server imports use emitted `.js` extensions and `api/tsconfig.json` isolates Function compiler types. `npm run preview` serves only static client files, not Functions. Deployed results and access blockers are recorded in the [test report](verification/TEST_REPORT.md).
 
 The branch Preview was verified with a real Groq request on 2026-09-20 (HTTP 200, three candidates, corrected meal persisted after reload). The operator subsequently added all provider keys to Vercel **Production**; their presence was checked without revealing values. The explicit Production/Preview order was updated to `groq,mistral,cohere,openrouter` for the next deployment. Local credentials and Vercel credentials are separate; new keys added only to Production are not automatically available in Preview. Release verification is recorded in the test report.
 
