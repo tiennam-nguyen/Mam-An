@@ -66,3 +66,11 @@ Target-device rehearsal and optional representative-photo evaluation. These do n
 - Keys remain in ignored .env.local. Main remains unchanged.
 
 - User explicitly approved the exact branch push to https://github.com/tiennam-nguyen/Mam-An.git after the review block.
+
+## v0.2 implementation (active)
+- Baseline: origin/main 978fce725d3cec9e417da276868d8c2f8dc36911; branch codex/v0.2-implementation.
+- [READ] M0: physical meals are {id, createdAt, isDemo:0|1, schemaVersion:1, value:Meal}; value uses camelCase flat items and structured thumbnail references. Glucose has a separate v1 wrapper; settings use key/value. Atomic save covers meal + thumbnail. Demo reset filters demo rows.
+- [RAN] Baseline npm run typecheck passed. Captured tests/fixtures/persisted-v1-meal.json using v1 demoData + toMealRow (synthetic, no personal history).
+- Migration adaptation: retain wrapper/indexes and thumbnail union, transform each item into one entry/component; preserve includedInTotal as well as all persisted numbers (actual v1 supports exclusion). No catalog lookup during migration. Dexie upgrade transaction must abort on malformed data.
+- Plan: component/save skeleton + migration; portion/templates; simulation; personal evidence; local knowledge/explanation; capability/API v2; review/weekly/report and P1 adapters; focused checks + build + review PR. No deploy/merge.
+- User-provided v0.2 specs and TECTON file pre-existed untracked; preserve them.

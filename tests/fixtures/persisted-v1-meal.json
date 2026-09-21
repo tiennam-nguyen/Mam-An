@@ -1,0 +1,59 @@
+{
+  "id": "demo:v1:meal:0",
+  "createdAt": "2026-09-19T05:00:00.000Z",
+  "isDemo": 1,
+  "schemaVersion": 1,
+  "value": {
+    "id": "demo:v1:meal:0",
+    "createdAt": "2026-09-19T05:00:00.000Z",
+    "source": "DEMO_SAMPLE",
+    "thumbnailRef": {
+      "kind": "BUNDLED_ASSET",
+      "path": "/demo/images/meal.svg"
+    },
+    "catalogVersion": "v1",
+    "items": [
+      {
+        "itemId": "demo:v1:meal:0:cucumber",
+        "foodId": "cucumber",
+        "displayName": "Dưa chuột",
+        "portionMultiplier": 1,
+        "portionLabel": "1 phần tham chiếu (100 g)",
+        "userCorrected": false,
+        "includedInTotal": true,
+        "carbEstimate": 2.8,
+        "kcalEstimate": 16,
+        "nutritionState": "KNOWN"
+      },
+      {
+        "itemId": "demo:v1:meal:0:egg",
+        "foodId": "egg",
+        "displayName": "Trứng gà luộc",
+        "portionMultiplier": 1,
+        "portionLabel": "1 quả tham chiếu (50 g phần ăn được)",
+        "userCorrected": false,
+        "includedInTotal": true,
+        "carbEstimate": 0.6,
+        "kcalEstimate": 76,
+        "nutritionState": "KNOWN"
+      },
+      {
+        "itemId": "demo:v1:meal:0:rice",
+        "foodId": "rice",
+        "displayName": "Cơm trắng",
+        "portionMultiplier": 1,
+        "portionLabel": "1 phần tham chiếu (100 g chín)",
+        "userCorrected": false,
+        "includedInTotal": true,
+        "carbEstimate": 29.4,
+        "kcalEstimate": 129,
+        "nutritionState": "KNOWN"
+      }
+    ],
+    "totalCarbEstimate": 32.8,
+    "totalKcalEstimate": 221,
+    "completeness": "COMPLETE",
+    "note": "Bữa ăn mẫu",
+    "isDemo": true
+  }
+}
