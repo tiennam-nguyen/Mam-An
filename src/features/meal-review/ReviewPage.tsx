@@ -12,7 +12,7 @@ export function ReviewPage() {
   return <><p className="eyebrow">XEM LẠI & ĐIỀU CHỈNH</p><h1>Bữa ăn theo cách của bạn</h1>{draft.source === 'DEMO_SAMPLE' && <DemoBadge />}<p>Kiểm tra từng thành phần và khẩu phần trước khi lưu.</p>
     <div className="review-layout"><section><EntryEditor entries={draft.entries} catalog={catalog} onChange={e => session.editEntries(e)} disabled={busy} /></section><aside><div className="card totals">
       <h2>Ước tính bữa ăn</h2><p className="big-number" data-testid="carb-total">{formatNumber(draft.totalCarbEstimate)} g</p><p>{formatNumber(draft.totalKcalEstimate)} kcal</p><Completeness value={draft.completeness} />
-      <label>Ghi chú<textarea maxLength={2000} disabled={busy} value={draft.note ?? ''} onChange={e => session.note(e.target.value)} /></label><ErrorNotice error={error} />
+      <button disabled={busy || draft.analysisState === 'REVIEW_REQUIRED' || !draft.items.length} onClick={() => { session.discardSimulation(); navigate('/meal/simulate'); }}>Thử phương án khác</button><label>Ghi chú<textarea maxLength={2000} disabled={busy} value={draft.note ?? ''} onChange={e => session.note(e.target.value)} /></label><ErrorNotice error={error} />
       <button className="primary full" disabled={busy || !draft.items.length || draft.analysisState === 'REVIEW_REQUIRED' || draft.items.some(i => !i.displayName.trim())} onClick={async () => { const id = await session.save(); if (id) navigate('/meal/' + id); }}>{busy ? 'Đang lưu…' : 'Lưu bữa ăn'}</button><SafetyNote />
       <button className="quiet" disabled={busy} onClick={() => { session.cancel(); navigate('/meal/new'); }}>Hủy bữa chưa lưu</button>
     </div></aside></div></>;

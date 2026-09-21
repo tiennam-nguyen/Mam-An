@@ -1,3 +1,4 @@
+import { createScenario, applyScenario, type MealScenario, type ScenarioOperation } from '../../domain/meal/decisionSimulator';
 import type { MealEntry } from '../../domain/meal/mealEntry';
 import { correctMealEntries } from '../usecases/correctMealEntries';
 import type {
@@ -31,6 +32,7 @@ export class AnalysisSessionService {
     revision: 0,
   };
   private listeners = new Set<() => void>();
+  private scenario: MealScenario | null = null;
   private token = 0;
   private controller: AbortController | null = null;
   private image: Blob | null = null;
@@ -57,6 +59,7 @@ export class AnalysisSessionService {
     this.listeners.forEach((f) => f());
   }
   private release() {
+    this.scenario = null;
     this.controller?.abort();
     this.controller = null;
     const url = this.view.draft?.imagePreviewUrl;
@@ -202,6 +205,18 @@ export class AnalysisSessionService {
     try { this.publish({ draft: correctMealEntries(this.view.draft, entries, this.catalog), error: null }); }
     catch { const result = fail('INVALID_INPUT'); if (!result.ok) this.publish({ error: result.error }); }
   }
+  getScenario() { return this.scenario; }
+  simulate(operations: readonly ScenarioOperation[]) {
+    if (!this.view.draft) return;
+    try { this.scenario = createScenario(this.view.draft, operations, this.catalog); this.publish({ error: null }); }
+    catch { const r = fail('INVALID_INPUT'); if (!r.ok) this.publish({ error: r.error }); }
+  }
+  applySimulation() {
+    if (!this.view.draft || !this.scenario) return;
+    try { const draft = applyScenario(this.view.draft, this.scenario); this.scenario = null; this.publish({ draft, error: null }); }
+    catch { const r = fail('INVALID_INPUT'); if (!r.ok) this.publish({ error: r.error }); }
+  }
+  discardSimulation() { this.scenario = null; this.publish({ error: null }); }
   note(note: string) {
     if (
       this.view.draft &&

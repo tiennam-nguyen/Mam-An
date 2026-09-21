@@ -1,3 +1,4 @@
+import { SimulationPage } from '../features/meal-simulation/SimulationPage';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from '../features/home/HomePage';
 import { AnalyzePage } from '../features/meal-analysis/AnalyzePage';
@@ -12,6 +13,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/meal/simulate" element={<SimulationPage />} />
       <Route path="/meal/new" element={<AnalyzePage />} />
       <Route path="/meal/review" element={<ReviewPage />} />
       <Route path="/meal/:mealId" element={<MealDetailPage />} />
