@@ -1,8 +1,9 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "v1",
+  "catalogVersion": "v2",
   "sourceSet": [
-    "aseanfoods-2014"
+    "aseanfoods-2014",
+    "mam-an-design"
   ],
   "publishedAt": "2026-09-19"
 }

@@ -1,5 +1,33 @@
 [
   {
+    "id": "beverage",
+    "nameVi": "Đồ uống",
+    "aliases": [
+      "đồ uống"
+    ],
+    "servingLabel": "1 ly chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
+  },
+  {
+    "id": "broth",
+    "nameVi": "Nước dùng",
+    "aliases": [
+      "nước phở"
+    ],
+    "servingLabel": "1 vá chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
+  },
+  {
     "id": "cucumber",
     "nameVi": "Dưa chuột",
     "aliases": [
@@ -13,7 +41,7 @@
     "sourceRefs": [
       "aseanfoods-2014:AAD46 PDF page 39 table page 6"
     ],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
   },
   {
     "id": "egg",
@@ -29,7 +57,21 @@
     "sourceRefs": [
       "aseanfoods-2014:AAH15 PDF page 56 table page 23"
     ],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
+  },
+  {
+    "id": "noodles",
+    "nameVi": "Bánh phở",
+    "aliases": [
+      "bánh phở"
+    ],
+    "servingLabel": "1 tô chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
   },
   {
     "id": "pho",
@@ -43,7 +85,7 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
   },
   {
     "id": "rice",
@@ -60,6 +102,20 @@
     "sourceRefs": [
       "aseanfoods-2014:AAA63 PDF page 34 table page 1"
     ],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
+  },
+  {
+    "id": "rice-bowl",
+    "nameVi": "Cơm theo bát",
+    "aliases": [
+      "cơm theo bát"
+    ],
+    "servingLabel": "1 bát chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
   }
 ]

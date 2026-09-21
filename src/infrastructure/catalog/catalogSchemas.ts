@@ -30,7 +30,7 @@ export const SourceRegistrySchema = z.array(
     title: z.string().min(1),
     url: z.url(),
     retrieved_at: z.string().min(1),
-    source_type: z.literal('NUTRITION_COMPOSITION'),
+    source_type: z.enum(['NUTRITION_COMPOSITION', 'PRODUCT_RULE']),
     license_status: z.string().min(1),
     acknowledgement: z.string().min(1),
   }),

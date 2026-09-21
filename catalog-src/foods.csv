@@ -3,3 +3,7 @@ rice,Cơm trắng,cơm|cơm gạo tẻ,1 phần tham chiếu (100 g chín),100,2
 egg,Trứng gà luộc,trứng luộc,1 quả tham chiếu (50 g phần ăn được),50,1.2,152,0.6,76,,,aseanfoods-2014,AAH15 PDF page 56 table page 23,PER_100G,VERIFIED,Weight excludes shell
 cucumber,Dưa chuột,dưa leo,1 phần tham chiếu (100 g),100,2.8,16,2.8,16,,,aseanfoods-2014,AAD46 PDF page 39 table page 6,PER_100G,VERIFIED,Raw long cucumber
 pho,Phở bò,phở,1 tô tham chiếu,,,,,,,,,,UNKNOWN,PENDING,Recipe and serving not verified
+noodles,Bánh phở,bánh phở,1 tô chưa xác định,,,,,,,,,,UNKNOWN,PENDING,No verified serving or nutrition
+broth,Nước dùng,nước phở,1 vá chưa xác định,,,,,,,,,,UNKNOWN,PENDING,Recipe not verified
+beverage,Đồ uống,đồ uống,1 ly chưa xác định,,,,,,,,,,UNKNOWN,PENDING,Type and serving not verified
+rice-bowl,Cơm theo bát,cơm theo bát,1 bát chưa xác định,,,,,,,,,,UNKNOWN,PENDING,Bowl weight not verified; select rice reference explicitly for known nutrition
