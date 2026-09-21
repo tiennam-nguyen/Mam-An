@@ -19,5 +19,17 @@ export async function getWeeklySummary(
   const [m, g] = await Promise.all([meals.list(query), glucose.list(query)]);
   if (!m.ok) return m;
   if (!g.ok) return g;
-  return ok({ ...aggregateWeekly(m.value, g.value, now), observedPatternCards: m.value.slice(0, 3).map(meal => ({ mealId: meal.id, isDemo: meal.isDemo, pattern: buildPatternEvidence(meal, m.value, g.value, meal.isDemo ? 'DEMO' : 'USER') })) });
+  return ok({
+    ...aggregateWeekly(m.value, g.value, now),
+    observedPatternCards: m.value.slice(0, 3).map((meal) => ({
+      mealId: meal.id,
+      isDemo: meal.isDemo,
+      pattern: buildPatternEvidence(
+        meal,
+        m.value,
+        g.value,
+        meal.isDemo ? 'DEMO' : 'USER',
+      ),
+    })),
+  });
 }

@@ -37,6 +37,40 @@ export function SettingsPage() {
               <option value="MG_DL">mg/dL</option>
             </select>
           </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={state.data.largeTextEnabled ?? false}
+              onChange={async (e) => {
+                const result = await settings.save({
+                  ...state.data!,
+                  largeTextEnabled: e.target.checked,
+                });
+                if (result.ok) {
+                  window.dispatchEvent(new Event('mam-an-settings'));
+                  state.retry();
+                } else setError(result.error);
+              }}
+            />{' '}
+            Chữ lớn
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={state.data.voiceInputEnabled ?? false}
+              onChange={async (e) => {
+                const result = await settings.save({
+                  ...state.data!,
+                  voiceInputEnabled: e.target.checked,
+                });
+                if (result.ok) {
+                  window.dispatchEvent(new Event('mam-an-settings'));
+                  state.retry();
+                } else setError(result.error);
+              }}
+            />{' '}
+            Hiện nhập giọng nói khi trình duyệt hỗ trợ
+          </label>
           <p role="status">{message}</p>
           <p>Giá trị và đơn vị của số đo cũ luôn được giữ nguyên.</p>
         </div>

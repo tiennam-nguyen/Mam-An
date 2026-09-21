@@ -26,7 +26,13 @@ const server = createServer(async (req, res) => {
       } as RequestInit,
     );
     const path = new URL(request.url).pathname;
-    const response = await (path === '/api/v2/vision/analyze-meal' ? visionV2.fetch(request) : path === '/api/v2/explanations/generate' ? explanation.fetch(request) : path === '/api/v1/analyze-meal' ? handler.fetch(request) : Promise.resolve(new Response(null,{status:404})));
+    const response = await (path === '/api/v2/vision/analyze-meal'
+      ? visionV2.fetch(request)
+      : path === '/api/v2/explanations/generate'
+        ? explanation.fetch(request)
+        : path === '/api/v1/analyze-meal'
+          ? handler.fetch(request)
+          : Promise.resolve(new Response(null, { status: 404 })));
     res.writeHead(response.status, Object.fromEntries(response.headers));
     res.end(Buffer.from(await response.arrayBuffer()));
   } catch {

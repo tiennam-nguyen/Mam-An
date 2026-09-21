@@ -20,7 +20,11 @@ export class DexieGlucoseRepository implements GlucoseRepository {
       await this.db.glucoseReadings.put(toGlucoseRow(parseGlucose(reading)));
       return ok(undefined);
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
   async getById(id: GlucoseReadingId) {
@@ -28,7 +32,11 @@ export class DexieGlucoseRepository implements GlucoseRepository {
       const row = await this.db.glucoseReadings.get(id);
       return ok(row ? readGlucoseRow(row) : null);
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
   async list(query: GlucoseListQuery = {}) {
@@ -47,7 +55,11 @@ export class DexieGlucoseRepository implements GlucoseRepository {
           .sort((a, b) => b.measuredAt.localeCompare(a.measuredAt)),
       );
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
 }

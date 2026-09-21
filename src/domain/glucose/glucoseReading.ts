@@ -12,6 +12,10 @@ export interface GlucoseReading {
   isDemo: boolean;
 }
 export interface UserSettings {
+  largeTextEnabled?: boolean;
+  voiceInputEnabled?: boolean;
+  preferredPortionVocabulary?: 'VIETNAMESE_HOUSEHOLD' | 'METRIC';
+  favouriteMealIds?: readonly string[];
   glucoseUnit: GlucoseUnit;
   demoModeEnabled: boolean;
 }

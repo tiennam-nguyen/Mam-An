@@ -23,12 +23,10 @@ test('offline sample → correction → save/reload → glucose → week → rep
   await page.goto('/analyze');
   await page.getByRole('button', { name: 'Dùng bữa ăn mẫu' }).click();
   await expect(page.getByTestId('carb-total')).toContainText('32,8');
-  const rice = page
-    .locator('article')
-    .filter({
-      has: page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
-    });
-  await rice.getByRole('button', { name: '0.5×', exact: true }).click();
+  const rice = page.locator('article').filter({
+    has: page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
+  });
+  await rice.getByRole('button', { name: '0.5 phần', exact: true }).click();
   await expect(page.getByTestId('carb-total')).toContainText('18,1');
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
   await expect(
@@ -42,7 +40,9 @@ test('offline sample → correction → save/reload → glucose → week → rep
   const timeInput = page.getByLabel('Thời điểm đo', { exact: true });
   const today = (await timeInput.inputValue()).slice(0, 10);
   await timeInput.fill(`${today}T08:30`);
-  await page.getByRole('combobox', { name: /^Thời điểm so với bữa/ }).selectOption('AFTER_MEAL');
+  await page
+    .getByRole('combobox', { name: /^Thời điểm so với bữa/ })
+    .selectOption('AFTER_MEAL');
   await page.getByRole('button', { name: 'Lưu số đo' }).click();
   await expect(page.getByText('6,7 mmol/L')).toBeVisible();
   await page.getByRole('link', { name: 'Tuần của tôi', exact: true }).click();
@@ -65,10 +65,12 @@ test('manual unknown stays unknown, demo reset preserves user records', async ({
   await page
     .getByRole('button', { name: '＋ Món tự nhập', exact: true })
     .click();
-  await page.getByLabel('Tên hiển thị').fill('Món riêng');
+  await page.getByLabel('Tên thành phần').fill('Món riêng');
   await expect(page.getByTestId('carb-total')).toHaveText('Chưa có dữ liệu');
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Bữa ăn đã lưu' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
+  ).toBeVisible();
   await page.goto('/demo');
   await page.getByRole('button', { name: 'Tạo dữ liệu mẫu' }).click();
   await expect(page.getByRole('status')).toContainText('Đã chuẩn bị');
@@ -96,13 +98,11 @@ test('uploaded pixels become only a small local thumbnail with no original EXIF'
     .toBuffer();
   expect((await sharp(original).metadata()).exif).toBeDefined();
   await page.goto('/analyze');
-  await page
-    .getByLabel('Chọn ảnh bữa ăn')
-    .setInputFiles({
-      name: 'fixture.jpg',
-      mimeType: 'image/jpeg',
-      buffer: original,
-    });
+  await page.getByLabel('Chọn ảnh bữa ăn').setInputFiles({
+    name: 'fixture.jpg',
+    mimeType: 'image/jpeg',
+    buffer: original,
+  });
   await expect(page.getByAltText('Ảnh bữa ăn đã chọn')).toBeVisible();
   await page.getByRole('button', { name: 'Nhập món thủ công' }).click();
   await page.getByRole('button', { name: '＋ Cơm trắng', exact: true }).click();
@@ -160,7 +160,8 @@ test('laptop layout and populated print report fit viewport', async ({
   await expect(page.locator('.metric-grid .big-number')).toHaveText(['7', '7']);
   await expect(page.getByText('7 bữa mẫu · 0 bữa tự ghi')).toBeVisible();
   await expect(page.locator('.daily-row')).toHaveCount(7);
-  for (const row of await page.locator('.daily-row').all()) await expect(row).toContainText('32,8 g');
+  for (const row of await page.locator('.daily-row').all())
+    await expect(row).toContainText('32,8 g');
   await page.emulateMedia({ media: 'print' });
   await page.setViewportSize({ width: 794, height: 1123 });
   await page.screenshot({

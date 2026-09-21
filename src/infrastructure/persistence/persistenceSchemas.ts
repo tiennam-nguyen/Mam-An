@@ -1,4 +1,8 @@
-import { componentRoles, flattenEntries, type MealEntry } from '../../domain/meal/mealEntry';
+import {
+  componentRoles,
+  flattenEntries,
+  type MealEntry,
+} from '../../domain/meal/mealEntry';
 import { z } from 'zod';
 import type { Meal } from '../../domain/meal/meal';
 import type {
@@ -38,9 +42,37 @@ const thumbnail = z.discriminatedUnion('kind', [
     path: z.literal('/demo/images/meal.svg'),
   }),
 ]);
-const portion = z.object({ unitId: id, quantity: z.number().finite().positive(), factorToReferenceSnapshot: z.number().finite().positive(), displayLabelSnapshot: id });
-const component = z.object({ componentId: id, foodId: id.nullable(), displayName: id, role: z.enum(componentRoles), portion, carbEstimate: nutrient, kcalEstimate: nutrient, nutritionState: z.enum(['KNOWN','UNKNOWN']), source: z.enum(['AI','TEMPLATE','USER','MIGRATION']), userCorrected: z.boolean(), includedInTotal: z.boolean(), matchState: z.enum(['MATCHED','AMBIGUOUS','UNMATCHED']) }).refine(c => (c.nutritionState === 'UNKNOWN') === (c.carbEstimate === null));
-const entry = z.object({ entryId: id, dishTemplateId: id.nullable(), displayName: id, components: z.array(component), userCorrected: z.boolean() });
+const portion = z.object({
+  unitId: id,
+  quantity: z.number().finite().positive(),
+  factorToReferenceSnapshot: z.number().finite().positive(),
+  displayLabelSnapshot: id,
+});
+const component = z
+  .object({
+    componentId: id,
+    foodId: id.nullable(),
+    displayName: id,
+    role: z.enum(componentRoles),
+    portion,
+    carbEstimate: nutrient,
+    kcalEstimate: nutrient,
+    nutritionState: z.enum(['KNOWN', 'UNKNOWN']),
+    source: z.enum(['AI', 'TEMPLATE', 'USER', 'MIGRATION']),
+    userCorrected: z.boolean(),
+    includedInTotal: z.boolean(),
+    matchState: z.enum(['MATCHED', 'AMBIGUOUS', 'UNMATCHED']),
+  })
+  .refine(
+    (c) => (c.nutritionState === 'UNKNOWN') === (c.carbEstimate === null),
+  );
+const entry = z.object({
+  entryId: id,
+  dishTemplateId: id.nullable(),
+  displayName: id,
+  components: z.array(component),
+  userCorrected: z.boolean(),
+});
 export const MealSchema = z.object({
   schemaVersion: z.literal(2),
   entries: z.array(entry).min(1),
@@ -57,7 +89,7 @@ export const MealSchema = z.object({
   isDemo: z.boolean(),
 });
 export const GlucoseSchema = z.object({
-  source: z.enum(['MANUAL','DEVICE','DEMO']).optional(),
+  source: z.enum(['MANUAL', 'DEVICE', 'DEMO']).optional(),
   id,
   value: z.number().finite().positive(),
   unit: z.enum(['MG_DL', 'MMOL_L']),
@@ -68,6 +100,12 @@ export const GlucoseSchema = z.object({
   isDemo: z.boolean(),
 });
 export const SettingsSchema = z.object({
+  largeTextEnabled: z.boolean().optional(),
+  voiceInputEnabled: z.boolean().optional(),
+  preferredPortionVocabulary: z
+    .enum(['VIETNAMESE_HOUSEHOLD', 'METRIC'])
+    .optional(),
+  favouriteMealIds: z.array(z.string().min(1)).max(100).optional(),
   glucoseUnit: z.enum(['MG_DL', 'MMOL_L']),
   demoModeEnabled: z.boolean(),
 });
@@ -104,9 +142,23 @@ export const toGlucoseRow = (g: GlucoseReading): GlucoseRowV1 => ({
 export function parseMeal(value: unknown): Meal {
   const m = MealSchema.parse(value);
   const entries = m.entries as MealEntry[];
-  const ids = entries.flatMap(e => e.components.map(c => c.componentId));
-  if (new Set(ids).size !== ids.length || new Set(entries.map(e => e.entryId)).size !== entries.length) throw new Error('Duplicate component/entry');
-  if (flattenEntries(entries).some((item, index) => Object.entries(item).some(([key, value]) => value !== (m.items[index] as unknown as Record<string, unknown>)?.[key])) || flattenEntries(entries).length !== m.items.length) throw new Error('Snapshot projection mismatch');
+  const ids = entries.flatMap((e) => e.components.map((c) => c.componentId));
+  if (
+    new Set(ids).size !== ids.length ||
+    new Set(entries.map((e) => e.entryId)).size !== entries.length
+  )
+    throw new Error('Duplicate component/entry');
+  if (
+    flattenEntries(entries).some((item, index) =>
+      Object.entries(item).some(
+        ([key, value]) =>
+          value !==
+          (m.items[index] as unknown as Record<string, unknown>)?.[key],
+      ),
+    ) ||
+    flattenEntries(entries).length !== m.items.length
+  )
+    throw new Error('Snapshot projection mismatch');
   return {
     ...m,
     entries,
@@ -170,4 +222,3 @@ export function readGlucoseRow(row: unknown): GlucoseReading {
 }
 export const parseSettings = (s: unknown): UserSettings =>
   SettingsSchema.parse(s);
-

@@ -1,5 +1,6 @@
+import { MealEvidence } from '../personal-response/MealEvidence';
 import { useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useServices } from '../../shared/ui/ServicesContext';
 import { useQuery } from '../../shared/ui/useQuery';
 import {
@@ -15,14 +16,21 @@ import type { MealId } from '../../domain/common/brandedIds';
 import { ok } from '../../domain/common/result';
 export function MealDetailPage() {
   const { mealId } = useParams(),
-    { meals, glucose } = useServices(),
+    navigate = useNavigate(),
+    { meals, glucose, session, settings } = useServices(),
     load = useCallback(async () => {
       const m = await meals.getById(mealId as MealId);
       if (!m.ok) return m;
       const g = await glucose.list({ mealId: mealId as MealId });
       if (!g.ok) return g;
-      return ok({ meal: m.value, readings: g.value });
-    }, [mealId, meals, glucose]),
+      const preferences = await settings.get();
+      if (!preferences.ok) return preferences;
+      return ok({
+        meal: m.value,
+        readings: g.value,
+        settings: preferences.value,
+      });
+    }, [mealId, meals, glucose, settings]),
     state = useQuery(load),
     meal = state.data?.meal;
   return (
@@ -44,20 +52,44 @@ export function MealDetailPage() {
               {meal.totalCarbEstimate !== null && <small> g carb</small>}
             </p>
             <Completeness value={meal.completeness} />
-            {meal.items.map((i) => (
-              <div className="detail-row" key={i.itemId}>
-                <div>
-                  <strong>{i.displayName}</strong>
-                  <p className="muted">
-                    {i.portionMultiplier}× {i.portionLabel}
-                    {i.userCorrected ? ' · Đã chỉnh sửa' : ''}
-                  </p>
-                </div>
-                <span>
-                  {formatNumber(i.carbEstimate)}
-                  {i.carbEstimate !== null ? ' g' : ''}
-                </span>
-              </div>
+            <button
+              onClick={() => {
+                session.reuse(meal);
+                navigate('/meal/review');
+              }}
+            >
+              Dùng lại làm bữa mới
+            </button>
+            <button
+              onClick={async () => {
+                const current = state.data!.settings;
+                const ids = current.favouriteMealIds ?? [];
+                const result = await settings.save({
+                  ...current,
+                  favouriteMealIds: ids.includes(meal.id)
+                    ? ids.filter((id) => id !== meal.id)
+                    : [...ids, meal.id].slice(-100),
+                });
+                if (result.ok) state.retry();
+              }}
+            >
+              {state.data?.settings.favouriteMealIds?.includes(meal.id)
+                ? 'Bỏ yêu thích'
+                : 'Đánh dấu yêu thích'}
+            </button>
+            {meal.entries.map((e) => (
+              <section key={e.entryId}>
+                <h2>{e.displayName}</h2>
+                <ul>
+                  {e.components.map((c) => (
+                    <li key={c.componentId}>
+                      {c.displayName} · {c.portion.quantity} ×{' '}
+                      {c.portion.displayLabelSnapshot} ·{' '}
+                      {formatNumber(c.carbEstimate)} g carb ước tính
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
             {meal.note && <p>Ghi chú: {meal.note}</p>}
             <p className="muted">
@@ -65,6 +97,11 @@ export function MealDetailPage() {
             </p>
             <SafetyNote />
           </div>
+          <MealEvidence
+            draft={meal}
+            mode={meal.isDemo ? 'DEMO' : 'USER'}
+            excludeId={meal.id}
+          />
           <div className="page-heading">
             <h2>Số đo liên kết</h2>
             <Link className="button" to={'/glucose/new?mealId=' + meal.id}>

@@ -39,7 +39,11 @@ export class DexieMealRepository implements MealRepository {
       );
       return ok(undefined);
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
   async getById(id: MealId) {
@@ -47,7 +51,11 @@ export class DexieMealRepository implements MealRepository {
       const row = await this.db.meals.get(id);
       return ok(row ? readMealRow(row) : null);
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
   async list(query: MealListQuery = {}) {
@@ -63,7 +71,11 @@ export class DexieMealRepository implements MealRepository {
         );
       return ok(meals.sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
 }

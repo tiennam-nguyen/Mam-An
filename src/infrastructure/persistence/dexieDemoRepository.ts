@@ -65,7 +65,11 @@ export class DexieDemoRepository implements DemoRepository {
       );
       return ok(undefined);
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
 }

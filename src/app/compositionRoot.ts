@@ -1,3 +1,4 @@
+import { BrowserVoiceInput } from '../infrastructure/voice/browserVoiceInput';
 import v2Catalog from '../infrastructure/catalog/generated/catalog.v2.json';
 import { newId } from '../shared/ids/newId';
 import { StaticFoodCatalog } from '../infrastructure/catalog/staticFoodCatalog';
@@ -22,6 +23,7 @@ export function createServices(): AppServices {
     catalog,
     knowledge: v2Catalog.knowledge,
     explanations: new HttpAiGateway(),
+    voice: new BrowserVoiceInput(),
     meals,
     clock,
     glucose: new DexieGlucoseRepository(db),

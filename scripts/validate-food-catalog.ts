@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { readCatalog, json } from './catalogPipeline';
 const data = readCatalog();
 for (const [name, value] of Object.entries({
-  'catalog.v2': readV2Catalog(data.foods.map(f => f.id)),
+  'catalog.v2': readV2Catalog(data.foods.map((f) => f.id)),
   'foods.vi.v1': data.foods,
   'source-registry': data.sources,
   manifest: data.manifest,

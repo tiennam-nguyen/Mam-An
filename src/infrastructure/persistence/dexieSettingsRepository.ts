@@ -16,7 +16,11 @@ export class DexieSettingsRepository implements SettingsRepository {
           : { glucoseUnit: 'MMOL_L' as const, demoModeEnabled: false },
       );
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
   async save(settings: UserSettings) {
@@ -27,7 +31,11 @@ export class DexieSettingsRepository implements SettingsRepository {
       });
       return ok(undefined);
     } catch (error) {
-      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED', 'STORAGE', true);
+      return fail(
+        isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED',
+        'STORAGE',
+        true,
+      );
     }
   }
 }

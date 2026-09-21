@@ -6,7 +6,10 @@ export interface AnalysisResult {
   candidates: readonly RawAnalysisCandidate[];
 }
 export interface AiGateway {
-  understandMealImage?(input: { image: Blob; locale: 'vi-VN' }, signal?: AbortSignal): Promise<Result<AnalysisResult, AppError>>;
+  understandMealImage?(
+    input: { image: Blob; locale: 'vi-VN' },
+    signal?: AbortSignal,
+  ): Promise<Result<AnalysisResult, AppError>>;
   analyzeMealImage(
     input: { image: Blob; locale: 'vi-VN' },
     signal?: AbortSignal,

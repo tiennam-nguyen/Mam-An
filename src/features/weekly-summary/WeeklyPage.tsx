@@ -1,5 +1,6 @@
+import { localDate } from '../../domain/summary/weeklyAggregator';
 import { PatternCard } from '../personal-response/MealEvidence';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useServices } from '../../shared/ui/ServicesContext';
 import { useQuery } from '../../shared/ui/useQuery';
@@ -13,9 +14,15 @@ import {
 import { getWeeklySummary } from '../../application/usecases/getWeeklySummary';
 export function WeeklyPage({ report = false }: { report?: boolean }) {
   const { meals, glucose, clock, catalog } = useServices(),
+    [endDay, setEndDay] = useState(localDate(clock.now())),
     load = useCallback(
-      () => getWeeklySummary(meals, glucose, clock.now()),
-      [meals, glucose, clock],
+      () =>
+        getWeeklySummary(
+          meals,
+          glucose,
+          report ? new Date(endDay + 'T12:00:00') : clock.now(),
+        ),
+      [meals, glucose, clock, report, endDay],
     ),
     state = useQuery(load),
     summary = state.data;
@@ -40,6 +47,17 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
           </Link>
         )}
       </div>
+      <label className="no-print">
+        Ngày kết thúc khoảng 7 ngày
+        <input
+          type="date"
+          value={endDay}
+          onChange={(e) => {
+            if (e.target.value) setEndDay(e.target.value);
+          }}
+          disabled={!report}
+        />
+      </label>
       <ErrorNotice error={state.error} retry={state.retry} />
       {state.loading && <p role="status">Đang tổng hợp…</p>}
       {summary && (
@@ -127,6 +145,7 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
                       <th>Thời điểm</th>
                       <th>Số đo</th>
                       <th>Ghi nhận</th>
+                      <th>Thời gian so với bữa</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -141,6 +160,20 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
                           {g.isDemo ? <DemoBadge /> : 'Tự ghi'}
                           {g.mealId ? ' · Có liên kết bữa' : ''}
                         </td>
+                        <td>
+                          {g.mealId &&
+                          summary.meals.some((m) => m.id === g.mealId)
+                            ? Math.round(
+                                (Date.parse(g.measuredAt) -
+                                  Date.parse(
+                                    summary.meals.find(
+                                      (m) => m.id === g.mealId,
+                                    )!.createdAt,
+                                  )) /
+                                  60000,
+                              ) + ' phút'
+                            : 'Chưa có liên kết trong kỳ'}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -148,7 +181,47 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
               </div>
             )}
           </div>
-          <section><h2>Ghi nhận từ các bữa tương tự</h2>{summary.observedPatternCards.map(p => <div key={p.mealId}>{p.isDemo && <DemoBadge />}<PatternCard pattern={p.pattern} /></div>)}</section><SafetyNote kind="weekly" />
+          <section className="card">
+            <h2>Thành phần thường ghi</h2>
+            <ul>
+              {Object.entries(
+                summary.meals
+                  .flatMap((m) => [
+                    ...new Set(
+                      m.entries.flatMap((e) =>
+                        e.components
+                          .filter((c) => c.includedInTotal)
+                          .map((c) => c.displayName),
+                      ),
+                    ),
+                  ])
+                  .reduce<Record<string, number>>(
+                    (counts, name) => ({
+                      ...counts,
+                      [name]: (counts[name] ?? 0) + 1,
+                    }),
+                    {},
+                  ),
+              )
+                .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+                .slice(0, 5)
+                .map(([name, count]) => (
+                  <li key={name}>
+                    {name}: {count} bữa đã ghi
+                  </li>
+                ))}
+            </ul>
+          </section>
+          <section>
+            <h2>Ghi nhận từ các bữa tương tự</h2>
+            {summary.observedPatternCards.map((p) => (
+              <div key={p.mealId}>
+                {p.isDemo && <DemoBadge />}
+                <PatternCard pattern={p.pattern} />
+              </div>
+            ))}
+          </section>
+          <SafetyNote kind="weekly" />
           <p className="muted">
             Danh mục {catalog.getCatalogVersion()} · Nguồn ASEANFOODS 2014 · Lưu
             tại thiết bị

@@ -1,8 +1,12 @@
 import type { AppError, ErrorCode } from '../../shared/errors/appError';
 const messages: Partial<Record<ErrorCode, string>> = {
-  MIGRATION_FAILED: 'Chưa nâng cấp được dữ liệu cũ. Dữ liệu vẫn được giữ nguyên; nhật ký tạm thời chưa mở được. Không xóa dữ liệu ứng dụng.',
+  MIGRATION_FAILED:
+    'Chưa nâng cấp được dữ liệu cũ. Dữ liệu vẫn được giữ nguyên; nhật ký tạm thời chưa mở được. Không xóa dữ liệu ứng dụng.',
   EXPLANATION_INVALID: 'Dùng giải thích mẫu từ dữ liệu đã tính.',
-  CAPABILITY_UNAVAILABLE: 'Tính năng trực tuyến chưa khả dụng. Bạn vẫn có thể thao tác trên thiết bị.',
+  CAPABILITY_UNAVAILABLE:
+    'Tính năng trực tuyến chưa khả dụng. Bạn vẫn có thể thao tác trên thiết bị.',
+  SCENARIO_INVALID:
+    'Phương án không còn khớp bữa hiện tại. Bỏ phương án và thử lại.',
   INVALID_INPUT: 'Thông tin chưa hợp lệ. Kiểm tra lại các trường.',
   INVALID_IMAGE:
     'Ảnh không đọc được hoặc không được hỗ trợ. Chọn JPEG, PNG hoặc WebP.',

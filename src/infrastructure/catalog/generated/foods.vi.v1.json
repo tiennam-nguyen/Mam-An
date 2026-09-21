@@ -1,6 +1,7 @@
 [
   {
     "id": "beverage",
+    "category": "BEVERAGE",
     "nameVi": "Đồ uống",
     "aliases": [
       "đồ uống"
@@ -15,6 +16,7 @@
   },
   {
     "id": "broth",
+    "category": "BROTH",
     "nameVi": "Nước dùng",
     "aliases": [
       "nước phở"
@@ -29,6 +31,7 @@
   },
   {
     "id": "cucumber",
+    "category": "VEGETABLE",
     "nameVi": "Dưa chuột",
     "aliases": [
       "dưa leo"
@@ -45,6 +48,7 @@
   },
   {
     "id": "egg",
+    "category": "PROTEIN",
     "nameVi": "Trứng gà luộc",
     "aliases": [
       "trứng luộc"
@@ -61,6 +65,7 @@
   },
   {
     "id": "noodles",
+    "category": "STARCH",
     "nameVi": "Bánh phở",
     "aliases": [
       "bánh phở"
@@ -75,6 +80,7 @@
   },
   {
     "id": "pho",
+    "category": "MIXED",
     "nameVi": "Phở bò",
     "aliases": [
       "phở"
@@ -89,6 +95,7 @@
   },
   {
     "id": "rice",
+    "category": "STARCH",
     "nameVi": "Cơm trắng",
     "aliases": [
       "cơm",
@@ -106,6 +113,7 @@
   },
   {
     "id": "rice-bowl",
+    "category": "STARCH",
     "nameVi": "Cơm theo bát",
     "aliases": [
       "cơm theo bát"

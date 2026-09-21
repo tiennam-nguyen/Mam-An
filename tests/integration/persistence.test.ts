@@ -107,7 +107,11 @@ it('seed is idempotent; reset preserves user-created meals/readings', async () =
 it('version-one storage reopens and feeds weekly aggregation with linked glucose', async () => {
   const db = database();
   const m = meal();
-  const reading = { ...demoData(catalog, now).readings[0]!, measuredAt: now.toISOString(), mealId: m.id };
+  const reading = {
+    ...demoData(catalog, now).readings[0]!,
+    measuredAt: now.toISOString(),
+    mealId: m.id,
+  };
   await new DexieMealRepository(db).save(m, null);
   await new DexieGlucoseRepository(db).save(reading);
   db.close();

@@ -12,8 +12,12 @@ export class StaticFoodCatalog implements FoodCatalog {
     const food = FoodSchema.parse(row);
     return { ...food, id: food.id as FoodId };
   });
-  getPortionUnits(id: string) { return v2.portions.filter(p => p.foodId === id); }
-  listDishTemplates() { return v2.templates as readonly DishTemplate[]; }
+  getPortionUnits(id: string) {
+    return v2.portions.filter((p) => p.foodId === id);
+  }
+  listDishTemplates() {
+    return v2.templates as readonly DishTemplate[];
+  }
   getCatalogVersion() {
     return manifest.catalogVersion;
   }
