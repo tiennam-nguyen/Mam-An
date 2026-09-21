@@ -1,3 +1,4 @@
+import { cloneEntries } from './mealEntry';
 import type { MealId } from '../common/brandedIds';
 import type { MealDraft } from './mealDraft';
 import type { Meal, ThumbnailRef } from './meal';
@@ -20,6 +21,8 @@ export function buildSnapshot(
   )
     throw new Error('Invalid draft');
   return {
+    schemaVersion: 2,
+    entries: cloneEntries(draft.entries),
     id,
     createdAt,
     catalogVersion,

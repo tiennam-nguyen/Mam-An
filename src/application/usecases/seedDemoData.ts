@@ -1,3 +1,4 @@
+import { entriesFromItems } from '../../domain/meal/mealEntry';
 import type { FoodCatalog } from '../ports/foodCatalog';
 import type { DemoRepository } from '../ports/demoRepository';
 import type {
@@ -34,6 +35,8 @@ export function demoData(catalog: FoodCatalog, now: Date) {
         ...calculateItemNutrition(food, 1),
       }));
     meals.push({
+      schemaVersion: 2,
+      entries: entriesFromItems(items, 'USER'),
       id,
       createdAt: date.toISOString(),
       source: 'DEMO_SAMPLE',

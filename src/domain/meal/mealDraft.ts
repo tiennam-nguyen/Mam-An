@@ -1,3 +1,4 @@
+import type { MealEntry } from './mealEntry';
 import type {
   AnalysisSessionId,
   FoodId,
@@ -20,6 +21,7 @@ export interface MealDraftItem {
   nutritionState: NutritionState;
 }
 export interface MealDraft {
+  entries: readonly MealEntry[];
   sessionId: AnalysisSessionId;
   source: MealSource;
   analysisState: MealAnalysisState;

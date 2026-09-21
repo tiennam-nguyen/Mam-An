@@ -1,5 +1,8 @@
 import type { Result } from '../../domain/common/result';
 export type ErrorCode =
+  | 'MIGRATION_FAILED'
+  | 'EXPLANATION_INVALID'
+  | 'CAPABILITY_UNAVAILABLE'
   | 'INVALID_IMAGE'
   | 'IMAGE_TOO_LARGE'
   | 'NETWORK_UNAVAILABLE'

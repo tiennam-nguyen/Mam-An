@@ -1,3 +1,4 @@
+import { isMigrationFailure } from './migrateV1';
 import { MamAnDb } from './mamAnDb';
 import type { SettingsRepository } from '../../application/ports/settingsRepository';
 import type { UserSettings } from '../../domain/glucose/glucoseReading';
@@ -14,8 +15,8 @@ export class DexieSettingsRepository implements SettingsRepository {
           ? parseSettings(row.value)
           : { glucoseUnit: 'MMOL_L' as const, demoModeEnabled: false },
       );
-    } catch {
-      return fail('STORAGE_READ_FAILED', 'STORAGE', true);
+    } catch (error) {
+      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_READ_FAILED', 'STORAGE', true);
     }
   }
   async save(settings: UserSettings) {
@@ -25,8 +26,8 @@ export class DexieSettingsRepository implements SettingsRepository {
         value: parseSettings(settings),
       });
       return ok(undefined);
-    } catch {
-      return fail('STORAGE_WRITE_FAILED', 'STORAGE', true);
+    } catch (error) {
+      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED', 'STORAGE', true);
     }
   }
 }

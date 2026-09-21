@@ -1,3 +1,4 @@
+import { entriesFromItems } from '../../domain/meal/mealEntry';
 import type { MealDraft, MealDraftItem } from '../../domain/meal/mealDraft';
 import type { MealDraftItemId } from '../../domain/common/brandedIds';
 import type { AnalysisResult } from '../ports/aiGateway';
@@ -40,6 +41,7 @@ export function applyAnalysisResult(
   });
   return {
     ...draft,
+    entries: entriesFromItems(items, 'AI'),
     items,
     ...calculateMealNutrition(items),
     analysisState: transition(

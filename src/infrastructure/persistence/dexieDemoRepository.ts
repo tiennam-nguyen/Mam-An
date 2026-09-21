@@ -1,3 +1,4 @@
+import { isMigrationFailure } from './migrateV1';
 import type { DemoRepository } from '../../application/ports/demoRepository';
 import type { Meal } from '../../domain/meal/meal';
 import type { GlucoseReading } from '../../domain/glucose/glucoseReading';
@@ -63,8 +64,8 @@ export class DexieDemoRepository implements DemoRepository {
         },
       );
       return ok(undefined);
-    } catch {
-      return fail('STORAGE_WRITE_FAILED', 'STORAGE', true);
+    } catch (error) {
+      return fail(isMigrationFailure(error) ? 'MIGRATION_FAILED' : 'STORAGE_WRITE_FAILED', 'STORAGE', true);
     }
   }
 }

@@ -1,3 +1,5 @@
+import type { MealEntry } from '../../domain/meal/mealEntry';
+import { correctMealEntries } from '../usecases/correctMealEntries';
 import type {
   MealDraft,
   MealSource,
@@ -70,6 +72,7 @@ export class AnalysisSessionService {
       analysisState: 'IDLE',
       imagePreviewUrl: url,
       pendingThumbnail: null,
+      entries: [],
       items: [],
       totalCarbEstimate: null,
       totalKcalEstimate: null,
@@ -193,6 +196,11 @@ export class AnalysisSessionService {
       const result = fail('INVALID_INPUT');
       if (!result.ok) this.publish({ error: result.error });
     }
+  }
+  editEntries(entries: readonly MealEntry[]) {
+    if (!this.view.draft) return;
+    try { this.publish({ draft: correctMealEntries(this.view.draft, entries, this.catalog), error: null }); }
+    catch { const result = fail('INVALID_INPUT'); if (!result.ok) this.publish({ error: result.error }); }
   }
   note(note: string) {
     if (

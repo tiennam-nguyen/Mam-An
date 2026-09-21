@@ -12,6 +12,11 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/meal/new" element={<AnalyzePage />} />
+      <Route path="/meal/review" element={<ReviewPage />} />
+      <Route path="/meal/:mealId" element={<MealDetailPage />} />
+      <Route path="/week" element={<WeeklyPage />} />
+      <Route path="/report" element={<WeeklyPage report />} />
       <Route path="/analyze" element={<AnalyzePage />} />
       <Route path="/review" element={<ReviewPage />} />
       <Route path="/history" element={<HistoryPage />} />

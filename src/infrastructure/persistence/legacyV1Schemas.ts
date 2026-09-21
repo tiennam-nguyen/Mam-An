@@ -1,6 +1,6 @@
-import { componentRoles, flattenEntries, type MealEntry } from '../../domain/meal/mealEntry';
 import { z } from 'zod';
-import type { Meal } from '../../domain/meal/meal';
+import type { Meal as MealV2 } from '../../domain/meal/meal';
+type Meal = Omit<MealV2, 'entries' | 'schemaVersion'>;
 import type {
   GlucoseReading,
   UserSettings,
@@ -38,12 +38,7 @@ const thumbnail = z.discriminatedUnion('kind', [
     path: z.literal('/demo/images/meal.svg'),
   }),
 ]);
-const portion = z.object({ unitId: id, quantity: z.number().finite().positive(), factorToReferenceSnapshot: z.number().finite().positive(), displayLabelSnapshot: id });
-const component = z.object({ componentId: id, foodId: id.nullable(), displayName: id, role: z.enum(componentRoles), portion, carbEstimate: nutrient, kcalEstimate: nutrient, nutritionState: z.enum(['KNOWN','UNKNOWN']), source: z.enum(['AI','TEMPLATE','USER','MIGRATION']), userCorrected: z.boolean(), includedInTotal: z.boolean(), matchState: z.enum(['MATCHED','AMBIGUOUS','UNMATCHED']) }).refine(c => (c.nutritionState === 'UNKNOWN') === (c.carbEstimate === null));
-const entry = z.object({ entryId: id, dishTemplateId: id.nullable(), displayName: id, components: z.array(component), userCorrected: z.boolean() });
 export const MealSchema = z.object({
-  schemaVersion: z.literal(2),
-  entries: z.array(entry).min(1),
   id,
   createdAt: instant,
   source: z.enum(['CAMERA', 'FILE', 'DEMO_SAMPLE']),
@@ -70,11 +65,11 @@ export const SettingsSchema = z.object({
   glucoseUnit: z.enum(['MG_DL', 'MMOL_L']),
   demoModeEnabled: z.boolean(),
 });
-export interface MealRowV2 {
+export interface MealRowV1 {
   id: string;
   createdAt: string;
   isDemo: 0 | 1;
-  schemaVersion: 2;
+  schemaVersion: 1;
   value: Meal;
 }
 export interface GlucoseRowV1 {
@@ -85,11 +80,11 @@ export interface GlucoseRowV1 {
   schemaVersion: 1;
   value: GlucoseReading;
 }
-export const toMealRow = (m: Meal): MealRowV2 => ({
+export const toMealRow = (m: Meal): MealRowV1 => ({
   id: m.id,
   createdAt: m.createdAt,
   isDemo: m.isDemo ? 1 : 0,
-  schemaVersion: 2,
+  schemaVersion: 1,
   value: m,
 });
 export const toGlucoseRow = (g: GlucoseReading): GlucoseRowV1 => ({
@@ -102,13 +97,8 @@ export const toGlucoseRow = (g: GlucoseReading): GlucoseRowV1 => ({
 });
 export function parseMeal(value: unknown): Meal {
   const m = MealSchema.parse(value);
-  const entries = m.entries as MealEntry[];
-  const ids = entries.flatMap(e => e.components.map(c => c.componentId));
-  if (new Set(ids).size !== ids.length || new Set(entries.map(e => e.entryId)).size !== entries.length) throw new Error('Duplicate component/entry');
-  if (flattenEntries(entries).some((item, index) => Object.entries(item).some(([key, value]) => value !== (m.items[index] as unknown as Record<string, unknown>)?.[key])) || flattenEntries(entries).length !== m.items.length) throw new Error('Snapshot projection mismatch');
   return {
     ...m,
-    entries,
     id: m.id as MealId,
     thumbnailRef:
       m.thumbnailRef?.kind === 'IDB_BLOB'
@@ -135,7 +125,7 @@ export function readMealRow(row: unknown): Meal {
       id,
       createdAt: instant,
       isDemo: z.union([z.literal(0), z.literal(1)]),
-      schemaVersion: z.literal(2),
+      schemaVersion: z.literal(1),
       value: MealSchema,
     })
     .parse(row);
@@ -169,4 +159,3 @@ export function readGlucoseRow(row: unknown): GlucoseReading {
 }
 export const parseSettings = (s: unknown): UserSettings =>
   SettingsSchema.parse(s);
-
