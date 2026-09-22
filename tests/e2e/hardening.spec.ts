@@ -240,6 +240,29 @@ for (const [quality, minutes, expected] of [
 
 test.describe('optional generated explanations', () => {
   test.use({ serviceWorkers: 'block' });
+  test('stalled explanation reaches client deadline and returns to the local template', async ({
+    page,
+  }) => {
+    await page.clock.install();
+    await page.route('**/api/v2/explanations/generate', () => {});
+    await page.goto('/meal/new');
+    await page
+      .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Diễn đạt lại bằng AI', exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Đang diễn đạt…', exact: true }),
+    ).toBeDisabled();
+    await page.clock.fastForward(30001);
+    await expect(
+      page.getByRole('button', { name: 'Diễn đạt lại bằng AI', exact: true }),
+    ).toBeEnabled();
+    await expect(
+      page.getByText('Mẫu trên thiết bị', { exact: true }),
+    ).toBeVisible();
+  });
   for (const kind of [
     'valid',
     'number',

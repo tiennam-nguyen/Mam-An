@@ -4,7 +4,7 @@ import type { FoodItem } from '../food/foodItem';
 import {
   calculateItemNutrition,
   calculateMealNutrition,
-} from './nutritionCalculator';
+} from './nutritionCalculator.js';
 
 export const componentRoles = [
   'STARCH',
