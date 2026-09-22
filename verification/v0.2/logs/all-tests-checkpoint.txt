@@ -1,0 +1,15 @@
+
+> mam-an@0.2.0 test
+> vitest run
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+
+ Test Files  20 passed (20)
+      Tests  343 passed (343)
+   Start at  12:14:36
+   Duration  2.69s (import 55%, tests 22%, transform 18%, worker 5%)
+
+    Isolate  20 workers spawned · ~445ms startup each (spawn + environment, per file)
+             at least ~364ms faster with isolate: false — reuses workers across files instead of one per file

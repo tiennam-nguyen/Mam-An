@@ -1,0 +1,68 @@
+[WebServer] (node:21584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:21772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit (2.1s)
+
+
+  1) tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit
+
+    Error: /
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 8
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "class": "",
+    +     "right": 386.5,
+    +     "tag": "A",
+    +     "width": 74.625,
+    +   },
+    + ]
+
+      145 |   for (const route of ['/', '/meal/new', '/history', '/glucose/new', '/week', '/report', '/settings', '/demo', '/about']) {
+      146 |     await page.goto(route); await expect(page.locator('h1')).toBeVisible();
+    > 147 |     expect(await page.evaluate(() => [...document.querySelectorAll('body *')].filter(e => e.getBoundingClientRect().right > innerWidth + 1).map(e => ({ tag: e.tagName, class: e.className, width: e.getBoundingClientRect().width, right: e.getBoundingClientRect().right }))), route).toEqual([]);
+          |                                                                                                                                                                                                                                                                                         ^
+      148 |     await expect(page.locator('body')).not.toContainText(/TIER_[12]|SUFFICIENT_FOR_DESCRIPTION|knowledge-v1|MockLLM|AI_TIMEOUT|STARCH/);
+      149 |   }
+      150 |   await page.goto('/meal/new'); await page.getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true }).click();
+        at C:\Users\LOQ\Mam An\tests\e2e\hardening.spec.ts:147:281
+
+    Error: Page must fit viewport
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+       at fixtures.ts:15
+
+      13 |     expect(errors, 'Unhandled browser errors').toEqual([]);
+      14 |     expect(consoleErrors.filter(e => !(e.text.startsWith('Failed to load resource:') && failedUrls.has(e.url))), 'Unexpected console errors').toEqual([]);
+    > 15 |     if (!page.isClosed()) expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Page must fit viewport').toBe(true);
+         |                                                                                                                                           ^
+      16 |   }, { auto: true }],
+      17 | });
+      18 |
+        at Object.base.extend.browserHealth.auto (C:\Users\LOQ\Mam An\tests\e2e\fixtures.ts:15:139)
+
+    Error Context: test-results\hardening-large-text-produ-97a13-all-routes-and-controls-fit\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\hardening-large-text-produ-97a13-all-routes-and-controls-fit\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\hardening-large-text-produ-97a13-all-routes-and-controls-fit\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit

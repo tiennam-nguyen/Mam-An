@@ -1,0 +1,145 @@
+
+> mam-an@0.2.0 test:e2e
+> node scripts/run-e2e.mjs hardening.spec.ts voice.spec.ts real-api.spec.ts pwa-update.spec.ts
+
+
+> mam-an@0.2.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.2.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 190 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-9uRLKVTv.css                     8.64 kB │ gzip:   2.72 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-S_5XINjd.js                    542.65 kB │ gzip: 167.39 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 205ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (545.96 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:21608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 26 tests using 1 worker
+
+(node:2916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\hardening.spec.ts:14:1 › physical v1 browser upgrade preserves snapshots and linked glucose after reload (2.0s)
+  ok  2 tests\e2e\hardening.spec.ts:33:1 › physical malformed migration stays v1, shows recovery message, and preserves all rows on retry (550ms)
+  ok  3 tests\e2e\hardening.spec.ts:46:1 › favourite persists and reuse edits a new meal without mutating the saved original (1.2s)
+  ok  4 tests\e2e\hardening.spec.ts:69:1 › favourite write failure is visible and allows retry (781ms)
+  ok  5 tests\e2e\hardening.spec.ts:86:3 › personal sufficient stays in real mode despite abundant demo data; report respects selected period (1.3s)
+  ok  6 tests\e2e\hardening.spec.ts:86:3 › personal sparse stays in real mode despite abundant demo data; report respects selected period (1.0s)
+  ok  7 tests\e2e\hardening.spec.ts:86:3 › personal noncomparable stays in real mode despite abundant demo data; report respects selected period (1.2s)
+  ok  8 tests\e2e\hardening.spec.ts:86:3 › personal none stays in real mode despite abundant demo data; report respects selected period (1.1s)
+  ok  9 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated valid is validated before display (663ms)
+  ok 10 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated number is validated before display (673ms)
+  ok 11 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated reference is validated before display (669ms)
+  ok 12 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated medical is validated before display (616ms)
+  ok 13 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated malformed is validated before display (748ms)
+  ok 14 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated unavailable is validated before display (739ms)
+  ok 15 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive edit-and-B (927ms)
+  ok 16 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive navigate (895ms)
+  ok 17 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive apply (986ms)
+  ok 18 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive discard (951ms)
+  ok 19 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive cancel (826ms)
+  ok 20 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit (3.1s)
+  ok 21 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 390px: all routes and controls fit (2.5s)
+  ok 22 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 1366px: all routes and controls fit (3.2s)
+  ok 23 tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save (3.3s)
+  ok 24 tests\e2e\real-api.spec.ts:7:1 › production browser crosses real local v1/v2 API/router/adapter with upstream HTTP only stubbed (1.4s)
+  x  25 tests\e2e\voice.spec.ts:2:1 › mocked browser voice requires explicit start and confirmation, supports cancel, empty and error (980ms)
+(node:3160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  26 tests\e2e\voice.spec.ts:39:1 › unsupported voice remains hidden with settings enabled (837ms)
+
+
+  1) tests\e2e\voice.spec.ts:2:1 › mocked browser voice requires explicit start and confirmation, supports cancel, empty and error
+
+    Error: locator.click: Error: strict mode violation: locator('details').filter({ has: locator('summary').filter({ hasText: /^Nhập giọng nói: tên thành phần$/ }) }).locator('summary') resolved to 4 elements:
+        1) <summary>Cơm trắng · 29,4 g carb</summary> aka getByText('Cơm trắng · 29,4 g carb')
+        2) <summary>Nhập giọng nói: tên thành phần</summary> aka getByText('Nhập giọng nói: tên thành phần')
+        3) <summary>Nhập giọng nói: khẩu phần</summary> aka getByText('Nhập giọng nói: khẩu phần')
+        4) <summary>Nguồn và chỉ số tham khảo</summary> aka getByText('Nguồn và chỉ số tham khảo')
+
+    Call log:
+      - waiting for locator('details').filter({ has: locator('summary').filter({ hasText: /^Nhập giọng nói: tên thành phần$/ }) }).locator('summary')
+
+
+      16 |   expect(await page.evaluate(() => (window as any).voice.calls)).toBe(0);
+      17 |   const panel = page.locator('details').filter({ has: page.locator('summary', { hasText: /^Nhập giọng nói: tên thành phần$/ }) });
+    > 18 |   await panel.locator('summary').click();
+         |                                  ^
+      19 |   const emit = (transcript: string) => page.evaluate(text => (window as any).voice.instance.onresult({ results: [[{ transcript: text }]] }), transcript);
+      20 |   await panel.getByRole('button', { name: 'Bắt đầu nói' }).click(); await emit('Tên từ giọng nói');
+      21 |   await expect(panel.getByLabel('Bản chép')).toHaveValue('Tên từ giọng nói');
+        at C:\Users\LOQ\Mam An\tests\e2e\voice.spec.ts:18:34
+
+    Error Context: test-results\voice-mocked-browser-voice-cdf54-orts-cancel-empty-and-error\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\voice-mocked-browser-voice-cdf54-orts-cancel-empty-and-error\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\voice-mocked-browser-voice-cdf54-orts-cancel-empty-and-error\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\voice.spec.ts:39:1 › unsupported voice remains hidden with settings enabled ─────────
+
+    Error: locator.check: Clicking the checkbox did not change its state
+    Call log:
+      - waiting for getByLabel('Hiện nhập giọng nói khi trình duyệt hỗ trợ')
+        - locator resolved to <input type="checkbox"/>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+        - click action done
+        - waiting for scheduled navigations to finish
+        - navigations have finished
+
+
+      39 | test('unsupported voice remains hidden with settings enabled', async ({ page }) => {
+      40 |   await page.addInitScript(() => { Object.defineProperty(window, 'SpeechRecognition', { value: undefined }); Object.defineProperty(window, 'webkitSpeechRecognition', { value: undefined }); });
+    > 41 |   await page.goto('/settings'); await page.getByLabel('Hiện nhập giọng nói khi trình duyệt hỗ trợ').check();
+         |                                                                                                     ^
+      42 |   await page.goto('/meal/new'); await page.getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true }).click();
+      43 |   await expect(page.getByText(/^Nhập giọng nói:/)).toHaveCount(0);
+      44 |   await expect(page.getByLabel('Tên thành phần', { exact: true }).first()).toBeEditable();
+        at C:\Users\LOQ\Mam An\tests\e2e\voice.spec.ts:41:101
+
+    Error Context: test-results\voice-unsupported-voice-remains-hidden-with-settings-enabled\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\voice-unsupported-voice-remains-hidden-with-settings-enabled\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\voice-unsupported-voice-remains-hidden-with-settings-enabled\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\voice.spec.ts:2:1 › mocked browser voice requires explicit start and confirmation, supports cancel, empty and error
+    tests\e2e\voice.spec.ts:39:1 › unsupported voice remains hidden with settings enabled ──────────
+  24 passed (39.0s)

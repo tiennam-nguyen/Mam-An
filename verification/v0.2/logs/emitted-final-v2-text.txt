@@ -1,0 +1,5 @@
+Using TypeScript 7.0.2 (local user-provided)
+Using the TypeScript 7.0.2 compiler executable for transpilation.
+{"started":"2026-09-22T10:34:00.909Z","entrypoint":"api/v2/explanations/generate.ts","builder":"13.0.1","handler":"api\\v2\\explanations\\generate.js","runtime":"nodejs","fileCount":337}
+{"status":405,"body":{"request_id":"a8ce386e-053b-4595-812c-db4c6ab5304d","error":{"code":"INVALID_INPUT","retryable":false}}}
+{"boundary":"emitted explanation Function → empty capability","status":503,"body":{"request_id":"emitted-artifact-check","error":{"code":"CAPABILITY_UNAVAILABLE","retryable":false}},"noStore":"no-store"}

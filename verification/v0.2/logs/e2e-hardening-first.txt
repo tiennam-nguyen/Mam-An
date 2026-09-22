@@ -1,0 +1,192 @@
+
+> mam-an@0.2.0 test:e2e
+> node scripts/run-e2e.mjs hardening.spec.ts
+
+
+> mam-an@0.2.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.2.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 190 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-d2hRUctt.css                     8.63 kB │ gzip:   2.72 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-BYz5RHkh.js                    542.63 kB │ gzip: 167.42 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 304ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (545.93 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:3172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 22 tests using 1 worker
+
+(node:12784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\e2e\hardening.spec.ts:14:1 › physical v1 browser upgrade preserves snapshots and linked glucose after reload (2.1s)
+  ok  2 tests\e2e\hardening.spec.ts:33:1 › physical malformed migration stays v1, shows recovery message, and preserves all rows on retry (513ms)
+  ok  3 tests\e2e\hardening.spec.ts:46:1 › favourite persists and reuse edits a new meal without mutating the saved original (1.1s)
+  x   4 tests\e2e\hardening.spec.ts:69:1 › favourite write failure is visible and allows retry (5.7s)
+(node:3428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 tests\e2e\hardening.spec.ts:86:3 › personal sufficient stays in real mode despite abundant demo data; report respects selected period (1.3s)
+  ok  6 tests\e2e\hardening.spec.ts:86:3 › personal sparse stays in real mode despite abundant demo data; report respects selected period (875ms)
+  ok  7 tests\e2e\hardening.spec.ts:86:3 › personal noncomparable stays in real mode despite abundant demo data; report respects selected period (860ms)
+  ok  8 tests\e2e\hardening.spec.ts:86:3 › personal none stays in real mode despite abundant demo data; report respects selected period (873ms)
+  ok  9 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated valid is validated before display (722ms)
+  ok 10 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated number is validated before display (550ms)
+  ok 11 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated reference is validated before display (508ms)
+  ok 12 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated medical is validated before display (538ms)
+  ok 13 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated malformed is validated before display (552ms)
+  ok 14 tests\e2e\hardening.spec.ts:106:95 › optional generated explanations › generated unavailable is validated before display (563ms)
+  ok 15 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive edit-and-B (748ms)
+  ok 16 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive navigate (693ms)
+  ok 17 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive apply (897ms)
+  ok 18 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive discard (839ms)
+  ok 19 tests\e2e\hardening.spec.ts:121:82 › optional generated explanations › late explanation A cannot survive cancel (759ms)
+  x  20 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit (805ms)
+(node:13516) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 21 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 390px: all routes and controls fit (2.5s)
+  x  22 tests\e2e\hardening.spec.ts:141:39 › large text product sweep 1366px: all routes and controls fit (450ms)
+
+
+  1) tests\e2e\hardening.spec.ts:69:1 › favourite write failure is visible and allows retry ────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('alert')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+
+
+      77 |   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
+      78 |   await page.getByRole('button', { name: 'Đánh dấu yêu thích' }).click();
+    > 79 |   await expect(page.getByRole('alert')).toBeVisible();
+         |                                         ^
+      80 |   await page.getByRole('button', { name: 'Đánh dấu yêu thích' }).click();
+      81 |   await expect(page.getByRole('button', { name: 'Bỏ yêu thích' })).toBeVisible();
+      82 |   await expect(page.getByRole('alert')).toHaveCount(0);
+        at C:\Users\LOQ\Mam An\tests\e2e\hardening.spec.ts:79:41
+
+    Error Context: test-results\hardening-favourite-write--21a18-is-visible-and-allows-retry\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\hardening-favourite-write--21a18-is-visible-and-allows-retry\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\hardening-favourite-write--21a18-is-visible-and-allows-retry\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit
+
+    Error: /
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      145 |   for (const route of ['/', '/meal/new', '/history', '/glucose/new', '/week', '/report', '/settings', '/demo', '/about']) {
+      146 |     await page.goto(route); await expect(page.locator('h1')).toBeVisible();
+    > 147 |     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), route).toBe(true);
+          |                                                                                                  ^
+      148 |     await expect(page.locator('body')).not.toContainText(/TIER_[12]|SUFFICIENT_FOR_DESCRIPTION|knowledge-v1|MockLLM|AI_TIMEOUT|STARCH/);
+      149 |   }
+      150 |   await page.goto('/meal/new'); await page.getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true }).click();
+        at C:\Users\LOQ\Mam An\tests\e2e\hardening.spec.ts:147:98
+
+    Error: Page must fit viewport
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+       at fixtures.ts:15
+
+      13 |     expect(errors, 'Unhandled browser errors').toEqual([]);
+      14 |     expect(consoleErrors.filter(e => !(e.text.startsWith('Failed to load resource:') && failedUrls.has(e.url))), 'Unexpected console errors').toEqual([]);
+    > 15 |     if (!page.isClosed()) expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Page must fit viewport').toBe(true);
+         |                                                                                                                                           ^
+      16 |   }, { auto: true }],
+      17 | });
+      18 |
+        at Object.base.extend.browserHealth.auto (C:\Users\LOQ\Mam An\tests\e2e\fixtures.ts:15:139)
+
+    Error Context: test-results\hardening-large-text-produ-97a13-all-routes-and-controls-fit\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\hardening-large-text-produ-97a13-all-routes-and-controls-fit\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\hardening-large-text-produ-97a13-all-routes-and-controls-fit\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\hardening.spec.ts:141:39 › large text product sweep 1366px: all routes and controls fit
+
+    Error: locator.check: Clicking the checkbox did not change its state
+    Call log:
+      - waiting for getByLabel('Chữ lớn', { exact: true })
+        - locator resolved to <input type="checkbox"/>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+        - click action done
+        - waiting for scheduled navigations to finish
+        - navigations have finished
+
+
+      141 | for (const width of [320, 390, 1366]) test(`large text product sweep ${width}px: all routes and controls fit`, async ({ page }) => {
+      142 |   await page.setViewportSize({ width, height: 900 });
+    > 143 |   await page.goto('/settings'); await page.getByLabel('Chữ lớn', { exact: true }).check();
+          |                                                                                   ^
+      144 |   await page.reload(); await expect(page.getByLabel('Chữ lớn', { exact: true })).toBeChecked();
+      145 |   for (const route of ['/', '/meal/new', '/history', '/glucose/new', '/week', '/report', '/settings', '/demo', '/about']) {
+      146 |     await page.goto(route); await expect(page.locator('h1')).toBeVisible();
+        at C:\Users\LOQ\Mam An\tests\e2e\hardening.spec.ts:143:83
+
+    Error Context: test-results\hardening-large-text-produ-e948a-all-routes-and-controls-fit\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\hardening-large-text-produ-e948a-all-routes-and-controls-fit\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\hardening-large-text-produ-e948a-all-routes-and-controls-fit\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests\e2e\hardening.spec.ts:69:1 › favourite write failure is visible and allows retry ─────────
+    tests\e2e\hardening.spec.ts:141:39 › large text product sweep 320px: all routes and controls fit
+    tests\e2e\hardening.spec.ts:141:39 › large text product sweep 1366px: all routes and controls fit
+  19 passed (32.6s)

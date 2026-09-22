@@ -1,0 +1,4 @@
+Using TypeScript 7.0.2 (local user-provided)
+Using the TypeScript 7.0.2 compiler executable for transpilation.
+{"started":"2026-09-22T05:24:20.558Z","entrypoint":"api/v2/vision/analyze-meal.ts","builder":"13.0.1","handler":"api\\v2\\vision\\analyze-meal.js","runtime":"nodejs","fileCount":337}
+{"code":"ERR_MODULE_NOT_FOUND","message":"Cannot find module 'C:\\Users\\LOQ\\Mam An\\verification\\.runtime\\1790054668629\\src\\domain\\meal\\nutritionCalculator' imported from C:\\Users\\LOQ\\Mam An\\verification\\.runtime\\1790054668629\\src\\domain\\meal\\mealEntry.js"}

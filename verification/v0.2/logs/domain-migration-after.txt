@@ -1,0 +1,12 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/domain-hardening.test.ts tests/integration/migration-v2.test.ts tests/hardening-regressions.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+
+ Test Files  3 passed (3)
+      Tests  78 passed (78)
+   Start at  07:17:03
+   Duration  683ms (transform 42%, import 40%, tests 17%, worker 1%)

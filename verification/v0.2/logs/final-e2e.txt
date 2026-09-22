@@ -1,0 +1,94 @@
+
+> mam-an@0.2.0 test:e2e
+> node scripts/run-e2e.mjs
+
+
+> mam-an@0.2.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.2.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 190 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-EQy2g_t2.css                     9.75 kB │ gzip:   2.98 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-uWqXcV-2.js                    544.73 kB │ gzip: 167.93 kB
+
+✓ built in 232ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (549.08 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+
+Running 48 tests using 1 worker
+
+  ok  1 tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report (4.5s)
+  ok  2 tests\e2e\demo.spec.ts:60:1 › manual unknown stays unknown, demo reset preserves user records (1.2s)
+  ok  3 tests\e2e\demo.spec.ts:89:1 › uploaded pixels become only a small local thumbnail with no original EXIF (1.2s)
+  ok  4 tests\e2e\demo.spec.ts:146:1 › laptop layout and populated print report fit viewport (1.7s)
+  ok  5 tests\e2e\hardening.spec.ts:23:1 › physical v1 browser upgrade preserves snapshots and linked glucose after reload (978ms)
+  ok  6 tests\e2e\hardening.spec.ts:67:1 › physical malformed migration stays v1, shows recovery message, and preserves all rows on retry (761ms)
+  ok  7 tests\e2e\hardening.spec.ts:89:1 › favourite persists and reuse edits a new meal without mutating the saved original (1.2s)
+  ok  8 tests\e2e\hardening.spec.ts:134:1 › favourite write failure is visible and allows retry (855ms)
+  ok  9 tests\e2e\hardening.spec.ts:168:3 › personal sufficient stays in real mode despite abundant demo data; report respects selected period (1.4s)
+  ok 10 tests\e2e\hardening.spec.ts:168:3 › personal sparse stays in real mode despite abundant demo data; report respects selected period (1.2s)
+  ok 11 tests\e2e\hardening.spec.ts:168:3 › personal noncomparable stays in real mode despite abundant demo data; report respects selected period (1.1s)
+  ok 12 tests\e2e\hardening.spec.ts:168:3 › personal none stays in real mode despite abundant demo data; report respects selected period (1.1s)
+  ok 13 tests\e2e\hardening.spec.ts:247:3 › optional generated explanations › stalled explanation reaches client deadline and returns to the local template (762ms)
+  ok 14 tests\e2e\hardening.spec.ts:278:5 › optional generated explanations › generated valid is validated before display (757ms)
+  ok 15 tests\e2e\hardening.spec.ts:278:5 › optional generated explanations › generated number is validated before display (874ms)
+  ok 16 tests\e2e\hardening.spec.ts:278:5 › optional generated explanations › generated reference is validated before display (714ms)
+  ok 17 tests\e2e\hardening.spec.ts:278:5 › optional generated explanations › generated medical is validated before display (735ms)
+  ok 18 tests\e2e\hardening.spec.ts:278:5 › optional generated explanations › generated malformed is validated before display (715ms)
+  ok 19 tests\e2e\hardening.spec.ts:278:5 › optional generated explanations › generated unavailable is validated before display (726ms)
+  ok 20 tests\e2e\hardening.spec.ts:332:5 › optional generated explanations › late explanation A cannot survive edit-and-B (967ms)
+  ok 21 tests\e2e\hardening.spec.ts:332:5 › optional generated explanations › late explanation A cannot survive navigate (874ms)
+  ok 22 tests\e2e\hardening.spec.ts:332:5 › optional generated explanations › late explanation A cannot survive apply (1.1s)
+  ok 23 tests\e2e\hardening.spec.ts:332:5 › optional generated explanations › late explanation A cannot survive discard (1.0s)
+  ok 24 tests\e2e\hardening.spec.ts:332:5 › optional generated explanations › late explanation A cannot survive cancel (866ms)
+  ok 25 tests\e2e\hardening.spec.ts:412:3 › large text product sweep 320px: all routes and controls fit (3.1s)
+  ok 26 tests\e2e\hardening.spec.ts:412:3 › large text product sweep 390px: all routes and controls fit (2.7s)
+  ok 27 tests\e2e\hardening.spec.ts:412:3 › large text product sweep 1366px: all routes and controls fit (3.1s)
+  ok 28 tests\e2e\implementation-v2.spec.ts:3:1 › all four offline scenario operations compose, discard, then apply without persisting before save (2.1s)
+  ok 29 tests\e2e\implementation-v2.spec.ts:68:1 › v2 offline decision flow keeps scenarios transient and saves/reloads components (1.9s)
+  ok 30 tests\e2e\live.spec.ts:32:5 › production client 390px › live request → correction → portion → persist/reload/history (1.4s)
+  ok 31 tests\e2e\live.spec.ts:76:5 › production client 390px › Vietnamese labels use a consistent font and UI has no engineering residue (1.2s)
+  ok 32 tests\e2e\live.spec.ts:32:5 › production client 1366px › live request → correction → portion → persist/reload/history (1.2s)
+  ok 33 tests\e2e\live.spec.ts:76:5 › production client 1366px › Vietnamese labels use a consistent font and UI has no engineering residue (995ms)
+  ok 34 tests\e2e\live.spec.ts:121:3 › degraded live paths › late live result cannot replace a manually corrected draft (817ms)
+  ok 35 tests\e2e\live.spec.ts:166:5 › degraded live paths › HTTP 429 is visible and retry remains live (517ms)
+  ok 36 tests\e2e\live.spec.ts:166:5 › degraded live paths › HTTP 503 is visible and retry remains live (516ms)
+  ok 37 tests\e2e\live.spec.ts:166:5 › degraded live paths › HTTP 504 is visible and retry remains live (533ms)
+  ok 38 tests\e2e\live.spec.ts:166:5 › degraded live paths › HTTP 502 is visible and retry remains live (500ms)
+  ok 39 tests\e2e\live.spec.ts:195:3 › degraded live paths › offline failure allows manual entry without silently showing sample results (511ms)
+  ok 40 tests\e2e\live.spec.ts:212:3 › degraded live paths › malformed success is an error, not a sample meal (354ms)
+  ok 41 tests\e2e\live.spec.ts:223:3 › degraded live paths › invalid and oversized uploads leave manual entry available (2.5s)
+  ok 42 tests\e2e\live.spec.ts:238:3 › degraded live paths › storage failure preserves editable draft and can retry (579ms)
+  ok 43 tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save (2.7s)
+  ok 44 tests\e2e\real-api.spec.ts:7:1 › production browser crosses real local v1/v2 API/router/adapter with upstream HTTP only stubbed (717ms)
+  ok 45 tests\e2e\ux-review.spec.ts:3:3 › visual UX review 390: correction, save, history, settings, report (1.7s)
+  ok 46 tests\e2e\ux-review.spec.ts:3:3 › visual UX review 1366: correction, save, history, settings, report (1.7s)
+  ok 47 tests\e2e\voice.spec.ts:2:1 › mocked browser voice requires explicit start and confirmation, supports cancel, empty and error (1.2s)
+  ok 48 tests\e2e\voice.spec.ts:79:1 › unsupported voice remains hidden with settings enabled (533ms)
+
+  48 passed (1.1m)
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:23240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:18000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
