@@ -1,3 +1,4 @@
+import { entriesFromItems, foodRole } from '../../domain/meal/mealEntry';
 import type { FoodCatalog } from '../ports/foodCatalog';
 import type { DemoRepository } from '../ports/demoRepository';
 import type {
@@ -34,6 +35,14 @@ export function demoData(catalog: FoodCatalog, now: Date) {
         ...calculateItemNutrition(food, 1),
       }));
     meals.push({
+      schemaVersion: 2,
+      entries: entriesFromItems(items, 'USER').map((e) => ({
+        ...e,
+        components: e.components.map((c) => ({
+          ...c,
+          role: foodRole(c.foodId ? catalog.getFoodById(c.foodId) : null),
+        })),
+      })),
       id,
       createdAt: date.toISOString(),
       source: 'DEMO_SAMPLE',
@@ -47,6 +56,7 @@ export function demoData(catalog: FoodCatalog, now: Date) {
     date.setHours(14);
     readings.push({
       id: ('demo:v1:glucose:' + i) as GlucoseReadingId,
+      source: 'DEMO',
       value: 6 + i / 10,
       unit: 'MMOL_L',
       measuredAt: date.toISOString(),
@@ -56,7 +66,7 @@ export function demoData(catalog: FoodCatalog, now: Date) {
       isDemo: true,
     });
   }
-  return { meals, readings, version: 'v1:' + localDate(now) };
+  return { meals, readings, version: 'v2:' + localDate(now) };
 }
 export function seedDemoData(
   repo: DemoRepository,

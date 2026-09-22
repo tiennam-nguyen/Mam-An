@@ -1,0 +1,218 @@
+
+> mam-an@0.2.0 test:e2e
+> node scripts/run-e2e.mjs
+
+
+> mam-an@0.2.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.2.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 190 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-d2hRUctt.css                     8.63 kB │ gzip:   2.72 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-B48RZmSk.js                    542.63 kB │ gzip: 167.42 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.06s
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (545.93 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:3628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 19 tests using 1 worker
+
+(node:18804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report (2.9s)
+(node:17172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 tests\e2e\demo.spec.ts:60:1 › manual unknown stays unknown, demo reset preserves user records (1.5s)
+  ok  3 tests\e2e\demo.spec.ts:89:1 › uploaded pixels become only a small local thumbnail with no original EXIF (879ms)
+  ok  4 tests\e2e\demo.spec.ts:146:1 › laptop layout and populated print report fit viewport (1.5s)
+  ok  5 tests\e2e\implementation-v2.spec.ts:2:1 › v2 offline decision flow keeps scenarios transient and saves/reloads components (1.7s)
+  x   6 tests\e2e\live.spec.ts:32:5 › production client 390px › live request → correction → portion → persist/reload/history (914ms)
+(node:8512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 tests\e2e\live.spec.ts:71:5 › production client 390px › Vietnamese labels use a consistent font and UI has no engineering residue (1.1s)
+  x   8 tests\e2e\live.spec.ts:32:5 › production client 1366px › live request → correction → portion → persist/reload/history (887ms)
+(node:11880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 tests\e2e\live.spec.ts:71:5 › production client 1366px › Vietnamese labels use a consistent font and UI has no engineering residue (1.2s)
+  x  10 tests\e2e\live.spec.ts:116:3 › degraded live paths › late live result cannot replace a manually corrected draft (959ms)
+(node:3084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 11 tests\e2e\live.spec.ts:161:5 › degraded live paths › HTTP 429 is visible and retry remains live (955ms)
+  ok 12 tests\e2e\live.spec.ts:161:5 › degraded live paths › HTTP 503 is visible and retry remains live (482ms)
+  ok 13 tests\e2e\live.spec.ts:161:5 › degraded live paths › HTTP 504 is visible and retry remains live (582ms)
+  ok 14 tests\e2e\live.spec.ts:161:5 › degraded live paths › HTTP 502 is visible and retry remains live (487ms)
+  ok 15 tests\e2e\live.spec.ts:190:3 › degraded live paths › offline failure allows manual entry without silently showing sample results (579ms)
+  ok 16 tests\e2e\live.spec.ts:207:3 › degraded live paths › malformed success is an error, not a sample meal (428ms)
+  ok 17 tests\e2e\live.spec.ts:218:3 › degraded live paths › invalid and oversized uploads leave manual entry available (2.9s)
+  ok 18 tests\e2e\live.spec.ts:233:3 › degraded live paths › storage failure preserves editable draft and can retry (575ms)
+  ok 19 tests\e2e\pwa-update.spec.ts:6:1 › waiting update is offered, preserves unsaved meal, and activates after save (2.4s)
+
+
+  1) tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('18,1 g carb')
+    Expected: visible
+    Error: strict mode violation: getByText('18,1 g carb') resolved to 2 elements:
+        1) <p class="big-number">…</p> aka getByText('18,1 g carb', { exact: true })
+        2) <p>Bữa hiện tại có 18,1 g carb ước tính.</p> aka getByText('Bữa hiện tại có 18,1 g carb')
+
+    Call log:
+      - Expect "toBeVisible" getByText('18,1 g carb') with timeout 5000ms
+      - waiting for getByText('18,1 g carb')
+
+
+      34 |   ).toBeVisible();
+      35 |   await page.reload();
+    > 36 |   await expect(page.getByText('18,1 g carb')).toBeVisible();
+         |                                               ^
+      37 |   await page.getByRole('link', { name: 'Thêm số đo', exact: true }).click();
+      38 |   await page.getByLabel('Giá trị', { exact: true }).fill('6.7');
+      39 |   await page.getByRole('combobox', { name: /^Đơn vị/ }).selectOption('MMOL_L');
+        at C:\Users\LOQ\Mam An\tests\e2e\demo.spec.ts:36:47
+
+    Error Context: test-results\demo-offline-sample-→-corr-51d12-d-→-glucose-→-week-→-report\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\demo-offline-sample-→-corr-51d12-d-→-glucose-→-week-→-report\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\demo-offline-sample-→-corr-51d12-d-→-glucose-→-week-→-report\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\live.spec.ts:32:5 › production client 390px › live request → correction → portion → persist/reload/history
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('14,7 g carb')
+    Expected: visible
+    Error: strict mode violation: getByText('14,7 g carb') resolved to 3 elements:
+        1) <p class="big-number">…</p> aka getByText('14,7 g carb', { exact: true })
+        2) <li>…</li> aka getByText('Cơm trắng · 0.5 × 1 phần tham')
+        3) <p>Bữa hiện tại có 14,7 g carb ước tính.</p> aka getByText('Bữa hiện tại có 14,7 g carb')
+
+    Call log:
+      - Expect "toBeVisible" getByText('14,7 g carb') with timeout 5000ms
+      - waiting for getByText('14,7 g carb')
+
+
+      62 |       ).toBeVisible();
+      63 |       await page.reload();
+    > 64 |       await expect(page.getByText('14,7 g carb')).toBeVisible();
+         |                                                   ^
+      65 |       await page.goto('/history');
+      66 |       await expect(
+      67 |         page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:64:51
+
+    Error Context: test-results\live-production-client-390-218da-on-→-persist-reload-history\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-production-client-390-218da-on-→-persist-reload-history\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-production-client-390-218da-on-→-persist-reload-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\live.spec.ts:32:5 › production client 1366px › live request → correction → portion → persist/reload/history
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('14,7 g carb')
+    Expected: visible
+    Error: strict mode violation: getByText('14,7 g carb') resolved to 3 elements:
+        1) <p class="big-number">…</p> aka getByText('14,7 g carb', { exact: true })
+        2) <li>…</li> aka getByText('Cơm trắng · 0.5 × 1 phần tham')
+        3) <p>Bữa hiện tại có 14,7 g carb ước tính.</p> aka getByText('Bữa hiện tại có 14,7 g carb')
+
+    Call log:
+      - Expect "toBeVisible" getByText('14,7 g carb') with timeout 5000ms
+      - waiting for getByText('14,7 g carb')
+
+
+      62 |       ).toBeVisible();
+      63 |       await page.reload();
+    > 64 |       await expect(page.getByText('14,7 g carb')).toBeVisible();
+         |                                                   ^
+      65 |       await page.goto('/history');
+      66 |       await expect(
+      67 |         page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:64:51
+
+    Error Context: test-results\live-production-client-136-6bb13-on-→-persist-reload-history\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-production-client-136-6bb13-on-→-persist-reload-history\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-production-client-136-6bb13-on-→-persist-reload-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\e2e\live.spec.ts:116:3 › degraded live paths › late live result cannot replace a manually corrected draft
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('14,7 g carb')
+    Expected: visible
+    Error: strict mode violation: getByText('14,7 g carb') resolved to 3 elements:
+        1) <p class="big-number">…</p> aka getByText('14,7 g carb', { exact: true })
+        2) <li>…</li> aka getByText('Cơm trắng · 0.5 × 1 phần tham')
+        3) <p>Bữa hiện tại có 14,7 g carb ước tính.</p> aka getByText('Bữa hiện tại có 14,7 g carb')
+
+    Call log:
+      - Expect "toBeVisible" getByText('14,7 g carb') with timeout 5000ms
+      - waiting for getByText('14,7 g carb')
+
+
+      148 |     ).toBeVisible();
+      149 |     await page.reload();
+    > 150 |     await expect(page.getByText('14,7 g carb')).toBeVisible();
+          |                                                 ^
+      151 |     await expect(page.getByText('Trứng gà luộc', { exact: true })).toHaveCount(
+      152 |       0,
+      153 |     );
+        at C:\Users\LOQ\Mam An\tests\e2e\live.spec.ts:150:49
+
+    Error Context: test-results\live-degraded-live-paths-l-bcbcd--a-manually-corrected-draft\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\live-degraded-live-paths-l-bcbcd--a-manually-corrected-draft\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\live-degraded-live-paths-l-bcbcd--a-manually-corrected-draft\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests\e2e\demo.spec.ts:2:1 › offline sample → correction → save/reload → glucose → week → report
+    tests\e2e\live.spec.ts:32:5 › production client 390px › live request → correction → portion → persist/reload/history
+    tests\e2e\live.spec.ts:32:5 › production client 1366px › live request → correction → portion → persist/reload/history
+    tests\e2e\live.spec.ts:116:3 › degraded live paths › late live result cannot replace a manually corrected draft
+  15 passed (32.5s)

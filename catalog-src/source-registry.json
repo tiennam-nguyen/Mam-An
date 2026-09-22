@@ -8,5 +8,15 @@
     "source_type": "NUTRITION_COMPOSITION",
     "license_status": "NONCOMMERCIAL_WITH_ACKNOWLEDGEMENT_REVIEW_BEFORE_REDISTRIBUTION",
     "acknowledgement": "ASEANFOODS / Institute of Nutrition, Mahidol University"
+  },
+  {
+    "source_id": "mam-an-design",
+    "authority": "Mâm An project",
+    "title": "Versioned product rules; no external nutrition claims",
+    "url": "https://github.com/tiennam-nguyen/Mam-An",
+    "retrieved_at": "2026-09-21",
+    "source_type": "PRODUCT_RULE",
+    "license_status": "PROJECT_LICENSE; no new food composition values",
+    "acknowledgement": "Mâm An SRS/LLD v0.2"
   }
 ]

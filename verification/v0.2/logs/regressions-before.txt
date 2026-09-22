@@ -1,0 +1,108 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/hardening-regressions.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+ ❯ tests/hardening-regressions.test.ts (11 tests | 8 failed) 23ms
+   × rejects duplicate baseline entry IDs before targeting a scenario 10ms
+   × rejects duplicate baseline component IDs before targeting a scenario 1ms
+   × rejects unsupported claim: Có 20% carb. 3ms
+   × rejects unsupported claim: Bạn mắc bệnh tiểu đường. 1ms
+   × rejects unsupported claim: Bữa này gây biến động đường huyết. 1ms
+   × rejects unsupported claim: ĐƯỢC ĂN bữa này. 1ms
+   × rejects empty voice result "" 2ms
+   × rejects empty voice result "   " 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/hardening-regressions.test.ts > rejects duplicate baseline entry IDs before targeting a scenario
+ FAIL  tests/hardening-regressions.test.ts > rejects duplicate baseline component IDs before targeting a scenario
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/hardening-regressions.test.ts:11:137
+      9|   if (kind === 'entry') d.entries[1]!.entryId = d.entries[0]!.entryId;
+     10|   else d.entries[1]!.components[0]!.componentId = d.entries[0]!.compon…
+     11|   expect(() => createScenario(d, [{ type: 'REMOVE_COMPONENT', targetCo…
+       |                                                                                                                                         ^
+     12| });
+     13|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/hardening-regressions.test.ts > rejects unsupported claim: Có 20% carb.
+ FAIL  tests/hardening-regressions.test.ts > rejects unsupported claim: Bạn mắc bệnh tiểu đường.
+ FAIL  tests/hardening-regressions.test.ts > rejects unsupported claim: Bữa này gây biến động đường huyết.
+ FAIL  tests/hardening-regressions.test.ts > rejects unsupported claim: ĐƯỢC ĂN bữa này.
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/hardening-regressions.test.ts:18:75
+     16| const output = { summaryVi: '', personalObservationVi: null, optionExp…
+     17| it.each(['Có 20% carb.', 'Bạn mắc bệnh tiểu đường.', 'Bữa này gây biến…
+     18|   expect(validateGeneratedExplanation({ ...output, summaryVi }, payloa…
+       |                                                                           ^
+     19| });
+     20| it.each(['Có 20 g carb ước tính.', 'Dữ liệu từ các thành phần bạn đã g…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/hardening-regressions.test.ts > rejects empty voice result ""
+AssertionError: promise resolved "''" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+""
+
+ ❯ tests/hardening-regressions.test.ts:32:81
+     30|   }
+     31|   vi.stubGlobal('SpeechRecognition', Recognition);
+     32|   await expect(new BrowserVoiceInput().transcribe(new AbortController(…
+       |                                                                                 ^
+     33| });
+     34|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/hardening-regressions.test.ts > rejects empty voice result "   "
+AssertionError: promise resolved "'   '" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"   "
+
+ ❯ tests/hardening-regressions.test.ts:32:81
+     30|   }
+     31|   vi.stubGlobal('SpeechRecognition', Recognition);
+     32|   await expect(new BrowserVoiceInput().transcribe(new AbortController(…
+       |                                                                                 ^
+     33| });
+     34|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 3 passed (11)
+   Start at  07:12:28
+   Duration  438ms (transform 48%, import 42%, tests 8%, worker 2%)

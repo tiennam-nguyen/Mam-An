@@ -1,6 +1,8 @@
+import type { ComponentRole } from '../meal/mealEntry';
 import type { FoodId } from '../common/brandedIds';
 export interface FoodItem {
   id: FoodId;
+  category?: ComponentRole | 'MIXED';
   nameVi: string;
   aliases: readonly string[];
   servingLabel: string;

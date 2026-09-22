@@ -33,7 +33,7 @@ export function parseCsv(text: string): string[][] {
   }
   return rows;
 }
-export const catalogVersion = 'v1';
+export const catalogVersion = 'v2';
 export function buildCatalog(csv: string, registry: unknown) {
   const sources = SourceRegistrySchema.parse(registry);
   const [header, ...rows] = parseCsv(csv);
@@ -93,6 +93,7 @@ export function buildCatalog(csv: string, registry: unknown) {
       const food = FoodSchema.parse({
         id: r.id,
         nameVi: r.name_vi,
+        category: r.category ?? 'OTHER',
         aliases: r.aliases_pipe?.split('|').filter(Boolean) ?? [],
         servingLabel: r.serving_label,
         carbPerServing: carb,

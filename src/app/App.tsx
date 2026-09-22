@@ -1,9 +1,28 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from './routes';
 import { ServicesContext } from '../shared/ui/ServicesContext';
 import type { AppServices } from '../application/services/appServices';
 import { PwaUpdateNotice } from '../shared/ui/PwaUpdateNotice';
 export function App({ services }: { services: AppServices }) {
+  useEffect(() => {
+    let active = true;
+    const load = () => {
+      void services.settings.get().then((r) => {
+        if (active && r.ok)
+          document.documentElement.classList.toggle(
+            'large-text',
+            r.value.largeTextEnabled === true,
+          );
+      });
+    };
+    load();
+    window.addEventListener('mam-an-settings', load);
+    return () => {
+      active = false;
+      window.removeEventListener('mam-an-settings', load);
+    };
+  }, [services.settings]);
   return (
     <ServicesContext.Provider value={services}>
       <BrowserRouter>

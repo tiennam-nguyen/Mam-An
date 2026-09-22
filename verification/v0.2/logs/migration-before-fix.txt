@@ -1,0 +1,36 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/integration/migration-v2.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+stderr | tests/integration/migration-v2.test.ts > failed duplicate-item upgrade rolls back physically and fails again without deleting evidence
+Another connection wants to delete database 'migration-28b738ad-8187-43b5-aee5-8247af319aea'. Closing db now to resume the delete request.
+
+ ❯ tests/integration/migration-v2.test.ts (15 tests | 1 failed) 144ms
+   × failed duplicate-item upgrade rolls back physically and fails again without deleting evidence 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/migration-v2.test.ts > failed duplicate-item upgrade rolls back physically and fails again without deleting evidence
+AssertionError: expected 'STORAGE_READ_FAILED' to be 'MIGRATION_FAILED' // Object.is equality
+
+Expected: "MIGRATION_FAILED"
+Received: "STORAGE_READ_FAILED"
+
+ ❯ tests/integration/migration-v2.test.ts:143:49
+    141|       const result = await new DexieMealRepository(reopened).list();
+    142|       expect(result.ok).toBe(false);
+    143|       if (!result.ok) expect(result.error.code).toBe('MIGRATION_FAILED…
+       |                                                 ^
+    144|       reopened.close();
+    145|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 passed (15)
+   Start at  07:16:54
+   Duration  615ms (import 37%, tests 32%, transform 28%, worker 2%)

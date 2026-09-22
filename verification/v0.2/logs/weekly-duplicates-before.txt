@@ -1,0 +1,36 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/integration/personal-settings-v2.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+ ❯ tests/integration/personal-settings-v2.test.ts (1 test | 1 failed) 59ms
+   × real repositories isolate personal modes, preserve preferences, and filter weekly periods after reopen 57ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/personal-settings-v2.test.ts > real repositories isolate personal modes, preserve preferences, and filter weekly periods after reopen
+AssertionError: expected 3 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 3
+
+ ❯ tests/integration/personal-settings-v2.test.ts:78:69
+     76|     );
+     77|     expect(current.ok && current.value.loggedMealCount).toBe(6);
+     78|     expect(current.ok && current.value.observedPatternCards.length).to…
+       |                                                                     ^
+     79|     const old = await getWeeklySummary(
+     80|       meals,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  17:22:32
+   Duration  2.77s (import 75%, transform 20%, tests 3%, worker 2%)

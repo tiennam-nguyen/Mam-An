@@ -1,0 +1,13 @@
+{
+  "revision": "1cd9773af116dc403bd4d508293bb5718863f42f",
+  "deploymentId": "dpl_HvH2QYF2cv1uoejYGiACei9tmTxp",
+  "origin": "https://mam-gdw0ch7lh-ronnie-nguyens-projects.vercel.app",
+  "environment": "Preview",
+  "observedAt": "2026-09-22T05:23:00Z",
+  "grade": "RAN",
+  "method": "Authenticated in-app browser, synthetic local JPEG uploaded through file chooser, explicit live-analysis click; Vercel runtime logs read through deployment UI",
+  "vision": {"method": "POST", "status": 500, "timestamp": "2026-09-22T05:22:21.898Z", "providerReached": false},
+  "explanation": {"method": "GET", "status": 500, "timestamp": "2026-09-22T05:22:37.352Z"},
+  "error": "ERR_MODULE_NOT_FOUND: Cannot find module /var/task/src/domain/meal/nutritionCalculator imported from /var/task/src/domain/meal/mealEntry.js",
+  "scope": "Startup defect; no provider-quality claim. No real health records used, no production or configuration changes."
+}

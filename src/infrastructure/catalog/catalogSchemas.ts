@@ -1,8 +1,10 @@
+import { componentRoles } from '../../domain/meal/mealEntry';
 import { z } from 'zod';
 const nutrient = z.number().finite().nonnegative().nullable();
 export const FoodSchema = z
   .object({
     id: z.string().min(1),
+    category: z.enum([...componentRoles, 'MIXED']).default('OTHER'),
     nameVi: z.string().trim().min(1),
     aliases: z.array(z.string().trim().min(1)),
     servingLabel: z.string().trim().min(1),
@@ -30,7 +32,7 @@ export const SourceRegistrySchema = z.array(
     title: z.string().min(1),
     url: z.url(),
     retrieved_at: z.string().min(1),
-    source_type: z.literal('NUTRITION_COMPOSITION'),
+    source_type: z.enum(['NUTRITION_COMPOSITION', 'PRODUCT_RULE']),
     license_status: z.string().min(1),
     acknowledgement: z.string().min(1),
   }),

@@ -12,10 +12,12 @@ export async function addGlucoseReading(
   if (reading.mealId) {
     const linked = await meals.getById(reading.mealId);
     if (!linked.ok) return linked;
-    if (!linked.value) return fail('INVALID_INPUT');
+    if (!linked.value || linked.value.isDemo !== reading.isDemo)
+      return fail('INVALID_INPUT');
   }
   return glucose.save({
     ...reading,
+    source: reading.isDemo ? 'DEMO' : 'MANUAL',
     measuredAt: new Date(reading.measuredAt).toISOString(),
   });
 }

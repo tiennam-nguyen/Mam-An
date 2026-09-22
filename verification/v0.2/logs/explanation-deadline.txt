@@ -1,0 +1,10 @@
+[WebServer] (node:1660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:11048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\hardening.spec.ts:243:3 › optional generated explanations › stalled explanation reaches client deadline and returns to the local template (2.0s)
+
+  1 passed (5.3s)

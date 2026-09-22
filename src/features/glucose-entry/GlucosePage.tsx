@@ -63,7 +63,8 @@ export function GlucosePage() {
               mealId: (mealId as MealId) || null,
               timingTag: timing,
               note: note || null,
-              isDemo: false,
+              isDemo:
+                state.data?.meals.find((m) => m.id === mealId)?.isDemo ?? false,
             },
             glucose,
             meals,

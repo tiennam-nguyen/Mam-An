@@ -1,0 +1,12 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/domain.test.ts tests/personal-v2.test.ts tests/domain-hardening.test.ts tests/integration/personal-settings-v2.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+
+ Test Files  4 passed (4)
+      Tests  82 passed (82)
+   Start at  17:33:18
+   Duration  603ms (transform 49%, import 39%, tests 11%, worker 1%)

@@ -15,6 +15,7 @@ export function draft(): MealDraft {
     analysisState: 'REVIEW_READY',
     imagePreviewUrl: null,
     pendingThumbnail: null,
+    entries: m.entries,
     items: m.items.map((i) => ({ ...i })),
     totalCarbEstimate: m.totalCarbEstimate,
     totalKcalEstimate: m.totalKcalEstimate,

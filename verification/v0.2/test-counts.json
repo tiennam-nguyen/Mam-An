@@ -1,0 +1,112 @@
+[
+  {
+    "suite": "tests/catalog.test.ts",
+    "count": 3,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/domain-hardening.test.ts",
+    "count": 52,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/domain.test.ts",
+    "count": 26,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/explanation-adversarial.test.ts",
+    "count": 29,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/explanation-v2.test.ts",
+    "count": 2,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/hardening-regressions.test.ts",
+    "count": 11,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/personal-v2.test.ts",
+    "count": 3,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/provider-hardening.test.ts",
+    "count": 100,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/secret-template.test.ts",
+    "count": 11,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/session.test.ts",
+    "count": 5,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/simulation-v2.test.ts",
+    "count": 2,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/state-machine.test.ts",
+    "count": 24,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/voice-hardening.test.ts",
+    "count": 7,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/contract/api-v2.test.ts",
+    "count": 3,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/contract/api.test.ts",
+    "count": 9,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/contract/v2-hardening.test.ts",
+    "count": 35,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/integration/dev-proxy.test.ts",
+    "count": 1,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/integration/gateway-api.test.ts",
+    "count": 21,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/integration/migration-v2.test.ts",
+    "count": 15,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/integration/persistence.test.ts",
+    "count": 5,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/integration/personal-settings-v2.test.ts",
+    "count": 1,
+    "status": "passed"
+  },
+  {
+    "suite": "tests/integration/v2-seam.test.ts",
+    "count": 8,
+    "status": "passed"
+  }
+]

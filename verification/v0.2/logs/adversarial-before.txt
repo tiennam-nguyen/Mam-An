@@ -1,0 +1,56 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/explanation-adversarial.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+ ❯ tests/explanation-adversarial.test.ts (29 tests | 7 failed) 20ms
+   × rejects clinical claim Bữa này gây bệnh. 8ms
+   × rejects clinical claim Hãy giảm liều. 1ms
+   × rejects clinical claim Bạn mắc tiểu đường. 1ms
+   × rejects clinical claim Uống 20 viên mỗi ngày. 1ms
+   × percentage 20% needs percentage evidence, not an equal carb value 1ms
+   × percentage 20％ needs percentage evidence, not an equal carb value 1ms
+   × percentage 20 phần trăm needs percentage evidence, not an equal carb value 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/explanation-adversarial.test.ts > rejects clinical claim Bữa này gây bệnh.
+ FAIL  tests/explanation-adversarial.test.ts > rejects clinical claim Hãy giảm liều.
+ FAIL  tests/explanation-adversarial.test.ts > rejects clinical claim Bạn mắc tiểu đường.
+ FAIL  tests/explanation-adversarial.test.ts > rejects clinical claim Uống 20 viên mỗi ngày.
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/explanation-adversarial.test.ts:9:66
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/explanation-adversarial.test.ts > percentage 20% needs percentage evidence, not an equal carb value
+ FAIL  tests/explanation-adversarial.test.ts > percentage 20％ needs percentage evidence, not an equal carb value
+ FAIL  tests/explanation-adversarial.test.ts > percentage 20 phần trăm needs percentage evidence, not an equal carb value
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/explanation-adversarial.test.ts:24:216
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 22 passed (29)
+   Start at  12:28:08
+   Duration  569ms (transform 50%, import 43%, tests 6%, worker 1%)

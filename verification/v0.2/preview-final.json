@@ -1,0 +1,30 @@
+{
+  "grade": "RAN",
+  "revision": "cda3ca11da65a55d9e66fff9fe5d7039dcf9a8a9",
+  "deploymentId": "dpl_CrH3xnzRcsPXjNMv7UCcEHnmTKpc",
+  "origin": "https://mam-mciftr3e6-ronnie-nguyens-projects.vercel.app",
+  "dashboard": "https://vercel.com/ronnie-nguyens-projects/mam-an/CrH3xnzRcsPXjNMv7UCcEHnmTKpc",
+  "environment": "Preview",
+  "observedDate": "2026-09-22",
+  "method": "Authenticated in-app Chromium browser; synthetic image uploaded through file chooser; explicit live-analysis click; HTTP status and provider event read from Vercel deployment runtime logs.",
+  "fixture": {
+    "path": "verification/v0.2/synthetic-meal.jpg",
+    "sha256": "b061c61c52dd3d8f864a84704b84a278a9a7a5fd0b9570783a97aafeab996627",
+    "description": "Synthetic illustration derived from the repository demo image, not a personal meal photo."
+  },
+  "vision": {
+    "route": "/api/v2/vision/analyze-meal",
+    "method": "POST",
+    "status": 200,
+    "timestamp": "2026-09-22T10:33:16.354Z",
+    "providerEvent": {"event":"ai_provider_attempt","capability":"VISION_MEAL_UNDERSTANDING","provider":"groq","code":"OK","reason":null,"latencyMs":1486},
+    "ui": "Navigated to /review with a Bún mọc group and four editable components. Unknown nutrition stayed unknown; save remained disabled pending confirmation. Recognition accuracy is not established by this synthetic illustration."
+  },
+  "startupChecks": [
+    {"route":"/api/v1/analyze-meal","method":"GET","status":405,"timestamp":"2026-09-22T10:34:22.746Z"},
+    {"route":"/api/v2/explanations/generate","method":"GET","status":405,"timestamp":"2026-09-22T10:35:20.564Z"}
+  ],
+  "startupObservation": "The browser declined to display the 405 response documents (ERR_BLOCKED_BY_CLIENT); server logs independently confirm handler startup and 405 rather than the previous invocation 500. The v2 vision POST itself verifies its startup.",
+  "textGeneration": "Not exercised live: hosted review displayed the local template and no generated-explanation action. Configuration was not changed. Text handler startup and emitted empty-capability fallback were verified; live text-provider connectivity remains UNKNOWN.",
+  "limits": "One successful synthetic provider request after the earlier pre-provider startup failure. No real health records, production deployment, credentials or configuration changes. No provider quality, clinical safety, physical-device or sustained availability claim."
+}

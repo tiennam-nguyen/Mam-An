@@ -1,0 +1,13 @@
+food_id,id,label_vi,factor,aliases_pipe,source_id,source_locator,derivation_method,review_status
+rice,reference,1 phần tham chiếu,1,1 phần,mam-an-design,foods.csv rice serving,IDENTITY,REVIEWED
+egg,reference,1 quả,1,một quả|1 quả,mam-an-design,foods.csv egg serving,IDENTITY,REVIEWED
+egg,half,1/2 quả,0.5,nửa quả|1/2 quả,mam-an-design,half of reference egg,EXACT_FRACTION,REVIEWED
+cucumber,reference,1 phần tham chiếu,1,1 phần,mam-an-design,foods.csv cucumber serving,IDENTITY,REVIEWED
+pho,reference,1 tô,1,một tô|1 tô,mam-an-design,unknown nutrition serving identity,UNKNOWN_NUTRITION_IDENTITY,REVIEWED
+pho,half,1/2 tô,0.5,nửa tô|1/2 tô,mam-an-design,half of unknown nutrition serving,EXACT_FRACTION,REVIEWED
+noodles,reference,1 tô,1,một tô|1 tô,mam-an-design,unknown nutrition serving identity,UNKNOWN_NUTRITION_IDENTITY,REVIEWED
+noodles,half,1/2 tô,0.5,nửa tô|1/2 tô,mam-an-design,half of unknown nutrition serving,EXACT_FRACTION,REVIEWED
+broth,reference,1 vá,1,một vá|1 vá,mam-an-design,unknown nutrition serving identity,UNKNOWN_NUTRITION_IDENTITY,REVIEWED
+beverage,reference,1 ly,1,một ly|1 ly,mam-an-design,unknown nutrition serving identity,UNKNOWN_NUTRITION_IDENTITY,REVIEWED
+rice-bowl,reference,1 bát,1,một bát|1 bát|1 chén,mam-an-design,unknown bowl weight no conversion to verified rice,UNKNOWN_NUTRITION_IDENTITY,REVIEWED
+rice-bowl,half,1/2 bát,0.5,nửa bát|1/2 bát|nửa chén,mam-an-design,half of unknown nutrition serving,EXACT_FRACTION,REVIEWED

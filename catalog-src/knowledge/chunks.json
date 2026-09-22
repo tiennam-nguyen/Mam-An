@@ -1,0 +1,5 @@
+[
+ {"id":"logging","title":"Các bữa đã ghi","body":"Nhật ký chỉ mô tả các bữa và số đo đã nhập; không đại diện cho toàn bộ lượng ăn. Liên kết số đo với bữa ăn không chứng minh quan hệ nhân quả.","sourceLabel":"Quy tắc ghi nhận Mâm An","sourceRef":"mam-an-design:SRS-FR-012; SRS-FR-024","knowledgeVersion":"knowledge-v1","tags":["meal-logging","personal-pattern"]},
+ {"id":"portion","title":"So sánh khẩu phần","body":"Thay đổi lượng thành phần sẽ tính lại ước tính từ danh mục. Các phần chưa có dữ liệu vẫn được ghi là chưa biết; tổng có thể chưa đầy đủ.","sourceLabel":"Quy tắc tính Mâm An","sourceRef":"mam-an-design:SRS-FR-006; SRS-FR-020","knowledgeVersion":"knowledge-v1","tags":["portion","starch","uncertainty","carbohydrate"]},
+ {"id":"mixed-dish","title":"Kiểm tra thành phần","body":"Cấu trúc món mẫu là điểm bắt đầu để bạn kiểm tra. Có thể thêm, bỏ hoặc sửa nước dùng, sốt, đồ uống và phần ăn kèm theo bữa thực tế.","sourceLabel":"Quy tắc thành phần Mâm An","sourceRef":"mam-an-design:SRS-FR-019","knowledgeVersion":"knowledge-v1","tags":["mixed-dish","condiment","beverage","broth"]}
+]

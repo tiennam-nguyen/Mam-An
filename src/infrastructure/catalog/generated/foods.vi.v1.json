@@ -1,6 +1,37 @@
 [
   {
+    "id": "beverage",
+    "category": "BEVERAGE",
+    "nameVi": "Đồ uống",
+    "aliases": [
+      "đồ uống"
+    ],
+    "servingLabel": "1 ly chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
+  },
+  {
+    "id": "broth",
+    "category": "BROTH",
+    "nameVi": "Nước dùng",
+    "aliases": [
+      "nước phở"
+    ],
+    "servingLabel": "1 vá chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
+  },
+  {
     "id": "cucumber",
+    "category": "VEGETABLE",
     "nameVi": "Dưa chuột",
     "aliases": [
       "dưa leo"
@@ -13,10 +44,11 @@
     "sourceRefs": [
       "aseanfoods-2014:AAD46 PDF page 39 table page 6"
     ],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
   },
   {
     "id": "egg",
+    "category": "PROTEIN",
     "nameVi": "Trứng gà luộc",
     "aliases": [
       "trứng luộc"
@@ -29,10 +61,26 @@
     "sourceRefs": [
       "aseanfoods-2014:AAH15 PDF page 56 table page 23"
     ],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
+  },
+  {
+    "id": "noodles",
+    "category": "STARCH",
+    "nameVi": "Bánh phở",
+    "aliases": [
+      "bánh phở"
+    ],
+    "servingLabel": "1 tô chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
   },
   {
     "id": "pho",
+    "category": "MIXED",
     "nameVi": "Phở bò",
     "aliases": [
       "phở"
@@ -43,10 +91,11 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
   },
   {
     "id": "rice",
+    "category": "STARCH",
     "nameVi": "Cơm trắng",
     "aliases": [
       "cơm",
@@ -60,6 +109,21 @@
     "sourceRefs": [
       "aseanfoods-2014:AAA63 PDF page 34 table page 1"
     ],
-    "catalogVersion": "v1"
+    "catalogVersion": "v2"
+  },
+  {
+    "id": "rice-bowl",
+    "category": "STARCH",
+    "nameVi": "Cơm theo bát",
+    "aliases": [
+      "cơm theo bát"
+    ],
+    "servingLabel": "1 bát chưa xác định",
+    "carbPerServing": null,
+    "kcalPerServing": null,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [],
+    "catalogVersion": "v2"
   }
 ]

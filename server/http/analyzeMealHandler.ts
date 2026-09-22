@@ -1,5 +1,10 @@
 import sharp from 'sharp';
-import type { FailoverVisionService } from '../ai/failoverVisionService.js';
+import type {
+  ProviderAnalyzeInput,
+  ProviderAnalysisResult,
+} from '../ai/visionAnalysisProvider.js';
+import type { Result } from '../../src/domain/common/result.js';
+import type { AppError } from '../../src/shared/errors/appError.js';
 import type { ErrorCode } from '../../src/shared/errors/appError.js';
 import { NormalizedSchema } from '../ai/providerResponseSchema.js';
 const statuses: Partial<Record<ErrorCode, number>> = {
@@ -14,11 +19,17 @@ const statuses: Partial<Record<ErrorCode, number>> = {
   INTERNAL_ERROR: 500,
 };
 export function createAnalyzeMealHandler(
-  service: FailoverVisionService,
+  service: {
+    analyze(
+      input: ProviderAnalyzeInput,
+      signal: AbortSignal,
+    ): Promise<Result<ProviderAnalysisResult, AppError>>;
+  },
   maxBytes = 3000000,
+  version: 1 | 2 = 1,
 ) {
   return async (request: Request): Promise<Response> => {
-    const requestId = crypto.randomUUID();
+    let requestId = crypto.randomUUID() as string;
     const error = (
       code: ErrorCode,
       retryable = false,
@@ -71,12 +82,19 @@ export function createAnalyzeMealHandler(
         return error('INVALID_IMAGE');
       }
       if (
-        [...form.keys()].some((k) => k !== 'image' && k !== 'locale') ||
+        [...form.keys()].some(
+          (k) =>
+            k !== 'image' && k !== (version === 1 ? 'locale' : 'request_id'),
+        ) ||
         form.getAll('image').length !== 1 ||
-        form.getAll('locale').length !== 1 ||
-        form.get('locale') !== 'vi-VN'
+        (version === 1
+          ? form.getAll('locale').length !== 1 || form.get('locale') !== 'vi-VN'
+          : form.getAll('request_id').length !== 1 ||
+            typeof form.get('request_id') !== 'string' ||
+            !/^[a-zA-Z0-9:_-]{1,100}$/.test(String(form.get('request_id'))))
       )
         return error('INVALID_INPUT');
+      if (version === 2) requestId = String(form.get('request_id'));
       const image = form.get('image');
       if (
         !(image instanceof Blob) ||
@@ -114,8 +132,21 @@ export function createAnalyzeMealHandler(
       return Response.json(
         {
           request_id: requestId,
-          schema_version: '1',
+          schema_version: String(version),
           candidates: parsed.data.candidates.map((c) => ({
+            ...(version === 2
+              ? {
+                  candidate_dish_template_id: c.candidateDishTemplateId ?? null,
+                  suggested_components:
+                    c.suggestedComponents?.map((s) => ({
+                      raw_name: s.rawName,
+                      role: s.role,
+                      suggested_portion_multiplier:
+                        s.suggestedPortionMultiplier,
+                      suggested_portion_label: s.suggestedPortionLabel,
+                    })) ?? [],
+                }
+              : {}),
             raw_name: c.rawName,
             suggested_portion_multiplier: c.suggestedPortionMultiplier,
             suggested_portion_label: c.suggestedPortionLabel,

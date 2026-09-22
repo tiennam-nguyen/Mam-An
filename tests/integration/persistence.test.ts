@@ -67,7 +67,7 @@ it('schema corruption is read failure rather than empty history', async () => {
     id: 'bad',
     createdAt: 'bad',
     isDemo: 0,
-    schemaVersion: 1,
+    schemaVersion: 2,
     value: meal(),
   });
   const result = await repo.list();
@@ -107,12 +107,16 @@ it('seed is idempotent; reset preserves user-created meals/readings', async () =
 it('version-one storage reopens and feeds weekly aggregation with linked glucose', async () => {
   const db = database();
   const m = meal();
-  const reading = { ...demoData(catalog, now).readings[0]!, measuredAt: now.toISOString(), mealId: m.id };
+  const reading = {
+    ...demoData(catalog, now).readings[0]!,
+    measuredAt: now.toISOString(),
+    mealId: m.id,
+  };
   await new DexieMealRepository(db).save(m, null);
   await new DexieGlucoseRepository(db).save(reading);
   db.close();
   await db.open();
-  expect(db.verno).toBe(1);
+  expect(db.verno).toBe(2);
   const meals = await new DexieMealRepository(db).list();
   const readings = await new DexieGlucoseRepository(db).list();
   expect(meals.ok && readings.ok).toBe(true);

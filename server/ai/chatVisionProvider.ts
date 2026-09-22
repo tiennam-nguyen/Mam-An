@@ -4,7 +4,7 @@ import type {
   ProviderId,
 } from './visionAnalysisProvider.js';
 import { parseProviderResult } from './providerResponseSchema.js';
-import { visionPrompt } from './prompt.js';
+import { visionPrompt, componentPrompt } from './prompt.js';
 import { ok } from '../../src/domain/common/result.js';
 import { fail } from '../../src/shared/errors/appError.js';
 import { httpProviderFailure, providerFailure } from './providerFailure.js';
@@ -36,7 +36,7 @@ export class ChatVisionProvider implements VisionAnalysisProvider {
             {
               role: 'user',
               content: [
-                { type: 'text', text: visionPrompt },
+                { type: 'text', text: visionPrompt + componentPrompt },
                 {
                   type: 'image_url',
                   image_url: {

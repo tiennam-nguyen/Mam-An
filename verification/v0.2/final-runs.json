@@ -1,0 +1,102 @@
+{
+  "startedAt": "2026-09-22T10:31:01.704Z",
+  "revision": "cda3ca11da65a55d9e66fff9fe5d7039dcf9a8a9",
+  "branch": "codex/v0.2-testing-hardening",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "environment": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "node": "v24.13.0",
+    "npm": "11.6.2"
+  },
+  "runs": [
+    {
+      "command": "npm ci",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:31:02.102Z",
+      "finishedAt": "2026-09-22T10:31:24.053Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-install.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:31:24.054Z",
+      "finishedAt": "2026-09-22T10:31:25.216Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-typecheck.txt"
+    },
+    {
+      "command": "npm run catalog:check",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:31:25.216Z",
+      "finishedAt": "2026-09-22T10:31:28.215Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-catalog.txt"
+    },
+    {
+      "command": "npm test",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:31:28.216Z",
+      "finishedAt": "2026-09-22T10:31:34.342Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-tests.txt"
+    },
+    {
+      "command": "npm run build",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:31:34.343Z",
+      "finishedAt": "2026-09-22T10:32:01.972Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-build.txt"
+    },
+    {
+      "command": "npm run test:e2e",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:32:01.972Z",
+      "finishedAt": "2026-09-22T10:33:15.987Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-e2e.txt"
+    },
+    {
+      "command": "npm run audit:safety",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:33:15.988Z",
+      "finishedAt": "2026-09-22T10:33:16.736Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-safety.txt"
+    },
+    {
+      "command": "npm run audit:secrets",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:33:16.736Z",
+      "finishedAt": "2026-09-22T10:33:17.728Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-secrets.txt"
+    },
+    {
+      "command": "git diff --check",
+      "timezone": null,
+      "startedAt": "2026-09-22T10:33:17.728Z",
+      "finishedAt": "2026-09-22T10:33:17.772Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-diff.txt"
+    },
+    {
+      "command": "npm test -- tests/domain.test.ts tests/personal-v2.test.ts tests/domain-hardening.test.ts tests/integration/personal-settings-v2.test.ts",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "startedAt": "2026-09-22T10:33:17.772Z",
+      "finishedAt": "2026-09-22T10:33:19.274Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-Asia-Ho_Chi_Minh.txt"
+    },
+    {
+      "command": "npm test -- tests/domain.test.ts tests/personal-v2.test.ts tests/domain-hardening.test.ts tests/integration/personal-settings-v2.test.ts",
+      "timezone": "America/New_York",
+      "startedAt": "2026-09-22T10:33:19.274Z",
+      "finishedAt": "2026-09-22T10:33:20.613Z",
+      "exitCode": 0,
+      "log": "verification/v0.2/logs/final-America-New_York.txt"
+    }
+  ]
+}

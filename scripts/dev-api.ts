@@ -1,3 +1,5 @@
+import visionV2 from '../api/v2/vision/analyze-meal';
+import explanation from '../api/v2/explanations/generate';
 import { createServer } from 'node:http';
 import { Readable } from 'node:stream';
 import handler from '../api/v1/analyze-meal';
@@ -23,7 +25,14 @@ const server = createServer(async (req, res) => {
           : {}),
       } as RequestInit,
     );
-    const response = await handler.fetch(request);
+    const path = new URL(request.url).pathname;
+    const response = await (path === '/api/v2/vision/analyze-meal'
+      ? visionV2.fetch(request)
+      : path === '/api/v2/explanations/generate'
+        ? explanation.fetch(request)
+        : path === '/api/v1/analyze-meal'
+          ? handler.fetch(request)
+          : Promise.resolve(new Response(null, { status: 404 })));
     res.writeHead(response.status, Object.fromEntries(response.headers));
     res.end(Buffer.from(await response.arrayBuffer()));
   } catch {

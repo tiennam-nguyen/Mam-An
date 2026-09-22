@@ -1,5 +1,10 @@
 :root {
-  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Arial,
+    sans-serif;
   color: #243c34;
   background: #f7f5ee;
   font-size: 16px;
@@ -510,6 +515,7 @@ summary {
   .site-header nav {
     order: 3;
     width: 100%;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 0.5rem;
   }
@@ -665,4 +671,95 @@ summary {
 label.button:focus-within {
   outline: 3px solid #a9bf96;
   outline-offset: 3px;
+}
+
+html.large-text {
+  font-size: 21px;
+}
+.mobile-total {
+  display: none;
+}
+.scenario-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+input[type='checkbox'] {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  min-height: 0;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
+  accent-color: var(--green);
+}
+@media (max-width: 800px) {
+  .review-page {
+    padding-bottom: 6rem;
+  }
+  .simulation-page {
+    padding-bottom: 5rem;
+  }
+  .scenario-comparison {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .simulation-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    margin: 0;
+    padding: 0.75rem 1rem max(0.75rem, env(safe-area-inset-bottom));
+    background: #fffefa;
+    border-top: 1px solid var(--line);
+  }
+  .simulation-actions button {
+    flex: 1;
+    font-size: 0.85rem;
+  }
+  .review-save {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem max(0.75rem, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: #fffefa;
+    box-shadow: 0 -4px 18px #243c3410;
+  }
+  .review-save button {
+    width: auto;
+    flex-shrink: 0;
+  }
+  .mobile-total {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  .mobile-total strong {
+    font-size: 1rem;
+  }
+  .review-page .card {
+    padding: 1rem;
+  }
+}
+.food-card details {
+  margin-block: 0.5rem;
+}
+.food-card summary {
+  cursor: pointer;
+  padding-block: 0.65rem;
+  font-weight: 600;
+}
+@media print {
+  details:not([open]) > :not(summary) {
+    display: none;
+  }
 }

@@ -1,3 +1,5 @@
+import v2 from './generated/catalog.v2.json';
+import type { DishTemplate } from '../../domain/meal/mealEntry';
 import type { FoodCatalog } from '../../application/ports/foodCatalog';
 import type { FoodId } from '../../domain/common/brandedIds';
 import type { FoodItem } from '../../domain/food/foodItem';
@@ -10,6 +12,12 @@ export class StaticFoodCatalog implements FoodCatalog {
     const food = FoodSchema.parse(row);
     return { ...food, id: food.id as FoodId };
   });
+  getPortionUnits(id: string) {
+    return v2.portions.filter((p) => p.foodId === id);
+  }
+  listDishTemplates() {
+    return v2.templates as readonly DishTemplate[];
+  }
   getCatalogVersion() {
     return manifest.catalogVersion;
   }

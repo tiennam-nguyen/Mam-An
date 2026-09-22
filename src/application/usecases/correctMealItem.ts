@@ -1,3 +1,4 @@
+import { entriesFromItems } from '../../domain/meal/mealEntry';
 import type { MealDraft, MealDraftItem } from '../../domain/meal/mealDraft';
 import type { FoodCatalog } from '../ports/foodCatalog';
 import {
@@ -26,6 +27,7 @@ export function correctMealItems(
   const unresolved = calculated.some((i) => !i.foodId && !i.userCorrected);
   return {
     ...draft,
+    entries: entriesFromItems(calculated, 'USER'),
     items: calculated,
     ...calculateMealNutrition(calculated),
     analysisState: transition(draft.analysisState, 'DRAFT_CHANGED', unresolved),

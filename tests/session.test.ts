@@ -38,6 +38,37 @@ function setup(live: AiGateway = new MockLLM(), repo?: MealRepository) {
     meals,
   };
 }
+it('successive applied scenarios use distinct IDs without writing history', async () => {
+  const { service, meals } = setup();
+  await service.sample();
+  const food = catalog.listDemoFoods().find((f) => f.id === 'rice')!;
+  for (let i = 0; i < 2; i++) {
+    const draft = service.getSnapshot().draft!;
+    service.simulate([
+      {
+        type: 'ADD_COMPONENT',
+        targetEntryId: draft.entries[0]!.entryId,
+        foodId: food.id,
+        role: 'STARCH',
+        portion: {
+          unitId: 'reference',
+          quantity: 1,
+          factorToReferenceSnapshot: 1,
+          displayLabelSnapshot: food.servingLabel,
+        },
+      },
+    ]);
+    expect(service.getSnapshot().error).toBeNull();
+    service.applySimulation();
+  }
+  const components = service
+    .getSnapshot()
+    .draft!.entries.flatMap((e) => e.components);
+  expect(components).toHaveLength(5);
+  expect(new Set(components.map((c) => c.componentId)).size).toBe(5);
+  expect(meals.save).not.toHaveBeenCalled();
+  expect(components.find((c) => c.foodId === 'rice')!.role).toBe('STARCH');
+});
 it('sample never calls live and double submit saves once', async () => {
   const live = {
       analyzeMealImage: vi.fn(async () => fail('AI_UNAVAILABLE', 'AI')),
@@ -119,7 +150,12 @@ it('failed save keeps draft and retry uses the same ID', async () => {
 });
 it('live failure preserves selected image, retry succeeds, edits/add/remove recompute', async () => {
   let calls = 0;
-  const live: AiGateway = { analyzeMealImage: async input => ++calls === 1 ? fail('AI_TIMEOUT', 'AI', true) : new MockLLM().analyzeMealImage(input) };
+  const live: AiGateway = {
+    analyzeMealImage: async (input) =>
+      ++calls === 1
+        ? fail('AI_TIMEOUT', 'AI', true)
+        : new MockLLM().analyzeMealImage(input),
+  };
   const { service } = setup(live);
   expect(service.getSnapshot().draft).toBeNull();
   await service.select(new Blob(['x']), 'FILE');

@@ -1,0 +1,48 @@
+
+> mam-an@0.2.0 test:e2e
+> node scripts/run-e2e.mjs ux-review.spec.ts
+
+
+> mam-an@0.2.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.2.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 190 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-DhVHGpja.css                     9.36 kB │ gzip:   2.92 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-3rzCv_lD.js                    544.05 kB │ gzip: 167.77 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 836ms
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (548.04 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:5484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:1912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\ux-review.spec.ts:3:3 › visual UX review 390: correction, save, history, settings, report (4.8s)
+  ok 2 tests\e2e\ux-review.spec.ts:3:3 › visual UX review 1366: correction, save, history, settings, report (2.6s)
+
+  2 passed (10.9s)

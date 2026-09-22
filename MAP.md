@@ -29,3 +29,13 @@ Session tokens and abort controllers discard stale results. Corrections are loca
 ## Frontier
 
 Deterministic demo and mocked API contracts implemented. Live smoke has one verified Groq response and explicit provider failures. Remaining external checks: representative food-photo quality, provider account/privacy controls, deployed HTTPS behavior, target-device camera/install/print, broader data licensing/serving review.
+
+## v0.2 architecture
+
+Entries/components own draft edits. `mealEntry.ts` supplies the flat compatibility projection; persistence checks projection consistency and freezes component/portion estimates. `migrateV1.ts` reads the preserved v1 parser and upgrades through Dexie's transaction without catalog recalculation.
+
+`decisionSimulator.ts` is pure and transient. `personalResponse.ts` computes local signatures, matches, timing buckets and descriptive evidence. `explanation.ts` retrieves curated tagged chunks, minimizes trace data for transport and produces templates/validates optional generated prose. `getPersonalResponse` is the only repository-loading seam for that flow.
+
+`server/compositionRoot.ts` wires the capability router to existing vision adapters and optional text adapters. Both vision API versions share `analyzeMealHandler`; provider identifiers stay server-only. Browser voice is an opt-in input adapter; `GlucoseDataAdapter` is an extension-only type.
+
+Current evidence and deliberate LLD adaptations are in IMPLEMENTATION_STATUS.md. Earlier v0.1 observations above remain historical.
