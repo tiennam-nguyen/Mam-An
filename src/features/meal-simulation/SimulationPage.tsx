@@ -84,7 +84,7 @@ export function SimulationPage() {
       {entries.map((e) => (
         <section key={e.entryId} className="card">
           {(e.components.length !== 1 ||
-            e.components[0].displayName !== e.displayName) && (
+            e.components[0]?.displayName !== e.displayName) && (
             <h2>{e.displayName}</h2>
           )}
           {e.components.map((c) => (
