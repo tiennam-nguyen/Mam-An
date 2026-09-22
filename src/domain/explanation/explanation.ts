@@ -201,7 +201,10 @@ export function templateExplanation(
   payload: ExplanationTransportPayload,
 ): ExplanationResult {
   return {
-    summaryVi: `Bữa hiện tại có ${number(payload.meal.totalCarbEstimate)} g carb ước tính.${payload.meal.completeness !== 'COMPLETE' ? ' Tổng chưa bao gồm đầy đủ các thành phần chưa biết.' : ''}`,
+    summaryVi:
+      payload.meal.totalCarbEstimate === null
+        ? 'Chưa có đủ dữ liệu để ước tính carb của bữa này.'
+        : `Bữa hiện tại có ${number(payload.meal.totalCarbEstimate)} g carb ước tính.${payload.meal.completeness !== 'COMPLETE' ? ' Tổng chưa bao gồm đầy đủ các thành phần chưa biết.' : ''}`,
     personalObservationVi: patternCopy(payload.pattern),
     optionExplanationsVi: payload.scenario
       ? [

@@ -75,6 +75,7 @@ it('real repositories isolate personal modes, preserve preferences, and filter w
       new Date('2026-09-19T12:00:00'),
     );
     expect(current.ok && current.value.loggedMealCount).toBe(6);
+    expect(current.ok && current.value.observedPatternCards.length).toBe(2);
     const old = await getWeeklySummary(
       meals,
       glucose,

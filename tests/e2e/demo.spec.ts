@@ -26,7 +26,7 @@ test('offline sample → correction → save/reload → glucose → week → rep
   const rice = page.locator('article').filter({
     has: page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
   });
-  await rice.getByRole('button', { name: '0.5 phần', exact: true }).click();
+  await rice.getByRole('button', { name: '0,5 phần', exact: true }).click();
   await expect(page.getByTestId('carb-total')).toContainText('18,1');
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
   await expect(

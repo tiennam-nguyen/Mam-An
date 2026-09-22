@@ -108,6 +108,10 @@ test('favourite persists and reuse edits a new meal without mutating the saved o
   ).toBeVisible();
   await page.getByRole('button', { name: 'Dùng lại làm bữa mới' }).click();
   await page
+    .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
+    .first()
+    .click();
+  await page
     .getByLabel('Tên thành phần', { exact: true })
     .first()
     .fill('Món mới của tôi');
@@ -362,7 +366,7 @@ test.describe('optional generated explanations', () => {
           .getByRole('button', { name: 'Thử phương án khác', exact: true })
           .click();
         await page
-          .getByRole('button', { name: /^0.5 ×/ })
+          .getByRole('button', { name: /^0,5 phần/ })
           .first()
           .click();
       }
@@ -372,7 +376,7 @@ test.describe('optional generated explanations', () => {
       await requested;
       if (action === 'edit-and-B') {
         await page
-          .getByRole('button', { name: '0.5 phần', exact: true })
+          .getByRole('button', { name: '0,5 phần', exact: true })
           .first()
           .click();
         await page
@@ -385,9 +389,7 @@ test.describe('optional generated explanations', () => {
       if (action === 'navigate')
         await page.getByRole('link', { name: 'Nhật ký', exact: true }).click();
       if (action === 'apply')
-        await page
-          .getByRole('button', { name: 'Áp dụng vào bữa chưa lưu' })
-          .click();
+        await page.getByRole('button', { name: 'Áp dụng phương án' }).click();
       if (action === 'discard')
         await page
           .getByRole('button', { name: 'Bỏ phương án', exact: true })

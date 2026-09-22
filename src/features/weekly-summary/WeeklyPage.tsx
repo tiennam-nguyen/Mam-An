@@ -218,7 +218,7 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
             {summary.observedPatternCards.map((p) => (
               <div key={p.mealId}>
                 {p.isDemo && <DemoBadge />}
-                <PatternCard pattern={p.pattern} />
+                <PatternCard pattern={p.pattern} title={p.mealLabel} />
               </div>
             ))}
           </section>

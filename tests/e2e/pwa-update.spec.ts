@@ -71,13 +71,11 @@ test('waiting update is offered, preserves unsaved meal, and activates after sav
       .getByRole('button', { name: 'Thử phương án khác', exact: true })
       .click();
     await page
-      .getByRole('button', { name: /^0.5 ×/ })
+      .getByRole('button', { name: /^0,5 phần/ })
       .first()
       .click();
     await expect(update).toBeDisabled();
-    await page
-      .getByRole('button', { name: 'Áp dụng vào bữa chưa lưu' })
-      .click();
+    await page.getByRole('button', { name: 'Áp dụng phương án' }).click();
     await expect(update).toBeDisabled();
     await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
     await expect(

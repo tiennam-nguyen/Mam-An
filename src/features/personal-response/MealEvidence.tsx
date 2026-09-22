@@ -13,11 +13,17 @@ import type { MealScenario } from '../../domain/meal/decisionSimulator';
 import type { PatternEvidence } from '../../domain/personal/personalResponse';
 import type { ExplanationResult } from '../../domain/explanation/explanation';
 import { patternCopy } from '../../domain/explanation/explanation';
-export function PatternCard({ pattern }: { pattern: PatternEvidence }) {
+export function PatternCard({
+  pattern,
+  title = 'Từ các lần đã ghi',
+}: {
+  pattern: PatternEvidence;
+  title?: string;
+}) {
   const p = pattern;
   return (
     <section className="card">
-      <h2>Từ các lần đã ghi</h2>
+      <h2>{title}</h2>
       <p>
         {patternCopy({
           evidenceKey: 'pattern.summary',
@@ -29,26 +35,30 @@ export function PatternCard({ pattern }: { pattern: PatternEvidence }) {
           caveats: p.caveats,
         })}
       </p>
-      <p>
-        {p.sampleCount} bữa góp số đo vào nhóm thời điểm này. Các nhóm cách nhau
-        30 phút chỉ để so sánh thời điểm.
-      </p>
-      <details>
-        <summary>Xem thời điểm ghi nhận</summary>
-        <ul>
-          {p.glucoseObservations.map((o) => (
-            <li key={o.readingId}>
-              {o.minutesFromMeal} phút so với bữa ·{' '}
-              {o.valueNormalized.toLocaleString('vi-VN')} mg/dL ·{' '}
-              {o.source === 'DEMO'
-                ? 'Mẫu'
-                : o.source === 'DEVICE'
-                  ? 'Thiết bị'
-                  : 'Tự nhập'}
-            </li>
-          ))}
-        </ul>
-      </details>
+      {p.sampleCount > 0 && (
+        <p>
+          {p.sampleCount} bữa góp số đo vào nhóm thời điểm này. Các nhóm cách
+          nhau 30 phút chỉ để so sánh thời điểm.
+        </p>
+      )}
+      {p.glucoseObservations.length > 0 && (
+        <details>
+          <summary>Xem thời điểm ghi nhận</summary>
+          <ul>
+            {p.glucoseObservations.map((o) => (
+              <li key={o.readingId}>
+                {o.minutesFromMeal} phút so với bữa ·{' '}
+                {o.valueNormalized.toLocaleString('vi-VN')} mg/dL ·{' '}
+                {o.source === 'DEMO'
+                  ? 'Mẫu'
+                  : o.source === 'DEVICE'
+                    ? 'Thiết bị'
+                    : 'Tự nhập'}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </section>
   );
 }

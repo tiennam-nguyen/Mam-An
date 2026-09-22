@@ -51,8 +51,11 @@ for (const width of [390, 1366])
       await expect(
         page.getByRole('heading', { name: 'Trứng gà luộc', exact: true }),
       ).toBeVisible();
+      await page
+        .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
+        .click();
       await page.getByLabel('Món tham chiếu').selectOption('rice');
-      await page.getByRole('button', { name: '0.5 phần', exact: true }).click();
+      await page.getByRole('button', { name: '0,5 phần', exact: true }).click();
       await expect(page.getByTestId('carb-total')).toHaveText('14,7 g');
       await page
         .getByRole('button', { name: 'Lưu bữa ăn', exact: true })
@@ -143,7 +146,7 @@ test.describe('degraded live paths', () => {
       .getByRole('button', { name: '＋ Cơm trắng', exact: true })
       .click();
     release();
-    await page.getByRole('button', { name: '0.5 phần', exact: true }).click();
+    await page.getByRole('button', { name: '0,5 phần', exact: true }).click();
     await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
     await expect(
       page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),

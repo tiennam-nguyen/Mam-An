@@ -26,13 +26,13 @@ export function SimulationPage() {
   const append = (op: ScenarioOperation) =>
     session.simulate([...(scenario?.operations ?? []), op]);
   return (
-    <>
+    <div className="simulation-page">
       <h1>Thử phương án khác</h1>
       <p>
         Phương án chỉ dùng để so sánh. Sau khi áp dụng, bạn vẫn cần bấm Lưu bữa
         ăn.
       </p>
-      <div className="metric-grid">
+      <div className="scenario-comparison">
         <section className="card">
           <h2>Bữa ban đầu</h2>
           <p>
@@ -40,16 +40,19 @@ export function SimulationPage() {
             {formatNumber(draft.totalKcalEstimate)} kcal
           </p>
           <Completeness value={draft.completeness} />
-          <ul>
-            {draft.entries
-              .flatMap((e) => e.components)
-              .map((c) => (
-                <li key={c.componentId}>
-                  {c.displayName} · {c.portion.quantity} ×{' '}
-                  {c.portion.displayLabelSnapshot}
-                </li>
-              ))}
-          </ul>
+          <details>
+            <summary>Xem thành phần ban đầu</summary>
+            <ul>
+              {draft.entries
+                .flatMap((e) => e.components)
+                .map((c) => (
+                  <li key={c.componentId}>
+                    {c.displayName} · {c.portion.quantity} ×{' '}
+                    {c.portion.displayLabelSnapshot}
+                  </li>
+                ))}
+            </ul>
+          </details>
         </section>
         <section className="card">
           <h2>Phương án đang thử</h2>
@@ -66,8 +69,12 @@ export function SimulationPage() {
             kcal
           </p>
           <p>
-            Chênh lệch: {formatNumber(scenario?.carbDeltaVsBaseline ?? null)} g
-            carb · {formatNumber(scenario?.kcalDeltaVsBaseline ?? null)} kcal
+            {!scenario
+              ? 'Chưa có thay đổi. Chọn khẩu phần hoặc thay thành phần để so sánh.'
+              : scenario.carbDeltaVsBaseline === null ||
+                  scenario.kcalDeltaVsBaseline === null
+                ? 'Chưa đủ dữ liệu để tính chênh lệch.'
+                : `Chênh lệch: ${formatNumber(scenario.carbDeltaVsBaseline)} g carb · ${formatNumber(scenario.kcalDeltaVsBaseline)} kcal`}
           </p>
           <Completeness
             value={scenario?.after.completeness ?? draft.completeness}
@@ -76,10 +83,14 @@ export function SimulationPage() {
       </div>
       {entries.map((e) => (
         <section key={e.entryId} className="card">
-          <h2>{e.displayName}</h2>
+          {(e.components.length !== 1 ||
+            e.components[0].displayName !== e.displayName) && (
+            <h2>{e.displayName}</h2>
+          )}
           {e.components.map((c) => (
             <div className="food-card" key={c.componentId}>
               <h3>{c.displayName}</h3>
+              <p className="muted">Đơn vị: {c.portion.displayLabelSnapshot}</p>
               <div className="chips">
                 {[0.5, 1, 1.5, 2].map((quantity) => (
                   <button
@@ -93,7 +104,7 @@ export function SimulationPage() {
                       })
                     }
                   >
-                    {quantity} × {c.portion.displayLabelSnapshot}
+                    {formatNumber(quantity)} phần
                   </button>
                 ))}
               </div>
@@ -178,7 +189,7 @@ export function SimulationPage() {
           ))}
         </ol>
         <ErrorNotice error={error} />
-        <div className="actions">
+        <div className="actions simulation-actions">
           <button
             className="primary"
             disabled={!scenario}
@@ -187,7 +198,7 @@ export function SimulationPage() {
               if (!session.getScenario()) navigate('/meal/review');
             }}
           >
-            Áp dụng vào bữa chưa lưu
+            Áp dụng phương án
           </button>
           <button
             onClick={() => {
@@ -200,6 +211,6 @@ export function SimulationPage() {
         </div>
         <SafetyNote />
       </section>
-    </>
+    </div>
   );
 }

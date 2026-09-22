@@ -30,13 +30,12 @@ test('mocked browser voice requires explicit start and confirmation, supports ca
     .click();
   await page.getByRole('button', { name: '＋ Cơm trắng', exact: true }).click();
   expect(await page.evaluate(() => (window as any).voice.calls)).toBe(0);
-  const panel = page
-    .locator('details.no-print')
-    .filter({
-      has: page.locator('summary', {
-        hasText: /^Nhập giọng nói: tên thành phần$/,
-      }),
-    });
+  await page.getByText('Sửa tên hoặc món tham chiếu', { exact: true }).click();
+  const panel = page.locator('details.no-print').filter({
+    has: page.locator('summary', {
+      hasText: /^Nhập giọng nói: tên thành phần$/,
+    }),
+  });
   await panel.locator('summary').click();
   const emit = (transcript: string) =>
     page.evaluate(
@@ -96,6 +95,10 @@ test('unsupported voice remains hidden with settings enabled', async ({
     .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
     .click();
   await expect(page.getByText(/^Nhập giọng nói:/)).toHaveCount(0);
+  await page
+    .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
+    .first()
+    .click();
   await expect(
     page.getByLabel('Tên thành phần', { exact: true }).first(),
   ).toBeEditable();

@@ -24,7 +24,7 @@ test('all four offline scenario operations compose, discard, then apply without 
         .locator('.food-card')
         .filter({ has: page.getByRole('heading', { name, exact: true }) });
     await card('Cơm trắng')
-      .getByRole('button', { name: /^0.5 ×/ })
+      .getByRole('button', { name: /^0,5 phần/ })
       .click();
     await card('Dưa chuột')
       .getByRole('button', { name: 'Bỏ Dưa chuột', exact: true })
@@ -46,7 +46,7 @@ test('all four offline scenario operations compose, discard, then apply without 
     );
     await page
       .getByRole('button', {
-        name: apply ? 'Áp dụng vào bữa chưa lưu' : 'Bỏ phương án',
+        name: apply ? 'Áp dụng phương án' : 'Bỏ phương án',
         exact: true,
       })
       .click();
@@ -106,14 +106,14 @@ test('v2 offline decision flow keeps scenarios transient and saves/reloads compo
   const rice = page.locator('.food-card').filter({
     has: page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
   });
-  await rice.getByRole('button', { name: /^0.5 ×/ }).click();
+  await rice.getByRole('button', { name: /^0,5 phần/ }).click();
   await expect(page.getByText(/Chênh lệch: -14,7 g carb/)).toBeVisible();
   await expect.poll(count).toBe(0);
   await page.getByRole('button', { name: 'Bỏ phương án', exact: true }).click();
   await expect(page.getByTestId('carb-total')).toContainText('32,8');
   await page.getByRole('button', { name: 'Thử phương án khác' }).click();
-  await rice.getByRole('button', { name: /^0.5 ×/ }).click();
-  await page.getByRole('button', { name: 'Áp dụng vào bữa chưa lưu' }).click();
+  await rice.getByRole('button', { name: /^0,5 phần/ }).click();
+  await page.getByRole('button', { name: 'Áp dụng phương án' }).click();
   await expect(page.getByTestId('carb-total')).toContainText('18,1');
   await expect.poll(count).toBe(0);
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();

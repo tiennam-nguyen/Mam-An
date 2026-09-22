@@ -62,6 +62,13 @@ export function EntryEditor({
     onChange(
       entries.map((e) => ({
         ...e,
+        displayName:
+          e.components.length === 1 &&
+          e.components[0]?.componentId === id &&
+          e.displayName === e.components[0].displayName &&
+          patch.displayName !== undefined
+            ? patch.displayName
+            : e.displayName,
         userCorrected:
           e.components.some((c) => c.componentId === id) || e.userCorrected,
         components: e.components.map((c) =>
@@ -74,100 +81,108 @@ export function EntryEditor({
       {entries.map((entry) => (
         <article className="card" key={entry.entryId}>
           <h2>{entry.displayName}</h2>
-          <label>
-            Tên món / nhóm
-            <input
-              value={entry.displayName}
-              maxLength={120}
-              onChange={(e) =>
-                onChange(
-                  entries.map((x) =>
-                    x.entryId === entry.entryId
-                      ? {
-                          ...x,
-                          displayName: e.target.value,
-                          userCorrected: true,
-                        }
-                      : x,
-                  ),
-                )
-              }
-            />
-          </label>
+          {(entry.components.length !== 1 || entry.dishTemplateId) && (
+            <label>
+              Tên món / nhóm
+              <input
+                value={entry.displayName}
+                maxLength={120}
+                onChange={(e) =>
+                  onChange(
+                    entries.map((x) =>
+                      x.entryId === entry.entryId
+                        ? {
+                            ...x,
+                            displayName: e.target.value,
+                            userCorrected: true,
+                          }
+                        : x,
+                    ),
+                  )
+                }
+              />
+            </label>
+          )}
           {entry.components.map((c) => (
             <details key={c.componentId} open className="food-card">
               <summary>
-                {c.displayName} · {formatNumber(c.carbEstimate)}{' '}
+                {entry.components.length === 1 ? 'Khẩu phần' : c.displayName} ·{' '}
+                {formatNumber(c.carbEstimate)}{' '}
                 {c.carbEstimate !== null ? 'g carb' : ''}
               </summary>
-              <label>
-                Tên thành phần
-                <input
-                  value={c.displayName}
-                  maxLength={120}
-                  onChange={(e) =>
-                    change(c.componentId, { displayName: e.target.value })
-                  }
+              <details className="component-edit" open={!c.foodId}>
+                <summary>Sửa tên hoặc món tham chiếu</summary>
+                <label>
+                  Tên thành phần
+                  <input
+                    value={c.displayName}
+                    maxLength={120}
+                    onChange={(e) =>
+                      change(c.componentId, { displayName: e.target.value })
+                    }
+                  />
+                </label>
+                <VoiceInput
+                  label="tên thành phần"
+                  onConfirm={(text) => {
+                    change(c.componentId, { displayName: text.slice(0, 120) });
+                  }}
                 />
-              </label>
-              <VoiceInput
-                label="tên thành phần"
-                onConfirm={(text) => {
-                  change(c.componentId, { displayName: text.slice(0, 120) });
-                }}
-              />
-              <VoiceInput
-                label="khẩu phần"
-                onConfirm={(text) => {
-                  const resolved = resolvePortionPhrase(
-                    text,
-                    c.foodId ? (catalog.getPortionUnits?.(c.foodId) ?? []) : [],
-                  );
-                  if (resolved.state !== 'RESOLVED') return false;
-                  change(c.componentId, {
-                    portion: selectPortion(resolved.matches[0]!),
-                  });
-                }}
-              />
-              <label>
-                Vai trò
-                <select
-                  value={c.role}
-                  onChange={(e) =>
+                <VoiceInput
+                  label="khẩu phần"
+                  onConfirm={(text) => {
+                    const resolved = resolvePortionPhrase(
+                      text,
+                      c.foodId
+                        ? (catalog.getPortionUnits?.(c.foodId) ?? [])
+                        : [],
+                    );
+                    if (resolved.state !== 'RESOLVED') return false;
                     change(c.componentId, {
-                      role: e.target.value as MealComponent['role'],
-                    })
-                  }
-                >
-                  {componentRoles.map((r) => (
-                    <option key={r} value={r}>
-                      {roleLabels[r]}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                Món tham chiếu
-                <select
-                  value={c.foodId ?? ''}
-                  onChange={(e) => {
-                    const f = catalog.getFoodById(e.target.value as FoodId);
-                    change(c.componentId, {
-                      foodId: f?.id ?? null,
-                      displayName: f?.nameVi ?? c.displayName,
-                      portion: referencePortion(f),
-                      matchState: f ? 'MATCHED' : 'UNMATCHED',
+                      portion: selectPortion(resolved.matches[0]!),
                     });
                   }}
-                >
-                  <option value="">Tự nhập · dinh dưỡng chưa biết</option>
-                  {catalog.listDemoFoods().map((f) => (
-                    <option key={f.id} value={f.id}>
-                      {f.nameVi}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                />
+                <label>
+                  Vai trò
+                  <select
+                    value={c.role}
+                    onChange={(e) =>
+                      change(c.componentId, {
+                        role: e.target.value as MealComponent['role'],
+                      })
+                    }
+                  >
+                    {componentRoles.map((r) => (
+                      <option key={r} value={r}>
+                        {roleLabels[r]}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Món tham chiếu
+                  <select
+                    value={c.foodId ?? ''}
+                    onChange={(e) => {
+                      const f = catalog.getFoodById(e.target.value as FoodId);
+                      change(c.componentId, {
+                        foodId: f?.id ?? null,
+                        displayName: f?.nameVi ?? c.displayName,
+                        portion: referencePortion(f),
+                        matchState: f ? 'MATCHED' : 'UNMATCHED',
+                      });
+                    }}
+                  >
+                    <option value="">Tự nhập · dinh dưỡng chưa biết</option>
+                    {catalog.listDemoFoods().map((f) => (
+                      <option key={f.id} value={f.id}>
+                        {f.nameVi}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </details>
               <label>
                 Đơn vị khẩu phần
                 <select
@@ -207,13 +222,18 @@ export function EntryEditor({
                       })
                     }
                   >
-                    {quantity} phần
+                    {formatNumber(quantity)} phần
                   </button>
                 ))}
               </div>
               <p>
-                {formatNumber(c.carbEstimate)} g carb ·{' '}
-                {formatNumber(c.kcalEstimate)} kcal ước tính
+                {c.carbEstimate === null
+                  ? 'Carb chưa biết'
+                  : `${formatNumber(c.carbEstimate)} g carb`}{' '}
+                ·{' '}
+                {c.kcalEstimate === null
+                  ? 'Năng lượng chưa biết'
+                  : `${formatNumber(c.kcalEstimate)} kcal ước tính`}
               </p>
               {c.foodId && (
                 <details>
@@ -230,11 +250,12 @@ export function EntryEditor({
                   )}
                 </details>
               )}
-              {!c.userCorrected && (
-                <button onClick={() => change(c.componentId, {})}>
-                  Xác nhận thành phần này
-                </button>
-              )}
+              {!c.userCorrected &&
+                (c.matchState !== 'MATCHED' || c.source === 'TEMPLATE') && (
+                  <button onClick={() => change(c.componentId, {})}>
+                    Xác nhận thành phần này
+                  </button>
+                )}
               <button
                 className="quiet"
                 onClick={() =>

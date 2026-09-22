@@ -91,7 +91,9 @@ export function MealDetailPage() {
                     <li key={c.componentId}>
                       {c.displayName} · {c.portion.quantity} ×{' '}
                       {c.portion.displayLabelSnapshot} ·{' '}
-                      {formatNumber(c.carbEstimate)} g carb ước tính
+                      {c.carbEstimate === null
+                        ? 'Carb chưa biết'
+                        : `${formatNumber(c.carbEstimate)} g carb ước tính`}
                     </li>
                   ))}
                 </ul>

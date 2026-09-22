@@ -27,7 +27,7 @@ export function ReviewPage() {
     return <Navigate to="/meal/new" replace />;
   const busy = draft.analysisState === 'SAVING';
   return (
-    <>
+    <div className="review-page">
       <p className="eyebrow">XEM LẠI & ĐIỀU CHỈNH</p>
       <h1>Bữa ăn theo cách của bạn</h1>
       {draft.source === 'DEMO_SAMPLE' && <DemoBadge />}
@@ -77,22 +77,37 @@ export function ReviewPage() {
               onConfirm={(text) => session.note(text)}
             />
             <ErrorNotice error={error} />
-            <button
-              className="primary full"
-              disabled={
-                busy ||
-                !draft.items.length ||
-                draft.analysisState === 'REVIEW_REQUIRED' ||
-                draft.items.some((i) => !i.displayName.trim()) ||
-                draft.entries.some((e) => !e.displayName.trim())
-              }
-              onClick={async () => {
-                const id = await session.save();
-                if (id) navigate('/meal/' + id);
-              }}
-            >
-              {busy ? 'Đang lưu…' : 'Lưu bữa ăn'}
-            </button>
+            <div className="review-save">
+              <span className="mobile-total">
+                Ước tính
+                <br />
+                <strong>
+                  {formatNumber(draft.totalCarbEstimate)}
+                  {draft.totalCarbEstimate !== null ? ' g carb' : ''}
+                </strong>
+              </span>
+              <button
+                className="primary full"
+                disabled={
+                  busy ||
+                  !draft.items.length ||
+                  draft.analysisState === 'REVIEW_REQUIRED' ||
+                  draft.items.some((i) => !i.displayName.trim()) ||
+                  draft.entries.some((e) => !e.displayName.trim())
+                }
+                onClick={async () => {
+                  const id = await session.save();
+                  if (id) navigate('/meal/' + id);
+                }}
+              >
+                {busy ? 'Đang lưu…' : 'Lưu bữa ăn'}
+              </button>
+            </div>
+            {draft.analysisState === 'REVIEW_REQUIRED' && (
+              <p role="status">
+                Xác nhận các thành phần chưa rõ để lưu bữa ăn.
+              </p>
+            )}
             <SafetyNote />
             <button
               className="quiet"
@@ -111,6 +126,6 @@ export function ReviewPage() {
           />
         </aside>
       </div>
-    </>
+    </div>
   );
 }
