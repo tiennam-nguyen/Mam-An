@@ -236,10 +236,13 @@ export function validateGeneratedExplanation(
   const normalized = text
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd')
-    .toLowerCase();
+    .toLowerCase()
+    .replace(/đ/g, 'd');
   if (
-    /[<>]/.test(text) ||
+    /[<>%％]/.test(text) ||
+    /phan tram|mac benh|ban bi benh|ban bi tieu duong|gay bien dong/.test(
+      normalized,
+    ) ||
     /insulin|\btiem\b|nen an|nen chon|khuyen|tot nhat|recommend|best|nguyen nhan|lam tang|lam giam|thuoc|medicat|prescri|treatment|diagnos|chan doan|dieu tri|gay ra|gay tang|gay giam|caus(?:e|ed|es)|an toan|nguy hiem|duoc an|cam an|safe|unsafe|forbidden|allowed|chac chan|dam bao|co the ban|your body/.test(
       normalized,
     )

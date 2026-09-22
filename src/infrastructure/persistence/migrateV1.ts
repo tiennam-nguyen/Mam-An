@@ -1,5 +1,6 @@
 import { readMealRow } from './legacyV1Schemas';
 import { entriesFromItems } from '../../domain/meal/mealEntry';
+import { parseMeal } from './persistenceSchemas';
 export class MigrationFailure extends Error {
   constructor() {
     super('MIGRATION_FAILED');
@@ -14,11 +15,11 @@ export function migrateV1Meal(row: unknown) {
       createdAt: old.createdAt,
       isDemo: (old.isDemo ? 1 : 0) as 0 | 1,
       schemaVersion: 2 as const,
-      value: {
+      value: parseMeal({
         ...old,
         schemaVersion: 2 as const,
         entries: entriesFromItems(old.items, 'MIGRATION'),
-      },
+      }),
     };
   } catch {
     throw new MigrationFailure();

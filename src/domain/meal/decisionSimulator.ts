@@ -75,6 +75,15 @@ export function createScenario(
 ): MealScenario {
   if (!['REVIEW_READY', 'SAVE_ERROR'].includes(baseline.analysisState))
     throw new Error('Review required');
+  const entryIds = baseline.entries.map((e) => e.entryId);
+  const componentIds = baseline.entries.flatMap((e) =>
+    e.components.map((c) => c.componentId),
+  );
+  if (
+    new Set(entryIds).size !== entryIds.length ||
+    new Set(componentIds).size !== componentIds.length
+  )
+    throw new Error('Duplicate scenario target');
   let entries = cloneEntries(baseline.entries);
   const labels: string[] = [];
   operations.forEach((op, index) => {

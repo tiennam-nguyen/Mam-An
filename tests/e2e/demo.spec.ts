@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 test('offline sample → correction → save/reload → glucose → week → report', async ({
   page,
   context,
@@ -33,7 +33,7 @@ test('offline sample → correction → save/reload → glucose → week → rep
     page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
   ).toBeVisible();
   await page.reload();
-  await expect(page.getByText('18,1 g carb')).toBeVisible();
+  await expect(page.getByText('18,1 g carb', { exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Thêm số đo', exact: true }).click();
   await page.getByLabel('Giá trị', { exact: true }).fill('6.7');
   await page.getByRole('combobox', { name: /^Đơn vị/ }).selectOption('MMOL_L');

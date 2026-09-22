@@ -142,9 +142,7 @@ export function MealEvidence({
           <details key={k.id}>
             <summary>{k.title}</summary>
             <p>{k.body}</p>
-            <small>
-              {k.sourceLabel} · {k.knowledgeVersion}
-            </small>
+            <small>{k.sourceLabel}</small>
           </details>
         ))}
         <p className="muted">{explanation.uncertaintyNoteVi}</p>

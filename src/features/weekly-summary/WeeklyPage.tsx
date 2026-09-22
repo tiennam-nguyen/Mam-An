@@ -13,7 +13,7 @@ import {
 } from '../../shared/ui/common';
 import { getWeeklySummary } from '../../application/usecases/getWeeklySummary';
 export function WeeklyPage({ report = false }: { report?: boolean }) {
-  const { meals, glucose, clock, catalog } = useServices(),
+  const { meals, glucose, clock } = useServices(),
     [endDay, setEndDay] = useState(localDate(clock.now())),
     load = useCallback(
       () =>
@@ -47,17 +47,18 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
           </Link>
         )}
       </div>
-      <label className="no-print">
-        Ngày kết thúc khoảng 7 ngày
-        <input
-          type="date"
-          value={endDay}
-          onChange={(e) => {
-            if (e.target.value) setEndDay(e.target.value);
-          }}
-          disabled={!report}
-        />
-      </label>
+      {report && (
+        <label className="no-print">
+          Ngày kết thúc khoảng 7 ngày
+          <input
+            type="date"
+            value={endDay}
+            onChange={(e) => {
+              if (e.target.value) setEndDay(e.target.value);
+            }}
+          />
+        </label>
+      )}
       <ErrorNotice error={state.error} retry={state.retry} />
       {state.loading && <p role="status">Đang tổng hợp…</p>}
       {summary && (
@@ -223,8 +224,7 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
           </section>
           <SafetyNote kind="weekly" />
           <p className="muted">
-            Danh mục {catalog.getCatalogVersion()} · Nguồn ASEANFOODS 2014 · Lưu
-            tại thiết bị
+            Nguồn dinh dưỡng: ASEANFOODS 2014 · Lưu tại thiết bị
           </p>
         </>
       )}

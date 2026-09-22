@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page } from './fixtures';
 import sharp from 'sharp';
 const response = {
   request_id: 'test-request',
@@ -61,7 +61,9 @@ for (const width of [390, 1366])
         page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
       ).toBeVisible();
       await page.reload();
-      await expect(page.getByText('14,7 g carb')).toBeVisible();
+      await expect(
+        page.getByText('14,7 g carb', { exact: true }),
+      ).toBeVisible();
       await page.goto('/history');
       await expect(
         page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
@@ -147,7 +149,7 @@ test.describe('degraded live paths', () => {
       page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
     ).toBeVisible();
     await page.reload();
-    await expect(page.getByText('14,7 g carb')).toBeVisible();
+    await expect(page.getByText('14,7 g carb', { exact: true })).toBeVisible();
     await expect(page.getByText('Trứng gà luộc', { exact: true })).toHaveCount(
       0,
     );

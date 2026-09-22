@@ -1,5 +1,6 @@
 import { MealEvidence } from '../personal-response/MealEvidence';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
+import type { AppError } from '../../shared/errors/appError';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useServices } from '../../shared/ui/ServicesContext';
 import { useQuery } from '../../shared/ui/useQuery';
@@ -15,6 +16,7 @@ import { MealThumbnail } from '../../shared/ui/MealThumbnail';
 import type { MealId } from '../../domain/common/brandedIds';
 import { ok } from '../../domain/common/result';
 export function MealDetailPage() {
+  const [saveError, setSaveError] = useState<AppError | null>(null);
   const { mealId } = useParams(),
     navigate = useNavigate(),
     { meals, glucose, session, settings } = useServices(),
@@ -38,6 +40,7 @@ export function MealDetailPage() {
       <Link to="/history">← Nhật ký</Link>
       <h1>Bữa ăn đã lưu</h1>
       <ErrorNotice error={state.error} retry={state.retry} />
+      <ErrorNotice error={saveError} />
       {state.loading && <p role="status">Đang đọc bữa ăn…</p>}
       {state.data && !meal && <p>Không tìm thấy bữa ăn này.</p>}
       {meal && (
@@ -70,7 +73,10 @@ export function MealDetailPage() {
                     ? ids.filter((id) => id !== meal.id)
                     : [...ids, meal.id].slice(-100),
                 });
-                if (result.ok) state.retry();
+                if (result.ok) {
+                  setSaveError(null);
+                  state.retry();
+                } else setSaveError(result.error);
               }}
             >
               {state.data?.settings.favouriteMealIds?.includes(meal.id)
@@ -93,7 +99,7 @@ export function MealDetailPage() {
             ))}
             {meal.note && <p>Ghi chú: {meal.note}</p>}
             <p className="muted">
-              Bản ghi tham chiếu · Danh mục {meal.catalogVersion}
+              Ước tính được giữ nguyên theo dữ liệu tại thời điểm lưu.
             </p>
             <SafetyNote />
           </div>

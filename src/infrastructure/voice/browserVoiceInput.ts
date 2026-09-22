@@ -42,8 +42,8 @@ export class BrowserVoiceInput implements VoiceInputAdapter {
         recognition.onresult = null;
         recognition.onerror = null;
         recognition.abort();
-        text !== null
-          ? resolve(text.slice(0, 2000))
+        text?.trim()
+          ? resolve(text.trim().slice(0, 2000))
           : reject(new Error('CAPABILITY_UNAVAILABLE'));
       };
       const abort = () => finish(null);
