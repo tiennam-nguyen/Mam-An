@@ -223,6 +223,18 @@ const numericTokens = (s: string) =>
   (s.match(/[-+]?\d+(?:[.,]\d+)?/g) ?? []).map((v) =>
     Number(v.replace(',', '.')),
   );
+const normalizeText = (text: string) =>
+  text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/đ/g, 'd');
+const percentages = (text: string) =>
+  [
+    ...normalizeText(text).matchAll(
+      /([-+]?\d+(?:[.,]\d+)?)\s*(?:%|％|phan tram)/g,
+    ),
+  ].map((match) => Number(match[1]!.replace(',', '.')));
 export function validateGeneratedExplanation(
   output: Omit<ExplanationResult, 'generationMode'>,
   payload: ExplanationTransportPayload,
@@ -233,14 +245,15 @@ export function validateGeneratedExplanation(
     ...output.optionExplanationsVi,
     output.uncertaintyNoteVi,
   ].join(' ');
-  const normalized = text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/đ/g, 'd');
+  const normalized = normalizeText(text);
+  const supportedPercentages = new Set(
+    payload.knowledge.flatMap((k) => percentages(k.body)),
+  );
+  if (percentages(text).some((value) => !supportedPercentages.has(value)))
+    return false;
   if (
-    /[<>%％]/.test(text) ||
-    /phan tram|mac benh|ban bi benh|ban bi tieu duong|gay bien dong/.test(
+    /[<>]/.test(text) ||
+    /mac benh|ban mac|ban bi benh|ban bi tieu duong|gay bien dong|bua nay gay|giam lieu|tang lieu|doi lieu|lieu dung|uong.*vien/.test(
       normalized,
     ) ||
     /insulin|\btiem\b|nen an|nen chon|khuyen|tot nhat|recommend|best|nguyen nhan|lam tang|lam giam|thuoc|medicat|prescri|treatment|diagnos|chan doan|dieu tri|gay ra|gay tang|gay giam|caus(?:e|ed|es)|an toan|nguy hiem|duoc an|cam an|safe|unsafe|forbidden|allowed|chac chan|dam bao|co the ban|your body/.test(
