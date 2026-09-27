@@ -9,6 +9,7 @@ import {
   SafetyNote,
   DemoBadge,
   formatNumber,
+  GlucoseValue,
   formatTime,
 } from '../../shared/ui/common';
 import { getWeeklySummary } from '../../application/usecases/getWeeklySummary';
@@ -152,16 +153,17 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
                   <tbody>
                     {summary.glucoseReadings.map((g) => (
                       <tr key={g.id}>
-                        <td>{formatTime(g.measuredAt)}</td>
-                        <td>
-                          {formatNumber(g.value)}{' '}
-                          {g.unit === 'MG_DL' ? 'mg/dL' : 'mmol/L'}
+                        <td data-label="Thời điểm">
+                          {formatTime(g.measuredAt)}
                         </td>
-                        <td>
+                        <td data-label="Số đo">
+                          <GlucoseValue reading={g} />
+                        </td>
+                        <td data-label="Ghi nhận">
                           {g.isDemo ? <DemoBadge /> : 'Tự ghi'}
                           {g.mealId ? ' · Có liên kết bữa' : ''}
                         </td>
-                        <td>
+                        <td data-label="Thời gian so với bữa">
                           {g.mealId &&
                           summary.meals.some((m) => m.id === g.mealId)
                             ? Math.round(

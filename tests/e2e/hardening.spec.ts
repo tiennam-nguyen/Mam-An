@@ -107,10 +107,7 @@ test('favourite persists and reuse edits a new meal without mutating the saved o
     page.getByRole('button', { name: 'Bỏ yêu thích' }),
   ).toBeVisible();
   await page.getByRole('button', { name: 'Dùng lại làm bữa mới' }).click();
-  await page
-    .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
-    .first()
-    .click();
+  await page.getByText('Chỉnh món này', { exact: true }).first().click();
   await page
     .getByLabel('Tên thành phần', { exact: true })
     .first()
@@ -222,10 +219,14 @@ for (const [quality, minutes, expected] of [
     await page
       .getByRole('button', { name: 'Nhập món thủ công', exact: true })
       .click();
-    for (const name of ['Cơm trắng', 'Trứng gà luộc', 'Dưa chuột'])
+    for (const name of ['Cơm trắng', 'Trứng gà luộc', 'Dưa chuột']) {
+      const add = page.locator('.add-dish');
+      if (!(await add.evaluate((el) => el.hasAttribute('open'))))
+        await add.locator('summary').click();
       await page
         .getByRole('button', { name: `＋ ${name}`, exact: true })
         .click();
+    }
     await expect(page.getByText(new RegExp(expected)).first()).toBeVisible();
     await expect(page.locator('body')).not.toContainText('999');
     await page.goto('/report');
@@ -310,6 +311,7 @@ test.describe('optional generated explanations', () => {
       await page
         .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
         .click();
+      await page.getByText('Thêm ghi chú', { exact: true }).click();
       await page.getByLabel('Ghi chú', { exact: true }).fill('PRIVATE_NOTE');
       await page
         .getByRole('button', { name: 'Diễn đạt lại bằng AI', exact: true })

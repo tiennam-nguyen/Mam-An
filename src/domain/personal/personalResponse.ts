@@ -1,6 +1,7 @@
 import type { Meal } from '../meal/meal';
 import type { MealDraft } from '../meal/mealDraft';
 import type { GlucoseReading } from '../glucose/glucoseReading';
+import { isGlucoseValueUsable } from '../glucose/glucoseValidation';
 export const similarityRule = {
   version: 'meal-similarity-v1',
   tier1: [0.75, 1.25],
@@ -187,8 +188,7 @@ export function buildPatternEvidence(
       if (
         !meal ||
         r.isDemo !== (mode === 'DEMO') ||
-        !Number.isFinite(r.value) ||
-        r.value <= 0
+        !isGlucoseValueUsable(r.value, r.unit)
       )
         return [];
       const minutesFromMeal = Math.round(

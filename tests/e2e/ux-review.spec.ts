@@ -23,18 +23,14 @@ for (const width of [390, 1366])
     await shot('review');
     await shot('review-full', true);
     const first = page.locator('article').first();
-    await first
-      .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
-      .click();
+    await first.getByText('Chỉnh món này', { exact: true }).click();
     await first
       .getByLabel('Tên thành phần', { exact: true })
       .fill('Món đã sửa');
     await expect(
       first.getByRole('heading', { name: 'Món đã sửa', exact: true }),
     ).toBeVisible();
-    await first
-      .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
-      .click();
+    await first.getByText('Chỉnh món này', { exact: true }).click();
     await page
       .getByRole('button', { name: 'Thử phương án khác', exact: true })
       .click();

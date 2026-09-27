@@ -51,10 +51,14 @@ for (const width of [390, 1366])
       await expect(
         page.getByRole('heading', { name: 'Trứng gà luộc', exact: true }),
       ).toBeVisible();
-      await page
-        .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
-        .click();
+      await page.getByText('Chỉnh món này', { exact: true }).click();
       await page.getByLabel('Món tham chiếu').selectOption('rice');
+      await expect(
+        page.getByLabel('Tên thành phần', { exact: true }),
+      ).toHaveValue('Trứng gà luộc');
+      await page
+        .getByLabel('Tên thành phần', { exact: true })
+        .fill('Cơm trắng');
       await page.getByRole('button', { name: '0,5 phần', exact: true }).click();
       await expect(page.getByTestId('carb-total')).toHaveText('14,7 g');
       await page

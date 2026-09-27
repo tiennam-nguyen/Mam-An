@@ -32,6 +32,11 @@ export function ReviewPage() {
       <h1>Bữa ăn theo cách của bạn</h1>
       {draft.source === 'DEMO_SAMPLE' && <DemoBadge />}
       <p>Kiểm tra từng thành phần và khẩu phần trước khi lưu.</p>
+      {draft.analysisState === 'REVIEW_REQUIRED' && (
+        <p className="notice" role="status">
+          Mở các thành phần có chữ “Cần xem lại” và xác nhận trước khi lưu.
+        </p>
+      )}
       <div className="review-layout">
         <section>
           <EntryEditor
@@ -48,7 +53,11 @@ export function ReviewPage() {
               {formatNumber(draft.totalCarbEstimate)}
               {draft.totalCarbEstimate !== null ? ' g' : ''}
             </p>
-            <p>{formatNumber(draft.totalKcalEstimate)} kcal</p>
+            <p>
+              {draft.totalKcalEstimate === null
+                ? 'Năng lượng chưa biết'
+                : `${formatNumber(draft.totalKcalEstimate)} kcal`}
+            </p>
             <Completeness value={draft.completeness} />
             <button
               disabled={
@@ -63,19 +72,22 @@ export function ReviewPage() {
             >
               Thử phương án khác
             </button>
-            <label>
-              Ghi chú
-              <textarea
-                maxLength={2000}
-                disabled={busy}
-                value={draft.note ?? ''}
-                onChange={(e) => session.note(e.target.value)}
+            <details>
+              <summary>Thêm ghi chú</summary>
+              <label>
+                Ghi chú
+                <textarea
+                  maxLength={2000}
+                  disabled={busy}
+                  value={draft.note ?? ''}
+                  onChange={(e) => session.note(e.target.value)}
+                />
+              </label>
+              <VoiceInput
+                label="ghi chú"
+                onConfirm={(text) => session.note(text)}
               />
-            </label>
-            <VoiceInput
-              label="ghi chú"
-              onConfirm={(text) => session.note(text)}
-            />
+            </details>
             <ErrorNotice error={error} />
             <div className="review-save">
               <span className="mobile-total">
@@ -103,11 +115,6 @@ export function ReviewPage() {
                 {busy ? 'Đang lưu…' : 'Lưu bữa ăn'}
               </button>
             </div>
-            {draft.analysisState === 'REVIEW_REQUIRED' && (
-              <p role="status">
-                Xác nhận các thành phần chưa rõ để lưu bữa ăn.
-              </p>
-            )}
             <SafetyNote />
             <button
               className="quiet"

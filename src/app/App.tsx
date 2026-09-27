@@ -1,9 +1,25 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Link, NavLink } from 'react-router-dom';
+import { useEffect, useLayoutEffect } from 'react';
+import {
+  BrowserRouter,
+  Link,
+  NavLink,
+  useLocation,
+  useNavigationType,
+} from 'react-router-dom';
 import { AppRoutes } from './routes';
 import { ServicesContext } from '../shared/ui/ServicesContext';
 import type { AppServices } from '../application/services/appServices';
 import { PwaUpdateNotice } from '../shared/ui/PwaUpdateNotice';
+function NavigationStart() {
+  const { pathname } = useLocation();
+  const navigationType = useNavigationType();
+  useLayoutEffect(() => {
+    if (navigationType === 'POP') return;
+    window.scrollTo(0, 0);
+    document.getElementById('main')?.focus({ preventScroll: true });
+  }, [pathname, navigationType]);
+  return null;
+}
 export function App({ services }: { services: AppServices }) {
   useEffect(() => {
     let active = true;
@@ -26,6 +42,7 @@ export function App({ services }: { services: AppServices }) {
   return (
     <ServicesContext.Provider value={services}>
       <BrowserRouter>
+        <NavigationStart />
         <a className="skip-link" href="#main">
           Đến nội dung
         </a>
@@ -46,7 +63,7 @@ export function App({ services }: { services: AppServices }) {
             ＋ Ghi bữa
           </Link>
         </header>
-        <main id="main">
+        <main id="main" tabIndex={-1}>
           <PwaUpdateNotice />
           <AppRoutes />
         </main>

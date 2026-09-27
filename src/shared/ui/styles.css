@@ -75,11 +75,11 @@ p {
   margin-top: 0;
 }
 h1 {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: inherit;
   font-weight: 500;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.2;
-  letter-spacing: -0.04em;
+  letter-spacing: normal;
   margin-bottom: 1rem;
 }
 h2 {
@@ -118,7 +118,7 @@ p {
   border-bottom: 1px solid var(--line);
 }
 .brand {
-  font-family: Georgia, serif;
+  font-family: inherit;
   font-size: 1.7rem;
   text-decoration: none;
   display: grid;
@@ -141,6 +141,9 @@ p {
   gap: 1.5rem;
 }
 .site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 500;
   letter-spacing: normal;
   line-height: 1.5;
@@ -210,7 +213,7 @@ main {
   gap: 3rem;
 }
 .steps article span {
-  font-family: Georgia, serif;
+  font-family: inherit;
   color: #9ba98b;
   font-size: 1.4rem;
 }
@@ -349,7 +352,7 @@ a:focus-visible {
   background: #edf0e3;
 }
 .big-number {
-  font-family: Georgia, serif;
+  font-family: inherit;
   font-size: 3.6rem;
   line-height: 1.2;
   margin: 0.3rem 0 0.8rem;
@@ -487,13 +490,14 @@ th {
 }
 .skip-link {
   position: absolute;
-  top: -60px;
+  top: 0;
+  transform: translateY(-100%);
   background: white;
   padding: 1rem;
   z-index: 5;
 }
 .skip-link:focus {
-  top: 0;
+  transform: translateY(0);
 }
 .empty {
   text-align: center;
@@ -752,6 +756,88 @@ input[type='checkbox'] {
 }
 .food-card details {
   margin-block: 0.5rem;
+}
+.portion-guide {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-block: 0.6rem;
+}
+summary {
+  min-height: 44px;
+  padding-block: 0.55rem;
+  cursor: pointer;
+}
+.component-edit {
+  margin-top: 0.65rem;
+}
+.food-card,
+.component-edit,
+.add-dish {
+  font-size: 1rem;
+}
+.entry-options {
+  margin-top: 0.5rem;
+}
+.glucose-value {
+  display: block;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.glucose-value small {
+  display: block;
+  font-weight: 400;
+}
+.glucose-value details {
+  font-weight: 400;
+}
+#glucose-error:empty {
+  display: none;
+}
+#glucose-error {
+  color: #8b3026;
+  margin: 0;
+}
+.settings-help {
+  margin-top: -0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.settings-page label:has(input[type='checkbox']) {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .table-scroll table,
+  .table-scroll tbody,
+  .table-scroll tr,
+  .table-scroll td {
+    display: block;
+    width: 100%;
+  }
+  .table-scroll thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .table-scroll tr {
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .table-scroll td {
+    border: 0;
+    padding: 0.25rem 0;
+    overflow-wrap: anywhere;
+  }
+  .table-scroll td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
 }
 .food-card summary {
   cursor: pointer;
