@@ -1,0 +1,8 @@
+# UX correction campaign
+
+- Base: main `113a97ddd9fd3c6a6a654cd813a710730630a852`; branch `codex/v0.2-ux-correction`.
+- Scope: font rendering, progressive component editing, independent user names/catalog mapping, glucose input/presentation/eligibility, settings and mobile journey. No schema migration, history rewrite, provider changes, production deploy or merge.
+- Acceptance: reproduce typography and long-numeric failures; keep ordinary review concise; retain advanced editing and review invariants; reject invalid new readings at both boundaries; preserve historical values with visible data-quality state and exclude invalid observations from statistics; inspect 320/390/desktop normal/large screenshots; maintained tests pass; PR to main.
+- Missing evidence: the mission refers to five operator screenshots but only its text file is attached. Exact operator browser/OS is unknown. Local Windows Chromium and prior screenshots are available.
+- Units: (1) reproduction and font measurements; (2) numerical policy and regression tests; (3) editor/settings simplification; (4) full browser flows and visual review; (5) evidence and PR.
+- Current state: all five units implemented and verified on source `fb2b796f65db8e27270c4838f73d178f920731df`. Final results: 406 tests, 56 E2E tests, typecheck/build/catalog/audits passed. Font fallback and extreme historical-value overflow reproduced; final screenshots visually reviewed. See REPORT.md and final-runs.json. Evidence packaging and PR handoff complete with the evidence commit; operator decides merge/promotion. Preserve three untracked user specification files.

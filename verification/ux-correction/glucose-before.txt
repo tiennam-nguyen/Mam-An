@@ -1,0 +1,42 @@
+
+> mam-an@0.2.0 test
+> vitest run tests/glucose-quality.test.ts
+
+
+ RUN  v5.0.1 C:/Users/LOQ/Mam An
+
+ ❯ tests/glucose-quality.test.ts (4 tests | 4 failed) 14ms
+   × rejects unsafe new measurement 1000000000 at domain and use case 10ms
+   × rejects unsafe new measurement 1e+308 at domain and use case 1ms
+   × rejects unsafe new measurement 6.123456789 at domain and use case 1ms
+   × rejects unsafe new measurement 100 at domain and use case 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/glucose-quality.test.ts > rejects unsafe new measurement 1000000000 at domain and use case
+ FAIL  tests/glucose-quality.test.ts > rejects unsafe new measurement 1e+308 at domain and use case
+ FAIL  tests/glucose-quality.test.ts > rejects unsafe new measurement 6.123456789 at domain and use case
+ FAIL  tests/glucose-quality.test.ts > rejects unsafe new measurement 100 at domain and use case
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/glucose-quality.test.ts:9:42
+      7| it.each([1e9, 1e308, 6.123456789, 100])('rejects unsafe new measuremen…
+      8|   const save = vi.fn(async () => ok(undefined));
+      9|   expect(isValidGlucose(reading(value))).toBe(false);
+       |                                          ^
+     10|   expect((await addGlucoseReading(reading(value), {save} as never, {} …
+     11|   expect(save).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  23:12:32
+   Duration  1.19s (transform 52%, worker 25%, import 19%, tests 5%)

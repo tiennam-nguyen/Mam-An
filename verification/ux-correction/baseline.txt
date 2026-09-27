@@ -1,0 +1,85 @@
+
+> mam-an@0.2.0 test:e2e
+> node scripts/run-e2e.mjs tests/e2e/ux-correction.spec.ts
+
+
+> mam-an@0.2.0 build
+> npm run catalog:check && tsc --noEmit && vite build
+
+
+> mam-an@0.2.0 catalog:check
+> tsx scripts/validate-food-catalog.ts
+
+Catalog valid and reproducible
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 190 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                          0.24 kB
+dist/index.html                                    0.52 kB │ gzip:   0.34 kB
+dist/assets/index-EQy2g_t2.css                     9.75 kB │ gzip:   2.98 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js    5.65 kB │ gzip:   2.20 kB
+dist/assets/index-uWqXcV-2.js                    544.73 kB │ gzip: 167.93 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.14s
+
+PWA v1.3.0
+mode      generateSW
+precache  10 entries (549.08 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-2fbc6a65.js
+[WebServer] (node:18880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:12812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\ux-correction.spec.ts:6:1 › Vietnamese typography and mobile journey screenshots (3.6s)
+
+
+  1) tests\e2e\ux-correction.spec.ts:6:1 › Vietnamese typography and mobile journey screenshots ────
+
+    Error: locator.setChecked: Clicking the checkbox did not change its state
+    Call log:
+      - waiting for getByLabel('Chữ lớn', { exact: true })
+        - locator resolved to <input type="checkbox"/>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+        - click action done
+        - waiting for scheduled navigations to finish
+        - navigations have finished
+
+
+      13 |     await page.setViewportSize({ width, height: 900 });
+      14 |     await page.goto('/settings');
+    > 15 |     await page.getByLabel('Chữ lớn', { exact: true }).setChecked(large);
+         |                                                       ^
+      16 |     await expect(page.locator('html')).toHaveClass(large ? /large-text/ : /^(?!.*large-text)/);
+      17 |     for (const route of ['/settings', '/weekly', '/glucose/new']) {
+      18 |       await page.goto(route);
+        at C:\Users\LOQ\Mam An\tests\e2e\ux-correction.spec.ts:15:55
+
+    Error Context: test-results\ux-correction-Vietnamese-t-fc007--mobile-journey-screenshots\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ux-correction-Vietnamese-t-fc007--mobile-journey-screenshots\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\ux-correction-Vietnamese-t-fc007--mobile-journey-screenshots\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ux-correction.spec.ts:6:1 › Vietnamese typography and mobile journey screenshots ─────
