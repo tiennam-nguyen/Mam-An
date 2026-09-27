@@ -20,17 +20,15 @@ test('mocked browser voice requires explicit start and confirmation, supports ca
     };
   });
   await page.goto('/settings');
-  await page.getByLabel('Hiện nhập giọng nói khi trình duyệt hỗ trợ').click();
-  await expect(
-    page.getByLabel('Hiện nhập giọng nói khi trình duyệt hỗ trợ'),
-  ).toBeChecked();
+  await page.getByLabel('Nhập bằng giọng nói').click();
+  await expect(page.getByLabel('Nhập bằng giọng nói')).toBeChecked();
   await page.goto('/meal/new');
   await page
     .getByRole('button', { name: 'Nhập món thủ công', exact: true })
     .click();
   await page.getByRole('button', { name: '＋ Cơm trắng', exact: true }).click();
   expect(await page.evaluate(() => (window as any).voice.calls)).toBe(0);
-  await page.getByText('Sửa tên hoặc món tham chiếu', { exact: true }).click();
+  await page.getByText('Chỉnh món này', { exact: true }).click();
   const panel = page.locator('details.no-print').filter({
     has: page.locator('summary', {
       hasText: /^Nhập giọng nói: tên thành phần$/,
@@ -86,19 +84,14 @@ test('unsupported voice remains hidden with settings enabled', async ({
     });
   });
   await page.goto('/settings');
-  await page.getByLabel('Hiện nhập giọng nói khi trình duyệt hỗ trợ').click();
-  await expect(
-    page.getByLabel('Hiện nhập giọng nói khi trình duyệt hỗ trợ'),
-  ).toBeChecked();
+  await page.getByLabel('Nhập bằng giọng nói').click();
+  await expect(page.getByLabel('Nhập bằng giọng nói')).toBeChecked();
   await page.goto('/meal/new');
   await page
     .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
     .click();
   await expect(page.getByText(/^Nhập giọng nói:/)).toHaveCount(0);
-  await page
-    .getByText('Sửa tên hoặc món tham chiếu', { exact: true })
-    .first()
-    .click();
+  await page.getByText('Chỉnh món này', { exact: true }).first().click();
   await expect(
     page.getByLabel('Tên thành phần', { exact: true }).first(),
   ).toBeEditable();

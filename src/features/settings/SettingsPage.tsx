@@ -12,7 +12,7 @@ export function SettingsPage() {
     [error, setError] = useState<AppError | null>(null),
     [message, setMessage] = useState('');
   return (
-    <section className="narrow">
+    <section className="narrow settings-page">
       <h1>Thiết lập</h1>
       <ErrorNotice error={state.error} retry={state.retry} />
       <ErrorNotice error={error} />
@@ -54,6 +54,9 @@ export function SettingsPage() {
             />{' '}
             Chữ lớn
           </label>
+          <p className="settings-help">
+            Tăng cỡ chữ để đọc và thao tác dễ hơn.
+          </p>
           <label>
             <input
               type="checkbox"
@@ -69,8 +72,12 @@ export function SettingsPage() {
                 } else setError(result.error);
               }}
             />{' '}
-            Hiện nhập giọng nói khi trình duyệt hỗ trợ
+            Nhập bằng giọng nói
           </label>
+          <p className="settings-help">
+            Nếu thiết bị hỗ trợ, nút nói sẽ xuất hiện khi chỉnh món. Chỉ nghe
+            khi bạn bấm bắt đầu; bạn xem và xác nhận lời ghi lại trước khi dùng.
+          </p>
           <p role="status">{message}</p>
           <p>Giá trị và đơn vị của số đo cũ luôn được giữ nguyên.</p>
         </div>

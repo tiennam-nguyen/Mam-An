@@ -1,0 +1,1164 @@
+[
+  {
+    "font": "legacy",
+    "character": "ă",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": " ",
+    "fonts": []
+  },
+  {
+    "font": "legacy",
+    "character": "â",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ê",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ô",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ơ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ư",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "đ",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ắ",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ằ",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ẳ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ẵ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ặ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ấ",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ầ",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ẩ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ẫ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ậ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ế",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ề",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ể",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ễ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ệ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ố",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ồ",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 2
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ổ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ỗ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ộ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ớ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ờ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ở",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ỡ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ợ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ứ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ừ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ử",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ữ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ự",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "T",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "h",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "i",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "t",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "l",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "p",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "u",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "n",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "c",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "ủ",
+    "fonts": [
+      {
+        "familyName": "Times New Roman",
+        "postScriptName": "TimesNewRomanPSMT",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "legacy",
+    "character": "a",
+    "fonts": [
+      {
+        "familyName": "Georgia",
+        "postScriptName": "Georgia",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ă",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": " ",
+    "fonts": []
+  },
+  {
+    "font": "system",
+    "character": "â",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ê",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ô",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ơ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ư",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "đ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ắ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ằ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ẳ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ẵ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ặ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ấ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ầ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ẩ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ẫ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ậ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ế",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ề",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ể",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ễ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ệ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ố",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ồ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ổ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ỗ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ộ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ớ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ờ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ở",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ỡ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ợ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ứ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ừ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ử",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ữ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ự",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "T",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "h",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "i",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "t",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "l",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "p",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "u",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "n",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "c",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "ủ",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  },
+  {
+    "font": "system",
+    "character": "a",
+    "fonts": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ]
+  }
+]

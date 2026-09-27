@@ -1,6 +1,32 @@
 import type { AppError } from '../errors/appError';
 import { errorPresenter } from '../../application/services/errorPresenter';
 import { safetyCopy } from '../content/safetyCopy';
+import type { GlucoseReading } from '../../domain/glucose/glucoseReading';
+import { isGlucoseValueUsable } from '../../domain/glucose/glucoseValidation';
+export function GlucoseValue({ reading }: { reading: GlucoseReading }) {
+  const unit = reading.unit === 'MG_DL' ? 'mg/dL' : 'mmol/L';
+  if (!isGlucoseValueUsable(reading.value, reading.unit))
+    return (
+      <div className="glucose-value">
+        <strong>Giá trị cần kiểm tra</strong>
+        <small> Số đo gốc được giữ nguyên; không dùng để tổng hợp.</small>
+        <details>
+          <summary>Xem giá trị đã lưu</summary>
+          <span>
+            {String(reading.value)} {unit}
+          </span>
+        </details>
+      </div>
+    );
+  return (
+    <span className="glucose-value">
+      {new Intl.NumberFormat('vi-VN', {
+        maximumFractionDigits: reading.unit === 'MG_DL' ? 0 : 1,
+      }).format(reading.value)}{' '}
+      {unit}
+    </span>
+  );
+}
 export const formatNumber = (value: number | null) =>
   value === null
     ? 'Chưa có dữ liệu'

@@ -40,6 +40,7 @@ test('offline sample → correction → save/reload → glucose → week → rep
   const timeInput = page.getByLabel('Thời điểm đo', { exact: true });
   const today = (await timeInput.inputValue()).slice(0, 10);
   await timeInput.fill(`${today}T08:30`);
+  await page.getByText('Thêm thông tin (tùy chọn)', { exact: true }).click();
   await page
     .getByRole('combobox', { name: /^Thời điểm so với bữa/ })
     .selectOption('AFTER_MEAL');

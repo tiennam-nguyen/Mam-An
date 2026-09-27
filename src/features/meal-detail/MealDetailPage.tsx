@@ -8,6 +8,7 @@ import {
   ErrorNotice,
   DemoBadge,
   formatNumber,
+  GlucoseValue,
   formatTime,
   Completeness,
   SafetyNote,
@@ -120,10 +121,7 @@ export function MealDetailPage() {
           {state.data?.readings.length === 0 && <p>Chưa có số đo liên kết.</p>}
           {state.data?.readings.map((g) => (
             <div className="card" key={g.id}>
-              <strong>
-                {formatNumber(g.value)}{' '}
-                {g.unit === 'MG_DL' ? 'mg/dL' : 'mmol/L'}
-              </strong>
+              <GlucoseValue reading={g} />
               <p>
                 {formatTime(g.measuredAt)} {g.isDemo && <DemoBadge />}
               </p>

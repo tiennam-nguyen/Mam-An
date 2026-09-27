@@ -1,0 +1,5 @@
+
+> mam-an@0.2.0 audit:safety
+> tsx scripts/audit-safety-copy.ts
+
+Safety inventory and client/server bundle boundary checks passed. Curated Vietnamese copy reviewed separately; this is not a clinical audit.

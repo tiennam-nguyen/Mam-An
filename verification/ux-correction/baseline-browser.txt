@@ -1,0 +1,10 @@
+[WebServer] (node:17872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:11464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\ux-correction.spec.ts:6:1 › Vietnamese typography and mobile journey screenshots (12.5s)
+
+  1 passed (15.0s)
