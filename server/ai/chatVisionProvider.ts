@@ -5,6 +5,7 @@ import type {
 } from './visionAnalysisProvider.js';
 import { parseProviderResult } from './providerResponseSchema.js';
 import { visionPrompt, componentPrompt } from './prompt.js';
+import { visionRequestOptions } from './visionRequestOptions.js';
 import { ok } from '../../src/domain/common/result.js';
 import { fail } from '../../src/shared/errors/appError.js';
 import { httpProviderFailure, providerFailure } from './providerFailure.js';
@@ -32,6 +33,7 @@ export class ChatVisionProvider implements VisionAnalysisProvider {
         signal,
         body: JSON.stringify({
           model: this.model,
+          ...visionRequestOptions(this.id, this.model),
           messages: [
             {
               role: 'user',

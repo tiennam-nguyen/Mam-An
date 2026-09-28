@@ -7,9 +7,11 @@ import { readServerConfig } from '../server/config/serverConfig';
 import { MistralVisionProvider } from '../server/ai/mistralVisionProvider';
 import { CohereVisionProvider } from '../server/ai/cohereVisionProvider';
 import { GeminiVisionProvider } from '../server/ai/geminiVisionProvider';
+import { HuggingFaceVisionProvider } from '../server/ai/huggingFaceVisionProvider';
 const input = { image: { bytes: new Uint8Array([1]), mimeType: 'image/jpeg' }, locale: 'vi-VN' as const, requestId: 'test' };
 const payload = { choices: [{ message: { content: JSON.stringify({ candidates: [{ raw_name: 'Cơm trắng', suggested_portion_multiplier: 1, suggested_portion_label: null, provider_confidence: null }] }) } }] };
 const factories = [
+  (send: typeof fetch, key = 'test-only') => new HuggingFaceVisionProvider(key, 'test-model', send),
   (send: typeof fetch, key = 'test-only') => new GroqVisionProvider(key, 'test-model', send),
   (send: typeof fetch, key = 'test-only') => new OpenRouterVisionProvider(key, 'test-model', { denyDataCollection: true, requireZdr: true }, send),
   (send: typeof fetch, key = 'test-only') => new MistralVisionProvider(key, 'test-model', send),

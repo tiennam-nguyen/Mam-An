@@ -1,0 +1,77 @@
+{
+  "sourceFiles": [
+    {
+      "sha256": "3384edf3204b7af5fd53b77a62860263a52bac86792c1aa0eb671608897098ca",
+      "path": ".env.example"
+    },
+    {
+      "sha256": "a58eaf3d0d0e7031df4f23d329f45a6345d2665f07c89150485acaff53e307a7",
+      "path": "README.md"
+    },
+    {
+      "sha256": "d36f6018b4864e98ef86c945121c14e2de10d4d46bffc277f80442bc53af1225",
+      "path": "scripts/audit-safety-copy.ts"
+    },
+    {
+      "sha256": "cba68bc1dd889f515d0c3b36371bc0c0600e8e5c0382522b52eb38fc43dc5709",
+      "path": "scripts/providerCandidates.ts"
+    },
+    {
+      "sha256": "cfc9ca378eb0582bf92aa92fec34b5767675501ad5f587fa378b891a2d814adf",
+      "path": "scripts/verify-live-path.ts"
+    },
+    {
+      "sha256": "42b102646e272bdc2429046cb41db8601b78d48bd02bbbb436ea89b41d6111aa",
+      "path": "scripts/verify-providers.ts"
+    },
+    {
+      "sha256": "7fbb434669988014335936d76668a241f05837eb755bcd98d98665991ee9f28c",
+      "path": "server/ai/chatVisionProvider.ts"
+    },
+    {
+      "sha256": "b7cbffc3050b6861a0a7aa7075294fd07aac25bb4336c023807664214054b4e4",
+      "path": "server/ai/huggingFaceVisionProvider.ts"
+    },
+    {
+      "sha256": "5ee782130f93a44bec4599c4a5899b8d8ba4872cb2dd8fa7900c180db40b8db2",
+      "path": "server/ai/prompt.ts"
+    },
+    {
+      "sha256": "85ea0ae699a3cbdbb5276378d4f6fd60144b788df02bae3c5eaddf034b50757d",
+      "path": "server/ai/visionAnalysisProvider.ts"
+    },
+    {
+      "sha256": "2877595860aa9b15c33ffea09c15e7edabce0227386cb1b7302f81c76bc99f35",
+      "path": "server/ai/visionRequestOptions.ts"
+    },
+    {
+      "sha256": "4e4d4ca6418e1412153c4bb56fbd39232bdfe4681632970b3eb853da6660976e",
+      "path": "server/compositionRoot.ts"
+    },
+    {
+      "sha256": "26ae3b3fd1832f14da5b66fc950512738ec0c713552513b0f5e5e875bee77af6",
+      "path": "server/config/serverConfig.ts"
+    },
+    {
+      "sha256": "743f76322c01b4800c0f30e20ff8a45e5b0779dab4a6e40cb2d861d1b35aa44d",
+      "path": "tests/provider-hardening.test.ts"
+    },
+    {
+      "sha256": "eae60700199ae83c9fa19bfa494f404b6059867a9d60b01809b483e2d5778508",
+      "path": "tests/vision-quality.test.ts"
+    }
+  ],
+  "checks": {
+    "runtime": 0,
+    "typecheck": 0,
+    "e2e": 0,
+    "tests": 0,
+    "safety": 0,
+    "secrets": 0,
+    "build": 0
+  },
+  "base": "a2e57ff673c5d1c97f78f0ee332903806dca3c13",
+  "tests": 425,
+  "environment": "Windows / Node 24.13.0 / npm 11.6.2",
+  "browserTests": 56
+}

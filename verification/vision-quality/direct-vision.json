@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "provider": "cohere",
+      "model": "command-a-plus-05-2026",
+      "imageCapable": true,
+      "officialSource": "https://docs.cohere.com/docs/command-a-plus",
+      "configured": true,
+      "timestamp": "2026-09-28T13:39:17.721Z",
+      "environment": "local",
+      "commit": "a2e57ff673c5d1c97f78f0ee332903806dca3c13",
+      "workingTreeModified": true,
+      "command": "npm run test:providers -- --provider cohere --model command-a-plus-05-2026 --fixture verification/vision-quality/rice.jpg --output verification/vision-quality/direct-vision.json",
+      "httpStatus": 200,
+      "latencyMs": 3951,
+      "timeout": false,
+      "timeoutMs": 15000,
+      "normalizedSchemaValid": true,
+      "candidateCount": 2,
+      "errorCode": null,
+      "recognizedNames": [
+        "Cơm tấm",
+        "Nước chấm"
+      ],
+      "requestOptions": {
+        "reasoning_effort": "none"
+      },
+      "recognizedComponents": [
+        [
+          {
+            "name": "Cơm",
+            "role": "STARCH"
+          },
+          {
+            "name": "Thịt nướng",
+            "role": "PROTEIN"
+          },
+          {
+            "name": "Trứng chiên",
+            "role": "PROTEIN"
+          },
+          {
+            "name": "Rau luộc",
+            "role": "VEGETABLE"
+          },
+          {
+            "name": "Dưa leo",
+            "role": "VEGETABLE"
+          },
+          {
+            "name": "Hành lá",
+            "role": "VEGETABLE"
+          },
+          {
+            "name": "Nước mắm",
+            "role": "CONDIMENT"
+          }
+        ],
+        [
+          {
+            "name": "Nước chấm",
+            "role": "CONDIMENT"
+          }
+        ]
+      ],
+      "retryable": false,
+      "fixture": "verification/vision-quality/rice.jpg",
+      "fixtureSha256": "41ef63e90824f98eead4405ebc3236ab66402546b1ce671a10d7a596cf750e1c",
+      "promptVersion": "meal-components-v3-vi-dishes",
+      "promptSha256": "4b4420f242e88b5cffd45b7068c65919679e02458c8209ff893f127aefb26522",
+      "notes": "One bounded request, no retries. Access/schema smoke test; recognition quality requires independent review of the fixture and output. Free account/no card per operator; billing state not independently verified.",
+      "seed": null
+    },
+    {
+      "provider": "cohere",
+      "model": "command-a-plus-05-2026",
+      "imageCapable": true,
+      "officialSource": "https://docs.cohere.com/docs/command-a-plus",
+      "configured": true,
+      "timestamp": "2026-09-28T13:39:20.682Z",
+      "environment": "local",
+      "commit": "a2e57ff673c5d1c97f78f0ee332903806dca3c13",
+      "workingTreeModified": true,
+      "command": "npm run test:providers -- --provider cohere --model command-a-plus-05-2026 --fixture verification/vision-quality/soup.jpg --output verification/vision-quality/direct-vision.json",
+      "httpStatus": 200,
+      "latencyMs": 1987,
+      "timeout": false,
+      "timeoutMs": 15000,
+      "normalizedSchemaValid": true,
+      "candidateCount": 1,
+      "errorCode": null,
+      "recognizedNames": [
+        "Canh rau"
+      ],
+      "requestOptions": {
+        "reasoning_effort": "none"
+      },
+      "recognizedComponents": [
+        [
+          {
+            "name": "Rau nấu canh",
+            "role": "VEGETABLE"
+          },
+          {
+            "name": "Nước canh",
+            "role": "BROTH"
+          },
+          {
+            "name": "Bánh bột lọc",
+            "role": "STARCH"
+          },
+          {
+            "name": "Bánh bột thịt",
+            "role": "PROTEIN"
+          }
+        ]
+      ],
+      "retryable": false,
+      "fixture": "verification/vision-quality/soup.jpg",
+      "fixtureSha256": "73083ac879b5f8136265dcec21d768af060f6475c3ab505fa70dbb3d1c4979cd",
+      "promptVersion": "meal-components-v3-vi-dishes",
+      "promptSha256": "4b4420f242e88b5cffd45b7068c65919679e02458c8209ff893f127aefb26522",
+      "notes": "One bounded request, no retries. Access/schema smoke test; recognition quality requires independent review of the fixture and output. Free account/no card per operator; billing state not independently verified.",
+      "seed": null
+    }
+  ]
+}

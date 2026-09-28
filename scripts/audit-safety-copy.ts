@@ -25,11 +25,13 @@ for (const file of files('dist').filter((p) => p.endsWith('.js'))) {
     'MISTRAL_API_KEY',
     'COHERE_API_KEY',
     'GEMINI_API_KEY',
+    'HUGGINGFACEHUB_API_KEY',
     'api.groq.com',
     'openrouter.ai/api',
     'api.mistral.ai',
     'api.cohere.ai',
     'generativelanguage.googleapis.com',
+    'router.huggingface.co',
   ])
     if (text.includes(name)) throw new Error('Server boundary leaked: ' + file);
 }
