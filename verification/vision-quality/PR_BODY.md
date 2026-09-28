@@ -1,0 +1,7 @@
+Meal recognition could produce literal descriptions instead of familiar Vietnamese dish names, while the default route preferred smaller models. Prefer accessible Command A+ with Qwen3-VL 235B as the next fallback, promote Mistral's configured option to Medium 3.5, and give the shared prompt explicit Vietnamese dish-level guidance. Existing explicit environment overrides, time limits, privacy controls and user review remain in force.
+
+Tested flagship access across the supplied provider accounts without billing changes. Several returned quota, payment, authorization or timeout failures; details and sanitized results are in `verification/vision-quality/REPORT.md`. Command A+ direct vision identified a public soup as canh and a rice plate as cơm tấm, but still misidentified ingredients. The exact user photograph was unavailable, so this does **not** establish that their exact failure or ingredient accuracy is resolved.
+
+Validation: 425 tests, 56 browser tests, typecheck, production build, emitted Vercel v2 function, safety and credential audits passed. Real mobile Chromium → local production API → real Command A+ → review screen also passed; screenshot included. Evaluation now sends the complete production prompt and supports separate evidence outputs and prior-prompt comparison.
+
+No production deployment or billing changes. Hosted provider/model environment overrides must be updated during a separately authorized rollout. No persistence migrations, UI changes or new dependencies.

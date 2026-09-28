@@ -6,6 +6,7 @@ import { createAnalyzeMealHandler } from './http/analyzeMealHandler.js';
 import { MistralVisionProvider } from './ai/mistralVisionProvider.js';
 import { CohereVisionProvider } from './ai/cohereVisionProvider.js';
 import { GeminiVisionProvider } from './ai/geminiVisionProvider.js';
+import { HuggingFaceVisionProvider } from './ai/huggingFaceVisionProvider.js';
 import {
   CapabilityRouter,
   type CapabilityPolicies,
@@ -16,6 +17,10 @@ import type { ServerConfig } from './config/serverConfig.js';
 export function createCapabilityRouter(config: ServerConfig) {
   const c = config,
     providers = {
+      huggingface: new HuggingFaceVisionProvider(
+        c.HUGGINGFACEHUB_API_KEY,
+        c.HUGGINGFACE_VISION_MODEL,
+      ),
       mistral: new MistralVisionProvider(
         c.MISTRAL_API_KEY,
         c.MISTRAL_VISION_MODEL,
@@ -44,6 +49,7 @@ export function createCapabilityRouter(config: ServerConfig) {
         return {
           providerId: id,
           modelId: {
+            huggingface: c.HUGGINGFACE_VISION_MODEL,
             groq: c.GROQ_VISION_MODEL,
             mistral: c.MISTRAL_VISION_MODEL,
             cohere: c.COHERE_VISION_MODEL,

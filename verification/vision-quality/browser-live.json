@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": "2026-09-28T13:44:00.236Z",
+    "environment": "local-production-build",
+    "commit": "a2e57ff673c5d1c97f78f0ee332903806dca3c13",
+    "workingTreeModified": true,
+    "command": "node --env-file=.env.local --import tsx scripts/verify-live-path.ts cohere verification/vision-quality/soup.jpg verification/vision-quality/browser-live.json",
+    "provider": "cohere",
+    "fixture": "verification/vision-quality/soup.jpg",
+    "fixtureSha256": "73083ac879b5f8136265dcec21d768af060f6475c3ab505fa70dbb3d1c4979cd",
+    "httpStatus": 200,
+    "candidateCount": 1,
+    "errorCode": null,
+    "cacheControl": "no-store",
+    "reviewVisible": true,
+    "recognizedNames": [
+      "Canh rau nấu với sủi cảo"
+    ],
+    "notes": "Real browser native fetch → local HTTP → exported v2 function → real provider → UI. Not hosted Vercel evidence; inspect fixture/output separately for recognition quality."
+  }
+]

@@ -29,14 +29,21 @@ const schema = z.object({
   MISTRAL_TEXT_MODEL: z.string().default(''),
   AI_PROVIDER_ORDER: z
     .string()
-    .default('groq,mistral,cohere,openrouter')
+    .default('cohere,huggingface,groq,mistral,openrouter')
     .transform((v) => v.split(',').map((s) => s.trim()))
     .refine(
       (v) =>
         v.length > 0 &&
         new Set(v).size === v.length &&
         v.every((s) =>
-          ['groq', 'openrouter', 'mistral', 'cohere', 'gemini'].includes(s),
+          [
+            'groq',
+            'openrouter',
+            'mistral',
+            'cohere',
+            'gemini',
+            'huggingface',
+          ].includes(s),
         ),
     ),
   GROQ_API_KEY: z.string().default(''),
@@ -44,9 +51,13 @@ const schema = z.object({
   OPENROUTER_API_KEY: z.string().default(''),
   OPENROUTER_VISION_MODEL: z.string().default('qwen/qwen3.8-27b:free'),
   MISTRAL_API_KEY: z.string().default(''),
-  MISTRAL_VISION_MODEL: z.string().default('ministral-14b-2512'),
+  MISTRAL_VISION_MODEL: z.string().default('mistral-medium-2604'),
   COHERE_API_KEY: z.string().default(''),
-  COHERE_VISION_MODEL: z.string().default('command-a-vision-07-2025'),
+  COHERE_VISION_MODEL: z.string().default('command-a-plus-05-2026'),
+  HUGGINGFACEHUB_API_KEY: z.string().default(''),
+  HUGGINGFACE_VISION_MODEL: z
+    .string()
+    .default('Qwen/Qwen3-VL-235B-A22B-Instruct'),
   GEMINI_API_KEY: z.string().default(''),
   GEMINI_VISION_MODEL: z.string().default('gemini-3.8-flash'),
   AI_PROVIDER_TIMEOUT_MS: z.coerce

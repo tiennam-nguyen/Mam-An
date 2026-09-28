@@ -36,17 +36,18 @@ Keys belong in ignored `.env.local`, never `.env.example` or a VITE_ variable. T
 
 To enable live analysis locally, add `VITE_ENABLE_LIVE_AI=true` to `.env.local`, run `npm run dev:api` in a second terminal, and restart `npm run dev`. The app discloses transmission before sending an image. Vite preserves Host for same-origin checking.
 
-Supported providers and model defaults (discovered and smoke-tested 2026-09-19):
+Supported providers and model defaults (access checked 2026-09-28; see [vision evaluation](verification/vision-quality/REPORT.md) for failures and limits):
 
 | Provider | Model | Configuration |
 | --- | --- | --- |
 | Groq | `qwen/qwen3.8-27b` | `GROQ_API_KEY`, `GROQ_VISION_MODEL` |
-| Mistral | `ministral-14b-2512` | `MISTRAL_API_KEY`, `MISTRAL_VISION_MODEL` |
-| Cohere | `command-a-vision-07-2025` | `COHERE_API_KEY`, `COHERE_VISION_MODEL` |
+| Mistral | `mistral-medium-2604` | `MISTRAL_API_KEY`, `MISTRAL_VISION_MODEL` |
+| Cohere | `command-a-plus-05-2026` | `COHERE_API_KEY`, `COHERE_VISION_MODEL` |
+| Hugging Face | `Qwen/Qwen3-VL-235B-A22B-Instruct` | `HUGGINGFACEHUB_API_KEY`, `HUGGINGFACE_VISION_MODEL` |
 | OpenRouter | `qwen/qwen3.8-27b:free` | `OPENROUTER_API_KEY`, `OPENROUTER_VISION_MODEL` |
 | Gemini (opt-in) | `gemini-3.8-flash` | `GEMINI_API_KEY`, `GEMINI_VISION_MODEL` |
 
-Default `AI_PROVIDER_ORDER=groq,mistral,cohere,openrouter`; missing keys are skipped. Existing explicit orders remain in force. Gemini uses its native API and must be explicitly added to the order; its free tier may use content to improve products. Review service retention terms before sending personal images. OpenRouter keeps `data_collection: deny` and `zdr: true` by default; failures do not loosen these settings.
+Default `AI_PROVIDER_ORDER=cohere,huggingface,groq,mistral,openrouter`; missing keys are skipped. Command A+ is preferred over smaller models; Qwen 235B is the next available option. Mistral Medium is currently quota-limited on the tested account. Existing explicit orders and model overrides remain in force: update them during an authorized deployment to adopt these defaults. Gemini uses its native API and must be explicitly added to the order; its free tier may use content to improve products. Review service retention terms before sending personal images. OpenRouter keeps `data_collection: deny` and `zdr: true` by default; failures do not loosen these settings. Free allowances can expire or throttle. The app never enables billing; usage follows the configured account plans. OpenRouter stays on an explicitly free model.
 
 Provider failures, including stale models and malformed output, try the next configured provider once, within a 25-second total budget. No same-provider retry or automatic sample substitution occurs. The client has a 30-second deadline. User/input failures stop immediately. AI supplies candidate names, component roles and portion hints only; nutrition remains a deterministic local catalog calculation.
 
@@ -54,12 +55,14 @@ Provider failures, including stale models and malformed output, try the next con
 
 ```sh
 npm run discover:providers
-npm run test:providers -- --provider mistral --model ministral-14b-2512 --timeout 15000
+npm run test:providers -- --provider cohere --model command-a-plus-05-2026 --timeout 15000
 # Optional, one request per candidate; no automatic retries:
 npm run test:providers -- --all
 ```
 
 The default fixture is the bundled synthetic illustration; `--fixture PATH` selects another explicitly authorized image. The [provider matrix](verification/provider-matrix.json) records each request's timestamp, command, commit, fixture hash and outcome without raw responses or keys. See [provider strategy](verification/PROVIDER_STRATEGY.md) for access/privacy limitations. These are connectivity observations, not recognition benchmarks.
+
+Use `--output verification/vision-quality/your-run.json` to keep new evaluations separate. The evaluator sends the same dish/component prompt as production and records normalized dish/component names for manual quality review. Use public or explicitly authorized fixtures; avoid persisting personal meal descriptions. `--prompt-file PATH` permits a controlled comparison with a saved prior prompt. Names and schema validity alone do not establish nutrition accuracy.
 
 Vercel uses `api/v2/vision/analyze-meal.ts` with `api/v1/analyze-meal.ts` retained as a compatibility shim with a [Node Web Standard handler](https://vercel.com/docs/functions/runtimes/node-js). Set `VITE_ENABLE_LIVE_AI=true` **before building**, separately for Preview and Production; set server keys and provider order for the same target, then redeploy. Server imports use emitted `.js` extensions and `api/tsconfig.json` isolates Function compiler types. `npm run preview` serves only static client files, not Functions. Deployed results and access blockers are recorded in the [test report](verification/TEST_REPORT.md).
 

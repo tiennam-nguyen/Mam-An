@@ -1,0 +1,53 @@
+{
+  "results": [
+    {
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "imageCapable": true,
+      "officialSource": "https://console.groq.com/docs/vision",
+      "configured": true,
+      "timestamp": "2026-09-28T13:36:28.345Z",
+      "environment": "local",
+      "commit": "a2e57ff673c5d1c97f78f0ee332903806dca3c13",
+      "workingTreeModified": true,
+      "command": "npm run test:providers -- --provider groq --fixture verification/vision-quality/soup.jpg --output verification/vision-quality/groq-v3-soup.json",
+      "httpStatus": 200,
+      "latencyMs": 7363,
+      "timeout": false,
+      "timeoutMs": 15000,
+      "normalizedSchemaValid": true,
+      "candidateCount": 1,
+      "errorCode": null,
+      "recognizedNames": [
+        "Canh giò heo với rau"
+      ],
+      "recognizedComponents": [
+        [
+          {
+            "name": "Giò heo",
+            "role": "OTHER"
+          },
+          {
+            "name": "Rau nấu canh",
+            "role": "VEGETABLE"
+          },
+          {
+            "name": "Bò viên",
+            "role": "PROTEIN"
+          },
+          {
+            "name": "Nước canh",
+            "role": "BROTH"
+          }
+        ]
+      ],
+      "retryable": false,
+      "fixture": "verification/vision-quality/soup.jpg",
+      "fixtureSha256": "73083ac879b5f8136265dcec21d768af060f6475c3ab505fa70dbb3d1c4979cd",
+      "promptVersion": "meal-components-v3-vi-dishes",
+      "promptSha256": "4b4420f242e88b5cffd45b7068c65919679e02458c8209ff893f127aefb26522",
+      "notes": "One bounded request, no retries. Access/schema smoke test; recognition quality requires independent review of the fixture and output. Free account/no card per operator; billing state not independently verified.",
+      "seed": null
+    }
+  ]
+}

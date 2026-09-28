@@ -9,7 +9,8 @@ export interface ProviderAnalyzeInput {
 export interface ProviderAnalysisResult {
   candidates: readonly RawAnalysisCandidate[];
 }
-export type ProviderId = 'groq' | 'openrouter' | 'mistral' | 'cohere' | 'gemini';
+export type ProviderId =
+  'groq' | 'openrouter' | 'mistral' | 'cohere' | 'gemini' | 'huggingface';
 export interface VisionAnalysisProvider {
   readonly id: ProviderId | 'mock';
   isConfigured(): boolean;

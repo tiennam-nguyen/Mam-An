@@ -1,0 +1,1053 @@
+{
+  "timestamp": "2026-09-28T13:27:59.231Z",
+  "commit": "a2e57ff673c5d1c97f78f0ee332903806dca3c13",
+  "command": "node --env-file=.env.local --import tsx scripts/discover-providers.ts",
+  "environment": "local",
+  "results": [
+    {
+      "provider": "groq",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:52.922Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "qwen/qwen3.8-27b",
+          "pricing": {
+            "prompt": "0.0000008",
+            "completion": "0.000004",
+            "image": "0",
+            "request": "0",
+            "input_cache_read": "0.0000004"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        }
+      ],
+      "modelCount": 11
+    },
+    {
+      "provider": "openrouter",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:53.198Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "cohere/command-a-plus",
+          "architecture": {
+            "modality": "text+image->text",
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Cohere",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.0000003",
+            "completion": "0.0000015",
+            "input_cache_read": "0.00000015"
+          }
+        },
+        {
+          "id": "google/gemini-3.8-flash",
+          "architecture": {
+            "modality": "text+image+file+audio+video->text",
+            "input_modalities": [
+              "text",
+              "image",
+              "video",
+              "file",
+              "audio"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Gemini",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000075",
+            "completion": "0.00000375",
+            "image": "0.00000075",
+            "audio": "0.00000075",
+            "input_audio_cache": "0.000000075",
+            "web_search": "0.014",
+            "internal_reasoning": "0.00000375",
+            "input_cache_read": "0.000000075",
+            "input_cache_write": "0.0000000416666666666667"
+          }
+        },
+        {
+          "id": "qwen/qwen3.8-27b",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Qwen",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000042",
+            "completion": "0.000003",
+            "input_cache_read": "0.000000085"
+          }
+        },
+        {
+          "id": "qwen/qwen3.8-27b:free",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Qwen",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0",
+            "completion": "0"
+          }
+        },
+        {
+          "id": "moonshotai/kimi-k3",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Other",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000003",
+            "completion": "0.000015",
+            "input_cache_read": "0.0000003"
+          }
+        },
+        {
+          "id": "moonshotai/kimi-k3:batch",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Other",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000228",
+            "completion": "0.0000114",
+            "input_cache_read": "0.000000228"
+          }
+        },
+        {
+          "id": "openai/gpt-5.6-sol-pro",
+          "architecture": {
+            "modality": "text+image+file->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "GPT",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000002",
+            "completion": "0.00001",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.0000025",
+            "overrides": [
+              {
+                "min_prompt_tokens": 272000,
+                "prompt": "0.000004",
+                "completion": "0.000015",
+                "input_cache_read": "0.0000004",
+                "input_cache_write": "0.000005"
+              }
+            ]
+          }
+        },
+        {
+          "id": "openai/gpt-5.6-sol-pro:batch",
+          "architecture": {
+            "modality": "text+image+file->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "GPT",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000001",
+            "completion": "0.000005",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000001",
+            "input_cache_write": "0.00000125",
+            "overrides": [
+              {
+                "min_prompt_tokens": 272000,
+                "prompt": "0.000002",
+                "completion": "0.0000075",
+                "input_cache_read": "0.0000002",
+                "input_cache_write": "0.0000025"
+              }
+            ]
+          }
+        },
+        {
+          "id": "openai/gpt-5.6-sol",
+          "architecture": {
+            "modality": "text+image+file->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "GPT",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000002",
+            "completion": "0.00001",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.0000025",
+            "overrides": [
+              {
+                "min_prompt_tokens": 272000,
+                "prompt": "0.000004",
+                "completion": "0.000015",
+                "input_cache_read": "0.0000004",
+                "input_cache_write": "0.000005"
+              }
+            ]
+          }
+        },
+        {
+          "id": "openai/gpt-5.6-sol:batch",
+          "architecture": {
+            "modality": "text+image+file->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "GPT",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000001",
+            "completion": "0.000005",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000001",
+            "input_cache_write": "0.00000125",
+            "overrides": [
+              {
+                "min_prompt_tokens": 272000,
+                "prompt": "0.000002",
+                "completion": "0.0000075",
+                "input_cache_read": "0.0000002",
+                "input_cache_write": "0.0000025"
+              }
+            ]
+          }
+        },
+        {
+          "id": "google/gemma-4-31b-it",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "image",
+              "text",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Gemma",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000009",
+            "completion": "0.00000034",
+            "input_cache_read": "0.00000005"
+          }
+        },
+        {
+          "id": "google/gemma-4-31b-it:free",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "image",
+              "text",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Gemma",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0",
+            "completion": "0"
+          }
+        },
+        {
+          "id": "openai/gpt-5.4-nano",
+          "architecture": {
+            "modality": "text+image+file->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "GPT",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.0000002",
+            "completion": "0.00000125",
+            "web_search": "0.01",
+            "input_cache_read": "0.00000002"
+          }
+        },
+        {
+          "id": "openai/gpt-5.4-nano:batch",
+          "architecture": {
+            "modality": "text+image+file->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "GPT",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.0000001",
+            "completion": "0.000000625",
+            "web_search": "0.01",
+            "input_cache_read": "0.00000001"
+          }
+        },
+        {
+          "id": "mistralai/mistral-small-2603",
+          "architecture": {
+            "modality": "text+image->text",
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Mistral",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000015"
+          }
+        },
+        {
+          "id": "mistralai/mistral-small-2603:batch",
+          "architecture": {
+            "modality": "text+image->text",
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Mistral",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000000075",
+            "completion": "0.0000003",
+            "input_cache_read": "0.0000000075"
+          }
+        },
+        {
+          "id": "google/gemini-3.1-pro-preview",
+          "architecture": {
+            "modality": "text+image+file+audio+video->text",
+            "input_modalities": [
+              "audio",
+              "file",
+              "image",
+              "text",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Gemini",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.000002",
+            "completion": "0.000012",
+            "image": "0.000002",
+            "audio": "0.000002",
+            "input_audio_cache": "0.0000002",
+            "web_search": "0.014",
+            "internal_reasoning": "0.000012",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.000000375",
+            "overrides": [
+              {
+                "min_prompt_tokens": 200000,
+                "prompt": "0.000004",
+                "completion": "0.000018",
+                "audio": "0.000004",
+                "input_audio_cache": "0.0000004",
+                "input_cache_read": "0.0000004"
+              }
+            ]
+          }
+        },
+        {
+          "id": "qwen/qwen3.5-397b-a17b",
+          "architecture": {
+            "modality": "text+image+video->text",
+            "input_modalities": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Qwen3",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000055",
+            "completion": "0.0000035",
+            "input_cache_read": "0.000000225"
+          }
+        },
+        {
+          "id": "mistralai/ministral-14b-2512",
+          "architecture": {
+            "modality": "text+image->text",
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Mistral",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.0000002",
+            "completion": "0.0000002",
+            "input_cache_read": "0.00000002"
+          }
+        },
+        {
+          "id": "qwen/qwen3-vl-235b-a22b-thinking",
+          "architecture": {
+            "modality": "text+image->text",
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Qwen3",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.0000004",
+            "completion": "0.000004"
+          }
+        },
+        {
+          "id": "qwen/qwen3-vl-235b-a22b-instruct",
+          "architecture": {
+            "modality": "text+image->text",
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Qwen3",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.00000021",
+            "completion": "0.0000019",
+            "input_cache_read": "0.0000001"
+          }
+        },
+        {
+          "id": "google/gemini-2.5-flash",
+          "architecture": {
+            "modality": "text+image+file+audio+video->text",
+            "input_modalities": [
+              "file",
+              "image",
+              "text",
+              "audio",
+              "video"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "tokenizer": "Gemini",
+            "instruct_type": null
+          },
+          "pricing": {
+            "prompt": "0.0000003",
+            "completion": "0.0000025",
+            "image": "0.0000003",
+            "audio": "0.000001",
+            "input_audio_cache": "0.0000001",
+            "web_search": "0.014",
+            "internal_reasoning": "0.0000025",
+            "input_cache_read": "0.00000003",
+            "input_cache_write": "0.0000000833333333333333"
+          }
+        }
+      ],
+      "modelCount": 458
+    },
+    {
+      "provider": "mistral",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:55.177Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "mistral-small-2603",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": true,
+            "completion_fim": false,
+            "fine_tuning": false,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          }
+        },
+        {
+          "id": "ministral-14b-2512",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          }
+        },
+        {
+          "id": "mistral-medium-2604",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": true,
+            "completion_fim": false,
+            "fine_tuning": false,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          }
+        }
+      ],
+      "modelCount": 46
+    },
+    {
+      "provider": "gemini",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:55.44Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "models/gemini-2.5-flash",
+          "supportedGenerationMethods": [
+            "generateContent",
+            "countTokens",
+            "createCachedContent",
+            "batchGenerateContent"
+          ]
+        },
+        {
+          "id": "models/gemma-4-31b-it",
+          "supportedGenerationMethods": [
+            "generateContent",
+            "countTokens"
+          ]
+        },
+        {
+          "id": "models/gemini-3.1-pro-preview",
+          "supportedGenerationMethods": [
+            "generateContent",
+            "countTokens",
+            "createCachedContent",
+            "batchGenerateContent"
+          ]
+        },
+        {
+          "id": "models/gemini-3.8-flash",
+          "supportedGenerationMethods": [
+            "generateContent",
+            "countTokens",
+            "createCachedContent",
+            "batchGenerateContent"
+          ]
+        }
+      ],
+      "modelCount": 61
+    },
+    {
+      "provider": "cohere",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:55.861Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "command-a-plus-05-2026",
+          "features": [
+            "logprobs",
+            "json_mode",
+            "json_schema",
+            "strict_tools",
+            "safety_modes",
+            "tools",
+            "reasoning",
+            "vision",
+            "tool_images",
+            "citations"
+          ]
+        },
+        {
+          "id": "command-a-vision-07-2025",
+          "features": [
+            "vision",
+            "logprobs",
+            "json_mode",
+            "json_schema",
+            "strict_tools",
+            "safety_modes",
+            "citations"
+          ]
+        }
+      ],
+      "modelCount": 33
+    },
+    {
+      "provider": "nvidia",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:56.17Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "google/gemma-4-31b-it"
+        },
+        {
+          "id": "meta/llama-3.2-11b-vision-instruct"
+        },
+        {
+          "id": "meta/llama-3.2-90b-vision-instruct"
+        },
+        {
+          "id": "moonshotai/kimi-k3"
+        }
+      ],
+      "modelCount": 81
+    },
+    {
+      "provider": "huggingface",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:56.682Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "Qwen/Qwen3.8-27B",
+          "architecture": {
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          }
+        },
+        {
+          "id": "moonshotai/Kimi-K3",
+          "architecture": {
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          }
+        },
+        {
+          "id": "google/gemma-4-31B-it",
+          "architecture": {
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          }
+        },
+        {
+          "id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
+          "architecture": {
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          }
+        },
+        {
+          "id": "Qwen/Qwen3.5-397B-A17B",
+          "architecture": {
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          }
+        },
+        {
+          "id": "Qwen/Qwen3-VL-235B-A22B-Instruct",
+          "architecture": {
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          }
+        }
+      ],
+      "modelCount": 135
+    },
+    {
+      "provider": "sambanova",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:57.181Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "gemma-4-31B-it",
+          "pricing": {
+            "completion": "0.00000115",
+            "prompt": "0.00000038"
+          }
+        }
+      ],
+      "modelCount": 7
+    },
+    {
+      "provider": "cerebras",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:57.579Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "qwen-3.8-27b"
+        }
+      ],
+      "modelCount": 2
+    },
+    {
+      "provider": "pollinations",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:58.529Z",
+      "httpStatus": 200,
+      "models": [
+        {
+          "id": "openai/gpt-5.4-nano",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.00000015",
+            "promptCachedTokens": "0.000000015",
+            "completionTextTokens": "0.0000009375"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "cohere/command-a-plus",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.0000006",
+            "completionTextTokens": "0.0000024"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "moonshotai/kimi-k3",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.000003",
+            "promptCachedTokens": "0.0000003",
+            "completionTextTokens": "0.000015"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "openai/gpt-5.6-sol",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.000001666667",
+            "promptCachedTokens": "0.000000166667",
+            "promptCacheWriteTokens": "0.000002083333",
+            "completionTextTokens": "0.00001"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "community/scriptsnsenses-sys/kimi-k3-free",
+          "capabilities": [
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen"
+          },
+          "input_modalities": [
+            "text"
+          ]
+        },
+        {
+          "id": "community/AkshayCoder48/gpt-5.6-sol",
+          "capabilities": [],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.000005",
+            "promptCachedTokens": "0.0000005",
+            "promptCacheWriteTokens": "0.00000625",
+            "completionTextTokens": "0.00003",
+            "completionReasoningTokens": "0.00003"
+          },
+          "input_modalities": [
+            "text"
+          ]
+        },
+        {
+          "id": "community/vendouple/gemini-3.8-flash",
+          "capabilities": [],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.0000015",
+            "completionTextTokens": "0.0000035",
+            "completionReasoningTokens": "0.0000035"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "community/sharktide/inferenceport-ai-gemini-2.5-flash",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.0000007",
+            "completionTextTokens": "0.0000007"
+          },
+          "input_modalities": [
+            "text",
+            "image",
+            "audio"
+          ]
+        },
+        {
+          "id": "community/sharktide/inferenceport-ai-qwen-3.8-27b",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.0000029",
+            "completionTextTokens": "0.0000029"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "community/Minor-fun/gemma-4-31B-it",
+          "capabilities": [],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.00000004",
+            "completionTextTokens": "0.00000016"
+          },
+          "input_modalities": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "community/Bakhshi7889/gemma-4-31b-it",
+          "capabilities": [],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.00000015",
+            "completionTextTokens": "0.0000006"
+          },
+          "input_modalities": [
+            "text"
+          ]
+        },
+        {
+          "id": "community/MarcosFRG/gemma-4-31b",
+          "capabilities": [
+            "tool_calling",
+            "reasoning"
+          ],
+          "pricing": {
+            "currency": "pollen",
+            "promptTextTokens": "0.000000038",
+            "promptCachedTokens": "0.0000000038",
+            "promptImageTokens": "0.000000038",
+            "completionTextTokens": "0.0000001086",
+            "completionReasoningTokens": "0.0000000543"
+          },
+          "input_modalities": [
+            "text",
+            "image",
+            "video"
+          ]
+        }
+      ],
+      "modelCount": 106
+    },
+    {
+      "provider": "cloudflare",
+      "configured": true,
+      "timestamp": "2026-09-28T13:27:59.231Z",
+      "httpStatus": 200,
+      "models": [],
+      "modelCount": 65
+    }
+  ],
+  "retainedScope": "Catalog counts cover all returned models; only evaluated and relevant vision model entries are retained."
+}
