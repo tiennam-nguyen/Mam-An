@@ -18,7 +18,7 @@ The deterministic weekly report builder joins exact saved meal IDs, assigns chro
 
 ## Verification and limits
 
-[RAN] Verification milestone: 432 unit/integration tests passed across 26 files; all 58 browser tests passed; six focused demo/enrichment browser tests and the separate mobile/desktop visual run passed. `npm ci`, `npm run typecheck`, `npm run catalog:build`, `npm run catalog:check`, `npm test`, `npm run build`, `npm run test:e2e`, `npm run audit:safety`, `npm run audit:secrets`, and `git diff --check` completed successfully. These commands are repeated after this verification record is committed; the final handoff and PR identify that final SHA and results. Local command outputs are retained as ignored `check-*.log` files alongside this report.
+[RAN] Verification milestone: 436 unit/integration tests passed across 26 files; all 58 browser tests passed; six focused demo/enrichment browser tests and the separate mobile/desktop visual run passed. `npm ci`, `npm run typecheck`, `npm run catalog:build`, `npm run catalog:check`, `npm test`, `npm run build`, `npm run test:e2e`, `npm run audit:safety`, `npm run audit:secrets`, and `git diff --check` completed successfully. These commands are repeated after this verification record is committed; the final handoff and PR identify that final SHA and results. Local command outputs are retained as ignored `check-*.log` files alongside this report.
 
 Initial browser failures were outdated assumptions about 100 g defaults and identical demo menus; tests now use independently calculated source arithmetic (158 g rice = 46.452 g available carbohydrate). Final empty-report wording also avoids presenting 0/0 completeness; a dedicated unit regression verifies missing data stays null.
 

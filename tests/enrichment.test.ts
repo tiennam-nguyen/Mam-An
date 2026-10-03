@@ -11,6 +11,61 @@ import { selectPortion } from '../src/domain/food/portionResolver';
 import { buildWeeklyReport } from '../src/domain/summary/weeklyReport';
 import { demoData } from '../src/application/usecases/seedDemoData';
 import { buildPatternEvidence } from '../src/domain/personal/personalResponse';
+import { draft } from './fixtures/helpers';
+import { createScenario } from '../src/domain/meal/decisionSimulator';
+
+it.each(['egg', 'pho', 'noodles', 'rice-bowl'])(
+  'saved v2 half unit for %s remains adjustable without rewriting snapshots or accepting forged factors',
+  (foodId) => {
+    const baseline = draft();
+    const component = baseline.entries
+      .flatMap((e) => e.components)
+      .find((c) => c.foodId === 'egg')!;
+    component.foodId = catalog.getFoodById(foodId)!.id;
+    component.portion = {
+      unitId: 'half',
+      quantity: 1,
+      factorToReferenceSnapshot: 0.5,
+      displayLabelSnapshot:
+        foodId === 'egg'
+          ? '1/2 quả'
+          : foodId === 'rice-bowl'
+            ? '1/2 bát'
+            : '1/2 tô',
+    };
+    const before = JSON.stringify(baseline);
+    const result = createScenario(
+      baseline,
+      [
+        {
+          type: 'CHANGE_PORTION',
+          targetComponentId: component.componentId,
+          newPortion: { ...component.portion, quantity: 2 },
+        },
+      ],
+      catalog,
+    );
+    expect(
+      result.resultingEntries
+        .flatMap((e) => e.components)
+        .find((c) => c.componentId === component.componentId)!.carbEstimate,
+    ).toBe(foodId === 'egg' ? 0.6 : null);
+    expect(JSON.stringify(baseline)).toBe(before);
+    expect(() =>
+      createScenario(
+        baseline,
+        [
+          {
+            type: 'CHANGE_PORTION',
+            targetComponentId: component.componentId,
+            newPortion: { ...component.portion, factorToReferenceSnapshot: 9 },
+          },
+        ],
+        catalog,
+      ),
+    ).toThrow('Invalid food portion unit');
+  },
+);
 
 it('empty reports describe missing records without a denominator or inferred intake', () => {
   const report = buildWeeklyReport([], [], now);
