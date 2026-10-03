@@ -52,15 +52,15 @@ for (const width of [390, 1366])
         page.getByRole('heading', { name: 'Trứng gà luộc', exact: true }),
       ).toBeVisible();
       await page.getByText('Chỉnh món này', { exact: true }).click();
-      await page.getByLabel('Món tham chiếu').selectOption('rice');
+      await page.getByLabel('Chọn thực phẩm phù hợp').selectOption('rice');
       await expect(
         page.getByLabel('Tên thành phần', { exact: true }),
       ).toHaveValue('Trứng gà luộc');
       await page
         .getByLabel('Tên thành phần', { exact: true })
         .fill('Cơm trắng');
-      await page.getByRole('button', { name: '0,5 phần', exact: true }).click();
-      await expect(page.getByTestId('carb-total')).toHaveText('14,7 g');
+      await page.getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ }).click();
+      await expect(page.getByTestId('carb-total')).toHaveText('23,2 g');
       await page
         .getByRole('button', { name: 'Lưu bữa ăn', exact: true })
         .click();
@@ -69,7 +69,7 @@ for (const width of [390, 1366])
       ).toBeVisible();
       await page.reload();
       await expect(
-        page.getByText('14,7 g carb', { exact: true }),
+        page.getByText('23,2 g carb', { exact: true }),
       ).toBeVisible();
       await page.goto('/history');
       await expect(
@@ -150,13 +150,13 @@ test.describe('degraded live paths', () => {
       .getByRole('button', { name: '＋ Cơm trắng', exact: true })
       .click();
     release();
-    await page.getByRole('button', { name: '0,5 phần', exact: true }).click();
+    await page.getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ }).click();
     await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
     await expect(
       page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
     ).toBeVisible();
     await page.reload();
-    await expect(page.getByText('14,7 g carb', { exact: true })).toBeVisible();
+    await expect(page.getByText('23,2 g carb', { exact: true })).toBeVisible();
     await expect(page.getByText('Trứng gà luộc', { exact: true })).toHaveCount(
       0,
     );
@@ -211,7 +211,7 @@ test.describe('degraded live paths', () => {
     await page
       .getByRole('button', { name: '＋ Cơm trắng', exact: true })
       .click();
-    await expect(page.getByTestId('carb-total')).toHaveText('29,4 g');
+    await expect(page.getByTestId('carb-total')).toHaveText('46,5 g');
   });
   test('malformed success is an error, not a sample meal', async ({ page }) => {
     await page.route('**/api/v2/vision/analyze-meal', (route) =>
@@ -260,7 +260,7 @@ test.describe('degraded live paths', () => {
     await page.getByRole('button', { name: 'Dùng bữa ăn mẫu' }).click();
     await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
     await expect(page.getByRole('alert')).toBeVisible();
-    await expect(page.getByTestId('carb-total')).toContainText('32,8');
+    await expect(page.getByTestId('carb-total')).toContainText('50');
     await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
     await expect(
       page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),

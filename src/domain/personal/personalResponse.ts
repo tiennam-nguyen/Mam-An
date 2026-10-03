@@ -41,6 +41,8 @@ export function buildMealSignature(meal: Comparable) {
 }
 export interface SimilarMealMatch {
   mealId: string;
+  mealLabel?: string;
+  createdAt?: string;
   tier: 'TIER_1' | 'TIER_2';
   matchReasons: string[];
 }
@@ -91,6 +93,8 @@ export function findSimilarMeals(
       return [
         {
           mealId: m.id,
+          mealLabel: m.entries.map((e) => e.displayName).join(' · '),
+          createdAt: m.createdAt,
           tier,
           matchReasons: [
             ...(sameTemplate ? ['SAME_DISH_TEMPLATE'] : []),

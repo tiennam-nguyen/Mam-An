@@ -1,5 +1,72 @@
 [
   {
+    "id": "banana",
+    "category": "OTHER",
+    "nameVi": "Chuối tươi, phần ăn được",
+    "aliases": [
+      "chuối"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 20.24,
+    "kcalPerServing": 89,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 173944"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Bananas, raw",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "173944",
+      "sourceDescription": "Bananas, raw",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173944/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 quả vừa theo nguồn (118 g)",
+        "aliases": [],
+        "factorToReference": 1.18,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/173944/nutrients#food_portion:93515",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
     "id": "beverage",
     "category": "BEVERAGE",
     "nameVi": "Đồ uống",
@@ -12,7 +79,158 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "defaultPortionId": "describe:household",
+    "portionUnits": [
+      {
+        "id": "describe:household",
+        "labelVi": "1 ly (chưa quy đổi)",
+        "aliases": [
+          "1 ly (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "bok-choy",
+    "category": "VEGETABLE",
+    "nameVi": "Cải thìa luộc, để ráo, không muối",
+    "aliases": [
+      "cải thìa luộc"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 0.78,
+    "kcalPerServing": 12,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 170391"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "170391",
+      "sourceDescription": "Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170391/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc cải thìa theo nguồn (170 g)",
+        "aliases": [],
+        "factorToReference": 1.7,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/170391/nutrients#food_portion:86553",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "bread",
+    "category": "STARCH",
+    "nameVi": "Bánh mì kiểu Pháp, không nhân",
+    "aliases": [
+      "bánh mì không nhân",
+      "bánh mì kiểu Pháp"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 49.68,
+    "kcalPerServing": 272,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 172675"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "describe:household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Bread, french or vienna (includes sourdough)",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "172675",
+      "sourceDescription": "Bread, french or vienna (includes sourdough)",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172675/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "describe:household",
+        "labelVi": "1 ổ của bạn (chưa quy đổi)",
+        "aliases": [
+          "1 ổ của bạn (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   },
   {
     "id": "broth",
@@ -27,7 +245,435 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "defaultPortionId": "describe:household",
+    "portionUnits": [
+      {
+        "id": "describe:household",
+        "labelVi": "1 vá (chưa quy đổi)",
+        "aliases": [
+          "1 vá (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "brown-rice",
+    "category": "STARCH",
+    "nameVi": "Cơm gạo lứt hạt dài, đã nấu",
+    "aliases": [
+      "cơm gạo lứt"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 23.98,
+    "kcalPerServing": 123,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169704"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169704",
+      "sourceDescription": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169704/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc đong theo nguồn (202 g)",
+        "aliases": [],
+        "factorToReference": 2.02,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169704/nutrients#food_portion:85378",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "cabbage",
+    "category": "VEGETABLE",
+    "nameVi": "Bắp cải luộc, để ráo, không muối",
+    "aliases": [
+      "bắp cải luộc"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 3.61,
+    "kcalPerServing": 23,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169976"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Cabbage, cooked, boiled, drained, without salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169976",
+      "sourceDescription": "Cabbage, cooked, boiled, drained, without salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169976/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "½ cốc đong bắp cải theo nguồn (75 g)",
+        "aliases": [],
+        "factorToReference": 0.75,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169976/nutrients#food_portion:85799",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "carrot",
+    "category": "VEGETABLE",
+    "nameVi": "Cà rốt luộc, để ráo, không muối",
+    "aliases": [
+      "cà rốt luộc"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 5.22,
+    "kcalPerServing": 35,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 170394"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Carrots, cooked, boiled, drained, without salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "170394",
+      "sourceDescription": "Carrots, cooked, boiled, drained, without salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170394/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 củ theo nguồn (46 g)",
+        "aliases": [],
+        "factorToReference": 0.46,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/170394/nutrients#food_portion:86566",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "chicken-breast",
+    "category": "PROTEIN",
+    "nameVi": "Ức gà nướng, bỏ da và xương",
+    "aliases": [
+      "ức gà nướng"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 0,
+    "kcalPerServing": 165,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 171477"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "171477",
+      "sourceDescription": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171477/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1/2 ức theo nguồn (86 g)",
+        "aliases": [],
+        "factorToReference": 0.86,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/171477/nutrients#food_portion:88819",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "cola",
+    "category": "BEVERAGE",
+    "nameVi": "Nước cola có đường (công thức USDA)",
+    "aliases": [
+      "cola có đường"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 10.36,
+    "kcalPerServing": 42,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 174852"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Beverages, carbonated, cola, regular",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "174852",
+      "sourceDescription": "Beverages, carbonated, cola, regular",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174852/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 lon theo nguồn (12 fl oz; 370 g)",
+        "aliases": [],
+        "factorToReference": 3.7,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/174852/nutrients#food_portion:95017",
+        "kind": "HOUSEHOLD"
+      },
+      {
+        "id": "ml",
+        "labelVi": "1 ml",
+        "aliases": [
+          "1 mililit"
+        ],
+        "factorToReference": 0.010380904815894482,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/174852/nutrients#food_portion:95016; NIST SP811 B.9: 1 US fl oz = 29.57353 ml",
+        "kind": "METRIC"
+      }
+    ]
+  },
+  {
+    "id": "corn",
+    "category": "STARCH",
+    "nameVi": "Ngô ngọt vàng luộc, để ráo, không muối",
+    "aliases": [
+      "ngô luộc",
+      "bắp luộc"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 18.58,
+    "kcalPerServing": 96,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169999"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169999",
+      "sourceDescription": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169999/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 bắp vừa theo nguồn (103 g hạt)",
+        "aliases": [],
+        "factorToReference": 1.03,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169999/nutrients#food_portion:85851",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   },
   {
     "id": "cucumber",
@@ -36,7 +682,7 @@
     "aliases": [
       "dưa leo"
     ],
-    "servingLabel": "1 phần tham chiếu (100 g)",
+    "servingLabel": "100 g dưa chuột sống",
     "carbPerServing": 2.8,
     "kcalPerServing": 16,
     "gi": null,
@@ -44,7 +690,68 @@
     "sourceRefs": [
       "aseanfoods-2014:AAD46 PDF page 39 table page 6"
     ],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "raw",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "ASEANFOODS calculated energy"
+    },
+    "provenance": {
+      "sourceId": "aseanfoods-2014",
+      "sourceFoodId": "AAD46",
+      "sourceDescription": "Cucumber, long, raw",
+      "sourceVersion": "2014 electronic v1",
+      "sourceRef": "https://inmu.mahidol.ac.th/aseanfoods/doc/OnlineASEAN_FCD_V1_2014.pdf",
+      "accessedAt": "2026-10-02",
+      "notes": "Available carbohydrate by difference; original canonical ASEAN values retained. Noncommercial use with acknowledgement only. Household weights are estimates from equivalent basic USDA food states, not Vietnamese bowl measurements."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g dưa chuột sống",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc dưa thái lát theo nguồn (104 g)",
+        "aliases": [],
+        "factorToReference": 1.04,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/168409/nutrients#food_portion:83049",
+        "kind": "HOUSEHOLD"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "describe:household",
+        "labelVi": "1 lượng tự mô tả (chưa quy đổi)",
+        "aliases": [
+          "1 lượng tự mô tả (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   },
   {
     "id": "egg",
@@ -53,7 +760,7 @@
     "aliases": [
       "trứng luộc"
     ],
-    "servingLabel": "1 quả tham chiếu (50 g phần ăn được)",
+    "servingLabel": "50 g trứng luộc, bỏ vỏ",
     "carbPerServing": 0.6,
     "kcalPerServing": 76,
     "gi": null,
@@ -61,7 +768,428 @@
     "sourceRefs": [
       "aseanfoods-2014:AAH15 PDF page 56 table page 23"
     ],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 50,
+      "unit": "G",
+      "preparationState": "hard-boiled",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "ASEANFOODS calculated energy"
+    },
+    "provenance": {
+      "sourceId": "aseanfoods-2014",
+      "sourceFoodId": "AAH15",
+      "sourceDescription": "Egg, chicken, whole, boiled",
+      "sourceVersion": "2014 electronic v1",
+      "sourceRef": "https://inmu.mahidol.ac.th/aseanfoods/doc/OnlineASEAN_FCD_V1_2014.pdf",
+      "accessedAt": "2026-10-02",
+      "notes": "Available carbohydrate by difference; original canonical ASEAN values retained. Noncommercial use with acknowledgement only. Household weights are estimates from equivalent basic USDA food states, not Vietnamese bowl measurements."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "50 g trứng luộc, bỏ vỏ",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 quả lớn theo nguồn (50 g)",
+        "aliases": [
+          "1 quả",
+          "một quả"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/173424/nutrients#food_portion:92500",
+        "kind": "HOUSEHOLD"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.02,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "describe:household",
+        "labelVi": "1 lượng tự mô tả (chưa quy đổi)",
+        "aliases": [
+          "1 lượng tự mô tả (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "egg-noodles",
+    "category": "STARCH",
+    "nameVi": "Mì trứng, đã chín, có muối",
+    "aliases": [
+      "mì trứng chín"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 23.96,
+    "kcalPerServing": 138,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169762"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Noodles, egg, cooked, unenriched, with added salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169762",
+      "sourceDescription": "Noodles, egg, cooked, unenriched, with added salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169762/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc đong theo nguồn (160 g)",
+        "aliases": [],
+        "factorToReference": 1.6,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169762/nutrients#food_portion:85467",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "green-tea",
+    "category": "BEVERAGE",
+    "nameVi": "Trà xanh pha, không đường",
+    "aliases": [
+      "trà xanh không đường"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 0,
+    "kcalPerServing": 1,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 171917"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Beverages, tea, green, brewed, regular",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "171917",
+      "sourceDescription": "Beverages, tea, green, brewed, regular",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171917/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc theo nguồn (245 g)",
+        "aliases": [],
+        "factorToReference": 2.45,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/171917/nutrients#food_portion:89558",
+        "kind": "HOUSEHOLD"
+      },
+      {
+        "id": "ml",
+        "labelVi": "1 ml",
+        "aliases": [
+          "1 mililit"
+        ],
+        "factorToReference": 0.010008950571676768,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/171917/nutrients#food_portion:89559; NIST SP811 B.9: 1 US fl oz = 29.57353 ml",
+        "kind": "METRIC"
+      }
+    ]
+  },
+  {
+    "id": "kidney-beans",
+    "category": "STARCH",
+    "nameVi": "Đậu thận luộc, không muối",
+    "aliases": [
+      "đậu thận chín"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 16.4,
+    "kcalPerServing": 127,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 173740"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Beans, kidney, all types, mature seeds, cooked, boiled, without salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "173740",
+      "sourceDescription": "Beans, kidney, all types, mature seeds, cooked, boiled, without salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173740/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc đong theo nguồn (177 g)",
+        "aliases": [],
+        "factorToReference": 1.77,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/173740/nutrients#food_portion:93205",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "mango",
+    "category": "OTHER",
+    "nameVi": "Xoài tươi, phần ăn được",
+    "aliases": [
+      "xoài"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 13.38,
+    "kcalPerServing": 60,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169910"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Mangos, raw",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169910",
+      "sourceDescription": "Mangos, raw",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169910/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc miếng xoài theo nguồn (165 g)",
+        "aliases": [],
+        "factorToReference": 1.65,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169910/nutrients#food_portion:85651",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "milk",
+    "category": "BEVERAGE",
+    "nameVi": "Sữa bò nguyên kem 3,25%, không thêm đường",
+    "aliases": [
+      "sữa nguyên kem"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 4.78,
+    "kcalPerServing": 61,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 172217"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "172217",
+      "sourceDescription": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172217/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc theo nguồn (244 g)",
+        "aliases": [],
+        "factorToReference": 2.44,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/172217/nutrients#food_portion:90101",
+        "kind": "HOUSEHOLD"
+      },
+      {
+        "id": "ml",
+        "labelVi": "1 ml",
+        "aliases": [
+          "1 mililit"
+        ],
+        "factorToReference": 0.010313276771491263,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/172217/nutrients#food_portion:90103; NIST SP811 B.9: 1 US fl oz = 29.57353 ml",
+        "kind": "METRIC"
+      }
+    ]
   },
   {
     "id": "noodles",
@@ -76,7 +1204,155 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "defaultPortionId": "describe:household",
+    "portionUnits": [
+      {
+        "id": "describe:household",
+        "labelVi": "1 tô (chưa quy đổi)",
+        "aliases": [
+          "1 tô (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "orange",
+    "category": "OTHER",
+    "nameVi": "Cam tươi, phần ăn được",
+    "aliases": [
+      "cam"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 9.35,
+    "kcalPerServing": 47,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169097"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Oranges, raw, all commercial varieties",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169097",
+      "sourceDescription": "Oranges, raw, all commercial varieties",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169097/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 quả theo nguồn (131 g)",
+        "aliases": [],
+        "factorToReference": 1.31,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169097/nutrients#food_portion:84230",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "papaya",
+    "category": "OTHER",
+    "nameVi": "Đu đủ tươi, phần ăn được",
+    "aliases": [
+      "đu đủ"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 9.12,
+    "kcalPerServing": 43,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169926"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Papayas, raw",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169926",
+      "sourceDescription": "Papayas, raw",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169926/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc miếng đu đủ theo nguồn (145 g)",
+        "aliases": [],
+        "factorToReference": 1.45,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169926/nutrients#food_portion:85692",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   },
   {
     "id": "pho",
@@ -91,7 +1367,88 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "defaultPortionId": "describe:household",
+    "portionUnits": [
+      {
+        "id": "describe:household",
+        "labelVi": "1 tô (chưa quy đổi)",
+        "aliases": [
+          "1 tô (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "potato",
+    "category": "STARCH",
+    "nameVi": "Khoai tây luộc, bỏ vỏ, không muối",
+    "aliases": [
+      "khoai tây luộc"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 18.21,
+    "kcalPerServing": 86,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 170440"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Potatoes, boiled, cooked without skin, flesh, without salt",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "170440",
+      "sourceDescription": "Potatoes, boiled, cooked without skin, flesh, without salt",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170440/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 củ vừa theo nguồn (167 g)",
+        "aliases": [],
+        "factorToReference": 1.67,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/170440/nutrients#food_portion:86653",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   },
   {
     "id": "rice",
@@ -101,7 +1458,7 @@
       "cơm",
       "cơm gạo tẻ"
     ],
-    "servingLabel": "1 phần tham chiếu (100 g chín)",
+    "servingLabel": "100 g cơm trắng đã nấu",
     "carbPerServing": 29.4,
     "kcalPerServing": 129,
     "gi": null,
@@ -109,7 +1466,68 @@
     "sourceRefs": [
       "aseanfoods-2014:AAA63 PDF page 34 table page 1"
     ],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "cooked",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "ASEANFOODS calculated energy"
+    },
+    "provenance": {
+      "sourceId": "aseanfoods-2014",
+      "sourceFoodId": "AAA63",
+      "sourceDescription": "Rice, white, cooked",
+      "sourceVersion": "2014 electronic v1",
+      "sourceRef": "https://inmu.mahidol.ac.th/aseanfoods/doc/OnlineASEAN_FCD_V1_2014.pdf",
+      "accessedAt": "2026-10-02",
+      "notes": "Available carbohydrate by difference; original canonical ASEAN values retained. Noncommercial use with acknowledgement only. Household weights are estimates from equivalent basic USDA food states, not Vietnamese bowl measurements."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g cơm trắng đã nấu",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc đong cơm theo nguồn (158 g)",
+        "aliases": [],
+        "factorToReference": 1.58,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169757/nutrients#food_portion:85462",
+        "kind": "HOUSEHOLD"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "describe:household",
+        "labelVi": "1 bát của bạn (chưa quy đổi)",
+        "aliases": [
+          "1 bát của bạn (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   },
   {
     "id": "rice-bowl",
@@ -124,6 +1542,624 @@
     "gi": null,
     "gl": null,
     "sourceRefs": [],
-    "catalogVersion": "v2"
+    "catalogVersion": "v3-2026-10-02",
+    "defaultPortionId": "describe:household",
+    "portionUnits": [
+      {
+        "id": "describe:household",
+        "labelVi": "1 bát (chưa quy đổi)",
+        "aliases": [
+          "1 bát (chưa quy đổi)"
+        ],
+        "factorToReference": 1,
+        "conversionQuality": "UNVERIFIED",
+        "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "rice-noodles",
+    "category": "STARCH",
+    "nameVi": "Sợi mì gạo, đã chín (USDA)",
+    "aliases": [
+      "mì gạo chín"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 23.01,
+    "kcalPerServing": 108,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 168914"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Rice noodles, cooked",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "168914",
+      "sourceDescription": "Rice noodles, cooked",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168914/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc đong theo nguồn (176 g)",
+        "aliases": [],
+        "factorToReference": 1.76,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/168914/nutrients#food_portion:83974",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "soy-sauce",
+    "category": "CONDIMENT",
+    "nameVi": "Nước tương đậu nành và lúa mì (shoyu)",
+    "aliases": [
+      "nước tương shoyu"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 4.13,
+    "kcalPerServing": 53,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 174277"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Soy sauce made from soy and wheat (shoyu)",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "174277",
+      "sourceDescription": "Soy sauce made from soy and wheat (shoyu)",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174277/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 thìa canh theo nguồn (16 g)",
+        "aliases": [],
+        "factorToReference": 0.16,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/174277/nutrients#food_portion:94068",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "sticky-rice",
+    "category": "STARCH",
+    "nameVi": "Gạo nếp trắng, đã nấu",
+    "aliases": [
+      "cơm nếp",
+      "xôi trắng không thêm nguyên liệu"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 20.09,
+    "kcalPerServing": 97,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169711"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Rice, white, glutinous, unenriched, cooked",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169711",
+      "sourceDescription": "Rice, white, glutinous, unenriched, cooked",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169711/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc đong theo nguồn (174 g)",
+        "aliases": [],
+        "factorToReference": 1.74,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169711/nutrients#food_portion:85385",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "sugar",
+    "category": "CONDIMENT",
+    "nameVi": "Đường cát trắng",
+    "aliases": [
+      "đường cát"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 99.98,
+    "kcalPerServing": 387,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 169655"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Sugars, granulated",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "169655",
+      "sourceDescription": "Sugars, granulated",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169655/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 thìa cà phê theo nguồn (4,2 g)",
+        "aliases": [],
+        "factorToReference": 0.042,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/169655/nutrients#food_portion:85287",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "sweet-potato",
+    "category": "STARCH",
+    "nameVi": "Khoai lang luộc, bỏ vỏ",
+    "aliases": [
+      "khoai lang luộc"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 15.22,
+    "kcalPerServing": 76,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 168484"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Sweet potato, cooked, boiled, without skin",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "168484",
+      "sourceDescription": "Sweet potato, cooked, boiled, without skin",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168484/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 củ vừa theo nguồn (151 g)",
+        "aliases": [],
+        "factorToReference": 1.51,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/168484/nutrients#food_portion:83173",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "tofu",
+    "category": "PROTEIN",
+    "nameVi": "Đậu phụ cứng, chưa chế biến, kết tủa calcium sulfate",
+    "aliases": [
+      "đậu phụ cứng"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 0.48,
+    "kcalPerServing": 144,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 172475"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Tofu, raw, firm, prepared with calcium sulfate",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "172475",
+      "sourceDescription": "Tofu, raw, firm, prepared with calcium sulfate",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172475/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1/4 miếng theo nguồn (81 g)",
+        "aliases": [],
+        "factorToReference": 0.81,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/172475/nutrients#food_portion:90684",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "tomato",
+    "category": "VEGETABLE",
+    "nameVi": "Cà chua đỏ chín, ăn sống",
+    "aliases": [
+      "cà chua sống"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 2.69,
+    "kcalPerServing": 18,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 170457"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Tomatoes, red, ripe, raw, year round average",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "170457",
+      "sourceDescription": "Tomatoes, red, ripe, raw, year round average",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 quả vừa theo nguồn (123 g)",
+        "aliases": [],
+        "factorToReference": 1.23,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/170457/nutrients#food_portion:86686",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "watermelon",
+    "category": "OTHER",
+    "nameVi": "Dưa hấu tươi, phần ăn được",
+    "aliases": [
+      "dưa hấu"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 7.15,
+    "kcalPerServing": 30,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 167765"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Watermelon, raw",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "167765",
+      "sourceDescription": "Watermelon, raw",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/167765/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 cốc miếng dưa theo nguồn (152 g)",
+        "aliases": [],
+        "factorToReference": 1.52,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/167765/nutrients#food_portion:81933",
+        "kind": "HOUSEHOLD"
+      }
+    ]
+  },
+  {
+    "id": "yogurt",
+    "category": "OTHER",
+    "nameVi": "Sữa chua nguyên kem, không thêm đường",
+    "aliases": [
+      "sữa chua không đường"
+    ],
+    "servingLabel": "100 g phần ăn được",
+    "carbPerServing": 4.66,
+    "kcalPerServing": 61,
+    "gi": null,
+    "gl": null,
+    "sourceRefs": [
+      "usda-sr-2018:FDC 171284"
+    ],
+    "catalogVersion": "v3-2026-10-02",
+    "referenceServingId": "reference",
+    "defaultPortionId": "household",
+    "nutrientBasis": {
+      "amount": 100,
+      "unit": "G",
+      "preparationState": "Yogurt, plain, whole milk",
+      "ediblePortionNote": "Phần ăn được; bỏ vỏ/xương/hạt không ăn theo mô tả nguồn",
+      "carbohydrateDefinition": "AVAILABLE_BY_DIFFERENCE",
+      "energyDefinition": "USDA published Energy (1008), source Atwater calculation"
+    },
+    "provenance": {
+      "sourceId": "usda-sr-2018",
+      "sourceFoodId": "171284",
+      "sourceDescription": "Yogurt, plain, whole milk",
+      "sourceVersion": "April 2018",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171284/nutrients",
+      "accessedAt": "2026-10-02",
+      "notes": "Carbohydrate normalization: USDA 1005 total by difference minus 1079 total dietary fiber = available by difference (ASEANFOODS 2014 Table 4). Original values/row IDs in usda-curated.json. Basic food only; not a Vietnamese recipe or brand equivalence."
+    },
+    "portionUnits": [
+      {
+        "id": "reference",
+        "labelVi": "100 g phần ăn được",
+        "aliases": [],
+        "factorToReference": 1,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:explicit nutrient basis identity",
+        "kind": "REFERENCE"
+      },
+      {
+        "id": "g",
+        "labelVi": "1 g",
+        "aliases": [
+          "1 gram"
+        ],
+        "factorToReference": 0.01,
+        "conversionQuality": "VERIFIED",
+        "sourceRef": "mam-an-design:metric mass identity",
+        "kind": "METRIC"
+      },
+      {
+        "id": "household",
+        "labelVi": "1 hộp theo nguồn (170 g)",
+        "aliases": [],
+        "factorToReference": 1.7,
+        "conversionQuality": "ESTIMATED",
+        "sourceRef": "https://fdc.nal.usda.gov/food-details/171284/nutrients#food_portion:88362",
+        "kind": "HOUSEHOLD"
+      }
+    ]
   }
 ]

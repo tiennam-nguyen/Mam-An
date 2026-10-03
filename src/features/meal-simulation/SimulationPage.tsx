@@ -1,3 +1,4 @@
+import { PortionControls } from '../../shared/ui/PortionControls';
 import { MealEvidence } from '../personal-response/MealEvidence';
 import { useSyncExternalStore, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -8,7 +9,7 @@ import {
   formatNumber,
   SafetyNote,
 } from '../../shared/ui/common';
-import { referencePortion, foodRole } from '../../domain/meal/mealEntry';
+import { defaultPortion, foodRole } from '../../domain/meal/mealEntry';
 import type { FoodId } from '../../domain/common/brandedIds';
 import type { ScenarioOperation } from '../../domain/meal/decisionSimulator';
 export function SimulationPage() {
@@ -90,24 +91,17 @@ export function SimulationPage() {
           {e.components.map((c) => (
             <div className="food-card" key={c.componentId}>
               <h3>{c.displayName}</h3>
-              <p className="muted">Đơn vị: {c.portion.displayLabelSnapshot}</p>
-              <div className="chips">
-                {[0.5, 1, 1.5, 2].map((quantity) => (
-                  <button
-                    key={quantity}
-                    aria-pressed={quantity === c.portion.quantity}
-                    onClick={() =>
-                      append({
-                        type: 'CHANGE_PORTION',
-                        targetComponentId: c.componentId,
-                        newPortion: { ...c.portion, quantity },
-                      })
-                    }
-                  >
-                    {formatNumber(quantity)} phần
-                  </button>
-                ))}
-              </div>
+              <PortionControls
+                food={c.foodId ? catalog.getFoodById(c.foodId) : null}
+                portion={c.portion}
+                onChange={(newPortion) =>
+                  append({
+                    type: 'CHANGE_PORTION',
+                    targetComponentId: c.componentId,
+                    newPortion,
+                  })
+                }
+              />
               <label>
                 Thay thành phần
                 <select
@@ -121,7 +115,7 @@ export function SimulationPage() {
                         type: 'REPLACE_COMPONENT',
                         targetComponentId: c.componentId,
                         replacementFoodId: food.id,
-                        newPortion: referencePortion(food),
+                        newPortion: defaultPortion(food),
                       });
                   }}
                 >
@@ -168,7 +162,7 @@ export function SimulationPage() {
                   targetEntryId: e.entryId,
                   foodId: food.id,
                   role: foodRole(food),
-                  portion: referencePortion(food),
+                  portion: defaultPortion(food),
                 });
             }}
           >

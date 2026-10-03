@@ -22,6 +22,9 @@ export interface PortionUnit {
   labelVi: string;
   factorToReference: number;
   aliases: readonly string[];
+  conversionQuality?: 'VERIFIED' | 'ESTIMATED' | 'UNVERIFIED';
+  sourceRef?: string;
+  kind?: 'HOUSEHOLD' | 'METRIC' | 'REFERENCE';
 }
 export interface PortionSelection {
   unitId: string;
@@ -64,12 +67,25 @@ export interface DishTemplate {
     optional: boolean;
   }[];
 }
+export function defaultPortion(food: FoodItem | null): PortionSelection {
+  const preferred = food?.portionUnits?.find(
+    (u) => u.id === food.defaultPortionId,
+  );
+  if (preferred)
+    return {
+      unitId: preferred.id,
+      quantity: 1,
+      factorToReferenceSnapshot: preferred.factorToReference,
+      displayLabelSnapshot: preferred.labelVi,
+    };
+  return referencePortion(food);
+}
 export function referencePortion(food: FoodItem | null): PortionSelection {
   return {
     unitId: 'reference',
     quantity: 1,
     factorToReferenceSnapshot: 1,
-    displayLabelSnapshot: food?.servingLabel ?? '1 phần chưa xác định',
+    displayLabelSnapshot: food?.servingLabel ?? 'lượng tự mô tả (chưa quy đổi)',
   };
 }
 export function validatePortion(p: PortionSelection) {
@@ -91,7 +107,12 @@ export function calculateComponent(
   return {
     ...c,
     ...calculateItemNutrition(
-      c.includedInTotal ? food : null,
+      c.includedInTotal &&
+        !c.portion.unitId.startsWith('describe:') &&
+        food?.portionUnits?.find((u) => u.id === c.portion.unitId)
+          ?.conversionQuality !== 'UNVERIFIED'
+        ? food
+        : null,
       c.portion.quantity * c.portion.factorToReferenceSnapshot,
     ),
   };

@@ -24,7 +24,7 @@ test('all four offline scenario operations compose, discard, then apply without 
         .locator('.food-card')
         .filter({ has: page.getByRole('heading', { name, exact: true }) });
     await card('Cơm trắng')
-      .getByRole('button', { name: /^0,5 phần/ })
+      .getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ })
       .click();
     await card('Dưa chuột')
       .getByRole('button', { name: 'Bỏ Dưa chuột', exact: true })
@@ -40,7 +40,7 @@ test('all four offline scenario operations compose, discard, then apply without 
       .getByRole('button', { name: '＋ Thêm vào phương án', exact: true })
       .first()
       .click();
-    await expect(page.getByText(/Chênh lệch: 14,1 g carb/)).toBeVisible();
+    await expect(page.getByText(/Chênh lệch: 22,6 g carb/)).toBeVisible();
     expect((await readDatabase(page)).tables.meals).toEqual(
       original.tables.meals,
     );
@@ -51,7 +51,7 @@ test('all four offline scenario operations compose, discard, then apply without 
       })
       .click();
     await expect(page.getByTestId('carb-total')).toHaveText(
-      apply ? '46,9 g' : '32,8 g',
+      apply ? '72,6 g' : '50 g',
     );
     expect((await readDatabase(page)).tables.meals).toEqual(
       original.tables.meals,
@@ -62,7 +62,7 @@ test('all four offline scenario operations compose, discard, then apply without 
     page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
   ).toBeVisible();
   await page.reload();
-  await expect(page.locator('.big-number')).toHaveText('46,9 g carb');
+  await expect(page.locator('.big-number')).toHaveText('72,6 g carb');
   expect((await readDatabase(page)).tables.meals).toHaveLength(1);
 });
 test('v2 offline decision flow keeps scenarios transient and saves/reloads components', async ({
@@ -85,7 +85,7 @@ test('v2 offline decision flow keeps scenarios transient and saves/reloads compo
   await page
     .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
     .click();
-  await expect(page.getByTestId('carb-total')).toContainText('32,8');
+  await expect(page.getByTestId('carb-total')).toContainText('50');
   const count = () =>
     page.evaluate(async () => {
       const db = await new Promise<IDBDatabase>((resolve, reject) => {
@@ -106,15 +106,15 @@ test('v2 offline decision flow keeps scenarios transient and saves/reloads compo
   const rice = page.locator('.food-card').filter({
     has: page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
   });
-  await rice.getByRole('button', { name: /^0,5 phần/ }).click();
-  await expect(page.getByText(/Chênh lệch: -14,7 g carb/)).toBeVisible();
+  await rice.getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ }).click();
+  await expect(page.getByText(/Chênh lệch: -23,2 g carb/)).toBeVisible();
   await expect.poll(count).toBe(0);
   await page.getByRole('button', { name: 'Bỏ phương án', exact: true }).click();
-  await expect(page.getByTestId('carb-total')).toContainText('32,8');
+  await expect(page.getByTestId('carb-total')).toContainText('50');
   await page.getByRole('button', { name: 'Thử phương án khác' }).click();
-  await rice.getByRole('button', { name: /^0,5 phần/ }).click();
+  await rice.getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ }).click();
   await page.getByRole('button', { name: 'Áp dụng phương án' }).click();
-  await expect(page.getByTestId('carb-total')).toContainText('18,1');
+  await expect(page.getByTestId('carb-total')).toContainText('26,7');
   await expect.poll(count).toBe(0);
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
   await expect(
@@ -122,7 +122,7 @@ test('v2 offline decision flow keeps scenarios transient and saves/reloads compo
   ).toBeVisible();
   await expect.poll(count).toBe(1);
   await page.reload();
-  await expect(page.locator('.big-number')).toContainText('18,1');
+  await expect(page.locator('.big-number')).toContainText('26,7');
   await page.getByRole('link', { name: 'Thêm số đo', exact: true }).click();
   await page.getByLabel('Giá trị', { exact: true }).fill('6.7');
   await page.getByRole('button', { name: 'Lưu số đo', exact: true }).click();

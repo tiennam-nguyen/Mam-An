@@ -14,7 +14,7 @@ for (const width of [390, 1366])
     await page
       .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
       .click();
-    await expect(page.getByTestId('carb-total')).toHaveText('32,8 g');
+    await expect(page.getByTestId('carb-total')).toHaveText('50 g');
     await page.evaluate(() => window.scrollTo(0, 0));
     if (width < 800)
       await expect(
@@ -56,6 +56,6 @@ for (const width of [390, 1366])
       .click();
     await expect(page.getByRole('status')).toContainText('Đã chuẩn bị');
     await page.goto('/report');
-    await expect(page.locator('tbody tr')).toHaveCount(7);
+    await expect(page.locator('tbody tr')).toHaveCount(10);
     await shot('report', true);
   });

@@ -848,4 +848,94 @@ summary {
   details:not([open]) > :not(summary) {
     display: none;
   }
+  .report-meals {
+    break-inside: auto;
+  }
+  .report-meal {
+    break-inside: avoid;
+  }
+  .report a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+.portion-controls small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.portion-controls .chips button {
+  text-align: left;
+  white-space: normal;
+}
+.report-meal {
+  border-top: 1px solid var(--line, #ccd3c8);
+  padding-block: 0.75rem;
+}
+.report td,
+.report h3 {
+  overflow-wrap: anywhere;
+}
+@media print {
+  html {
+    font-size: 14px !important;
+    background: white;
+  }
+  .report {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+  .report .card {
+    margin-block: 8pt;
+    padding: 8pt;
+    border-radius: 4pt;
+  }
+  .report p {
+    margin-block: 5pt;
+  }
+  .report h2 {
+    font-size: 14pt;
+    margin-block: 5pt;
+    break-after: avoid;
+  }
+  .report h3 {
+    font-size: 11pt;
+    margin-block: 4pt;
+  }
+  .report-meal {
+    padding-block: 6pt;
+  }
+  .report-meal ul {
+    padding-left: 14pt;
+    margin-block: 4pt;
+  }
+  .report .daily-row {
+    grid-template-columns: 45pt 1fr 110pt;
+    margin-block: 5pt;
+  }
+  .report .metric-grid .card {
+    padding: 8pt;
+  }
+  .report .page-heading {
+    margin-bottom: 8pt;
+  }
+  .report .report-meals {
+    border: 0;
+    padding: 0;
+  }
+  .report .report-readings {
+    break-inside: auto;
+  }
+  .report table {
+    width: 100%;
+  }
+  .report th,
+  .report td {
+    padding: 5pt;
+  }
+  .report-pattern {
+    break-inside: avoid;
+  }
+  .report details {
+    display: none;
+  }
 }

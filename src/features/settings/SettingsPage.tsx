@@ -118,9 +118,23 @@ export function AboutPage() {
           ghi nhận ASEANFOODS / Institute of Nutrition, Mahidol University.
         </p>
         <p>
-          Các phần 100 g / 50 g / 100 g là phần tham chiếu minh họa; không khẳng
-          định một bát hoặc quả thực tế luôn có khối lượng đó. Phở chưa có định
-          lượng đã xác minh nên giữ dinh dưỡng chưa biết.
+          Danh mục bổ sung 26 thực phẩm cơ bản từ{' '}
+          <a
+            href="https://fdc.nal.usda.gov/download-datasets/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            USDA FoodData Central, SR Legacy 2018
+          </a>{' '}
+          (dữ liệu công cộng). Carb khả dụng được tính bằng carb tổng trừ chất
+          xơ; năng lượng giữ theo nguồn. Không coi thực phẩm cơ bản là tương
+          đương một công thức món Việt.
+        </p>
+        <p>
+          Khối lượng cốc/quả theo nguồn chỉ là ước tính cho lượng thực tế của
+          bạn. Có thể nhập g/ml khi đã biết lượng; ml chỉ có khi có dữ liệu khối
+          lượng riêng. Bát hoặc tô chưa có quy đổi vẫn giữ dinh dưỡng chưa biết.
+          Giá trị bữa đã lưu không đổi khi danh mục được cập nhật.
         </p>
         <p>
           Prototype phi thương mại; quyền phân phối công khai/thương mại cần

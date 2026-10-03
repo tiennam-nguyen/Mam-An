@@ -13,7 +13,7 @@ export class StaticFoodCatalog implements FoodCatalog {
     return { ...food, id: food.id as FoodId };
   });
   getPortionUnits(id: string) {
-    return v2.portions.filter((p) => p.foodId === id);
+    return this.getFoodById(id)?.portionUnits ?? [];
   }
   listDishTemplates() {
     return v2.templates as readonly DishTemplate[];

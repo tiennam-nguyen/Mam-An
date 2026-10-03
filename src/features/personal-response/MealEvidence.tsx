@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import { useServices } from '../../shared/ui/ServicesContext';
 import { useQuery } from '../../shared/ui/useQuery';
 import { ErrorNotice } from '../../shared/ui/common';
@@ -13,9 +13,10 @@ import type { MealScenario } from '../../domain/meal/decisionSimulator';
 import type { PatternEvidence } from '../../domain/personal/personalResponse';
 import type { ExplanationResult } from '../../domain/explanation/explanation';
 import { patternCopy } from '../../domain/explanation/explanation';
+import { Link } from 'react-router-dom';
 export function PatternCard({
   pattern,
-  title = 'Từ các lần đã ghi',
+  title = 'Quan sát từ các bữa tương tự',
 }: {
   pattern: PatternEvidence;
   title?: string;
@@ -35,6 +36,25 @@ export function PatternCard({
           caveats: p.caveats,
         })}
       </p>
+      {p.dataQuality === 'SUFFICIENT_FOR_DESCRIPTION' && (
+        <>
+          <p>
+            Khoảng quan sát giữa các bữa:{' '}
+            {p.statistics.minMgDl?.toLocaleString('vi-VN')}–
+            {p.statistics.maxMgDl?.toLocaleString('vi-VN')} mg/dL (trung vị số
+            đo của từng bữa).
+          </p>
+          <p>
+            {p.statistics.medianDeltaFromPremealMgDl === null
+              ? 'Chưa đủ số đo trước bữa để mô tả mức thay đổi.'
+              : `Chênh lệch trung vị so với trước bữa: ${p.statistics.medianDeltaFromPremealMgDl.toLocaleString('vi-VN')} mg/dL, từ ${p.premealTrace.length} bữa có mốc trước bữa.`}
+          </p>
+        </>
+      )}
+      <p className="muted">
+        So sánh theo món, thành phần và lượng carb đã ghi. Đây là quan sát cá
+        nhân, không phải dự đoán hoặc khuyến nghị điều trị.
+      </p>
       {p.sampleCount > 0 && (
         <p>
           {p.sampleCount} bữa góp số đo vào nhóm thời điểm này. Các nhóm cách
@@ -44,6 +64,18 @@ export function PatternCard({
       {p.glucoseObservations.length > 0 && (
         <details>
           <summary>Xem thời điểm ghi nhận</summary>
+          <ul>
+            {p.matches.map((m) => (
+              <li key={m.mealId}>
+                <Link to={'/history/' + m.mealId}>
+                  {m.mealLabel || 'Bữa tương tự'}
+                  {m.createdAt
+                    ? ' · ' + new Date(m.createdAt).toLocaleString('vi-VN')
+                    : ''}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <ul>
             {p.glucoseObservations.map((o) => (
               <li key={o.readingId}>
@@ -84,9 +116,16 @@ export function MealEvidence({
     } | null>(null),
     [loading, setLoading] = useState(false);
   const controller = useRef<AbortController | null>(null);
+  const compared = useMemo(
+    () =>
+      scenario
+        ? { ...draft, ...scenario.after, entries: scenario.resultingEntries }
+        : draft,
+    [draft, scenario],
+  );
   const load = useCallback(
-    () => getPersonalResponse(draft, meals, glucose, mode, excludeId),
-    [draft, meals, glucose, mode, excludeId],
+    () => getPersonalResponse(compared, meals, glucose, mode, excludeId),
+    [compared, meals, glucose, mode, excludeId],
   );
   const state = useQuery(load);
   const bundle = buildEvidenceBundle(

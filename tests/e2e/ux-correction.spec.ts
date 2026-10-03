@@ -127,7 +127,7 @@ test('Vietnamese typography and mobile journey screenshots', async ({
       await page
         .getByRole('button', { name: 'Dùng bữa ăn mẫu', exact: true })
         .click();
-      await expect(page.getByTestId('carb-total')).toHaveText('32,8 g');
+      await expect(page.getByTestId('carb-total')).toHaveText('50 g');
       if (phase === 'after') {
         expect(await page.evaluate(() => window.scrollY)).toBe(0);
         await expect(page.locator('main')).toBeFocused();
@@ -347,20 +347,20 @@ test('progressive editor preserves custom names, unknown nutrition and recalcula
   ).toBeHidden();
   await expect(
     rice.getByRole('combobox', {
-      name: 'Món tham chiếu dinh dưỡng',
+      name: 'Chọn thực phẩm phù hợp',
       exact: true,
     }),
   ).toBeHidden();
-  await expect(rice.getByText(/1 phần =/)).toBeVisible();
-  await rice.getByRole('button', { name: '0,5 phần', exact: true }).click();
-  await expect(page.getByTestId('carb-total')).toHaveText('18,1 g');
+  await expect(rice.getByText(/Đang chọn:/)).toBeVisible();
+  await rice.getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ }).click();
+  await expect(page.getByTestId('carb-total')).toHaveText('26,7 g');
   await rice.getByText('Chỉnh món này', { exact: true }).click();
   await rice.getByLabel('Tên thành phần', { exact: true }).fill('Cơm nhà nấu');
   const corrected = page.locator('article').filter({
     has: page.getByRole('heading', { name: 'Cơm nhà nấu', exact: true }),
   });
   await corrected
-    .getByRole('combobox', { name: 'Món tham chiếu dinh dưỡng', exact: true })
+    .getByRole('combobox', { name: 'Chọn thực phẩm phù hợp', exact: true })
     .selectOption('');
   await expect(
     corrected.getByLabel('Tên thành phần', { exact: true }),
@@ -369,7 +369,7 @@ test('progressive editor preserves custom names, unknown nutrition and recalcula
     corrected.getByText('Carb chưa biết', { exact: false }),
   ).toBeVisible();
   await corrected
-    .getByRole('combobox', { name: 'Món tham chiếu dinh dưỡng', exact: true })
+    .getByRole('combobox', { name: 'Chọn thực phẩm phù hợp', exact: true })
     .selectOption('rice');
   await expect(
     corrected.getByLabel('Tên thành phần', { exact: true }),

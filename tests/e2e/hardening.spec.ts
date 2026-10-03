@@ -368,7 +368,7 @@ test.describe('optional generated explanations', () => {
           .getByRole('button', { name: 'Thử phương án khác', exact: true })
           .click();
         await page
-          .getByRole('button', { name: /^0,5 phần/ })
+          .getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ })
           .first()
           .click();
       }
@@ -378,7 +378,7 @@ test.describe('optional generated explanations', () => {
       await requested;
       if (action === 'edit-and-B') {
         await page
-          .getByRole('button', { name: '0,5 phần', exact: true })
+          .getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ })
           .first()
           .click();
         await page

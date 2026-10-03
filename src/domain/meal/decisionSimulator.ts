@@ -3,6 +3,7 @@ import type { FoodItem } from '../food/foodItem';
 import type { MealDraft } from './mealDraft';
 import {
   calculateComponent,
+  foodRole,
   cloneEntries,
   entryTotals,
   flattenEntries,
@@ -59,11 +60,22 @@ function validateUnit(
   if (!foodId) return;
   const units = catalog.getPortionUnits?.(foodId) ?? [];
   const unit = units.find((u) => u.id === portion.unitId);
+  // v2 persisted these exact half-reference units. Retain their contract when
+  // reusing a saved meal; new UI selections use the enriched catalog instead.
+  const food = catalog.getFoodById(foodId);
+  const legacyHalf =
+    portion.unitId === 'half' &&
+    portion.factorToReferenceSnapshot === 0.5 &&
+    (foodId === 'egg' ||
+      (['pho', 'noodles', 'rice-bowl'].includes(foodId) &&
+        food?.carbPerServing === null &&
+        food.kcalPerServing === null));
   if (
     unit
       ? unit.factorToReference !== portion.factorToReferenceSnapshot
-      : !['reference', 'legacy-reference-serving'].includes(portion.unitId) ||
-        portion.factorToReferenceSnapshot !== 1
+      : !legacyHalf &&
+        (!['reference', 'legacy-reference-serving'].includes(portion.unitId) ||
+          portion.factorToReferenceSnapshot !== 1)
   )
     throw new Error('Invalid food portion unit');
 }
@@ -106,7 +118,7 @@ export function createScenario(
             componentId,
             foodId: food.id,
             displayName: food.nameVi,
-            role: op.role,
+            role: foodRole(food) === 'OTHER' ? op.role : foodRole(food),
             portion: { ...op.portion },
             source: 'USER',
             userCorrected: true,
@@ -145,6 +157,7 @@ export function createScenario(
       {
         ...current,
         foodId,
+        role: op.type === 'REPLACE_COMPONENT' ? foodRole(food) : current.role,
         displayName:
           op.type === 'REPLACE_COMPONENT' ? food!.nameVi : current.displayName,
         portion: { ...op.newPortion },

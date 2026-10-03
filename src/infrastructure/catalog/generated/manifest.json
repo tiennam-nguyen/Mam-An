@@ -1,9 +1,10 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "v2",
+  "catalogVersion": "v3-2026-10-02",
   "sourceSet": [
+    "usda-sr-2018",
     "aseanfoods-2014",
     "mam-an-design"
   ],
-  "publishedAt": "2026-09-19"
+  "publishedAt": "2026-10-02"
 }

@@ -11,7 +11,9 @@ const csv = readFileSync('catalog-src/foods.csv', 'utf8'),
   ) as unknown;
 it('catalog numeric values have registered source and locators', () => {
   const result = readCatalog();
-  expect(result.foods.filter((f) => f.carbPerServing !== null)).toHaveLength(3);
+  expect(result.foods.filter((f) => f.carbPerServing !== null)).toHaveLength(
+    29,
+  );
   expect(result.foods.find((f) => f.id === 'egg')?.carbPerServing).toBe(0.6);
 });
 it('rejects missing provenance, invalid portions, duplicates and derivation drift', () => {
