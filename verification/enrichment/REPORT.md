@@ -18,11 +18,15 @@ The deterministic weekly report builder joins exact saved meal IDs, assigns chro
 
 ## Verification and limits
 
-[RAN] Before final commit: 431 unit/integration tests passed across 26 files; six focused demo/enrichment browser tests passed; separate mobile/desktop visual run passed. Safety and credential audits passed. Full browser run initially had outdated assumptions about 100 g defaults and identical demo menus; tests were updated against source-based arithmetic (158 g rice = 46.452 g available carbohydrate), and focused checks passed. Final commit-wide command results are recorded in the final handoff and PR.
+[RAN] Verification milestone: 432 unit/integration tests passed across 26 files; all 58 browser tests passed; six focused demo/enrichment browser tests and the separate mobile/desktop visual run passed. `npm ci`, `npm run typecheck`, `npm run catalog:build`, `npm run catalog:check`, `npm test`, `npm run build`, `npm run test:e2e`, `npm run audit:safety`, `npm run audit:secrets`, and `git diff --check` completed successfully. These commands are repeated after this verification record is committed; the final handoff and PR identify that final SHA and results. Local command outputs are retained as ignored `check-*.log` files alongside this report.
+
+Initial browser failures were outdated assumptions about 100 g defaults and identical demo menus; tests now use independently calculated source arithmetic (158 g rice = 46.452 g available carbohydrate). Final empty-report wording also avoids presenting 0/0 completeness; a dedicated unit regression verifies missing data stays null.
 
 [READ] Inspected final 390 px review/unknown screenshots, large-text report/evidence viewports, desktop report and all four rendered A4 PDF pages. The print fixes remove excess spacing, orphaned badges, decimal-comma truncation and tinted page background. Browser assertions also cover 320/390/1366 large-text widths and no horizontal overflow.
 
-Remaining bounds: food composition and household masses do not establish a user's actual serving or clinical accuracy; only recorded components count. USDA available carbohydrate is an explicit total-minus-fiber derivation. ASEAN noncommercial acknowledgement restriction remains; commercial redistribution needs review. No live provider accuracy benchmark, production deployment, clinician validation or new monitoring was performed. Build may report its existing >500 kB bundle advisory.
+Remaining bounds: food composition and household masses do not establish a user's actual serving or clinical accuracy; only recorded components count. USDA available carbohydrate is an explicit total-minus-fiber derivation. ASEAN noncommercial acknowledgement restriction remains; commercial redistribution needs review. No live provider accuracy benchmark, production deployment, clinician validation or new monitoring was performed. Build may report a >500 kB bundle advisory.
+
+Clean install reports one low-severity existing transitive build-tool advisory: `serialize-javascript@7.1.1`, via `vite-plugin-pwa → workbox-build → @rollup/plugin-terser`, GHSA-gfhx-hw2g-v5hg. No dependency or lockfile changes are included. The safety audit checks feature/client boundaries, and the secret audit checks credentials; neither claims a dependency-vulnerability-free tree.
 
 ## Maintenance and recovery
 

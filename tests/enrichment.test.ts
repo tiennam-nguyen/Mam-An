@@ -12,6 +12,15 @@ import { buildWeeklyReport } from '../src/domain/summary/weeklyReport';
 import { demoData } from '../src/application/usecases/seedDemoData';
 import { buildPatternEvidence } from '../src/domain/personal/personalResponse';
 
+it('empty reports describe missing records without a denominator or inferred intake', () => {
+  const report = buildWeeklyReport([], [], now);
+  expect(report.narrative.join(' ')).not.toMatch(/0\/0|NaN|Infinity/);
+  expect(
+    report.dailyLoggedCarbEstimates.every((d) => d.totalKnownCarb === null),
+  ).toBe(true);
+  expect(report.mealRows).toEqual([]);
+});
+
 it('retains original USDA nutrient rows and derives available carbohydrate explicitly', () => {
   const raw = JSON.parse(readFileSync('catalog-src/usda-curated.json', 'utf8'));
   const { foods, sources } = readCatalog();

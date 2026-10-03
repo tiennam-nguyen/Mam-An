@@ -27,4 +27,3 @@ Vietnamese Food Composition Table 2007 is listed by FAO at https://www.fao.org/i
 ## Snapshot and unit contract
 
 Nutrition references retain amount, unit, state, edible portion, carbohydrate definition, energy definition and provenance. User defaults are separate from references. Unit selection snapshots the label/factor with positive quantity. Reserved `describe:` unit IDs count descriptions only; the calculator returns unknown regardless of their identity count. No persisted schema migration and no recalculation of historical meal totals. New defaults only apply to new selections/edits.
-

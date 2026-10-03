@@ -99,7 +99,9 @@ export function buildWeeklyReport(
   const narrative = [
     `Đã ghi ${summary.loggedMealCount} bữa trong ${days}/7 ngày. Ngày chưa ghi không có nghĩa là không ăn.`,
     `Có ${readingRows.length} số đo: ${linked} xác định được bữa${readingRows.length ? ` (${Math.round((linked / readingRows.length) * 100)}%)` : ''}, ${unlinked} chưa liên kết, ${missing} liên kết không tìm thấy bữa.`,
-    `${partial}/${summary.loggedMealCount} bữa có dinh dưỡng chưa đầy đủ; ${unknownComponents} thành phần còn thiếu dữ liệu. Tổng theo ngày chỉ cộng phần đã biết từ bản ghi đã lưu.`,
+    summary.loggedMealCount
+      ? `${partial}/${summary.loggedMealCount} bữa có dinh dưỡng chưa đầy đủ; ${unknownComponents} thành phần còn thiếu dữ liệu. Tổng theo ngày chỉ cộng phần đã biết từ bản ghi đã lưu.`
+      : 'Chưa có bữa ăn trong kỳ để mô tả độ đầy đủ của dữ liệu dinh dưỡng.',
     ...[...timingGroups]
       .sort((a, b) => a[0] - b[0])
       .map(
