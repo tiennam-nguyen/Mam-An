@@ -1,160 +1,1069 @@
 {
   "portions": [
     {
-      "foodId": "rice",
       "id": "reference",
-      "labelVi": "1 phần tham chiếu",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "1 phần"
-      ],
-      "sourceRef": "mam-an-design:foods.csv rice serving",
-      "derivationMethod": "IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "banana"
     },
     {
-      "foodId": "egg",
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "banana"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 quả vừa theo nguồn (118 g)",
+      "aliases": [],
+      "factorToReference": 1.18,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173944/nutrients#food_portion:93515",
+      "kind": "HOUSEHOLD",
+      "foodId": "banana"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 ly (chưa quy đổi)",
+      "aliases": [
+        "1 ly (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "beverage"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 quả",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "một quả",
-        "1 quả"
-      ],
-      "sourceRef": "mam-an-design:foods.csv egg serving",
-      "derivationMethod": "IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "bok-choy"
     },
     {
-      "foodId": "egg",
-      "id": "half",
-      "labelVi": "1/2 quả",
-      "factorToReference": 0.5,
+      "id": "g",
+      "labelVi": "1 g",
       "aliases": [
-        "nửa quả",
-        "1/2 quả"
+        "1 gram"
       ],
-      "sourceRef": "mam-an-design:half of reference egg",
-      "derivationMethod": "EXACT_FRACTION",
-      "reviewStatus": "REVIEWED"
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "bok-choy"
     },
     {
-      "foodId": "cucumber",
+      "id": "household",
+      "labelVi": "1 cốc cải thìa theo nguồn (170 g)",
+      "aliases": [],
+      "factorToReference": 1.7,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170391/nutrients#food_portion:86553",
+      "kind": "HOUSEHOLD",
+      "foodId": "bok-choy"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 phần tham chiếu",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "1 phần"
-      ],
-      "sourceRef": "mam-an-design:foods.csv cucumber serving",
-      "derivationMethod": "IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "bread"
     },
     {
-      "foodId": "pho",
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "bread"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 ổ của bạn (chưa quy đổi)",
+      "aliases": [
+        "1 ổ của bạn (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "bread"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 vá (chưa quy đổi)",
+      "aliases": [
+        "1 vá (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "broth"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 tô",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "một tô",
-        "1 tô"
-      ],
-      "sourceRef": "mam-an-design:unknown nutrition serving identity",
-      "derivationMethod": "UNKNOWN_NUTRITION_IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "brown-rice"
     },
     {
-      "foodId": "pho",
-      "id": "half",
-      "labelVi": "1/2 tô",
-      "factorToReference": 0.5,
+      "id": "g",
+      "labelVi": "1 g",
       "aliases": [
-        "nửa tô",
-        "1/2 tô"
+        "1 gram"
       ],
-      "sourceRef": "mam-an-design:half of unknown nutrition serving",
-      "derivationMethod": "EXACT_FRACTION",
-      "reviewStatus": "REVIEWED"
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "brown-rice"
     },
     {
-      "foodId": "noodles",
+      "id": "household",
+      "labelVi": "1 cốc đong theo nguồn (202 g)",
+      "aliases": [],
+      "factorToReference": 2.02,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169704/nutrients#food_portion:85378",
+      "kind": "HOUSEHOLD",
+      "foodId": "brown-rice"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 tô",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "một tô",
-        "1 tô"
-      ],
-      "sourceRef": "mam-an-design:unknown nutrition serving identity",
-      "derivationMethod": "UNKNOWN_NUTRITION_IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "cabbage"
     },
     {
-      "foodId": "noodles",
-      "id": "half",
-      "labelVi": "1/2 tô",
-      "factorToReference": 0.5,
+      "id": "g",
+      "labelVi": "1 g",
       "aliases": [
-        "nửa tô",
-        "1/2 tô"
+        "1 gram"
       ],
-      "sourceRef": "mam-an-design:half of unknown nutrition serving",
-      "derivationMethod": "EXACT_FRACTION",
-      "reviewStatus": "REVIEWED"
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "cabbage"
     },
     {
-      "foodId": "broth",
+      "id": "household",
+      "labelVi": "½ cốc đong bắp cải theo nguồn (75 g)",
+      "aliases": [],
+      "factorToReference": 0.75,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169976/nutrients#food_portion:85799",
+      "kind": "HOUSEHOLD",
+      "foodId": "cabbage"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 vá",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "một vá",
-        "1 vá"
-      ],
-      "sourceRef": "mam-an-design:unknown nutrition serving identity",
-      "derivationMethod": "UNKNOWN_NUTRITION_IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "carrot"
     },
     {
-      "foodId": "beverage",
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "carrot"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 củ theo nguồn (46 g)",
+      "aliases": [],
+      "factorToReference": 0.46,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170394/nutrients#food_portion:86566",
+      "kind": "HOUSEHOLD",
+      "foodId": "carrot"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 ly",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "một ly",
-        "1 ly"
-      ],
-      "sourceRef": "mam-an-design:unknown nutrition serving identity",
-      "derivationMethod": "UNKNOWN_NUTRITION_IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "chicken-breast"
     },
     {
-      "foodId": "rice-bowl",
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "chicken-breast"
+    },
+    {
+      "id": "household",
+      "labelVi": "1/2 ức theo nguồn (86 g)",
+      "aliases": [],
+      "factorToReference": 0.86,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171477/nutrients#food_portion:88819",
+      "kind": "HOUSEHOLD",
+      "foodId": "chicken-breast"
+    },
+    {
       "id": "reference",
-      "labelVi": "1 bát",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
       "factorToReference": 1,
-      "aliases": [
-        "một bát",
-        "1 bát",
-        "1 chén"
-      ],
-      "sourceRef": "mam-an-design:unknown bowl weight no conversion to verified rice",
-      "derivationMethod": "UNKNOWN_NUTRITION_IDENTITY",
-      "reviewStatus": "REVIEWED"
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "cola"
     },
     {
-      "foodId": "rice-bowl",
-      "id": "half",
-      "labelVi": "1/2 bát",
-      "factorToReference": 0.5,
+      "id": "g",
+      "labelVi": "1 g",
       "aliases": [
-        "nửa bát",
-        "1/2 bát",
-        "nửa chén"
+        "1 gram"
       ],
-      "sourceRef": "mam-an-design:half of unknown nutrition serving",
-      "derivationMethod": "EXACT_FRACTION",
-      "reviewStatus": "REVIEWED"
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "cola"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 lon theo nguồn (12 fl oz; 370 g)",
+      "aliases": [],
+      "factorToReference": 3.7,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174852/nutrients#food_portion:95017",
+      "kind": "HOUSEHOLD",
+      "foodId": "cola"
+    },
+    {
+      "id": "ml",
+      "labelVi": "1 ml",
+      "aliases": [
+        "1 mililit"
+      ],
+      "factorToReference": 0.010380904815894482,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174852/nutrients#food_portion:95016; NIST SP811 B.9: 1 US fl oz = 29.57353 ml",
+      "kind": "METRIC",
+      "foodId": "cola"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "corn"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "corn"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 bắp vừa theo nguồn (103 g hạt)",
+      "aliases": [],
+      "factorToReference": 1.03,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169999/nutrients#food_portion:85851",
+      "kind": "HOUSEHOLD",
+      "foodId": "corn"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g dưa chuột sống",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "cucumber"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc dưa thái lát theo nguồn (104 g)",
+      "aliases": [],
+      "factorToReference": 1.04,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168409/nutrients#food_portion:83049",
+      "kind": "HOUSEHOLD",
+      "foodId": "cucumber"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "cucumber"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 lượng tự mô tả (chưa quy đổi)",
+      "aliases": [
+        "1 lượng tự mô tả (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "cucumber"
+    },
+    {
+      "id": "reference",
+      "labelVi": "50 g trứng luộc, bỏ vỏ",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "egg"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 quả lớn theo nguồn (50 g)",
+      "aliases": [
+        "1 quả",
+        "một quả"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173424/nutrients#food_portion:92500",
+      "kind": "HOUSEHOLD",
+      "foodId": "egg"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.02,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "egg"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 lượng tự mô tả (chưa quy đổi)",
+      "aliases": [
+        "1 lượng tự mô tả (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "egg"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "egg-noodles"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "egg-noodles"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc đong theo nguồn (160 g)",
+      "aliases": [],
+      "factorToReference": 1.6,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169762/nutrients#food_portion:85467",
+      "kind": "HOUSEHOLD",
+      "foodId": "egg-noodles"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "green-tea"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "green-tea"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc theo nguồn (245 g)",
+      "aliases": [],
+      "factorToReference": 2.45,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171917/nutrients#food_portion:89558",
+      "kind": "HOUSEHOLD",
+      "foodId": "green-tea"
+    },
+    {
+      "id": "ml",
+      "labelVi": "1 ml",
+      "aliases": [
+        "1 mililit"
+      ],
+      "factorToReference": 0.010008950571676768,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171917/nutrients#food_portion:89559; NIST SP811 B.9: 1 US fl oz = 29.57353 ml",
+      "kind": "METRIC",
+      "foodId": "green-tea"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "kidney-beans"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "kidney-beans"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc đong theo nguồn (177 g)",
+      "aliases": [],
+      "factorToReference": 1.77,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173740/nutrients#food_portion:93205",
+      "kind": "HOUSEHOLD",
+      "foodId": "kidney-beans"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "mango"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "mango"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc miếng xoài theo nguồn (165 g)",
+      "aliases": [],
+      "factorToReference": 1.65,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169910/nutrients#food_portion:85651",
+      "kind": "HOUSEHOLD",
+      "foodId": "mango"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "milk"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "milk"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc theo nguồn (244 g)",
+      "aliases": [],
+      "factorToReference": 2.44,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172217/nutrients#food_portion:90101",
+      "kind": "HOUSEHOLD",
+      "foodId": "milk"
+    },
+    {
+      "id": "ml",
+      "labelVi": "1 ml",
+      "aliases": [
+        "1 mililit"
+      ],
+      "factorToReference": 0.010313276771491263,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172217/nutrients#food_portion:90103; NIST SP811 B.9: 1 US fl oz = 29.57353 ml",
+      "kind": "METRIC",
+      "foodId": "milk"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 tô (chưa quy đổi)",
+      "aliases": [
+        "1 tô (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "noodles"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "orange"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "orange"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 quả theo nguồn (131 g)",
+      "aliases": [],
+      "factorToReference": 1.31,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169097/nutrients#food_portion:84230",
+      "kind": "HOUSEHOLD",
+      "foodId": "orange"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "papaya"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "papaya"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc miếng đu đủ theo nguồn (145 g)",
+      "aliases": [],
+      "factorToReference": 1.45,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169926/nutrients#food_portion:85692",
+      "kind": "HOUSEHOLD",
+      "foodId": "papaya"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 tô (chưa quy đổi)",
+      "aliases": [
+        "1 tô (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "pho"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "potato"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "potato"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 củ vừa theo nguồn (167 g)",
+      "aliases": [],
+      "factorToReference": 1.67,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170440/nutrients#food_portion:86653",
+      "kind": "HOUSEHOLD",
+      "foodId": "potato"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g cơm trắng đã nấu",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "rice"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc đong cơm theo nguồn (158 g)",
+      "aliases": [],
+      "factorToReference": 1.58,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169757/nutrients#food_portion:85462",
+      "kind": "HOUSEHOLD",
+      "foodId": "rice"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "rice"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 bát của bạn (chưa quy đổi)",
+      "aliases": [
+        "1 bát của bạn (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "rice"
+    },
+    {
+      "id": "describe:household",
+      "labelVi": "1 bát (chưa quy đổi)",
+      "aliases": [
+        "1 bát (chưa quy đổi)"
+      ],
+      "factorToReference": 1,
+      "conversionQuality": "UNVERIFIED",
+      "sourceRef": "mam-an-design:description only; factor counts descriptions and MUST NOT convert nutrition",
+      "kind": "HOUSEHOLD",
+      "foodId": "rice-bowl"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "rice-noodles"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "rice-noodles"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc đong theo nguồn (176 g)",
+      "aliases": [],
+      "factorToReference": 1.76,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168914/nutrients#food_portion:83974",
+      "kind": "HOUSEHOLD",
+      "foodId": "rice-noodles"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "soy-sauce"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "soy-sauce"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 thìa canh theo nguồn (16 g)",
+      "aliases": [],
+      "factorToReference": 0.16,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174277/nutrients#food_portion:94068",
+      "kind": "HOUSEHOLD",
+      "foodId": "soy-sauce"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "sticky-rice"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "sticky-rice"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc đong theo nguồn (174 g)",
+      "aliases": [],
+      "factorToReference": 1.74,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169711/nutrients#food_portion:85385",
+      "kind": "HOUSEHOLD",
+      "foodId": "sticky-rice"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "sugar"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "sugar"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 thìa cà phê theo nguồn (4,2 g)",
+      "aliases": [],
+      "factorToReference": 0.042,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169655/nutrients#food_portion:85287",
+      "kind": "HOUSEHOLD",
+      "foodId": "sugar"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "sweet-potato"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "sweet-potato"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 củ vừa theo nguồn (151 g)",
+      "aliases": [],
+      "factorToReference": 1.51,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168484/nutrients#food_portion:83173",
+      "kind": "HOUSEHOLD",
+      "foodId": "sweet-potato"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "tofu"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "tofu"
+    },
+    {
+      "id": "household",
+      "labelVi": "1/4 miếng theo nguồn (81 g)",
+      "aliases": [],
+      "factorToReference": 0.81,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172475/nutrients#food_portion:90684",
+      "kind": "HOUSEHOLD",
+      "foodId": "tofu"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "tomato"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "tomato"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 quả vừa theo nguồn (123 g)",
+      "aliases": [],
+      "factorToReference": 1.23,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170457/nutrients#food_portion:86686",
+      "kind": "HOUSEHOLD",
+      "foodId": "tomato"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "watermelon"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "watermelon"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 cốc miếng dưa theo nguồn (152 g)",
+      "aliases": [],
+      "factorToReference": 1.52,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/167765/nutrients#food_portion:81933",
+      "kind": "HOUSEHOLD",
+      "foodId": "watermelon"
+    },
+    {
+      "id": "reference",
+      "labelVi": "100 g phần ăn được",
+      "aliases": [],
+      "factorToReference": 1,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:explicit nutrient basis identity",
+      "kind": "REFERENCE",
+      "foodId": "yogurt"
+    },
+    {
+      "id": "g",
+      "labelVi": "1 g",
+      "aliases": [
+        "1 gram"
+      ],
+      "factorToReference": 0.01,
+      "conversionQuality": "VERIFIED",
+      "sourceRef": "mam-an-design:metric mass identity",
+      "kind": "METRIC",
+      "foodId": "yogurt"
+    },
+    {
+      "id": "household",
+      "labelVi": "1 hộp theo nguồn (170 g)",
+      "aliases": [],
+      "factorToReference": 1.7,
+      "conversionQuality": "ESTIMATED",
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171284/nutrients#food_portion:88362",
+      "kind": "HOUSEHOLD",
+      "foodId": "yogurt"
     }
   ],
   "templates": [
@@ -288,6 +1197,6 @@
       ]
     }
   ],
-  "catalogVersion": "v2",
+  "catalogVersion": "v3-2026-10-02",
   "knowledgeVersion": "knowledge-v1"
 }

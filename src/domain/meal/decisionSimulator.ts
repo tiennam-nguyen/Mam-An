@@ -3,6 +3,7 @@ import type { FoodItem } from '../food/foodItem';
 import type { MealDraft } from './mealDraft';
 import {
   calculateComponent,
+  foodRole,
   cloneEntries,
   entryTotals,
   flattenEntries,
@@ -106,7 +107,7 @@ export function createScenario(
             componentId,
             foodId: food.id,
             displayName: food.nameVi,
-            role: op.role,
+            role: foodRole(food) === 'OTHER' ? op.role : foodRole(food),
             portion: { ...op.portion },
             source: 'USER',
             userCorrected: true,
@@ -145,6 +146,7 @@ export function createScenario(
       {
         ...current,
         foodId,
+        role: op.type === 'REPLACE_COMPONENT' ? foodRole(food) : current.role,
         displayName:
           op.type === 'REPLACE_COMPONENT' ? food!.nameVi : current.displayName,
         portion: { ...op.newPortion },

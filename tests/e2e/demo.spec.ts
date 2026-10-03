@@ -22,18 +22,18 @@ test('offline sample → correction → save/reload → glucose → week → rep
   await context.setOffline(true);
   await page.goto('/analyze');
   await page.getByRole('button', { name: 'Dùng bữa ăn mẫu' }).click();
-  await expect(page.getByTestId('carb-total')).toContainText('32,8');
+  await expect(page.getByTestId('carb-total')).toContainText('50');
   const rice = page.locator('article').filter({
     has: page.getByRole('heading', { name: 'Cơm trắng', exact: true }),
   });
-  await rice.getByRole('button', { name: '0,5 phần', exact: true }).click();
-  await expect(page.getByTestId('carb-total')).toContainText('18,1');
+  await rice.getByRole('button', { name: /^(50 g|25 g|0,5 cốc)/ }).click();
+  await expect(page.getByTestId('carb-total')).toContainText('26,7');
   await page.getByRole('button', { name: 'Lưu bữa ăn', exact: true }).click();
   await expect(
     page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
   ).toBeVisible();
   await page.reload();
-  await expect(page.getByText('18,1 g carb', { exact: true })).toBeVisible();
+  await expect(page.getByText('26,7 g carb', { exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Thêm số đo', exact: true }).click();
   await page.getByLabel('Giá trị', { exact: true }).fill('6.7');
   await page.getByRole('combobox', { name: /^Đơn vị/ }).selectOption('MMOL_L');
@@ -157,12 +157,19 @@ test('laptop layout and populated print report fit viewport', async ({
   await page.getByRole('button', { name: 'Tạo dữ liệu mẫu' }).click();
   await expect(page.getByRole('status')).toContainText('Đã chuẩn bị');
   await page.goto('/report/weekly');
-  await expect(page.locator('tbody tr')).toHaveCount(7);
-  await expect(page.locator('.metric-grid .big-number')).toHaveText(['7', '7']);
+  await expect(page.locator('tbody tr')).toHaveCount(10);
+  await expect(page.locator('.metric-grid .big-number')).toHaveText([
+    '7',
+    '10',
+  ]);
   await expect(page.getByText('7 bữa mẫu · 0 bữa tự ghi')).toBeVisible();
   await expect(page.locator('.daily-row')).toHaveCount(7);
-  for (const row of await page.locator('.daily-row').all())
-    await expect(row).toContainText('32,8 g');
+  await expect(
+    page.locator('.daily-row').filter({ hasText: '32,8 g' }),
+  ).toHaveCount(3);
+  await expect(
+    page.locator('.daily-row').filter({ hasText: 'Chưa đầy đủ' }),
+  ).toHaveCount(1);
   await page.emulateMedia({ media: 'print' });
   await page.setViewportSize({ width: 794, height: 1123 });
   await page.screenshot({

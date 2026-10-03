@@ -89,6 +89,53 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
               </p>
             </div>
           </div>
+          <section className="card">
+            <h2>Tóm tắt những điều đã ghi</h2>
+            {summary.narrative.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
+          </section>
+          <section className="card report-meals">
+            <h2>Bữa ăn trong báo cáo</h2>
+            <p>
+              Mã M1, M2… theo thời gian ghi bữa; chỉ dùng trong báo cáo này.
+            </p>
+            {summary.mealRows.map(
+              ({ meal, reference, label, outsidePeriod }) => (
+                <article key={meal.id} className="report-meal">
+                  <h3>
+                    <Link to={'/history/' + meal.id}>
+                      {reference} · {label}
+                    </Link>
+                  </h3>
+                  <p>
+                    {formatTime(meal.createdAt)} {meal.isDemo && <DemoBadge />}
+                    {outsidePeriod ? ' · Ngoài kỳ, chỉ để đối chiếu số đo' : ''}
+                  </p>
+                  <ul>
+                    {meal.entries
+                      .flatMap((e) => e.components)
+                      .filter((c) => c.includedInTotal)
+                      .map((c) => (
+                        <li key={c.componentId}>
+                          {c.displayName}: {formatNumber(c.portion.quantity)} ×{' '}
+                          {c.portion.displayLabelSnapshot}
+                        </li>
+                      ))}
+                  </ul>
+                  <p>
+                    {formatNumber(meal.totalCarbEstimate)}{' '}
+                    {meal.totalCarbEstimate === null ? '' : 'g carb'} ·{' '}
+                    {formatNumber(meal.totalKcalEstimate)}{' '}
+                    {meal.totalKcalEstimate === null ? '' : 'kcal'} ·{' '}
+                    {meal.completeness === 'COMPLETE'
+                      ? 'Đủ dữ liệu cho thành phần đã ghi'
+                      : 'Dinh dưỡng chưa đầy đủ'}
+                  </p>
+                </article>
+              ),
+            )}
+          </section>
           <div className="card">
             <h2>Carb ước tính theo ngày</h2>
             <p className="muted">
@@ -134,7 +181,7 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
             </div>
             {summary.hasPartialMeals && <SafetyNote kind="partial" />}
           </div>
-          <div className="card">
+          <div className="card report-readings">
             <h2>Các số đo đã nhập</h2>
             <SafetyNote kind="glucose" />
             {!summary.glucoseReadings.length ? (
@@ -151,34 +198,33 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {summary.glucoseReadings.map((g) => (
-                      <tr key={g.id}>
-                        <td data-label="Thời điểm">
-                          {formatTime(g.measuredAt)}
-                        </td>
-                        <td data-label="Số đo">
-                          <GlucoseValue reading={g} />
-                        </td>
-                        <td data-label="Ghi nhận">
-                          {g.isDemo ? <DemoBadge /> : 'Tự ghi'}
-                          {g.mealId ? ' · Có liên kết bữa' : ''}
-                        </td>
-                        <td data-label="Thời gian so với bữa">
-                          {g.mealId &&
-                          summary.meals.some((m) => m.id === g.mealId)
-                            ? Math.round(
-                                (Date.parse(g.measuredAt) -
-                                  Date.parse(
-                                    summary.meals.find(
-                                      (m) => m.id === g.mealId,
-                                    )!.createdAt,
-                                  )) /
-                                  60000,
-                              ) + ' phút'
-                            : 'Chưa có liên kết trong kỳ'}
-                        </td>
-                      </tr>
-                    ))}
+                    {summary.readingRows.map(
+                      ({ reading: g, meal, linkLabel, timingLabel }) => (
+                        <tr key={g.id}>
+                          <td data-label="Thời điểm">
+                            {formatTime(g.measuredAt)}
+                          </td>
+                          <td data-label="Số đo">
+                            <GlucoseValue reading={g} />
+                          </td>
+                          <td data-label="Ghi nhận">
+                            {g.isDemo ? <DemoBadge /> : 'Tự ghi'}
+                            <div>
+                              {meal ? (
+                                <Link to={'/history/' + meal.meal.id}>
+                                  {linkLabel}
+                                </Link>
+                              ) : (
+                                linkLabel
+                              )}
+                            </div>
+                          </td>
+                          <td data-label="Thời gian so với bữa">
+                            {timingLabel}
+                          </td>
+                        </tr>
+                      ),
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -187,38 +233,17 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
           <section className="card">
             <h2>Thành phần thường ghi</h2>
             <ul>
-              {Object.entries(
-                summary.meals
-                  .flatMap((m) => [
-                    ...new Set(
-                      m.entries.flatMap((e) =>
-                        e.components
-                          .filter((c) => c.includedInTotal)
-                          .map((c) => c.displayName),
-                      ),
-                    ),
-                  ])
-                  .reduce<Record<string, number>>(
-                    (counts, name) => ({
-                      ...counts,
-                      [name]: (counts[name] ?? 0) + 1,
-                    }),
-                    {},
-                  ),
-              )
-                .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-                .slice(0, 5)
-                .map(([name, count]) => (
-                  <li key={name}>
-                    {name}: {count} bữa đã ghi
-                  </li>
-                ))}
+              {summary.frequentComponents.map(([name, count]) => (
+                <li key={name}>
+                  {name}: {count} bữa đã ghi
+                </li>
+              ))}
             </ul>
           </section>
           <section>
             <h2>Ghi nhận từ các bữa tương tự</h2>
             {summary.observedPatternCards.map((p) => (
-              <div key={p.mealId}>
+              <div key={p.mealId} className="report-pattern">
                 {p.isDemo && <DemoBadge />}
                 <PatternCard pattern={p.pattern} title={p.mealLabel} />
               </div>
@@ -226,7 +251,9 @@ export function WeeklyPage({ report = false }: { report?: boolean }) {
           </section>
           <SafetyNote kind="weekly" />
           <p className="muted">
-            Nguồn dinh dưỡng: ASEANFOODS 2014 · Lưu tại thiết bị
+            Dinh dưỡng từ bản chụp đã lưu của từng bữa; không tính lại theo danh
+            mục mới. Nguồn danh mục: ASEANFOODS 2014 và USDA SR Legacy 2018. Lưu
+            tại thiết bị.
           </p>
         </>
       )}

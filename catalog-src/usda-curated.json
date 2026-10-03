@@ -1,0 +1,934 @@
+{
+  "sourceId": "usda-sr-2018",
+  "release": "April 2018",
+  "accessedAt": "2026-10-02",
+  "download": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+  "files": [
+    {
+      "name": "food.csv",
+      "sha256": "de8b0390058db4f102368c9fbdfde144790b480ff4cb0507c0e060ef99805dee"
+    },
+    {
+      "name": "food_nutrient.csv",
+      "sha256": "6d07e6fc062b09750c4d95112be5a5cdb56a2346efcfd0c96b7a7d705812d4bd"
+    },
+    {
+      "name": "food_portion.csv",
+      "sha256": "6332e29da61e13f7bd950b759461af73303c76e8b0e64dc9df4e41d5347cf3d1"
+    },
+    {
+      "name": "nutrient.csv",
+      "sha256": "466ab9d011094cc1ad8d939b246693988b56817c42d0e40a98820723695c6084"
+    }
+  ],
+  "records": [
+    {
+      "id": "cabbage",
+      "nameVi": "Bắp cải luộc, để ráo, không muối",
+      "aliases": [
+        "bắp cải luộc"
+      ],
+      "category": "VEGETABLE",
+      "sourceFoodId": "169976",
+      "sourceDescription": "Cabbage, cooked, boiled, drained, without salt",
+      "nutrients": {
+        "1005": {
+          "amount": 5.51,
+          "rowId": "1484613"
+        },
+        "1008": {
+          "amount": 23,
+          "rowId": "1484614"
+        },
+        "1079": {
+          "amount": 1.9,
+          "rowId": "1484590"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85799",
+        "sourceAmount": 0.5,
+        "sourceModifier": "cup, shredded",
+        "grams": 75,
+        "labelVi": "½ cốc đong bắp cải theo nguồn (75 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169976/nutrients"
+    },
+    {
+      "id": "bok-choy",
+      "nameVi": "Cải thìa luộc, để ráo, không muối",
+      "aliases": [
+        "cải thìa luộc"
+      ],
+      "category": "VEGETABLE",
+      "sourceFoodId": "170391",
+      "sourceDescription": "Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt",
+      "nutrients": {
+        "1005": {
+          "amount": 1.78,
+          "rowId": "1519785"
+        },
+        "1008": {
+          "amount": 12,
+          "rowId": "1519786"
+        },
+        "1079": {
+          "amount": 1,
+          "rowId": "1519843"
+        }
+      },
+      "household": {
+        "sourcePortionId": "86553",
+        "sourceAmount": 1,
+        "sourceModifier": "cup, shredded",
+        "grams": 170,
+        "labelVi": "1 cốc cải thìa theo nguồn (170 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170391/nutrients"
+    },
+    {
+      "id": "carrot",
+      "nameVi": "Cà rốt luộc, để ráo, không muối",
+      "aliases": [
+        "cà rốt luộc"
+      ],
+      "category": "VEGETABLE",
+      "sourceFoodId": "170394",
+      "sourceDescription": "Carrots, cooked, boiled, drained, without salt",
+      "nutrients": {
+        "1005": {
+          "amount": 8.22,
+          "rowId": "1520136"
+        },
+        "1008": {
+          "amount": 35,
+          "rowId": "1520137"
+        },
+        "1079": {
+          "amount": 3,
+          "rowId": "1520090"
+        }
+      },
+      "household": {
+        "sourcePortionId": "86566",
+        "sourceAmount": 1,
+        "sourceModifier": "carrot",
+        "grams": 46,
+        "labelVi": "1 củ theo nguồn (46 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170394/nutrients"
+    },
+    {
+      "id": "tomato",
+      "nameVi": "Cà chua đỏ chín, ăn sống",
+      "aliases": [
+        "cà chua sống"
+      ],
+      "category": "VEGETABLE",
+      "sourceFoodId": "170457",
+      "sourceDescription": "Tomatoes, red, ripe, raw, year round average",
+      "nutrients": {
+        "1005": {
+          "amount": 3.89,
+          "rowId": "1525333"
+        },
+        "1008": {
+          "amount": 18,
+          "rowId": "1525334"
+        },
+        "1079": {
+          "amount": 1.2,
+          "rowId": "1525369"
+        }
+      },
+      "household": {
+        "sourcePortionId": "86686",
+        "sourceAmount": 1,
+        "sourceModifier": "medium whole (2-3/5\" dia)",
+        "grams": 123,
+        "labelVi": "1 quả vừa theo nguồn (123 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170457/nutrients"
+    },
+    {
+      "id": "brown-rice",
+      "nameVi": "Cơm gạo lứt hạt dài, đã nấu",
+      "aliases": [
+        "cơm gạo lứt"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "169704",
+      "sourceDescription": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+      "nutrients": {
+        "1005": {
+          "amount": 25.58,
+          "rowId": "1462902"
+        },
+        "1008": {
+          "amount": 123,
+          "rowId": "1462903"
+        },
+        "1079": {
+          "amount": 1.6,
+          "rowId": "1462853"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85378",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 202,
+        "labelVi": "1 cốc đong theo nguồn (202 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169704/nutrients"
+    },
+    {
+      "id": "sticky-rice",
+      "nameVi": "Gạo nếp trắng, đã nấu",
+      "aliases": [
+        "cơm nếp",
+        "xôi trắng không thêm nguyên liệu"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "169711",
+      "sourceDescription": "Rice, white, glutinous, unenriched, cooked",
+      "nutrients": {
+        "1005": {
+          "amount": 21.09,
+          "rowId": "1463525"
+        },
+        "1008": {
+          "amount": 97,
+          "rowId": "1463526"
+        },
+        "1079": {
+          "amount": 1,
+          "rowId": "1463552"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85385",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 174,
+        "labelVi": "1 cốc đong theo nguồn (174 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169711/nutrients"
+    },
+    {
+      "id": "rice-noodles",
+      "nameVi": "Sợi mì gạo, đã chín (USDA)",
+      "aliases": [
+        "mì gạo chín"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "168914",
+      "sourceDescription": "Rice noodles, cooked",
+      "nutrients": {
+        "1005": {
+          "amount": 24.01,
+          "rowId": "1398663"
+        },
+        "1008": {
+          "amount": 108,
+          "rowId": "1398664"
+        },
+        "1079": {
+          "amount": 1,
+          "rowId": "1398636"
+        }
+      },
+      "household": {
+        "sourcePortionId": "83974",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 176,
+        "labelVi": "1 cốc đong theo nguồn (176 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168914/nutrients"
+    },
+    {
+      "id": "egg-noodles",
+      "nameVi": "Mì trứng, đã chín, có muối",
+      "aliases": [
+        "mì trứng chín"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "169762",
+      "sourceDescription": "Noodles, egg, cooked, unenriched, with added salt",
+      "nutrients": {
+        "1005": {
+          "amount": 25.16,
+          "rowId": "1467793"
+        },
+        "1008": {
+          "amount": 138,
+          "rowId": "1467794"
+        },
+        "1079": {
+          "amount": 1.2,
+          "rowId": "1467760"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85467",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 160,
+        "labelVi": "1 cốc đong theo nguồn (160 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169762/nutrients"
+    },
+    {
+      "id": "bread",
+      "nameVi": "Bánh mì kiểu Pháp, không nhân",
+      "aliases": [
+        "bánh mì không nhân",
+        "bánh mì kiểu Pháp"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "172675",
+      "sourceDescription": "Bread, french or vienna (includes sourdough)",
+      "nutrients": {
+        "1005": {
+          "amount": 51.88,
+          "rowId": "1714269"
+        },
+        "1008": {
+          "amount": 272,
+          "rowId": "1714270"
+        },
+        "1079": {
+          "amount": 2.2,
+          "rowId": "1714239"
+        }
+      },
+      "household": null,
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172675/nutrients"
+    },
+    {
+      "id": "potato",
+      "nameVi": "Khoai tây luộc, bỏ vỏ, không muối",
+      "aliases": [
+        "khoai tây luộc"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "170440",
+      "sourceDescription": "Potatoes, boiled, cooked without skin, flesh, without salt",
+      "nutrients": {
+        "1005": {
+          "amount": 20.01,
+          "rowId": "1523972"
+        },
+        "1008": {
+          "amount": 86,
+          "rowId": "1524014"
+        },
+        "1079": {
+          "amount": 1.8,
+          "rowId": "1524039"
+        }
+      },
+      "household": {
+        "sourcePortionId": "86653",
+        "sourceAmount": 1,
+        "sourceModifier": "medium (2-1/4\" to 3-1/4\" dia.)",
+        "grams": 167,
+        "labelVi": "1 củ vừa theo nguồn (167 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/170440/nutrients"
+    },
+    {
+      "id": "sweet-potato",
+      "nameVi": "Khoai lang luộc, bỏ vỏ",
+      "aliases": [
+        "khoai lang luộc"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "168484",
+      "sourceDescription": "Sweet potato, cooked, boiled, without skin",
+      "nutrients": {
+        "1005": {
+          "amount": 17.72,
+          "rowId": "1364345"
+        },
+        "1008": {
+          "amount": 76,
+          "rowId": "1364346"
+        },
+        "1079": {
+          "amount": 2.5,
+          "rowId": "1364445"
+        }
+      },
+      "household": {
+        "sourcePortionId": "83173",
+        "sourceAmount": 1,
+        "sourceModifier": "medium",
+        "grams": 151,
+        "labelVi": "1 củ vừa theo nguồn (151 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/168484/nutrients"
+    },
+    {
+      "id": "corn",
+      "nameVi": "Ngô ngọt vàng luộc, để ráo, không muối",
+      "aliases": [
+        "ngô luộc",
+        "bắp luộc"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "169999",
+      "sourceDescription": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+      "nutrients": {
+        "1005": {
+          "amount": 20.98,
+          "rowId": "1486475"
+        },
+        "1008": {
+          "amount": 96,
+          "rowId": "1486476"
+        },
+        "1079": {
+          "amount": 2.4,
+          "rowId": "1486497"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85851",
+        "sourceAmount": 1,
+        "sourceModifier": "ear medium (6-3/4\" to 7-1/2\" long)",
+        "grams": 103,
+        "labelVi": "1 bắp vừa theo nguồn (103 g hạt)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169999/nutrients"
+    },
+    {
+      "id": "kidney-beans",
+      "nameVi": "Đậu thận luộc, không muối",
+      "aliases": [
+        "đậu thận chín"
+      ],
+      "category": "STARCH",
+      "sourceFoodId": "173740",
+      "sourceDescription": "Beans, kidney, all types, mature seeds, cooked, boiled, without salt",
+      "nutrients": {
+        "1005": {
+          "amount": 22.8,
+          "rowId": "1802713"
+        },
+        "1008": {
+          "amount": 127,
+          "rowId": "1802710"
+        },
+        "1079": {
+          "amount": 6.4,
+          "rowId": "1802751"
+        }
+      },
+      "household": {
+        "sourcePortionId": "93205",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 177,
+        "labelVi": "1 cốc đong theo nguồn (177 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173740/nutrients"
+    },
+    {
+      "id": "banana",
+      "nameVi": "Chuối tươi, phần ăn được",
+      "aliases": [
+        "chuối"
+      ],
+      "category": "OTHER",
+      "sourceFoodId": "173944",
+      "sourceDescription": "Bananas, raw",
+      "nutrients": {
+        "1005": {
+          "amount": 22.84,
+          "rowId": "1817899"
+        },
+        "1008": {
+          "amount": 89,
+          "rowId": "1817900"
+        },
+        "1079": {
+          "amount": 2.6,
+          "rowId": "1817936"
+        }
+      },
+      "household": {
+        "sourcePortionId": "93515",
+        "sourceAmount": 1,
+        "sourceModifier": "medium (7\" to 7-7/8\" long)",
+        "grams": 118,
+        "labelVi": "1 quả vừa theo nguồn (118 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/173944/nutrients"
+    },
+    {
+      "id": "mango",
+      "nameVi": "Xoài tươi, phần ăn được",
+      "aliases": [
+        "xoài"
+      ],
+      "category": "OTHER",
+      "sourceFoodId": "169910",
+      "sourceDescription": "Mangos, raw",
+      "nutrients": {
+        "1005": {
+          "amount": 14.98,
+          "rowId": "1479084"
+        },
+        "1008": {
+          "amount": 60,
+          "rowId": "1479085"
+        },
+        "1079": {
+          "amount": 1.6,
+          "rowId": "1479053"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85651",
+        "sourceAmount": 1,
+        "sourceModifier": "cup pieces",
+        "grams": 165,
+        "labelVi": "1 cốc miếng xoài theo nguồn (165 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169910/nutrients"
+    },
+    {
+      "id": "papaya",
+      "nameVi": "Đu đủ tươi, phần ăn được",
+      "aliases": [
+        "đu đủ"
+      ],
+      "category": "OTHER",
+      "sourceFoodId": "169926",
+      "sourceDescription": "Papayas, raw",
+      "nutrients": {
+        "1005": {
+          "amount": 10.82,
+          "rowId": "1480493"
+        },
+        "1008": {
+          "amount": 43,
+          "rowId": "1480494"
+        },
+        "1079": {
+          "amount": 1.7,
+          "rowId": "1480422"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85692",
+        "sourceAmount": 1,
+        "sourceModifier": "cup 1\" pieces",
+        "grams": 145,
+        "labelVi": "1 cốc miếng đu đủ theo nguồn (145 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169926/nutrients"
+    },
+    {
+      "id": "watermelon",
+      "nameVi": "Dưa hấu tươi, phần ăn được",
+      "aliases": [
+        "dưa hấu"
+      ],
+      "category": "OTHER",
+      "sourceFoodId": "167765",
+      "sourceDescription": "Watermelon, raw",
+      "nutrients": {
+        "1005": {
+          "amount": 7.55,
+          "rowId": "1303456"
+        },
+        "1008": {
+          "amount": 30,
+          "rowId": "1303457"
+        },
+        "1079": {
+          "amount": 0.4,
+          "rowId": "1303419"
+        }
+      },
+      "household": {
+        "sourcePortionId": "81933",
+        "sourceAmount": 1,
+        "sourceModifier": "cup, diced",
+        "grams": 152,
+        "labelVi": "1 cốc miếng dưa theo nguồn (152 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/167765/nutrients"
+    },
+    {
+      "id": "orange",
+      "nameVi": "Cam tươi, phần ăn được",
+      "aliases": [
+        "cam"
+      ],
+      "category": "OTHER",
+      "sourceFoodId": "169097",
+      "sourceDescription": "Oranges, raw, all commercial varieties",
+      "nutrients": {
+        "1005": {
+          "amount": 11.75,
+          "rowId": "1413018"
+        },
+        "1008": {
+          "amount": 47,
+          "rowId": "1413019"
+        },
+        "1079": {
+          "amount": 2.4,
+          "rowId": "1413038"
+        }
+      },
+      "household": {
+        "sourcePortionId": "84230",
+        "sourceAmount": 1,
+        "sourceModifier": "fruit (2-5/8\" dia)",
+        "grams": 131,
+        "labelVi": "1 quả theo nguồn (131 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169097/nutrients"
+    },
+    {
+      "id": "milk",
+      "nameVi": "Sữa bò nguyên kem 3,25%, không thêm đường",
+      "aliases": [
+        "sữa nguyên kem"
+      ],
+      "category": "BEVERAGE",
+      "sourceFoodId": "172217",
+      "sourceDescription": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+      "nutrients": {
+        "1005": {
+          "amount": 4.78,
+          "rowId": "1677518"
+        },
+        "1008": {
+          "amount": 61,
+          "rowId": "1677542"
+        },
+        "1079": {
+          "amount": 0,
+          "rowId": "1677603"
+        }
+      },
+      "household": {
+        "sourcePortionId": "90101",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 244,
+        "labelVi": "1 cốc theo nguồn (244 g)"
+      },
+      "volumePortion": {
+        "sourcePortionId": "90103",
+        "gramsPerUsFlOz": 30.5
+      },
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172217/nutrients"
+    },
+    {
+      "id": "yogurt",
+      "nameVi": "Sữa chua nguyên kem, không thêm đường",
+      "aliases": [
+        "sữa chua không đường"
+      ],
+      "category": "OTHER",
+      "sourceFoodId": "171284",
+      "sourceDescription": "Yogurt, plain, whole milk",
+      "nutrients": {
+        "1005": {
+          "amount": 4.66,
+          "rowId": "1597436"
+        },
+        "1008": {
+          "amount": 61,
+          "rowId": "1597393"
+        },
+        "1079": {
+          "amount": 0,
+          "rowId": "1597423"
+        }
+      },
+      "household": {
+        "sourcePortionId": "88362",
+        "sourceAmount": 1,
+        "sourceModifier": "container (6 oz)",
+        "grams": 170,
+        "labelVi": "1 hộp theo nguồn (170 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171284/nutrients"
+    },
+    {
+      "id": "green-tea",
+      "nameVi": "Trà xanh pha, không đường",
+      "aliases": [
+        "trà xanh không đường"
+      ],
+      "category": "BEVERAGE",
+      "sourceFoodId": "171917",
+      "sourceDescription": "Beverages, tea, green, brewed, regular",
+      "nutrients": {
+        "1005": {
+          "amount": 0,
+          "rowId": "1651123"
+        },
+        "1008": {
+          "amount": 1,
+          "rowId": "1651124"
+        },
+        "1079": {
+          "amount": 0,
+          "rowId": "1651170"
+        }
+      },
+      "household": {
+        "sourcePortionId": "89558",
+        "sourceAmount": 1,
+        "sourceModifier": "cup",
+        "grams": 245,
+        "labelVi": "1 cốc theo nguồn (245 g)"
+      },
+      "volumePortion": {
+        "sourcePortionId": "89559",
+        "gramsPerUsFlOz": 29.6
+      },
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171917/nutrients"
+    },
+    {
+      "id": "cola",
+      "nameVi": "Nước cola có đường (công thức USDA)",
+      "aliases": [
+        "cola có đường"
+      ],
+      "category": "BEVERAGE",
+      "sourceFoodId": "174852",
+      "sourceDescription": "Beverages, carbonated, cola, regular",
+      "nutrients": {
+        "1005": {
+          "amount": 10.36,
+          "rowId": "1892244"
+        },
+        "1008": {
+          "amount": 42,
+          "rowId": "1892245"
+        },
+        "1079": {
+          "amount": 0,
+          "rowId": "1892255"
+        }
+      },
+      "household": {
+        "sourcePortionId": "95017",
+        "sourceAmount": 1,
+        "sourceModifier": "can or bottle (12 fl oz)",
+        "grams": 370,
+        "labelVi": "1 lon theo nguồn (12 fl oz; 370 g)"
+      },
+      "volumePortion": {
+        "sourcePortionId": "95016",
+        "gramsPerUsFlOz": 30.7
+      },
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174852/nutrients"
+    },
+    {
+      "id": "sugar",
+      "nameVi": "Đường cát trắng",
+      "aliases": [
+        "đường cát"
+      ],
+      "category": "CONDIMENT",
+      "sourceFoodId": "169655",
+      "sourceDescription": "Sugars, granulated",
+      "nutrients": {
+        "1005": {
+          "amount": 99.98,
+          "rowId": "1459283"
+        },
+        "1008": {
+          "amount": 387,
+          "rowId": "1459268"
+        },
+        "1079": {
+          "amount": 0,
+          "rowId": "1459290"
+        }
+      },
+      "household": {
+        "sourcePortionId": "85287",
+        "sourceAmount": 1,
+        "sourceModifier": "tsp",
+        "grams": 4.2,
+        "labelVi": "1 thìa cà phê theo nguồn (4,2 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+    },
+    {
+      "id": "soy-sauce",
+      "nameVi": "Nước tương đậu nành và lúa mì (shoyu)",
+      "aliases": [
+        "nước tương shoyu"
+      ],
+      "category": "CONDIMENT",
+      "sourceFoodId": "174277",
+      "sourceDescription": "Soy sauce made from soy and wheat (shoyu)",
+      "nutrients": {
+        "1005": {
+          "amount": 4.93,
+          "rowId": "1845749"
+        },
+        "1008": {
+          "amount": 53,
+          "rowId": "1845801"
+        },
+        "1079": {
+          "amount": 0.8,
+          "rowId": "1845828"
+        }
+      },
+      "household": {
+        "sourcePortionId": "94068",
+        "sourceAmount": 1,
+        "sourceModifier": "tbsp",
+        "grams": 16,
+        "labelVi": "1 thìa canh theo nguồn (16 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/174277/nutrients"
+    },
+    {
+      "id": "chicken-breast",
+      "nameVi": "Ức gà nướng, bỏ da và xương",
+      "aliases": [
+        "ức gà nướng"
+      ],
+      "category": "PROTEIN",
+      "sourceFoodId": "171477",
+      "sourceDescription": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "nutrients": {
+        "1005": {
+          "amount": 0,
+          "rowId": "1613019"
+        },
+        "1008": {
+          "amount": 165,
+          "rowId": "1613020"
+        },
+        "1079": {
+          "amount": 0,
+          "rowId": "1613050"
+        }
+      },
+      "household": {
+        "sourcePortionId": "88819",
+        "sourceAmount": 0.5,
+        "sourceModifier": "breast, bone and skin removed",
+        "grams": 86,
+        "labelVi": "1/2 ức theo nguồn (86 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/171477/nutrients"
+    },
+    {
+      "id": "tofu",
+      "nameVi": "Đậu phụ cứng, chưa chế biến, kết tủa calcium sulfate",
+      "aliases": [
+        "đậu phụ cứng"
+      ],
+      "category": "PROTEIN",
+      "sourceFoodId": "172475",
+      "sourceDescription": "Tofu, raw, firm, prepared with calcium sulfate",
+      "nutrients": {
+        "1005": {
+          "amount": 2.78,
+          "rowId": "1698050"
+        },
+        "1008": {
+          "amount": 144,
+          "rowId": "1698051"
+        },
+        "1079": {
+          "amount": 2.3,
+          "rowId": "1698046"
+        }
+      },
+      "household": {
+        "sourcePortionId": "90684",
+        "sourceAmount": 0.25,
+        "sourceModifier": "block",
+        "grams": 81,
+        "labelVi": "1/4 miếng theo nguồn (81 g)"
+      },
+      "volumePortion": null,
+      "sourceRef": "https://fdc.nal.usda.gov/food-details/172475/nutrients"
+    }
+  ],
+  "legacyPortions": [
+    {
+      "foodId": "rice",
+      "id": "85462",
+      "fdc_id": "169757",
+      "seq_num": "1",
+      "amount": "1",
+      "measure_unit_id": "9999",
+      "portion_description": "",
+      "modifier": "cup",
+      "gram_weight": "158",
+      "data_points": "",
+      "footnote": "",
+      "min_year_acquired": ""
+    },
+    {
+      "foodId": "egg",
+      "id": "92500",
+      "fdc_id": "173424",
+      "seq_num": "3",
+      "amount": "1",
+      "measure_unit_id": "9999",
+      "portion_description": "",
+      "modifier": "large",
+      "gram_weight": "50",
+      "data_points": "",
+      "footnote": "",
+      "min_year_acquired": ""
+    },
+    {
+      "foodId": "cucumber",
+      "id": "83049",
+      "fdc_id": "168409",
+      "seq_num": "1",
+      "amount": "0.5",
+      "measure_unit_id": "9999",
+      "portion_description": "",
+      "modifier": "cup slices",
+      "gram_weight": "52",
+      "data_points": "",
+      "footnote": "",
+      "min_year_acquired": ""
+    }
+  ]
+}

@@ -21,9 +21,19 @@ export function demoData(catalog: FoodCatalog, now: Date) {
     date.setDate(date.getDate() - i);
     date.setHours(12, 0, 0, 0);
     const id = ('demo:v1:meal:' + i) as MealId;
+    const menu =
+      i < 3
+        ? ['rice', 'egg', 'cucumber']
+        : i === 3
+          ? ['brown-rice', 'chicken-breast', 'cucumber']
+          : i === 4
+            ? ['rice-noodles', 'tofu', 'broth']
+            : i === 5
+              ? ['bread', 'milk', 'banana']
+              : ['sweet-potato', 'yogurt', 'papaya'];
     const items = catalog
       .listDemoFoods()
-      .filter((f) => f.carbPerServing !== null)
+      .filter((f) => menu.includes(f.id))
       .map((food) => ({
         itemId: (id + ':' + food.id) as MealDraftItemId,
         foodId: food.id,
@@ -50,23 +60,35 @@ export function demoData(catalog: FoodCatalog, now: Date) {
       catalogVersion: catalog.getCatalogVersion(),
       items,
       ...calculateMealNutrition(items),
-      note: 'Bữa ăn mẫu',
+      note: 'Bữa ăn mẫu · số liệu giả lập, không phải gợi ý thực đơn',
       isDemo: true,
     });
-    date.setHours(14);
+    if (i < 3)
+      readings.push({
+        id: ('demo:v3:pre:' + i) as GlucoseReadingId,
+        source: 'DEMO',
+        value: 5 + i / 10,
+        unit: 'MMOL_L',
+        measuredAt: new Date(date.getTime() - 10 * 60000).toISOString(),
+        mealId: id,
+        timingTag: 'BEFORE_MEAL',
+        note: 'Số đo giả lập để minh họa',
+        isDemo: true,
+      });
+    date.setHours(i < 3 ? 14 : 13);
     readings.push({
       id: ('demo:v1:glucose:' + i) as GlucoseReadingId,
       source: 'DEMO',
       value: 6 + i / 10,
       unit: 'MMOL_L',
       measuredAt: date.toISOString(),
-      mealId: id,
+      mealId: i === 6 ? null : id,
       timingTag: 'AFTER_MEAL',
       note: 'Số đo giả lập để minh họa',
       isDemo: true,
     });
   }
-  return { meals, readings, version: 'v2:' + localDate(now) };
+  return { meals, readings, version: 'v3:' + localDate(now) };
 }
 export function seedDemoData(
   repo: DemoRepository,

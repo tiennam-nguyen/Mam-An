@@ -71,7 +71,7 @@ test('production browser crosses real local v1/v2 API/router/adapter with upstre
     await page
       .getByRole('button', { name: 'Phân tích trực tiếp', exact: true })
       .click();
-    await expect(page.getByTestId('carb-total')).toHaveText('29,4 g');
+    await expect(page.getByTestId('carb-total')).toHaveText('46,5 g');
     await page
       .getByRole('button', { name: 'Diễn đạt lại bằng AI', exact: true })
       .click();
@@ -92,7 +92,7 @@ test('production browser crosses real local v1/v2 API/router/adapter with upstre
       page.getByRole('heading', { name: 'Bữa ăn đã lưu' }),
     ).toBeVisible();
     await page.reload();
-    await expect(page.locator('.big-number')).toHaveText('29,4 g carb');
+    await expect(page.locator('.big-number')).toHaveText('46,5 g carb');
     await page.screenshot({
       path: 'verification/v0.2/screenshots/real-api-detail.png',
       fullPage: true,

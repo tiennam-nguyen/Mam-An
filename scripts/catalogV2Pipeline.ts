@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { z } from 'zod';
 import { parseCsv } from './catalogPipeline';
 import { componentRoles } from '../src/domain/meal/mealEntry';
-export function readV2Catalog(foodIds: string[]) {
+import type { FoodItem } from '../src/domain/food/foodItem';
+export function readV2Catalog(foodIds: string[], foods?: readonly FoodItem[]) {
   const sources = JSON.parse(
     readFileSync('catalog-src/source-registry.json', 'utf8'),
   ) as { source_id: string }[];
@@ -105,10 +106,14 @@ export function readV2Catalog(foodIds: string[]) {
   if (knowledge.some((k) => !sourceValid(k.sourceRef)))
     throw new Error('Missing knowledge provenance');
   return {
-    portions,
+    portions: foods
+      ? foods.flatMap((f) =>
+          (f.portionUnits ?? []).map((u) => ({ ...u, foodId: f.id })),
+        )
+      : portions,
     templates,
     knowledge,
-    catalogVersion: 'v2',
+    catalogVersion: foods?.[0]?.catalogVersion ?? 'v2',
     knowledgeVersion: 'knowledge-v1',
   };
 }

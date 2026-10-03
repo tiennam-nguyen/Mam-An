@@ -1,6 +1,7 @@
 import {
   calculateComponent,
-  referencePortion,
+  foodRole,
+  defaultPortion,
   type DishTemplate,
   type MealEntry,
 } from './mealEntry';
@@ -22,8 +23,8 @@ export function instantiateTemplate(
           componentId: entryId + ':' + t.key,
           foodId: food?.id ?? null,
           displayName: t.labelVi,
-          role: t.role,
-          portion: referencePortion(food),
+          role: foodRole(food) === 'OTHER' ? t.role : foodRole(food),
+          portion: defaultPortion(food),
           source: 'TEMPLATE',
           userCorrected: false,
           includedInTotal: true,

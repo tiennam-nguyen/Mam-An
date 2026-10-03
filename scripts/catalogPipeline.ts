@@ -1,4 +1,6 @@
 import { readFileSync } from 'node:fs';
+import { enrichCatalog, validateEnrichedFoods } from './catalogEnrichment';
+import type { FoodId } from '../src/domain/common/brandedIds';
 import {
   FoodSchema,
   SourceRegistrySchema,
@@ -33,7 +35,7 @@ export function parseCsv(text: string): string[][] {
   }
   return rows;
 }
-export const catalogVersion = 'v2';
+export const catalogVersion = 'v3-2026-10-02';
 export function buildCatalog(csv: string, registry: unknown) {
   const sources = SourceRegistrySchema.parse(registry);
   const [header, ...rows] = parseCsv(csv);
@@ -121,14 +123,22 @@ export function buildCatalog(csv: string, registry: unknown) {
       schemaVersion: 1,
       catalogVersion,
       sourceSet: sources.map((s) => s.source_id),
-      publishedAt: '2026-09-19',
+      publishedAt: '2026-10-02',
     },
   };
 }
 export function readCatalog() {
-  return buildCatalog(
+  const data = buildCatalog(
     readFileSync('catalog-src/foods.csv', 'utf8'),
     JSON.parse(readFileSync('catalog-src/source-registry.json', 'utf8')),
   );
+  const foods = enrichCatalog(
+    data.foods.map((f) => ({ ...f, id: f.id as FoodId })),
+  );
+  validateEnrichedFoods(
+    foods,
+    data.sources.map((s) => s.source_id),
+  );
+  return { ...data, foods };
 }
 export const json = (data: unknown) => JSON.stringify(data, null, 2) + '\n';

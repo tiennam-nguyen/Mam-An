@@ -6,7 +6,7 @@ import {
   calculateComponent,
   flattenEntries,
   entryTotals,
-  referencePortion,
+  defaultPortion,
   type MealEntry,
   type MealComponent,
 } from '../../domain/meal/mealEntry';
@@ -59,7 +59,7 @@ export function applyAnalysisResult(
     for (const [i, s] of suggestions.entries()) {
       const matches = catalog.findExactByAlias(s.rawName),
         food = matches.length === 1 ? matches[0]! : null;
-      let portion = referencePortion(food),
+      let portion = defaultPortion(food),
         portionNeedsReview = false;
       if (s.suggestedPortionLabel) {
         const resolution = resolvePortionPhrase(
@@ -71,12 +71,17 @@ export function applyAnalysisResult(
         else portionNeedsReview = true;
       }
       if (
+        !portionNeedsReview &&
         s.suggestedPortionMultiplier !== null &&
         Number.isFinite(s.suggestedPortionMultiplier) &&
         s.suggestedPortionMultiplier > 0
       )
         portion = { ...portion, quantity: s.suggestedPortionMultiplier };
-      const role = s.role === 'OTHER' ? foodRole(food) : s.role;
+      const templateRole = entry.components.find(
+        (c) => food && c.foodId === food.id,
+      )?.role;
+      const role =
+        foodRole(food) !== 'OTHER' ? foodRole(food) : (templateRole ?? s.role);
       const current = entry.components.find(
         (c) => c.role === role && food && c.foodId === food.id,
       );

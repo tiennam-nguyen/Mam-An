@@ -1,3 +1,4 @@
+import { PortionControls } from '../../shared/ui/PortionControls';
 import { VoiceInput } from '../../shared/ui/VoiceInput';
 import { instantiateTemplate } from '../../domain/meal/dishTemplate';
 import {
@@ -9,8 +10,7 @@ import type { FoodCatalog } from '../../application/ports/foodCatalog';
 import type { FoodId } from '../../domain/common/brandedIds';
 import {
   foodRole,
-  componentRoles,
-  referencePortion,
+  defaultPortion,
   type MealComponent,
   type MealEntry,
 } from '../../domain/meal/mealEntry';
@@ -36,7 +36,7 @@ export function newComponent(
     foodId,
     displayName: food?.nameVi ?? 'Thành phần tự nhập',
     role: foodRole(food),
-    portion: referencePortion(food),
+    portion: defaultPortion(food),
     carbEstimate: null,
     kcalEstimate: null,
     nutritionState: 'UNKNOWN',
@@ -128,29 +128,11 @@ export function EntryEditor({
                   ? ' · Cần xem lại'
                   : ''}
               </summary>
-              <p className="portion-guide">
-                1 phần ={' '}
-                {c.portion.displayLabelSnapshot.replace(
-                  /^1 phần tham chiếu \((.*)\)$/,
-                  '$1',
-                )}
-                . Đang chọn {formatNumber(c.portion.quantity)} phần.
-              </p>
-              <div className="chips" aria-label={`Khẩu phần ${c.displayName}`}>
-                {[0.5, 1, 1.5, 2].map((quantity) => (
-                  <button
-                    key={quantity}
-                    aria-pressed={c.portion.quantity === quantity}
-                    onClick={() =>
-                      change(c.componentId, {
-                        portion: { ...c.portion, quantity },
-                      })
-                    }
-                  >
-                    {formatNumber(quantity)} phần
-                  </button>
-                ))}
-              </div>
+              <PortionControls
+                food={c.foodId ? catalog.getFoodById(c.foodId) : null}
+                portion={c.portion}
+                onChange={(portion) => change(c.componentId, { portion })}
+              />
               <details
                 className="component-edit"
                 open={c.componentId === correctionId}
@@ -191,31 +173,15 @@ export function EntryEditor({
                   }}
                 />
                 <label>
-                  Vai trò
-                  <select
-                    value={c.role}
-                    onChange={(e) =>
-                      change(c.componentId, {
-                        role: e.target.value as MealComponent['role'],
-                      })
-                    }
-                  >
-                    {componentRoles.map((r) => (
-                      <option key={r} value={r}>
-                        {roleLabels[r]}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  Món tham chiếu dinh dưỡng
+                  Chọn thực phẩm phù hợp
                   <select
                     value={c.foodId ?? ''}
                     onChange={(e) => {
                       const f = catalog.getFoodById(e.target.value as FoodId);
                       change(c.componentId, {
                         foodId: f?.id ?? null,
-                        portion: referencePortion(f),
+                        role: foodRole(f),
+                        portion: defaultPortion(f),
                         matchState: f ? 'MATCHED' : 'UNMATCHED',
                       });
                     }}
@@ -238,37 +204,6 @@ export function EntryEditor({
                     lưu tên và khẩu phần.
                   </p>
                 )}
-                <label>
-                  Đơn vị khẩu phần
-                  <select
-                    value={c.portion.unitId}
-                    onChange={(e) => {
-                      const unit =
-                        c.foodId &&
-                        catalog
-                          .getPortionUnits?.(c.foodId)
-                          .find((u) => u.id === e.target.value);
-                      if (unit)
-                        change(c.componentId, {
-                          portion: selectPortion(unit, c.portion.quantity),
-                        });
-                    }}
-                  >
-                    <option value={c.portion.unitId}>
-                      {c.portion.displayLabelSnapshot}
-                    </option>
-                    {(c.foodId
-                      ? (catalog.getPortionUnits?.(c.foodId) ?? [])
-                      : []
-                    )
-                      .filter((u) => u.id !== c.portion.unitId)
-                      .map((u) => (
-                        <option key={u.id} value={u.id}>
-                          {u.labelVi}
-                        </option>
-                      ))}
-                  </select>
-                </label>
                 <p>
                   {c.carbEstimate === null
                     ? 'Carb chưa biết'

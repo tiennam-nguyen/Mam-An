@@ -1,0 +1,19 @@
+# Catalog, portions, personal evidence and report mission
+
+2026-10-02. Branch codex/catalog-portion-report-enrichment, freshly fetched base origin/main 904de0f. User mission: attachment a9e2058b-b372-496d-ab44-0a614882b6be. No merge or production deployment.
+
+Milestones in order: M1 audit; M2 explicit basis/provenance; M3 curate and validate; M4 supported household portions and metric fallback; M5 review/simulation language; M6 role derivation; M7 personal observation card; M8 deterministic report joins; M9 report/narrative; M10 coherent isolated demo; M11 focused/full/visual/print verification.
+
+[READ] Baseline has 8 foods, 3 with known nutrition, 12 portion records. Known values cite ASEANFOODS 2014, available carbohydrate by difference. Egg reference is 50 g but its household weight is not independently sourced. Several known units say only “1 phần tham chiếu”. Report searches meals inside JSX and loses linked meal names. Demo currently includes every known catalog food in each meal, so expansion requires explicit demo menus.
+
+Constraints: no invented nutrient/portion conversions; source identity, preparation, edible basis, carb definition and licensing explicit. Catalog version only; persisted schema and historical snapshots unchanged. Unknown conversions must not calculate known nutrition. Household terms with unsupported weights may describe an amount but remain unknown; metric fallback shares the same calculator. Preserve observation rules/minimum distinct meals and demo/user isolation. Reports use snapshot totals and exact mealId only, including linked meals outside period when available; never nearest-meal association. No medical thresholds, advice, predictions or LLM report.
+
+Source research: Vietnamese 2007 table listed by FAO; accessibility/reuse unresolved. ASEAN noncommercial acknowledgement restriction must remain explicit. USDA public-domain basic-food records are fallback candidates, not substitutes for Vietnamese recipes. Any cross-source carbohydrate normalization requires explicit documented formula and original nutrient values.
+
+Required final checks: npm ci; typecheck; catalog build/check/reproducibility; tests; build; E2E; safety/secrets; diff check. Inspect 390px/desktop/large text/print with screenshots/PDF. Track result counts, exact source records, rejected sources and limits in REPORT.md.
+
+2026-10-03 continuation: M1–M10 implemented. Catalog 34 foods / 29 known, 98 explicit units (58 verified identity units, 31 source-derived estimates, 9 description-only units). Added 26 basic USDA foods, retained 3 ASEAN known records and 5 unknowns. Domain schema remains v2. Original untracked SRS/LLD/protocol files remain untouched and excluded from commits.
+
+[RAN] Unit suite 431 passed (26 files); focused demo/enrichment browser suite 6 passed. Full browser run reached 57/58; remaining outdated identical-demo assertion corrected and the focused demo suite passed afterward. M11 final commit checks remain to run. Print inspection found excessive pagination, orphaned demo badge, decimal-comma truncation and beige page background; corrected with compact print rules, unsplit pattern blocks, comma-space shortening and white print root.
+
+Next: final screenshot/PDF inspection, source diff/secret audit, commit, all required commands at final commit, push branch/open PR/attach. No merge or deployment. Recovery: revert branch before release; no stored record migration/rewrite to reverse. Catalog maintainers must retain exact source identities, unit semantics and license review when adding records; no runtime API cost introduced.
